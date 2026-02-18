@@ -1,0 +1,443 @@
+{
+    "Metadata": {
+        "title": "Scryved | Custom Software Solutions",
+        "description": "Custom software development, mobile apps, and electronic security. We transform your ideas into scalable solutions.",
+        "keywords": "web development, mobile apps, security, software agency",
+        "ogImage": "/og-image-en.png",
+        "canonical": "https://scryved.com/en"
+    },
+    "Navbar": {
+        "home": "Home",
+        "about": "About",
+        "smartpay": "SmartPay",
+        "deployed": "Live Projects",
+        "services": "Services",
+        "security": "Security",
+        "team": "Team",
+        "contact": "Contact"
+    },
+    "Hero": {
+        "badge": "Innovation & Technology",
+        "tagline": "Custom Software",
+        "title_line1": "Custom Software",
+        "title_line2": "Solutions for Your Business",
+        "subtitle": "We build innovative, scalable, and high-performance software solutions tailored to your specific needs.",
+        "description": "Founded in 2023, Scryved has been at the forefront of custom software development.",
+        "cta_primary": "Get Started",
+        "cta_secondary": "Learn More",
+        "stat1_value": "+50",
+        "stat1_label": "Projects Completed",
+        "stat2_value": "99%",
+        "stat2_label": "Happy Clients",
+        "stat3_value": "+3",
+        "stat3_label": "Years Experience"
+    },
+    "About": {
+        "tag": "About Scryved",
+        "title_part1": "About",
+        "title_part2": "Scryved",
+        "subtitle": "We transform your ideas into powerful and scalable software applications.",
+        "description_main": "Founded in 2023, Scryved has been at the forefront of custom software development. We pride ourselves on technical expertise and creative problem solving.",
+        "mission": "Our mission is to deliver innovative solutions to businesses across various industries.",
+        "vision": "To be the preferred tech partner for businesses seeking excellence.",
+        "strengths": [
+            {
+                "title": "Innovation & Technology",
+                "description": "We use the latest technologies to create robust and futuristic solutions."
+            },
+            {
+                "title": "Quality Code",
+                "description": "We write clean, maintainable, and scalable code designed to grow with your business."
+            },
+            {
+                "title": "Client Focus",
+                "description": "We work closely with you, ensuring the final product exceeds your expectations."
+            }
+        ]
+    },
+    "Services": {
+        "tag": "Our Services",
+        "title_part1": "Our",
+        "title_part2": "Services",
+        "subtitle": "Comprehensive range of development services to help your business thrive.",
+        "description": "We offer everything from web development to cloud consulting.",
+        "items": [
+            {
+                "id": "web",
+                "title": "Web Development",
+                "description": "We build responsive, fast, and scalable web applications using modern technologies like React, Vue, and Angular.",
+                "features": [
+                    "Responsive Sites",
+                    "SPA Applications",
+                    "SEO Optimization"
+                ],
+                "cta": "Consult Web"
+            },
+            {
+                "id": "mobile",
+                "title": "Mobile App Development",
+                "description": "Native and cross-platform mobile applications for iOS and Android using React Native, Flutter, and Swift.",
+                "features": [
+                    "iOS & Android",
+                    "Native Apps",
+                    "High Performance"
+                ],
+                "cta": "Consult App"
+            },
+            {
+                "id": "custom_software",
+                "title": "Custom Software",
+                "description": "Tailored software solutions designed to address your specific business challenges and requirements.",
+                "features": [
+                    "ERP/CRM Systems",
+                    "Automation",
+                    "Scalability"
+                ],
+                "cta": "Consult Software"
+            },
+            {
+                "id": "ui_ux",
+                "title": "UI/UX Design",
+                "description": "User-centered design solutions that enhance user experience and drive engagement with your digital products.",
+                "features": [
+                    "Prototyping",
+                    "Interface Design",
+                    "User Experience"
+                ],
+                "cta": "View Design"
+            },
+            {
+                "id": "devops",
+                "title": "DevOps & Cloud",
+                "description": "Streamline your development and operations with our DevOps services and cloud infrastructure solutions.",
+                "features": [
+                    "AWS / Azure",
+                    "CI/CD",
+                    "Infrastructure"
+                ],
+                "cta": "Consult Cloud"
+            },
+            {
+                "id": "qa",
+                "title": "Quality Assurance",
+                "description": "Comprehensive testing and quality assurance services to ensure your software is reliable and bug-free.",
+                "features": [
+                    "Automated Testing",
+                    "Load Testing",
+                    "Security"
+                ],
+                "cta": "Consult QA"
+            }
+        ],
+        "cta_button": "Download Services PDF"
+    },
+    "Security": {
+        "tag": "Electronic Security",
+        "title_part1": "Protect What",
+        "title_part2": "Matters Most",
+        "subtitle": "Professional video surveillance and smart alarm solutions.",
+        "description": "Turnkey installation and specialized technical support.",
+        "kits": [
+            {
+                "id": "kit_4k_pro",
+                "title": "Hikvision 4K Pro Kit",
+                "tagline": "The Ultimate Solution",
+                "price": "$3.000.000",
+                "currency": "COP",
+                "badge": "BEST SELLER",
+                "description": "Cinema quality and long-range night vision. Ideal for large homes or businesses.",
+                "features": [
+                    "2 Bullet Cameras 4K (Ext)",
+                    "2 Dome Cameras 4K (Int)",
+                    "4 Channel 4K DVR with AI",
+                    "1TB Hard Drive",
+                    "Full Installation Included"
+                ],
+                "cta": "Order Installation"
+            },
+            {
+                "id": "kit_business",
+                "title": "Business Essentials Kit",
+                "tagline": "Total Control",
+                "price": "$2.000.000",
+                "currency": "COP",
+                "description": "Ideal for retail stores and offices. Total control and effective deterrence.",
+                "features": [
+                    "4 Hikvision 1080p Cameras",
+                    "4 Channel Full HD DVR",
+                    "1TB Hard Drive",
+                    "Professional Installation",
+                    "Remote Monitoring"
+                ],
+                "cta": "Get Quote"
+            },
+            {
+                "id": "kit_alarms",
+                "title": "Alarms & Automation",
+                "tagline": "Control from your phone",
+                "price": "Quote",
+                "currency": "COP",
+                "description": "Motion sensors, door opening sensors, and smart sirens integrated into your phone.",
+                "features": [
+                    "Smart WiFi/GSM Panel",
+                    "PIR Motion Sensors",
+                    "High Power Siren",
+                    "App Control",
+                    "Alexa/Google Integration"
+                ],
+                "cta": "Design Solution"
+            }
+        ]
+    },
+    "Portfolio": {
+        "tag": "Deployments",
+        "title_part1": "Live",
+        "title_part2": "Projects",
+        "subtitle": "Explore the applications and websites we have recently developed.",
+        "description": "Click to interact with our success stories.",
+        "projects": [
+            {
+                "title": "SmartPay: Phone Financing",
+                "category": "software",
+                "description": "Leading software for cell phone financing. Blocking, tracking, and customer management functions.",
+                "technologies": [
+                    "React",
+                    "Node.js",
+                    "MongoDB",
+                    "Security"
+                ]
+            },
+            {
+                "title": "Olimpo Enterprise",
+                "category": "web",
+                "description": "Corporate platform for business management.",
+                "technologies": [
+                    "Web",
+                    "Corporate"
+                ]
+            },
+            {
+                "title": "Hotel Condado Pisco",
+                "category": "web",
+                "description": "Reservation and presentation website for the hotel sector.",
+                "technologies": [
+                    "Next.js",
+                    "UI/UX"
+                ]
+            },
+            {
+                "title": "Urbano Exotic Fruits",
+                "category": "web",
+                "description": "E-commerce for exotic fruit marketing.",
+                "technologies": [
+                    "E-commerce",
+                    "Payments"
+                ]
+            },
+            {
+                "title": "Aion Engineering",
+                "category": "web",
+                "description": "Portal for engineering and consulting services.",
+                "technologies": [
+                    "Web",
+                    "Design"
+                ]
+            },
+            {
+                "title": "Origin Coffee Fair",
+                "category": "mobile",
+                "description": "App/Platform for coffee events.",
+                "technologies": [
+                    "Events",
+                    "Registration"
+                ]
+            },
+            {
+                "title": "IESTAP Biodiverse",
+                "category": "web",
+                "description": "Educational and institutional platform.",
+                "technologies": [
+                    "Education",
+                    "CMS"
+                ]
+            }
+        ]
+    },
+    "Team": {
+        "tag": "Our Team",
+        "title_part1": "Our",
+        "title_part2": "Team",
+        "subtitle": "Meet the passionate minds behind Scryved. We are a team of developers, designers, and strategists dedicated to building exceptional digital experiences.",
+        "join_title": "Want to be part of our team?",
+        "join_button": "Contact Us",
+        "members": [
+            {
+                "id": "julian",
+                "name": "Julian Palomares",
+                "role": "CEO & Founder",
+                "profession": "Systems Engineer"
+            },
+            {
+                "id": "hector",
+                "name": "Hector Estrada",
+                "role": "CTO & Co-Founder",
+                "profession": "Mechatronics Engineer"
+            },
+            {
+                "id": "luis",
+                "name": "Luis Montoya",
+                "role": "Sr. Web Developer",
+                "profession": "Systems Engineer"
+            },
+            {
+                "id": "daniel",
+                "name": "Daniel Murillo",
+                "role": "Sr. Mobile Developer",
+                "profession": "Systems Engineer"
+            },
+            {
+                "id": "alex",
+                "name": "Alex Cotrino",
+                "role": "Sr. Full Stack Developer",
+                "profession": "Electronics Engineer"
+            },
+            {
+                "id": "orlando",
+                "name": "Orlando Daza",
+                "role": "Semi Sr. Full Stack Developer",
+                "profession": "Systems Engineer"
+            },
+            {
+                "id": "cristian",
+                "name": "Cristian Aviles",
+                "role": "Semi Sr. Full Stack Developer",
+                "profession": "Systems Engineer"
+            },
+            {
+                "id": "felipe",
+                "name": "Felipe Facundo",
+                "role": "Sr. Backend Developer",
+                "profession": "Electronics Engineer"
+            },
+            {
+                "id": "fabian",
+                "name": "Fabian Ramos",
+                "role": "Sr. Full Stack Developer",
+                "profession": "Software Engineer"
+            },
+            {
+                "id": "nicolas",
+                "name": "Nicolas Peñafiel",
+                "role": "Semi Sr. Full Stack Developer",
+                "profession": "Technologist"
+            },
+            {
+                "id": "yamson",
+                "name": "Yamson Calapzu",
+                "role": "Database Expert",
+                "profession": "Systems Engineer"
+            },
+            {
+                "id": "andres",
+                "name": "Andres Velez",
+                "role": "Digital Marketing",
+                "profession": "Journalist"
+            },
+            {
+                "id": "juan",
+                "name": "Juan Tobon",
+                "role": "Sr. Mobile Developer",
+                "profession": "Systems Engineer"
+            }
+        ]
+    },
+    "Gallery": {
+        "tag": "Project Gallery",
+        "title_part1": "Our",
+        "title_part2": "Installations",
+        "subtitle": "The quality of our work is seen in the details. From impeccable structured cabling to high-tech monitoring centers.",
+        "items": [
+            {
+                "title": "CCTV Monitoring Center",
+                "description": "Video Wall installation and server configuration for 24/7 security."
+            },
+            {
+                "title": "Cat6 Structured Cabling",
+                "description": "Server rack organization and certified cable management."
+            },
+            {
+                "title": "Home Automation",
+                "description": "Lighting automation and smart access control."
+            },
+            {
+                "title": "PTZ Camera Installation",
+                "description": "High-altitude mounting of rotating cameras for perimeter surveillance."
+            },
+            {
+                "title": "Corporate Networks",
+                "description": "Wi-Fi 6 access point deployment and firewall configuration."
+            },
+            {
+                "title": "Biometric Access Control",
+                "description": "Fingerprint and facial recognition entry systems for offices."
+            }
+        ]
+    },
+    "Contact": {
+        "tag": "Contact",
+        "title_part1": "Get in",
+        "title_part2": "Touch",
+        "subtitle": "Have a project in mind?",
+        "description": "Want to learn more about our services? We'd love to hear from you!",
+        "form": {
+            "title": "Send us a Message",
+            "fields": {
+                "name": "Your Name",
+                "email": "Your Email",
+                "phone": "Phone",
+                "subject": "Subject",
+                "message": "Your Message",
+                "budget": "Budget"
+            },
+            "button": "Send Message",
+            "success": "Thank you! We will get back to you.",
+            "error": "There was an error sending."
+        },
+        "info": {
+            "title": "Information",
+            "phone": "+57 322 245 5334",
+            "email": "scryved@gmail.com",
+            "address": "Pitalito, Huila, Colombia"
+        }
+    },
+    "Footer": {
+        "brand_description": "Custom software development solutions for businesses of all sizes. We turn ideas into reality.",
+        "services": {
+            "title": "Services"
+        },
+        "company": {
+            "title": "Company"
+        },
+        "contact_title": "Contact",
+        "address": "Pitalito, Huila, Colombia",
+        "phone": "+57 322 245 5334",
+        "email": "scryved@gmail.com",
+        "copyright": "All rights reserved."
+    },
+    "FinanLock": {
+        "section_tag": "Our Flagship Product",
+        "title_part1": "Revolutionize Your",
+        "title_part2": "Finances",
+        "description_main": "A comprehensive platform designed to simplify, secure, and boost your business financial management in Latin America.",
+        "subtitle": "FinanLock: Total Control",
+        "description_detail": "Formerly known as SmartPay, FinanLock evolves to offer banking-grade security, real-time analytics, and an unprecedented user experience for modern merchants.",
+        "availability": "Available In",
+        "features": {
+            "feature1": "Secure Payment Gateway",
+            "feature2": "AI Analytics Dashboard",
+            "feature3": "Multi-currency Management",
+            "feature4": "Premium 24/7 Support"
+        },
+        "cta_button": "View Live Demo"
+    }
+}

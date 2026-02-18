@@ -1,0 +1,443 @@
+{
+  "Metadata": {
+    "title": "Scryved | Soluciones de Software a Medida",
+    "description": "Desarrollo de software a medida, aplicaciones móviles y seguridad electrónica. Transformamos tus ideas en soluciones escalables.",
+    "keywords": "desarrollo web, apps moviles, seguridad electronica, pitalito, huila, software a medida",
+    "ogImage": "/og-image.png",
+    "canonical": "https://scryved.com"
+  },
+  "Navbar": {
+    "home": "Inicio",
+    "about": "Nosotros",
+    "smartpay": "SmartPay",
+    "deployed": "En Vivo",
+    "services": "Servicios",
+    "security": "Seguridad",
+    "team": "Equipo",
+    "contact": "Contacto"
+  },
+  "Hero": {
+    "badge": "Innovación y Tecnología",
+    "tagline": "Software a Medida",
+    "title_line1": "Soluciones de Software",
+    "title_line2": "Para Tu Negocio",
+    "subtitle": "Construimos soluciones de software innovadoras, escalables y de alto rendimiento adaptadas a tus necesidades específicas. Desde Pitalito para el mundo.",
+    "description": "Fundada en 2023, Scryved ha estado a la vanguardia del desarrollo de software.",
+    "cta_primary": "Comenzar",
+    "cta_secondary": "Saber Más",
+    "stat1_value": "+50",
+    "stat1_label": "Proyectos Completados",
+    "stat2_value": "99%",
+    "stat2_label": "Clientes Satisfechos",
+    "stat3_value": "+3",
+    "stat3_label": "Años de Experiencia"
+  },
+  "About": {
+    "tag": "Sobre Scryved",
+    "title_part1": "Sobre",
+    "title_part2": "Scryved",
+    "subtitle": "Transformamos tus ideas en aplicaciones de software potentes y escalables.",
+    "description_main": "Fundada en 2023, Scryved ha estado a la vanguardia del desarrollo de software a medida. Nos enorgullecemos de nuestra experiencia técnica y resolución creativa de problemas.",
+    "mission": "Nuestra misión es ofrecer soluciones innovadoras a empresas de diversas industrias.",
+    "vision": "Ser el aliado tecnológico preferido para empresas que buscan excelencia.",
+    "strengths": [
+      {
+        "title": "Innovación y Tecnología",
+        "description": "Utilizamos las últimas tecnologías para crear soluciones robustas y futuristas."
+      },
+      {
+        "title": "Código de Calidad",
+        "description": "Escribimos código limpio, mantenible y escalable pensado para crecer junto a tu negocio."
+      },
+      {
+        "title": "Enfoque en el Cliente",
+        "description": "Trabajamos en estrecha colaboración contigo, asegurando que el producto final supere tus expectativas."
+      }
+    ]
+  },
+  "Services": {
+    "tag": "Nuestros Servicios",
+    "title_part1": "Nuestros",
+    "title_part2": "Servicios",
+    "subtitle": "Gama completa de servicios de desarrollo para ayudar a tu negocio a prosperar en el mundo digital.",
+    "description": "Ofrecemos desde desarrollo web hasta consultoría en la nube.",
+    "items": [
+      {
+        "id": "web",
+        "title": "Desarrollo Web",
+        "description": "Creamos aplicaciones web responsivas, rápidas y escalables utilizando tecnologías modernas como React, Vue y Angular.",
+        "features": [
+          "Sitios Responsivos",
+          "Aplicaciones SPA",
+          "Optimización SEO"
+        ],
+        "cta": "Consultar Web"
+      },
+      {
+        "id": "mobile",
+        "title": "Desarrollo de Apps Móviles",
+        "description": "Aplicaciones móviles nativas y multiplataforma para iOS y Android usando React Native, Flutter y Swift.",
+        "features": [
+          "iOS y Android",
+          "Apps Nativas",
+          "Alto Rendimiento"
+        ],
+        "cta": "Consultar App"
+      },
+      {
+        "id": "custom_software",
+        "title": "Software a Medida",
+        "description": "Soluciones de software personalizadas diseñadas para abordar los desafíos y requisitos específicos de su negocio.",
+        "features": [
+          "Sistemas ERP/CRM",
+          "Automatización",
+          "Escalabilidad"
+        ],
+        "cta": "Consultar Software"
+      },
+      {
+        "id": "ui_ux",
+        "title": "Diseño UI/UX",
+        "description": "Soluciones de diseño centradas en el usuario que mejoran la experiencia y fomentan la interacción con sus productos digitales.",
+        "features": [
+          "Prototipado",
+          "Diseño de Interfaz",
+          "Experiencia de Usuario"
+        ],
+        "cta": "Ver Diseño"
+      },
+      {
+        "id": "devops",
+        "title": "DevOps y Cloud",
+        "description": "Optimice su desarrollo y operaciones con nuestros servicios DevOps y soluciones de infraestructura en la nube.",
+        "features": [
+          "AWS / Azure",
+          "CI/CD",
+          "Infraestructura"
+        ],
+        "cta": "Consultar Cloud"
+      },
+      {
+        "id": "qa",
+        "title": "Control de Calidad",
+        "description": "Servicios integrales de pruebas y control de calidad para asegurar que su software sea confiable y libre de errores.",
+        "features": [
+          "Testing Automatizado",
+          "Pruebas de Carga",
+          "Seguridad"
+        ],
+        "cta": "Consultar QA"
+      }
+    ],
+    "cta_button": "Descargar PDF de Servicios"
+  },
+  "Security": {
+    "tag": "Seguridad Electrónica",
+    "title_part1": "Protege lo que",
+    "title_part2": "Más Importa",
+    "subtitle": "Soluciones de videovigilancia profesional y alarmas inteligentes.",
+    "description": "Instalación llave en mano y soporte técnico especializado.",
+    "kits": [
+      {
+        "id": "kit_4k_pro",
+        "title": "Kit Hikvision 4K Pro",
+        "tagline": "La solución definitiva",
+        "price": "$3.000.000",
+        "currency": "COP",
+        "badge": "MÁS VENDIDO",
+        "description": "Calidad de cine y visión nocturna de largo alcance. Ideal para hogares grandes o negocios.",
+        "features": [
+          "2 Cámaras Bala 4K (Ext)",
+          "2 Cámaras Domo 4K (Int)",
+          "DVR 4 Canales con IA",
+          "Disco Duro 1TB",
+          "Instalación completa incluida"
+        ],
+        "cta": "Ordenar Instalación"
+      },
+      {
+        "id": "kit_business",
+        "title": "Kit Negocio Esencial",
+        "tagline": "Control total para negocios",
+        "price": "$2.000.000",
+        "currency": "COP",
+        "description": "Ideal para locales comerciales y oficinas. Control total y disuasión efectiva.",
+        "features": [
+          "4 Cámaras Hikvision 1080p Full HD",
+          "DVR 4 Canales Full HD",
+          "Disco Duro 1TB",
+          "Instalación profesional",
+          "Monitoreo remoto celular/PC"
+        ],
+        "cta": "Cotizar Ahora"
+      },
+      {
+        "id": "kit_alarms",
+        "title": "Alarmas & Domótica",
+        "tagline": "Control desde tu celular",
+        "price": "Cotizar",
+        "currency": "COP",
+        "description": "Sensores de movimiento, apertura de puertas y sirenas inteligentes integradas a tu celular.",
+        "features": [
+          "Panel Inteligente WiFi/GSM",
+          "Sensores de movimiento PIR",
+          "Sirena de alta potencia",
+          "Control desde App",
+          "Integración Alexa/Google"
+        ],
+        "cta": "Diseñar Solución"
+      }
+    ]
+  },
+  "Portfolio": {
+    "tag": "Despliegues",
+    "title_part1": "Proyectos",
+    "title_part2": "En Vivo",
+    "subtitle": "Explora las aplicaciones y sitios web que hemos desarrollado recientemente.",
+    "description": "Haz clic para interactuar con nuestros casos de éxito.",
+    "projects": [
+      {
+        "title": "SmartPay: Financiación de Celulares",
+        "category": "software",
+        "description": "Software líder para financiación de celulares. Funciones de bloqueo, rastreo y gestión de clientes.",
+        "technologies": [
+          "React",
+          "Node.js",
+          "MongoDB",
+          "Seguridad"
+        ]
+      },
+      {
+        "title": "Olimpo Empresa",
+        "category": "web",
+        "description": "Plataforma corporativa para gestión empresarial.",
+        "technologies": [
+          "Web",
+          "Corporativo"
+        ]
+      },
+      {
+        "title": "Hotel Condado Pisco",
+        "category": "web",
+        "description": "Sitio web de reservas y presentación para el sector hotelero.",
+        "technologies": [
+          "Next.js",
+          "UI/UX"
+        ]
+      },
+      {
+        "title": "Urbano Frutas Exóticas",
+        "category": "web",
+        "description": "E-commerce para comercialización de frutas exóticas.",
+        "technologies": [
+          "E-commerce",
+          "Pasarela de Pagos"
+        ]
+      },
+      {
+        "title": "Aion Ingeniería",
+        "category": "web",
+        "description": "Portal de servicios de ingeniería y consultoría.",
+        "technologies": [
+          "Web",
+          "Diseño"
+        ]
+      },
+      {
+        "title": "Feria Café de Origen",
+        "category": "mobile",
+        "description": "Aplicación/Plataforma para eventos de café.",
+        "technologies": [
+          "Eventos",
+          "Registro"
+        ]
+      },
+      {
+        "title": "IESTAP Biodiverso",
+        "category": "web",
+        "description": "Plataforma educativa e institucional.",
+        "technologies": [
+          "Educación",
+          "CMS"
+        ]
+      }
+    ]
+  },
+  "Team": {
+    "tag": "Nuestro Equipo",
+    "title_part1": "Nuestro",
+    "title_part2": "Equipo",
+    "subtitle": "Conoce a las mentes apasionadas detrás de Scryved. Somos un equipo de desarrolladores, diseñadores y estrategas dedicados a construir experiencias digitales excepcionales.",
+    "join_title": "¿Quieres ser parte de nuestro equipo?",
+    "join_button": "Contáctanos",
+    "members": [
+      {
+        "id": "julian",
+        "name": "Julian Palomares",
+        "role": "CEO & Fundador",
+        "profession": "Ing. de Sistemas"
+      },
+      {
+        "id": "hector",
+        "name": "Hector Estrada",
+        "role": "CTO & Co-Fundador",
+        "profession": "Ing. Mecatrónico"
+      },
+      {
+        "id": "luis",
+        "name": "Luis Montoya",
+        "role": "Desarrollador Web Sr.",
+        "profession": "Ing. de Sistemas"
+      },
+      {
+        "id": "daniel",
+        "name": "Daniel Murillo",
+        "role": "Desarrollador Móvil Sr.",
+        "profession": "Ing. de Sistemas"
+      },
+      {
+        "id": "alex",
+        "name": "Alex Cotrino",
+        "role": "Desarrollador Full Stack Sr.",
+        "profession": "Ing. Electrónico"
+      },
+      {
+        "id": "orlando",
+        "name": "Orlando Daza",
+        "role": "Desarrollador Full Stack Semi Sr.",
+        "profession": "Ing. de Sistemas"
+      },
+      {
+        "id": "cristian",
+        "name": "Cristian Aviles",
+        "role": "Desarrollador Full Stack Semi Sr.",
+        "profession": "Ing. de Sistemas"
+      },
+      {
+        "id": "felipe",
+        "name": "Felipe Facundo",
+        "role": "Desarrollador Backend Sr.",
+        "profession": "Ing. Electrónico"
+      },
+      {
+        "id": "fabian",
+        "name": "Fabian Ramos",
+        "role": "Desarrollador Full Stack Sr.",
+        "profession": "Ing. de Software"
+      },
+      {
+        "id": "nicolas",
+        "name": "Nicolas Peñafiel",
+        "role": "Desarrollador Full Stack Semi Sr.",
+        "profession": "Tecnólogo"
+      },
+      {
+        "id": "yamson",
+        "name": "Yamson Calapzu",
+        "role": "Experto Base de Datos",
+        "profession": "Ing. de Sistemas"
+      },
+      {
+        "id": "andres",
+        "name": "Andres Velez",
+        "role": "Marketing Digital",
+        "profession": "Periodista"
+      },
+      {
+        "id": "juan",
+        "name": "Juan Tobon",
+        "role": "Desarrollador Móvil Sr.",
+        "profession": "Ing. de Sistemas"
+      }
+    ]
+  },
+  "Gallery": {
+    "tag": "Galería de Proyectos",
+    "title_part1": "Nuestras",
+    "title_part2": "Instalaciones",
+    "subtitle": "La calidad de nuestro trabajo se ve en los detalles. Desde cableado estructurado impecable hasta centros de monitoreo de alta tecnología.",
+    "items": [
+      {
+        "title": "Centro de Monitoreo CCTV",
+        "description": "Instalación de Video Wall y configuración de servidores para seguridad 24/7."
+      },
+      {
+        "title": "Cableado Estructurado Cat6",
+        "description": "Organización de rack de servidores y gestión de cableado certificado."
+      },
+      {
+        "title": "Domótica Residencial",
+        "description": "Automatización de iluminación y control de acceso inteligente."
+      },
+      {
+        "title": "Instalación de Cámaras PTZ",
+        "description": "Montaje en altura de cámaras rotativas para vigilancia perimetral."
+      },
+      {
+        "title": "Redes Corporativas",
+        "description": "Despliegue de puntos de acceso Wi-Fi 6 y configuración de firewall."
+      },
+      {
+        "title": "Control de Acceso Biométrico",
+        "description": "Sistemas de entrada por huella y reconocimiento facial para oficinas."
+      }
+    ]
+  },
+  "Contact": {
+    "tag": "Contacto",
+    "title_part1": "Ponte en",
+    "title_part2": "Contacto",
+    "subtitle": "¿Tienes un proyecto en mente?",
+    "description": "¿Quieres saber más sobre nuestros servicios? ¡Nos encantaría escucharte!",
+    "form": {
+      "title": "Envíanos un Mensaje",
+      "fields": {
+        "name": "Tu Nombre",
+        "email": "Tu Correo",
+        "phone": "Teléfono",
+        "subject": "Asunto",
+        "message": "Tu Mensaje",
+        "budget": "Presupuesto"
+      },
+      "button": "Enviar Mensaje",
+      "success": "¡Gracias! Nos pondremos en contacto.",
+      "error": "Hubo un error al enviar."
+    },
+    "info": {
+      "title": "Información",
+      "phone": "+57 322 245 5334",
+      "email": "scryved@gmail.com",
+      "address": "Pitalito, Huila, Colombia"
+    }
+  },
+  "Footer": {
+    "brand_description": "Soluciones de desarrollo de software a medida para empresas de todos los tamaños. Transformamos ideas en realidad.",
+    "services": {
+      "title": "Servicios"
+    },
+    "company": {
+      "title": "Empresa"
+    },
+    "contact_title": "Contacto",
+    "address": "Pitalito, Huila, Colombia",
+    "phone": "+57 322 245 5334",
+    "email": "scryved@gmail.com",
+    "copyright": "Todos los derechos reservados."
+  },
+  "FinanLock": {
+    "section_tag": "Nuestro Producto Estrella",
+    "title_part1": "Revoluciona tus",
+    "title_part2": "Finanzas",
+    "description_main": "Una plataforma integral diseñada para simplificar, asegurar y potenciar la gestión financiera de tu negocio en Latinoamérica.",
+    "subtitle": "FinanLock: Control Total",
+    "description_detail": "Antes conocido como SmartPay, FinanLock evoluciona para ofrecerte seguridad bancaria, análisis en tiempo real y una experiencia de usuario sin precedentes para comercios modernos.",
+    "availability": "Disponible En",
+    "features": {
+      "feature1": "Pasarela de pagos segura",
+      "feature2": "Dashboard de análisis IA",
+      "feature3": "Gestión multi-moneda",
+      "feature4": "Soporte 24/7 Premium"
+    },
+    "cta_button": "Ver Demo en Vivo"
+  }
+}
