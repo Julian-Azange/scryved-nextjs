@@ -15,10 +15,10 @@ export default function HomePage() {
       <Navbar />
       <Hero />
       <Services />
-      <SecurityKits />
       <Portfolio />
       {/* <FinanLock /> */}
       <Team />
+      <SecurityKits />
       <Gallery />
       <Contact />
       <Footer />

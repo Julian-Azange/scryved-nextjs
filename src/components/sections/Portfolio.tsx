@@ -11,10 +11,11 @@ import Image from 'next/image';
 const projectsConfig: Record<string, any> = {
     // --- SAAS ---
     'finanlock': {
-        thumbnail: '/assets/images/dashboard.jpg', // Cambia por tu imagen real
+        thumbnail: '/assets/sites/finanlock.jpeg',
         gallery: [
-            '/assets/images/dashboard.jpg',
-            '/assets/images/dispositivos.jpg', // Ajusta las rutas a las reales que subas
+            '/assets/sites/finanlock/dashboard.jpeg',
+            '/assets/sites/finanlock/login.jpeg',
+            '/assets/sites/finanlock/simulator.jpeg',
         ],
         url: 'https://finanlock.com'
     },
@@ -26,9 +27,12 @@ const projectsConfig: Record<string, any> = {
         url: 'https://smartpay-oficial.com'
     },
     'osmarpay': {
-        thumbnail: '/assets/images/finanzas.jpg',
+        thumbnail: '/assets/sites/osmarpay.jpeg',
         gallery: [
-            '/assets/images/finanzas.jpg',
+            '/assets/sites/osmarpay/dashboard.jpeg',
+            '/assets/sites/osmarpay/login.jpeg',
+            '/assets/sites/osmarpay/pay.jpeg',
+            '/assets/sites/osmarpay/devices.jpeg',
         ],
         url: 'https://osmarpay.com'
     },
@@ -189,13 +193,13 @@ export default function Portfolio() {
                                     </p>
 
                                     {/* Tags */}
-                                    <div className="flex flex-wrap gap-2 mt-auto">
+                                    {/* <div className="flex flex-wrap gap-2 mt-auto">
                                         {project.technologies.slice(0, 3).map((tech: string, i: number) => (
                                             <span key={i} className="text-xs font-medium px-2 py-1 bg-white/5 border border-white/10 rounded-md text-gray-300">
                                                 {tech}
                                             </span>
                                         ))}
-                                    </div>
+                                    </div> */}
                                 </div>
                             </div>
                         </motion.div>
@@ -303,7 +307,7 @@ export default function Portfolio() {
                                             </ul>
                                         </div>
 
-                                        <div className="mt-auto pt-6 border-t border-white/10">
+                                        {/* <div className="mt-auto pt-6 border-t border-white/10">
                                             <h4 className="text-xs text-gray-500 uppercase tracking-widest font-bold mb-3">Stack Tecnológico</h4>
                                             <div className="flex flex-wrap gap-2">
                                                 {selectedProject.technologies.map((tech: string, i: number) => (
@@ -312,7 +316,7 @@ export default function Portfolio() {
                                                     </span>
                                                 ))}
                                             </div>
-                                        </div>
+                                        </div> */}
                                     </div>
                                 </div>
                             ) : (

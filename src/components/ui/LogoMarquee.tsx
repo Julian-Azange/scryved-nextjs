@@ -5,12 +5,10 @@ import Image from 'next/image';
 
 // Usamos logos reales de tecnologías comunes por ahora mediante un CDN público
 const externalLogos = [
-    { name: 'Next.js', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg' },
-    { name: 'TypeScript', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg' },
-    { name: 'Tailwind CSS', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg' },
-    { name: 'Prisma', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/prisma/prisma-original.svg' },
-    { name: 'Vercel', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vercel/vercel-original.svg' },
-    { name: 'Supabase', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/supabase/supabase-original.svg' },
+    { name: 'SmartPay', src: '/assets/brands/smartpay.png' },
+    { name: 'OsmarPay', src: '/assets/brands/osmarpay.png' },
+    { name: 'FinanLock', src: '/assets/brands/finanlock.png' },
+    { name: 'fono', src: '/assets/brands/fono.png' },
 ];
 
 export default function LogoMarquee() {
@@ -45,7 +43,7 @@ export default function LogoMarquee() {
                                 width={120}
                                 height={40}
                                 // Filtros para hacerlos blancos/grises y que brillen al hover
-                                className="h-10 w-auto object-contain grayscale opacity-40 brightness-200 contrast-200 transition-all duration-500 group-hover:opacity-100 group-hover:grayscale-0 group-hover:scale-110"
+                                className="h-10 w-auto object-contain grayscale opacity-40  transition-all duration-500 group-hover:opacity-100 group-hover:grayscale-0 group-hover:scale-110"
                             />
                         </div>
                     ))}
