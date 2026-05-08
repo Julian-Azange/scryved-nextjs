@@ -19,18 +19,20 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({
   children,
-  params: { locale }
+  params, // 1. Recibimos params sin desestructurar
 }: {
   children: React.ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale: string }>; // 2. Tipamos params como una Promesa
 }) {
+  // 3. Resolvemos la promesa antes de usarla
+  const { locale } = await params;
+
   const messages = await getMessages();
 
   return (
     <html lang={locale}>
       <body className={`${poppins.variable} font-sans antialiased bg-black text-white`}>
         <NextIntlClientProvider messages={messages}>
-          {/* 2. Envolvemos la aplicación para activar el scroll inmersivo */}
           <SmoothScroll>
             {children}
           </SmoothScroll>
