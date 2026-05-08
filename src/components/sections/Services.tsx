@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 // Actualicé algunos iconos a versiones más elegantes de Lucide
 import { Code2, Smartphone, Cpu, Cloud, PenTool, ShieldCheck, Sparkles } from 'lucide-react';
 import { cn } from '@/src/lib/utils';
@@ -28,7 +28,7 @@ export default function Services() {
     const services = t.raw('items') as ServiceItem[];
 
     // Animaciones
-    const container = {
+    const container: Variants = {
         hidden: { opacity: 0 },
         show: {
             opacity: 1,
@@ -39,7 +39,7 @@ export default function Services() {
         }
     };
 
-    const itemVariant = {
+    const itemVariant: Variants = {
         hidden: { opacity: 0, y: 40 },
         show: {
             opacity: 1,

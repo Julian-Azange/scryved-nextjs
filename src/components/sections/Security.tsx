@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 // Actualizamos a iconos más representativos y estilizados
 import { Check, ShieldCheck, Cctv, Siren, Zap, Sparkles } from 'lucide-react';
 import { cn } from '@/src/lib/utils';
@@ -31,7 +31,7 @@ export default function SecurityKits() {
     const rawKits = t.raw('kits') as SecurityKit[];
 
     // Animaciones sincronizadas con el resto del sitio
-    const container = {
+    const container: Variants = {
         hidden: { opacity: 0 },
         show: {
             opacity: 1,
@@ -42,7 +42,7 @@ export default function SecurityKits() {
         },
     };
 
-    const itemVariant = {
+    const itemVariant: Variants = {
         hidden: { opacity: 0, y: 40 },
         show: {
             opacity: 1,
