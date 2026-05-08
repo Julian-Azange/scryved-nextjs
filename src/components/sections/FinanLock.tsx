@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { motion, useMotionTemplate, useMotionValue, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { CheckCircle2, LayoutGrid, ArrowRight } from 'lucide-react';
-import { Link } from '@/i18n/routing';
+import { Link } from '@/src/i18n/routing';
 import ColombiaFlag from '../icons/ColombiaFlag';
 import PeruFlag from '../icons/PeruFlag';
 import EcuadorFlag from '../icons/EcuadorFlag';
