@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
-import { motion, useMotionTemplate, useMotionValue, useInView } from 'framer-motion';
+import { motion, useMotionTemplate, useMotionValue, useInView, Variants } from 'framer-motion';
 import { useRef } from 'react';
 import { CheckCircle2, LayoutGrid, ArrowRight } from 'lucide-react';
 import { Link } from '@/src/i18n/routing';
@@ -19,9 +19,9 @@ const containerVariants = {
     }
 };
 
-const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
 };
 
 // Componente Tarjeta de Imagen (Spotlight Effect)
