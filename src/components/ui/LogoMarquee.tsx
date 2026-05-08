@@ -3,56 +3,49 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 
-// Placeholder logos (Replace with your actual paths)
-const logos = [
-    '/assets/logos/logo-light-green-toxic.png',
-    '/assets/logos/logo-light-green-toxic.png',
-    '/assets/logos/logo-light-green-toxic.png',
-    '/assets/logos/logo-light-green-toxic.png',
-    '/assets/logos/logo-light-green-toxic.png',
+// Usamos logos reales de tecnologías comunes por ahora mediante un CDN público
+const externalLogos = [
+    { name: 'Next.js', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg' },
+    { name: 'TypeScript', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg' },
+    { name: 'Tailwind CSS', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg' },
+    { name: 'Prisma', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/prisma/prisma-original.svg' },
+    { name: 'Vercel', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vercel/vercel-original.svg' },
+    { name: 'Supabase', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/supabase/supabase-original.svg' },
 ];
 
 export default function LogoMarquee() {
     return (
-        <div className="relative flex w-full flex-col items-center justify-center overflow-hidden py-10">
-
-            {/* This mask creates the fade effect on the edges, exactly like the reference code.
-        It uses a linear gradient from transparent to black and back to transparent.
-      */}
+        <div className="flex w-full items-center justify-center py-8">
             <div
-                className="pointer-events-none absolute inset-0 z-10"
+                className="relative flex w-full overflow-hidden"
                 style={{
-                    maskImage: 'linear-gradient(to right, transparent 0%, black 12.5%, black 87.5%, transparent 100%)',
-                    WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 12.5%, black 87.5%, transparent 100%)'
+                    maskImage: 'linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 15%, rgb(0, 0, 0) 85%, rgba(0, 0, 0, 0) 100%)',
+                    WebkitMaskImage: 'linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 15%, rgb(0, 0, 0) 85%, rgba(0, 0, 0, 0) 100%)'
                 }}
             >
-                {/* This inner div is just to apply the background color if needed, but the mask applies to the content below */}
-            </div>
-
-            {/* We use Framer Motion for the infinite ticker animation.
-        The 'x' values translate the container from 0% to -100% (or -50% if duplicated once).
-        For a seamless loop, we render the logo list multiple times.
-      */}
-            <div className="flex w-full overflow-hidden mask-image-fade"> {/* Custom class or inline style for mask can go here too if the above absolute div approach interferes with clicks, but for a non-interactive slider, the overlay is fine. Actually, applying the mask directly to the container is cleaner. */}
-
                 <motion.div
-                    className="flex min-w-full shrink-0 items-center justify-around gap-24 pr-24" // gap-24 (~100px) matches the reference's gap: 100px
-                    animate={{ x: ["0%", "-100%"] }}
-                    transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-                    style={{
-                        maskImage: 'linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)',
-                        WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)'
+                    initial={{ x: 0 }}
+                    animate={{ x: "-50%" }}
+                    transition={{
+                        duration: 25,
+                        ease: "linear",
+                        repeat: Infinity,
                     }}
+                    className="flex flex-none gap-24 pr-24 items-center"
                 >
-                    {/* Render logos multiple times to ensure seamless looping */}
-                    {[...logos, ...logos, ...logos, ...logos].map((logo, idx) => (
-                        <div key={idx} className="relative h-10 w-32 flex-shrink-0 flex items-center justify-center opacity-50 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0">
+                    {/* Multiplicamos el array para asegurar el ancho suficiente para el loop */}
+                    {[...externalLogos, ...externalLogos, ...externalLogos].map((logo, index) => (
+                        <div
+                            key={`${logo.name}-${index}`}
+                            className="relative flex items-center justify-center group"
+                        >
                             <Image
-                                src={logo}
-                                alt={`Client ${idx}`}
-                                width={150}
-                                height={50}
-                                className="object-contain h-full w-auto"
+                                src={logo.src}
+                                alt={logo.name}
+                                width={120}
+                                height={40}
+                                // Filtros para hacerlos blancos/grises y que brillen al hover
+                                className="h-10 w-auto object-contain grayscale opacity-40 brightness-200 contrast-200 transition-all duration-500 group-hover:opacity-100 group-hover:grayscale-0 group-hover:scale-110"
                             />
                         </div>
                     ))}

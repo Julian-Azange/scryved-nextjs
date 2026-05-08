@@ -190,75 +190,160 @@
     ]
   },
   "Portfolio": {
-    "tag": "Despliegues",
+    "tag": "Nuestro Trabajo",
     "title_part1": "Proyectos",
-    "title_part2": "En Vivo",
-    "subtitle": "Explora las aplicaciones y sitios web que hemos desarrollado recientemente.",
-    "description": "Haz clic para interactuar con nuestros casos de éxito.",
+    "title_part2": "Destacados",
+    "subtitle": "Explora nuestras plataformas SaaS de alto rendimiento y sitios web corporativos.",
+    "tabs": {
+      "saas": "Plataformas SaaS",
+      "web": "Sitios Web & Landings"
+    },
     "projects": [
       {
-        "title": "SmartPay: Financiación de Celulares",
-        "category": "software",
-        "description": "Software líder para financiación de celulares. Funciones de bloqueo, rastreo y gestión de clientes.",
-        "technologies": [
-          "React",
-          "Node.js",
-          "MongoDB",
-          "Seguridad"
-        ]
-      },
-      {
-        "title": "Olimpo Empresa",
-        "category": "web",
-        "description": "Plataforma corporativa para gestión empresarial.",
-        "technologies": [
-          "Web",
-          "Corporativo"
-        ]
-      },
-      {
-        "title": "Hotel Condado Pisco",
-        "category": "web",
-        "description": "Sitio web de reservas y presentación para el sector hotelero.",
+        "id": "finanlock",
+        "category": "saas",
+        "title": "FinanLock",
+        "tagline": "Gestión y Financiamiento Móvil Integral",
+        "location": "Perú",
+        "description": "El software administrativo más completo para financiamiento de dispositivos. Diseñado para ofrecer control total operativo y comercial en múltiples sucursales.",
+        "features": [
+          "Gestión avanzada de inventario",
+          "Control de vendedores en ruta y en tienda",
+          "Asignación y monitoreo de dispositivos móviles",
+          "Simulador de crédito integrado",
+          "Gestión de personal"
+        ],
         "technologies": [
           "Next.js",
-          "UI/UX"
+          "NestJS",
+          "TypeScript",
+          "PostgreSQL",
+          "Tailwind",
+          "Shadcn UI"
         ]
       },
       {
+        "id": "smartpay",
+        "category": "saas",
+        "title": "SmartPay",
+        "tagline": "Financiamiento con Geolocalización",
+        "location": "Perú",
+        "description": "Plataforma de financiamiento premium con capacidades avanzadas de rastreo en tiempo real y métricas detalladas para el control de activos.",
+        "features": [
+          "Ubicación y rastreo en tiempo real",
+          "Bloqueo remoto de dispositivos",
+          "Dashboard de métricas financieras",
+          "Gestión completa de cartera",
+          "Soporte multi-sucursal"
+        ],
+        "technologies": [
+          "Next.js",
+          "NestJS",
+          "TypeScript",
+          "PostgreSQL",
+          "Tailwind",
+          "Shadcn UI"
+        ]
+      },
+      {
+        "id": "osmarpay",
+        "category": "saas",
+        "title": "OsmarPay",
+        "tagline": "Crédito para Móviles y Smart TVs",
+        "location": "Colombia",
+        "description": "Sistema especializado en el financiamiento de dispositivos móviles y televisores Android, optimizando el proceso de venta y recaudo.",
+        "features": [
+          "Simulador de crédito dinámico",
+          "Financiamiento de Android TVs",
+          "Gestión de personal y comisiones",
+          "Módulo de recaudo y alertas",
+          "Reportes de rendimiento"
+        ],
+        "technologies": [
+          "Next.js",
+          "NestJS",
+          "TypeScript",
+          "PostgreSQL",
+          "Tailwind",
+          "Shadcn UI"
+        ]
+      },
+      {
+        "id": "fonosalud",
+        "category": "saas",
+        "title": "FonoSalud",
+        "tagline": "Software Clínico Especializado",
+        "location": "Colombia",
+        "description": "Sistema de gestión clínica diseñado específicamente para fonoaudiólogos, cumpliendo con todas las normativas del Ministerio de Salud.",
+        "features": [
+          "Gestión de agenda y citas",
+          "Historias clínicas electrónicas",
+          "Registro de evoluciones médicas",
+          "Módulo de facturación",
+          "Generación de formato JSON (MinSalud)"
+        ],
+        "technologies": [
+          "Next.js",
+          "NestJS",
+          "TypeScript",
+          "PostgreSQL",
+          "Tailwind",
+          "Shadcn UI"
+        ]
+      },
+      {
+        "id": "olimpo",
+        "category": "web",
+        "title": "Olimpo Empresa",
+        "description": "Plataforma corporativa para gestión y presencia empresarial digital.",
+        "technologies": [
+          "React",
+          "Vite",
+          "Tailwind"
+        ]
+      },
+      {
+        "id": "hotel",
+        "category": "web",
+        "title": "Hotel Condado Pisco",
+        "description": "Sitio web de reservas y presentación para el sector hotelero.",
+        "technologies": [
+          "Angular",
+          "Vite",
+          "Tailwind"
+        ]
+      },
+      {
+        "id": "urbano",
+        "category": "web",
         "title": "Urbano Frutas Exóticas",
-        "category": "web",
-        "description": "E-commerce para comercialización de frutas exóticas.",
+        "description": "E-commerce para comercialización y envío de frutas exóticas.",
         "technologies": [
-          "E-commerce",
-          "Pasarela de Pagos"
+          "React",
+          "Bootstrap",
+          "Payments API"
         ]
       },
       {
+        "id": "aion",
+        "category": "web",
         "title": "Aion Ingeniería",
+        "description": "Portal interactivo de servicios de ingeniería y consultoría.",
+        "technologies": [
+          "React",
+          "Tailwind",
+          "TypeScript"
+        ]
+      },
+      {
+        "id": "iestap",
         "category": "web",
-        "description": "Portal de servicios de ingeniería y consultoría.",
-        "technologies": [
-          "Web",
-          "Diseño"
-        ]
-      },
-      {
-        "title": "Feria Café de Origen",
-        "category": "mobile",
-        "description": "Aplicación/Plataforma para eventos de café.",
-        "technologies": [
-          "Eventos",
-          "Registro"
-        ]
-      },
-      {
         "title": "IESTAP Biodiverso",
-        "category": "web",
-        "description": "Plataforma educativa e institucional.",
+        "description": "Plataforma educativa e institucional con gestor de contenidos.",
         "technologies": [
-          "Educación",
-          "CMS"
+          "PHP",
+          "Laravel",
+          "Angular"
         ]
       }
     ]
@@ -278,10 +363,10 @@
         "profession": "Ing. de Sistemas"
       },
       {
-        "id": "hector",
-        "name": "Hector Estrada",
+        "id": "fabian",
+        "name": "Fabian Ramos",
         "role": "CTO & Co-Fundador",
-        "profession": "Ing. Mecatrónico"
+        "profession": "Ing. de Software"
       },
       {
         "id": "luis",
@@ -320,10 +405,10 @@
         "profession": "Ing. Electrónico"
       },
       {
-        "id": "fabian",
-        "name": "Fabian Ramos",
+        "id": "hector",
+        "name": "Hector Estrada",
         "role": "Desarrollador Full Stack Sr.",
-        "profession": "Ing. de Software"
+        "profession": "Ing. Mecatrónico"
       },
       {
         "id": "nicolas",

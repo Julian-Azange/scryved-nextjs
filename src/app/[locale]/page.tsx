@@ -17,9 +17,9 @@ export default function HomePage() {
       <Services />
       <SecurityKits />
       <Portfolio />
-      <FinanLock />
-      <Gallery />
+      {/* <FinanLock /> */}
       <Team />
+      <Gallery />
       <Contact />
       <Footer />
     </main>

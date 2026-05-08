@@ -1,271 +1,344 @@
 'use client';
 
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { useTranslations } from 'next-intl';
-import { motion, AnimatePresence, useInView } from "framer-motion";
-import { ExternalLink, Github, Monitor, Smartphone, Code2 } from 'lucide-react';
+import { motion, AnimatePresence } from "framer-motion";
+import { ExternalLink, CheckCircle2, Server, AppWindow, MapPin, X, ChevronRight, Layers, LayoutTemplate } from 'lucide-react';
 import { cn } from '@/src/lib/utils';
 import Image from 'next/image';
 
-// Configuración técnica de las imágenes y tecnologías (esto no cambia mucho entre idiomas)
-const projectsConfig = [
-    {
-        image: '/assets/sites/olimpo.png', // Ruta absoluta desde public
-        url: 'https://olimpo-empresa.com/',
-        technologies: ['React', 'Vite', 'Tailwind', 'Javascript']
+// Mapeo técnico de proyectos (Imágenes y URLs que no se traducen)
+const projectsConfig: Record<string, any> = {
+    // --- SAAS ---
+    'finanlock': {
+        thumbnail: '/assets/images/dashboard.jpg', // Cambia por tu imagen real
+        gallery: [
+            '/assets/images/dashboard.jpg',
+            '/assets/images/dispositivos.jpg', // Ajusta las rutas a las reales que subas
+        ],
+        url: 'https://finanlock.com'
     },
-    {
-        image: '/assets/sites/hotel.png',
-        url: 'https://hotel-condado-pisco.vercel.app/',
-        technologies: ['Angular', 'Vite', 'Tailwind', 'Javascript']
+    'smartpay': {
+        thumbnail: '/assets/sites/smartpay.png',
+        gallery: [
+            '/assets/sites/smartpay.png',
+        ],
+        url: 'https://smartpay-oficial.com'
     },
-    {
-        image: '/assets/sites/smartpay.png',
-        url: 'https://smartpay-oficial.com/landing',
-        technologies: ['React', 'FastAPI', 'Postgres', 'Docker', 'K8s']
+    'osmarpay': {
+        thumbnail: '/assets/images/finanzas.jpg',
+        gallery: [
+            '/assets/images/finanzas.jpg',
+        ],
+        url: 'https://osmarpay.com'
     },
-    {
-        image: '/assets/sites/urbano.png',
-        url: 'https://urbano-frutas-exoticas.vercel.app/',
-        technologies: ['React', 'Vite', 'Bootstrap', 'Javascript']
+    'fonosalud': {
+        thumbnail: '/assets/images/salud.jpg',
+        gallery: [
+            '/assets/images/salud.jpg',
+        ],
+        url: 'https://fonosalud.com.co'
     },
-    {
-        image: '/assets/sites/aion.png',
-        url: 'https://aion-ingenieria-st.vercel.app/',
-        technologies: ['React', 'Vite', 'Tailwind', 'Typescript']
-    },
-    {
-        image: '/assets/sites/feria.png',
-        url: 'https://feria-cafe-de-origen.vercel.app/',
-        technologies: ['Angular', 'Bootstrap', 'Javascript']
-    },
-    {
-        image: '/assets/sites/iestap.png',
-        url: 'https://iestap-biodiverso.com/',
-        technologies: ['Php', 'Laravel', 'Blade', 'Angular', 'Tailwind']
-    }
-];
+    // --- LANDING PAGES ---
+    'olimpo': { thumbnail: '/assets/sites/olimpo.png', url: 'https://olimpo-empresa.com/' },
+    'hotel': { thumbnail: '/assets/sites/hotel.png', url: 'https://hotel-condado-pisco.vercel.app/' },
+    'urbano': { thumbnail: '/assets/sites/urbano.png', url: 'https://urbano-frutas-exoticas.vercel.app/' },
+    'aion': { thumbnail: '/assets/sites/aion.png', url: 'https://aion-ingenieria-st.vercel.app/' },
+    'iestap': { thumbnail: '/assets/sites/iestap.png', url: 'https://iestap-biodiverso.com/' }
+};
 
-// --- COMPONENTE CARD ---
-const DeployedCard = ({ project, onClick }: { project: any, onClick: () => void }) => (
-    <motion.div
-        variants={{
-            hidden: { opacity: 0, y: 20 },
-            visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-        }}
-        className="group relative rounded-2xl overflow-hidden border border-white/10 shadow-lg cursor-pointer transition-all duration-300 backdrop-blur-lg bg-zinc-900/50 hover:bg-zinc-900/80 hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1"
-        onClick={onClick}
-    >
-        {/* Header tipo navegador sutil */}
-        <div className="bg-white/5 p-3 flex flex-row-reverse items-center gap-2 border-b border-white/10">
-            <div className="flex gap-1.5">
-                <div className="w-2.5 h-2.5 rounded-full bg-red-500/50"></div>
-                <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/50"></div>
-                <div className="w-2.5 h-2.5 rounded-full bg-green-500/50"></div>
-            </div>
-            <div className="mr-2 text-[10px] text-gray-400 truncate font-mono bg-white/10 px-2 py-0.5 rounded w-full text-right opacity-70 group-hover:opacity-100 transition-opacity">
-                {project.url.replace(/^https?:\/\//, '').replace(/\/$/, '')}
-            </div>
-        </div>
-
-        <div className="relative h-48 overflow-hidden">
-            <div className="absolute inset-0 bg-white/5 z-0" />
-
-            {/* Usamos next/image para optimización */}
-            <Image
-                src={project.image}
-                alt={project.title}
-                fill
-                className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105 group-hover:translate-y-1"
-                onError={(e: any) => { e.target.style.display = 'none' }} // Fallback simple
-            />
-
-            {/* Botón Hover */}
-            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-300 z-20 flex items-center justify-center opacity-0 group-hover:opacity-100">
-                <span className="bg-black/50 backdrop-blur-md text-white px-5 py-2 rounded-full text-xs font-bold border border-white/20 hover:bg-white/20 hover:border-white/40 transition-all transform scale-95 group-hover:scale-100">
-                    Ver Demo
-                </span>
-            </div>
-        </div>
-
-        <div className="p-5">
-            <h3 className="text-xl font-bold text-white mb-3 group-hover:text-primary transition-colors line-clamp-1">
-                {project.title}
-            </h3>
-            <div className="flex flex-wrap gap-2">
-                {project.technologies.slice(0, 4).map((tech: string, index: number) => (
-                    <span key={index} className="px-2 py-1 bg-white/5 text-primary text-[10px] rounded border border-white/10">
-                        {tech}
-                    </span>
-                ))}
-            </div>
-        </div>
-    </motion.div>
-);
-
-const Portfolio = () => {
-    const t = useTranslations('Portfolio'); // Usamos la clave Portfolio del JSON nuevo
+export default function Portfolio() {
+    const t = useTranslations('Portfolio');
+    const [activeTab, setActiveTab] = useState<'saas' | 'web'>('saas');
     const [selectedProject, setSelectedProject] = useState<any>(null);
+    const [activeGalleryImage, setActiveGalleryImage] = useState<number>(0);
     const [isLoadingIframe, setIsLoadingIframe] = useState(true);
-    const sectionRef = useRef(null);
-    const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
 
-    // Obtenemos los proyectos del JSON nuevo y los combinamos con la config técnica
-    const rawProjects = t.raw('projects');
+    const rawProjects = t.raw('projects') as any[];
 
-    // Filtramos solo los que coinciden con la config visual (los primeros 7 del JSON)
-    // Esto asume que el orden en el JSON es el mismo que en projectsConfig
-    const projects = rawProjects.slice(0, projectsConfig.length).map((projectData: any, index: number) => ({
-        ...projectData,
-        ...projectsConfig[index],
-        id: index
-    }));
+    // Unir el JSON con la configuración técnica
+    const projects = rawProjects.map(p => ({ ...p, ...projectsConfig[p.id] }));
+    const filteredProjects = projects.filter(p => p.category === activeTab);
 
     const handleProjectClick = (project: any) => {
         setIsLoadingIframe(true);
+        setActiveGalleryImage(0);
         setSelectedProject(project);
     };
 
-    const closeModal = () => setSelectedProject(null);
-
     return (
-        <section id="portfolio" ref={sectionRef} className="relative py-24 bg-black text-white overflow-hidden">
-            {/* Background Glows */}
-            <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-primary/5 rounded-full blur-[100px] pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-1/4 h-1/4 bg-blue-500/5 rounded-full blur-[100px] pointer-events-none" />
+        <section id="portfolio" className="relative py-32 bg-black text-white overflow-hidden">
 
-            <div className="container relative z-10 mx-auto px-4">
+            {/* Continuidad del Grid de Fondo */}
+            <div className="absolute inset-0 z-0 h-full w-full bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none" />
+            <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px] pointer-events-none" />
+
+            <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+
+                {/* --- HEADER --- */}
                 <motion.div
-                    className="text-center mb-16"
                     initial={{ opacity: 0, y: 20 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                    transition={{ duration: 0.7 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    className="text-center mb-16 flex flex-col items-center"
                 >
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-4">
-                        <span className="text-primary text-sm font-bold tracking-wider uppercase">
+                    <div className="mb-6 inline-flex items-center rounded-full border border-white/10 bg-white/5 px-5 py-2 backdrop-blur-md shadow-xl">
+                        <span className="relative flex h-2.5 w-2.5 mr-3">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary shadow-[0_0_12px_#a3e635]"></span>
+                        </span>
+                        <span className="text-sm font-medium text-gray-200 tracking-wide uppercase">
                             {t('tag')}
                         </span>
                     </div>
-                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                        {t('title_part1')} <span className="text-primary">{t('title_part2')}</span>
+
+                    <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 leading-[1.1]">
+                        <span className="text-white">{t('title_part1')} </span>
+                        <span className="bg-gradient-to-br from-primary via-green-400 to-green-600 bg-clip-text text-transparent drop-shadow-sm">
+                            {t('title_part2')}
+                        </span>
                     </h2>
-                    <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-                        {t('description')}
+                    <p className="text-gray-400 max-w-2xl mx-auto text-lg font-light leading-relaxed">
+                        {t('subtitle')}
                     </p>
                 </motion.div>
 
+                {/* --- TABS --- */}
+                <div className="flex justify-center mb-12">
+                    <div className="inline-flex bg-white/5 border border-white/10 p-1 rounded-full backdrop-blur-md">
+                        <button
+                            onClick={() => setActiveTab('saas')}
+                            className={cn(
+                                "flex items-center gap-2 px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300",
+                                activeTab === 'saas' ? "bg-primary text-black shadow-lg shadow-primary/20" : "text-gray-400 hover:text-white"
+                            )}
+                        >
+                            <Server className="w-4 h-4" />
+                            {t('tabs.saas')}
+                        </button>
+                        <button
+                            onClick={() => setActiveTab('web')}
+                            className={cn(
+                                "flex items-center gap-2 px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300",
+                                activeTab === 'web' ? "bg-primary text-black shadow-lg shadow-primary/20" : "text-gray-400 hover:text-white"
+                            )}
+                        >
+                            <LayoutTemplate className="w-4 h-4" />
+                            {t('tabs.web')}
+                        </button>
+                    </div>
+                </div>
+
+                {/* --- GRID DE PROYECTOS --- */}
                 <motion.div
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-                    initial="hidden"
-                    animate={isInView ? 'visible' : 'hidden'}
-                    variants={{
-                        visible: { transition: { staggerChildren: 0.1 } }
-                    }}
+                    key={activeTab} // Fuerza re-animación al cambiar de tab
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5 }}
+                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
                 >
-                    {projects.map((project: any) => (
-                        <DeployedCard
+                    {filteredProjects.map((project: any) => (
+                        <motion.div
                             key={project.id}
-                            project={project}
+                            whileHover={{ y: -8, scale: 1.01 }}
                             onClick={() => handleProjectClick(project)}
-                        />
+                            className="group relative cursor-pointer"
+                        >
+                            <div className="relative h-full flex flex-col p-4 rounded-[2rem] bg-white/[0.02] border border-white/5 backdrop-blur-xl overflow-hidden transition-all duration-500 hover:bg-white/[0.04] hover:border-primary/30 hover:shadow-[0_0_40px_-15px_rgba(163,230,53,0.15)]">
+
+                                {/* Header del Card (Tipo Mac) */}
+                                <div className="flex gap-1.5 mb-4 px-2 pt-2">
+                                    <div className="w-2.5 h-2.5 rounded-full bg-red-500/50"></div>
+                                    <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/50"></div>
+                                    <div className="w-2.5 h-2.5 rounded-full bg-green-500/50"></div>
+                                </div>
+
+                                {/* Imagen */}
+                                <div className="relative h-56 rounded-xl overflow-hidden border border-white/10 mb-6">
+                                    <Image
+                                        src={project.thumbnail}
+                                        alt={project.title}
+                                        fill
+                                        className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
+                                        onError={(e: any) => { e.target.style.display = 'none' }}
+                                    />
+                                    {/* Overlay Hover */}
+                                    <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
+                                        <div className="bg-primary text-black px-6 py-2 rounded-full font-bold text-sm flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 shadow-[0_0_20px_rgba(163,230,53,0.4)]">
+                                            {activeTab === 'saas' ? 'Ver Detalles' : 'Ver Demo'}
+                                            <ChevronRight className="w-4 h-4" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Info */}
+                                <div className="px-2 pb-2 flex-grow flex flex-col">
+                                    <div className="flex justify-between items-start mb-2">
+                                        <h3 className="text-xl font-bold text-white group-hover:text-primary transition-colors">
+                                            {project.title}
+                                        </h3>
+                                        {project.location && (
+                                            <span className="flex items-center gap-1 text-[10px] uppercase font-bold text-gray-400 bg-white/5 px-2 py-1 rounded-md">
+                                                <MapPin className="w-3 h-3 text-primary" /> {project.location}
+                                            </span>
+                                        )}
+                                    </div>
+
+                                    <p className="text-gray-400 text-sm font-light line-clamp-2 mb-4 flex-grow">
+                                        {project.description}
+                                    </p>
+
+                                    {/* Tags */}
+                                    <div className="flex flex-wrap gap-2 mt-auto">
+                                        {project.technologies.slice(0, 3).map((tech: string, i: number) => (
+                                            <span key={i} className="text-xs font-medium px-2 py-1 bg-white/5 border border-white/10 rounded-md text-gray-300">
+                                                {tech}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+                        </motion.div>
                     ))}
                 </motion.div>
             </div>
 
-            {/* MODAL RESPONSIVO MEJORADO (IOS GLASS STYLE) */}
+            {/* --- MODAL RESPONSIVO --- */}
             <AnimatePresence>
                 {selectedProject && (
                     <motion.div
-                        className="fixed inset-0 z-[60] flex items-center justify-center p-4 md:p-6 bg-black/60 backdrop-blur-sm"
+                        className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 bg-black/80 backdrop-blur-md"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        onClick={closeModal}
+                        onClick={() => setSelectedProject(null)}
                     >
                         <motion.div
-                            // ESTILO MODAL: Fondo oscuro traslúcido, borde brillante, sombra profunda
-                            className="bg-black/80 backdrop-blur-2xl w-full max-w-[95vw] md:max-w-7xl aspect-[9/16] md:aspect-video max-h-[90vh] md:max-h-none rounded-2xl overflow-hidden border border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.5)] flex flex-col relative ring-1 ring-white/5"
+                            className={cn(
+                                "bg-[#0a0a0a] border border-white/10 shadow-2xl flex flex-col relative rounded-2xl overflow-hidden w-full max-h-[90vh]",
+                                selectedProject.category === 'saas' ? "max-w-6xl" : "max-w-7xl aspect-[9/16] md:aspect-video"
+                            )}
                             initial={{ scale: 0.95, opacity: 0, y: 20 }}
                             animate={{ scale: 1, opacity: 1, y: 0 }}
                             exit={{ scale: 0.95, opacity: 0, y: 20 }}
                             transition={{ type: "spring", damping: 25, stiffness: 300 }}
                             onClick={(e) => e.stopPropagation()}
                         >
-                            {/* Modal Header Tipo Navegador */}
-                            <div className="h-14 bg-white/5 border-b border-white/5 flex items-center justify-between px-4 shrink-0 backdrop-blur-md z-20">
-
-                                {/* Botón externo */}
-                                <a
-                                    href={selectedProject.url}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="p-2 text-gray-400 hover:text-white bg-white/5 hover:bg-white/10 rounded-lg transition-all"
-                                    title="Abrir en pestaña nueva"
-                                >
+                            {/* Header del Modal */}
+                            <div className="h-14 bg-white/5 border-b border-white/10 flex items-center justify-between px-4 shrink-0">
+                                <div className="flex gap-2">
+                                    <button onClick={() => setSelectedProject(null)} className="w-3.5 h-3.5 rounded-full bg-red-500 hover:bg-red-600 transition-colors flex items-center justify-center group">
+                                        <X className="w-2.5 h-2.5 opacity-0 group-hover:opacity-100 text-black" />
+                                    </button>
+                                    <div className="w-3.5 h-3.5 rounded-full bg-yellow-500" />
+                                    <div className="w-3.5 h-3.5 rounded-full bg-green-500" />
+                                </div>
+                                <div className="bg-black/30 px-4 py-1.5 rounded-lg border border-white/5 flex items-center gap-2">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+                                    <span className="text-xs font-mono text-gray-400">
+                                        {selectedProject.url?.replace(/^https?:\/\//, '')}
+                                    </span>
+                                </div>
+                                <a href={selectedProject.url} target="_blank" rel="noopener noreferrer" className="p-2 text-gray-400 hover:text-primary transition-colors">
                                     <ExternalLink className="w-4 h-4" />
                                 </a>
-
-                                {/* Título / URL central */}
-                                <div className="flex-1 flex justify-center px-4 overflow-hidden">
-                                    <div className="bg-black/20 border border-white/5 rounded-md px-4 py-1.5 flex items-center gap-2 max-w-md w-full justify-center group">
-                                        <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
-                                        <span className="text-xs text-gray-400 font-mono truncate opacity-70 group-hover:opacity-100 transition-opacity">
-                                            {selectedProject.url.replace(/^https?:\/\//, '')}
-                                        </span>
-                                    </div>
-                                </div>
-
-                                {/* Controles de Ventana (Semáforo Mac) */}
-                                <div className="flex gap-2">
-                                    <div className="w-3 h-3 rounded-full bg-green-500 shadow-inner opacity-50" />
-                                    <div className="w-3 h-3 rounded-full bg-yellow-500 shadow-inner opacity-50" />
-                                    <button onClick={closeModal} className="w-3 h-3 rounded-full bg-red-500 hover:bg-red-600 transition-colors shadow-inner" />
-                                </div>
-
                             </div>
 
-                            {/* Iframe Container */}
-                            <div className="flex-1 relative w-full bg-white h-full">
-                                {isLoadingIframe && (
-                                    <div className="absolute inset-0 flex flex-col items-center justify-center backdrop-blur-xl bg-black/80 text-white z-10">
-                                        {/* LOADER PERSONALIZADO (LIME) */}
-                                        <div className="flex flex-row gap-2 mb-4">
-                                            <div className="w-3 h-3 rounded-full bg-primary animate-bounce"></div>
-                                            <div className="w-3 h-3 rounded-full bg-primary animate-bounce [animation-delay:-.3s]"></div>
-                                            <div className="w-3 h-3 rounded-full bg-primary animate-bounce [animation-delay:-.5s]"></div>
+                            {/* Contenido del Modal */}
+                            {selectedProject.category === 'saas' ? (
+                                // LAYOUT PARA SAAS (Galería + Detalles)
+                                <div className="flex flex-col lg:flex-row flex-grow overflow-y-auto">
+                                    {/* Izquierda: Galería */}
+                                    <div className="w-full lg:w-3/5 bg-black/50 p-6 flex flex-col gap-4 border-r border-white/5">
+                                        <div className="relative aspect-video rounded-xl overflow-hidden border border-white/10 bg-zinc-900/50">
+                                            <Image
+                                                src={selectedProject.gallery?.[activeGalleryImage] || selectedProject.thumbnail}
+                                                alt="Gallery Main"
+                                                fill
+                                                className="object-contain"
+                                            />
                                         </div>
-                                        <p className="text-xs text-gray-400 font-mono tracking-wider uppercase animate-pulse">Conectando...</p>
+                                        {selectedProject.gallery?.length > 1 && (
+                                            <div className="flex gap-3 overflow-x-auto pb-2">
+                                                {selectedProject.gallery.map((img: string, idx: number) => (
+                                                    <button
+                                                        key={idx}
+                                                        onClick={() => setActiveGalleryImage(idx)}
+                                                        className={cn(
+                                                            "relative w-24 h-16 rounded-lg overflow-hidden border-2 flex-shrink-0 transition-all",
+                                                            activeGalleryImage === idx ? "border-primary" : "border-transparent opacity-50 hover:opacity-100"
+                                                        )}
+                                                    >
+                                                        <Image src={img} alt={`Thumb ${idx}`} fill className="object-cover" />
+                                                    </button>
+                                                ))}
+                                            </div>
+                                        )}
                                     </div>
-                                )}
 
-                                <iframe
-                                    src={selectedProject.url}
-                                    title={selectedProject.title}
-                                    className="w-full h-full border-0"
-                                    onLoad={() => setIsLoadingIframe(false)}
-                                    allowFullScreen
-                                />
-                            </div>
+                                    {/* Derecha: Info Técnica y Features */}
+                                    <div className="w-full lg:w-2/5 p-6 lg:p-8 flex flex-col">
+                                        <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 px-3 py-1 rounded-full text-xs font-bold text-primary mb-4 w-fit uppercase tracking-widest">
+                                            <AppWindow className="w-3 h-3" /> Plataforma SaaS
+                                        </div>
 
-                            {/* Footer del Modal (Solo Movil) */}
-                            <div className="md:hidden bg-gray-900/90 p-3 border-t border-white/5 text-center shrink-0 backdrop-blur-md">
-                                <a
-                                    href={selectedProject.url}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="inline-flex items-center gap-2 text-xs font-bold text-primary hover:text-white transition-colors"
-                                >
-                                    ABRIR EN EL NAVEGADOR
-                                    <ExternalLink className="w-3 h-3" />
-                                </a>
-                            </div>
+                                        <h3 className="text-3xl font-bold text-white mb-2">{selectedProject.title}</h3>
+                                        <p className="text-primary font-medium text-sm mb-6 uppercase tracking-wider">{selectedProject.tagline}</p>
 
+                                        <p className="text-gray-400 font-light text-sm leading-relaxed mb-8">
+                                            {selectedProject.description}
+                                        </p>
+
+                                        <div className="mb-8">
+                                            <h4 className="text-white font-semibold flex items-center gap-2 mb-4">
+                                                <Layers className="w-4 h-4 text-primary" /> Módulos Principales
+                                            </h4>
+                                            <ul className="space-y-3">
+                                                {selectedProject.features?.map((feat: string, idx: number) => (
+                                                    <li key={idx} className="flex items-start gap-3 text-sm text-gray-300">
+                                                        <CheckCircle2 className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+                                                        {feat}
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+
+                                        <div className="mt-auto pt-6 border-t border-white/10">
+                                            <h4 className="text-xs text-gray-500 uppercase tracking-widest font-bold mb-3">Stack Tecnológico</h4>
+                                            <div className="flex flex-wrap gap-2">
+                                                {selectedProject.technologies.map((tech: string, i: number) => (
+                                                    <span key={i} className="text-xs px-3 py-1.5 bg-white/5 border border-white/10 rounded-lg text-gray-300">
+                                                        {tech}
+                                                    </span>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            ) : (
+                                // LAYOUT PARA WEBS (Iframe)
+                                <div className="relative flex-1 bg-white">
+                                    {isLoadingIframe && (
+                                        <div className="absolute inset-0 flex flex-col items-center justify-center bg-[#0a0a0a] text-white z-10">
+                                            <div className="flex gap-2 mb-4">
+                                                <div className="w-3 h-3 rounded-full bg-primary animate-bounce" />
+                                                <div className="w-3 h-3 rounded-full bg-primary animate-bounce [animation-delay:-.3s]" />
+                                                <div className="w-3 h-3 rounded-full bg-primary animate-bounce [animation-delay:-.5s]" />
+                                            </div>
+                                            <p className="text-xs text-primary font-mono tracking-wider uppercase animate-pulse">Cargando Entorno...</p>
+                                        </div>
+                                    )}
+                                    <iframe
+                                        src={selectedProject.url}
+                                        className="w-full h-full border-0"
+                                        onLoad={() => setIsLoadingIframe(false)}
+                                    />
+                                </div>
+                            )}
                         </motion.div>
                     </motion.div>
                 )}
             </AnimatePresence>
         </section>
     );
-};
-
-export default Portfolio;
+}
