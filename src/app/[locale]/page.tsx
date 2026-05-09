@@ -8,6 +8,7 @@ import Team from "@/src/components/sections/Team";
 import Gallery from "@/src/components/sections/Gallery";
 import Navbar from "@/src/components/layout/Navbar";
 import FinanLock from "@/src/components/sections/FinanLock";
+import Showcase from "@/src/components/sections/Showcase";
 
 export default function HomePage() {
   return (
@@ -15,6 +16,7 @@ export default function HomePage() {
       <Navbar />
       <Hero />
       <Services />
+      <Showcase/>
       <Portfolio />
       {/* <FinanLock /> */}
       <Team />

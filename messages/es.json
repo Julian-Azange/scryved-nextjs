@@ -524,5 +524,35 @@
       "feature4": "Soporte 24/7 Premium"
     },
     "cta_button": "Ver Demo en Vivo"
+  },
+  "Showcase": {
+    "tag": "Casos de Éxito",
+    "title_part1": "Soluciones",
+    "title_part2": "Especializadas",
+    "subtitle": "No solo escribimos código, creamos experiencias digitales que transforman negocios. Conoce nuestros productos estrella.",
+    "menu": {
+      "badge": "Gastronomía & Bares",
+      "title": "Menús Digitales Inteligentes",
+      "subtitle": "Caso destacado: Medusa Gastro Bar",
+      "description": "Revoluciona la experiencia de tus comensales con menús QR dinámicos. Diseñamos una infraestructura digital que combina coctelería de autor y alta cocina con un diseño inmersivo, rápido y gestionable en tiempo real.",
+      "features": [
+        "Escaneo QR rápido sin descargas",
+        "Actualización de precios al instante",
+        "Diseño sensorial y de alta gama"
+      ],
+      "cta": "Ver Menú en Vivo"
+    },
+    "store": {
+      "badge": "E-Commerce",
+      "title": "Tiendas en Línea Premium",
+      "subtitle": "Caso destacado: Freedom Store",
+      "description": "Lleva tu marca de ropa al siguiente nivel con un e-commerce ultrarrápido. Creado para maximizar conversiones con pasarelas de pago integradas y una experiencia de usuario que enamora desde el primer clic.",
+      "features": [
+        "Catálogo dinámico y filtros avanzados",
+        "Checkout optimizado y pasarela de pagos",
+        "Experiencia móvil (Mobile-First)"
+      ],
+      "cta": "Explorar Tienda"
+    }
   }
 }

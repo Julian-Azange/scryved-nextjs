@@ -349,180 +349,210 @@
         ]
     },
     "Team": {
-    "tag": "Our Team",
-    "title_part1": "Our",
-    "title_part2": "Team",
-    "subtitle": "Meet the passionate minds behind Scryved. We are a team of developers, designers, and strategists dedicated to building exceptional digital experiences.",
-    "join_title": "Want to be part of our team?",
-    "join_button": "Contact Us",
-    "members": [
-        {
-            "id": "julian",
-            "name": "Julian Palomares",
-            "role": "CEO & Founder",
-            "profession": "Systems Engineer"
-        },
-        {
-            "id": "fabian",
-            "name": "Fabian Ramos",
-            "role": "CTO & Co-Founder",
-            "profession": "Software Engineer"
-        },
-        {
-            "id": "luis",
-            "name": "Luis Montoya",
-            "role": "Sr. Web Developer",
-            "profession": "Systems Engineer"
-        },
-        {
-            "id": "daniel",
-            "name": "Daniel Murillo",
-            "role": "Sr. Mobile Developer",
-            "profession": "Systems Engineer"
-        },
-        {
-            "id": "alex",
-            "name": "Alex Cotrino",
-            "role": "Sr. Full Stack Developer",
-            "profession": "Electronics Engineer"
-        },
-        {
-            "id": "orlando",
-            "name": "Orlando Daza",
-            "role": "Semi Sr. Full Stack Developer",
-            "profession": "Systems Engineer"
-        },
-        {
-            "id": "cristian",
-            "name": "Cristian Aviles",
-            "role": "Semi Sr. Full Stack Developer",
-            "profession": "Systems Engineer"
-        },
-        {
-            "id": "felipe",
-            "name": "Felipe Facundo",
-            "role": "Sr. Backend Developer",
-            "profession": "Electronics Engineer"
-        },
-        {
-            "id": "hector",
-            "name": "Hector Estrada",
-            "role": "Sr. Full Stack Developer",
-            "profession": "Mechatronics Engineer"
-        },
-        {
-            "id": "nicolas",
-            "name": "Nicolas Peñafiel",
-            "role": "Semi Sr. Full Stack Developer",
-            "profession": "Technologist"
-        },
-        {
-            "id": "yamson",
-            "name": "Yamson Calapzu",
-            "role": "Database Expert",
-            "profession": "Systems Engineer"
-        },
-        {
-            "id": "andres",
-            "name": "Andres Velez",
-            "role": "Digital Marketing",
-            "profession": "Journalist"
-        },
-        {
-            "id": "juan",
-            "name": "Juan Tobon",
-            "role": "Sr. Mobile Developer",
-            "profession": "Systems Engineer"
-        }
-    ]
-},
-"Gallery": {
-    "tag": "Project Gallery",
-    "title_part1": "Our",
-    "title_part2": "Installations",
-    "subtitle": "The quality of our work is seen in the details. From impeccable structured cabling to high-tech monitoring centers.",
-    "items": [
-        {
-            "title": "CCTV Monitoring Center",
-            "description": "Video Wall installation and server configuration for 24/7 security."
-        },
-        {
-            "title": "Cat6 Structured Cabling",
-            "description": "Server rack organization and certified cable management."
-        },
-        {
-            "title": "Home Automation",
-            "description": "Lighting automation and smart access control."
-        },
-        {
-            "title": "PTZ Camera Installation",
-            "description": "High-altitude mounting of rotating cameras for perimeter surveillance."
-        },
-        {
-            "title": "Corporate Networks",
-            "description": "Wi-Fi 6 access point deployment and firewall configuration."
-        },
-        {
-            "title": "Biometric Access Control",
-            "description": "Fingerprint and facial recognition entry systems for offices."
-        }
-    ]
-},
-"Contact": {
-    "tag": "Contact",
-    "title_part1": "Get in",
-    "title_part2": "Touch",
-    "subtitle": "Have a project in mind?",
-    "description": "Want to learn more about our services? We'd love to hear from you!",
-    "form": {
-        "title": "Send us a Message",
-        "fields": {
-            "name": "Your Name",
-            "email": "Your Email",
-            "phone": "Phone",
-            "subject": "Subject",
-            "message": "Your Message",
-            "budget": "Budget"
-        },
-        "button": "Send Message",
-        "success": "Thank you! We will get back to you.",
-        "error": "There was an error sending."
+        "tag": "Our Team",
+        "title_part1": "Our",
+        "title_part2": "Team",
+        "subtitle": "Meet the passionate minds behind Scryved. We are a team of developers, designers, and strategists dedicated to building exceptional digital experiences.",
+        "join_title": "Want to be part of our team?",
+        "join_button": "Contact Us",
+        "members": [
+            {
+                "id": "julian",
+                "name": "Julian Palomares",
+                "role": "CEO & Founder",
+                "profession": "Systems Engineer"
+            },
+            {
+                "id": "fabian",
+                "name": "Fabian Ramos",
+                "role": "CTO & Co-Founder",
+                "profession": "Software Engineer"
+            },
+            {
+                "id": "luis",
+                "name": "Luis Montoya",
+                "role": "Sr. Web Developer",
+                "profession": "Systems Engineer"
+            },
+            {
+                "id": "daniel",
+                "name": "Daniel Murillo",
+                "role": "Sr. Mobile Developer",
+                "profession": "Systems Engineer"
+            },
+            {
+                "id": "alex",
+                "name": "Alex Cotrino",
+                "role": "Sr. Full Stack Developer",
+                "profession": "Electronics Engineer"
+            },
+            {
+                "id": "orlando",
+                "name": "Orlando Daza",
+                "role": "Semi Sr. Full Stack Developer",
+                "profession": "Systems Engineer"
+            },
+            {
+                "id": "cristian",
+                "name": "Cristian Aviles",
+                "role": "Semi Sr. Full Stack Developer",
+                "profession": "Systems Engineer"
+            },
+            {
+                "id": "felipe",
+                "name": "Felipe Facundo",
+                "role": "Sr. Backend Developer",
+                "profession": "Electronics Engineer"
+            },
+            {
+                "id": "hector",
+                "name": "Hector Estrada",
+                "role": "Sr. Full Stack Developer",
+                "profession": "Mechatronics Engineer"
+            },
+            {
+                "id": "nicolas",
+                "name": "Nicolas Peñafiel",
+                "role": "Semi Sr. Full Stack Developer",
+                "profession": "Technologist"
+            },
+            {
+                "id": "yamson",
+                "name": "Yamson Calapzu",
+                "role": "Database Expert",
+                "profession": "Systems Engineer"
+            },
+            {
+                "id": "andres",
+                "name": "Andres Velez",
+                "role": "Digital Marketing",
+                "profession": "Journalist"
+            },
+            {
+                "id": "juan",
+                "name": "Juan Tobon",
+                "role": "Sr. Mobile Developer",
+                "profession": "Systems Engineer"
+            }
+        ]
     },
-    "info": {
-        "title": "Information",
+    "Gallery": {
+        "tag": "Project Gallery",
+        "title_part1": "Our",
+        "title_part2": "Installations",
+        "subtitle": "The quality of our work is seen in the details. From impeccable structured cabling to high-tech monitoring centers.",
+        "items": [
+            {
+                "title": "CCTV Monitoring Center",
+                "description": "Video Wall installation and server configuration for 24/7 security."
+            },
+            {
+                "title": "Cat6 Structured Cabling",
+                "description": "Server rack organization and certified cable management."
+            },
+            {
+                "title": "Home Automation",
+                "description": "Lighting automation and smart access control."
+            },
+            {
+                "title": "PTZ Camera Installation",
+                "description": "High-altitude mounting of rotating cameras for perimeter surveillance."
+            },
+            {
+                "title": "Corporate Networks",
+                "description": "Wi-Fi 6 access point deployment and firewall configuration."
+            },
+            {
+                "title": "Biometric Access Control",
+                "description": "Fingerprint and facial recognition entry systems for offices."
+            }
+        ]
+    },
+    "Contact": {
+        "tag": "Contact",
+        "title_part1": "Get in",
+        "title_part2": "Touch",
+        "subtitle": "Have a project in mind?",
+        "description": "Want to learn more about our services? We'd love to hear from you!",
+        "form": {
+            "title": "Send us a Message",
+            "fields": {
+                "name": "Your Name",
+                "email": "Your Email",
+                "phone": "Phone",
+                "subject": "Subject",
+                "message": "Your Message",
+                "budget": "Budget"
+            },
+            "button": "Send Message",
+            "success": "Thank you! We will get back to you.",
+            "error": "There was an error sending."
+        },
+        "info": {
+            "title": "Information",
+            "phone": "+57 322 245 5334",
+            "email": "scryved@gmail.com",
+            "address": "Pitalito, Huila, Colombia"
+        }
+    },
+    "Footer": {
+        "brand_description": "Custom software development solutions for businesses of all sizes. We turn ideas into reality.",
+        "services": {
+            "title": "Services"
+        },
+        "company": {
+            "title": "Company"
+        },
+        "contact_title": "Contact",
+        "address": "Pitalito, Huila, Colombia",
         "phone": "+57 322 245 5334",
         "email": "scryved@gmail.com",
-        "address": "Pitalito, Huila, Colombia"
+        "copyright": "All rights reserved."
+    },
+    "FinanLock": {
+        "section_tag": "Our Flagship Product",
+        "title_part1": "Revolutionize Your",
+        "title_part2": "Finances",
+        "description_main": "A comprehensive platform designed to simplify, secure, and boost your business financial management in Latin America.",
+        "subtitle": "FinanLock: Total Control",
+        "description_detail": "Formerly known as SmartPay, FinanLock evolves to offer banking-grade security, real-time analytics, and an unprecedented user experience for modern merchants.",
+        "availability": "Available In",
+        "features": {
+            "feature1": "Secure Payment Gateway",
+            "feature2": "AI Analytics Dashboard",
+            "feature3": "Multi-currency Management",
+            "feature4": "Premium 24/7 Support"
+        },
+        "cta_button": "View Live Demo"
+    },
+    "Showcase": {
+        "tag": "Success Stories",
+        "title_part1": "Specialized",
+        "title_part2": "Solutions",
+        "subtitle": "We don't just write code; we create digital experiences that transform businesses. Discover our flagship products.",
+        "menu": {
+            "badge": "Restaurants & Bars",
+            "title": "Smart Digital Menus",
+            "subtitle": "Featured case: Medusa Gastro Bar",
+            "description": "Revolutionize your diners' experience with dynamic QR menus. We designed a digital infrastructure that combines signature cocktails and haute cuisine with an immersive, fast, and real-time manageable design.",
+            "features": [
+                "Fast QR scanning with no downloads",
+                "Instant price updates",
+                "High-end sensory design"
+            ],
+            "cta": "View Live Menu"
+        },
+        "store": {
+            "badge": "E-Commerce",
+            "title": "Premium Online Stores",
+            "subtitle": "Featured case: Freedom Store",
+            "description": "Take your clothing brand to the next level with a lightning-fast e-commerce. Built to maximize conversions with integrated payment gateways and a user experience that captivates from the first click.",
+            "features": [
+                "Dynamic catalog and advanced filters",
+                "Optimized checkout & payment gateways",
+                "Mobile-first experience"
+            ],
+            "cta": "Explore Store"
+        }
     }
-},
-"Footer": {
-    "brand_description": "Custom software development solutions for businesses of all sizes. We turn ideas into reality.",
-    "services": {
-        "title": "Services"
-    },
-    "company": {
-        "title": "Company"
-    },
-    "contact_title": "Contact",
-    "address": "Pitalito, Huila, Colombia",
-    "phone": "+57 322 245 5334",
-    "email": "scryved@gmail.com",
-    "copyright": "All rights reserved."
-},
-"FinanLock": {
-    "section_tag": "Our Flagship Product",
-    "title_part1": "Revolutionize Your",
-    "title_part2": "Finances",
-    "description_main": "A comprehensive platform designed to simplify, secure, and boost your business financial management in Latin America.",
-    "subtitle": "FinanLock: Total Control",
-    "description_detail": "Formerly known as SmartPay, FinanLock evolves to offer banking-grade security, real-time analytics, and an unprecedented user experience for modern merchants.",
-    "availability": "Available In",
-    "features": {
-        "feature1": "Secure Payment Gateway",
-        "feature2": "AI Analytics Dashboard",
-        "feature3": "Multi-currency Management",
-        "feature4": "Premium 24/7 Support"
-    },
-    "cta_button": "View Live Demo"
-}
 }
