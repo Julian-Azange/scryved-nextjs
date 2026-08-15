@@ -17,7 +17,7 @@ const TextSlider = () => {
     }, [texts.length]);
 
     return (
-        <div className="relative h-8 md:h-10 overflow-hidden w-full md:w-[650px] flex justify-end items-center">
+        <div className="relative h-8 md:h-10 overflow-hidden w-full md:w-[650px] flex justify-start md:justify-end items-center">
             <AnimatePresence mode="popLayout">
                 <motion.h3
                     key={index}
@@ -25,7 +25,7 @@ const TextSlider = () => {
                     animate={{ y: 0, opacity: 1 }}
                     exit={{ y: -40, opacity: 0 }}
                     transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                    className="absolute text-lg md:text-[1.35rem] lg:text-[1.5rem] font-bold tracking-tight uppercase whitespace-nowrap text-right"
+                    className="absolute text-[clamp(11px,3.2vw,1.5rem)] md:text-[1.35rem] lg:text-[1.5rem] font-bold tracking-tight uppercase whitespace-nowrap text-left md:text-right"
                     style={{ color: 'rgba(255,255,255,0.7)' }}
                 >
                     {texts[index]}
@@ -408,46 +408,40 @@ export default function Hero() {
                             variants={fadeVariants}
                             className="flex flex-col md:flex-row justify-between items-start md:items-center w-full gap-8"
                         >
-                            {/* Left: Avatars & Stats */}
-                            <div className="flex items-center gap-3">
-                                <div className="flex -space-x-2 md:-space-x-3">
-                                    <div
-                                        className="w-7 h-7 md:w-9 md:h-9 rounded-full overflow-hidden relative z-40"
-                                        style={{ border: '2px solid rgba(163, 230, 53, 0.4)' }}
-                                    >
-                                        <Image src="/assets/team/julian.jpg" alt="Julian CEO" fill className="object-cover" />
+                                {/* Left: Avatars & Stats */}
+                                <div className="flex items-center gap-3">
+                                    <div className="flex -space-x-2 md:-space-x-3">
+                                        <div
+                                            className="w-7 h-7 md:w-9 md:h-9 rounded-full overflow-hidden relative z-40"
+                                            style={{ border: '2px solid rgba(163, 230, 53, 0.4)' }}
+                                        >
+                                            <Image src="/assets/team/julian.jpg" alt="Julian CEO" fill className="object-cover" />
+                                        </div>
+                                        <div
+                                            className="w-7 h-7 md:w-9 md:h-9 rounded-full overflow-hidden relative z-30"
+                                            style={{ border: '2px solid rgba(163, 230, 53, 0.3)' }}
+                                        >
+                                            <Image src="/assets/team/fabian.jpeg" alt="Fabian CO-CEO" fill className="object-cover" />
+                                        </div>
+                                        <div
+                                            className="w-7 h-7 md:w-9 md:h-9 rounded-full overflow-hidden relative z-20"
+                                            style={{ border: '2px solid rgba(163, 230, 53, 0.2)' }}
+                                        >
+                                            <Image src="/assets/team/tobias.jpg" alt="Tobias CTO" fill className="object-cover" />
+                                        </div>
                                     </div>
-                                    <div
-                                        className="w-7 h-7 md:w-9 md:h-9 rounded-full overflow-hidden relative z-30"
-                                        style={{ border: '2px solid rgba(163, 230, 53, 0.3)' }}
-                                    >
-                                        <Image src="/assets/team/fabian.jpeg" alt="Fabian CO-CEO" fill className="object-cover" />
-                                    </div>
-                                    <div
-                                        className="w-7 h-7 md:w-9 md:h-9 rounded-full overflow-hidden relative z-20"
-                                        style={{ border: '2px solid rgba(163, 230, 53, 0.2)' }}
-                                    >
-                                        <Image src="/assets/team/tobias.jpg" alt="Tobias CTO" fill className="object-cover" />
-                                    </div>
-                                    <div
-                                        className="w-7 h-7 md:w-9 md:h-9 rounded-full overflow-hidden relative z-10"
-                                        style={{ border: '2px solid rgba(163, 230, 53, 0.15)' }}
-                                    >
-                                        <Image src="/assets/team/extra.jpg" alt="Team Member" fill className="object-cover" />
+                                    <div className="flex flex-col justify-center gap-[1px]">
+                                        <span className="font-bold text-[10px] md:text-[11px] leading-none tracking-widest" style={{ color: '#ffffff' }}>
+                                            SCRYVED
+                                        </span>
+                                        <span
+                                            className="text-[8px] md:text-[9px] font-mono tracking-widest uppercase leading-none mt-1"
+                                            style={{ color: 'rgba(255,255,255,0.35)' }}
+                                        >
+                                            {t('team_text')}
+                                        </span>
                                     </div>
                                 </div>
-                                <div className="flex flex-col justify-center gap-[1px]">
-                                    <span className="font-bold text-[10px] md:text-[11px] leading-none" style={{ color: '#ffffff' }}>
-                                        4.9/5
-                                    </span>
-                                    <span
-                                        className="text-[8px] md:text-[9px] font-mono tracking-widest uppercase leading-none"
-                                        style={{ color: 'rgba(255,255,255,0.35)' }}
-                                    >
-                                        BASED ON 230 REVIEWS
-                                    </span>
-                                </div>
-                            </div>
 
                             {/* Right: Vertical Text Slider */}
                             <div className="flex justify-start md:justify-end w-full md:w-auto">
