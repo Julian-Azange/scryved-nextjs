@@ -183,6 +183,7 @@ export default function Contact() {
                                         href="https://facebook.com/scryved"
                                         target="_blank"
                                         rel="noopener noreferrer"
+                                        aria-label="Facebook"
                                         className="social-btn"
                                     >
                                         <div className="social-icon">
@@ -199,6 +200,7 @@ export default function Contact() {
                                         href="https://instagram.com/scryved"
                                         target="_blank"
                                         rel="noopener noreferrer"
+                                        aria-label="Instagram"
                                         className="social-btn"
                                     >
                                         <div className="social-icon">
@@ -215,6 +217,7 @@ export default function Contact() {
                                         href={`https://wa.me/${t('info.phone').replace(/\s+/g, '').replace('+', '')}`}
                                         target="_blank"
                                         rel="noopener noreferrer"
+                                        aria-label="WhatsApp"
                                         className="social-btn"
                                     >
                                         <div className="social-icon">
@@ -274,13 +277,13 @@ export default function Contact() {
                                 {/* Contact Details */}
                                 <div className="flex flex-col sm:flex-row gap-6 sm:gap-12 w-full max-w-xl">
                                     <div className="border-l-2 border-[#a3e635]/30 pl-4">
-                                        <h4 className="text-white/50 text-xs font-mono tracking-widest uppercase mb-1">Email</h4>
+                                        <h3 className="text-white/50 text-xs font-mono tracking-widest uppercase mb-1">Email</h3>
                                         <a href={`mailto:${t('info.email')}`} className="text-white font-medium hover:text-[#a3e635] transition-colors text-sm md:text-base">
                                             {t('info.email')}
                                         </a>
                                     </div>
                                     <div className="border-l-2 border-[#a3e635]/30 pl-4">
-                                        <h4 className="text-white/50 text-xs font-mono tracking-widest uppercase mb-1">Ubicación</h4>
+                                        <h3 className="text-white/50 text-xs font-mono tracking-widest uppercase mb-1">Ubicación</h3>
                                         <p className="text-white font-medium text-sm md:text-base">{t('info.address')}</p>
                                     </div>
                                 </div>

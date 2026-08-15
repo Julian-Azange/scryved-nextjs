@@ -317,7 +317,7 @@ export default function Portfolio() {
                                         {selectedProject.url?.replace(/^https?:\/\//, '')}
                                     </span>
                                 </div>
-                                <a href={selectedProject.url} target="_blank" rel="noopener noreferrer" className="p-2 text-white/50 hover:text-white transition-colors">
+                                <a href={selectedProject.url} target="_blank" rel="noopener noreferrer" aria-label="Visitar proyecto" className="p-2 text-white/50 hover:text-white transition-colors">
                                     <ExternalLink className="w-5 h-5" />
                                 </a>
                             </div>

@@ -108,7 +108,7 @@ export default function Footer() {
 
                             {/* Column 2: Navigation */}
                             <div>
-                                <h4 className="font-bold text-white text-lg md:text-xl mb-6 md:mb-8 tracking-wide uppercase text-[10px] md:text-sm text-[#a3e635]">{t('company.title')}</h4>
+                                <h2 className="font-bold text-white text-lg md:text-xl mb-6 md:mb-8 tracking-wide uppercase text-[10px] md:text-sm text-[#a3e635]">{t('company.title')}</h2>
                                 <ul className="space-y-4 text-sm md:text-base font-semibold text-white/70">
                                     <li><Link href="/" className="hover:text-[#a3e635] transition-colors">Inicio</Link></li>
                                     <li><Link href="/about" className="hover:text-[#a3e635] transition-colors">Nosotros</Link></li>
@@ -119,7 +119,7 @@ export default function Footer() {
 
                             {/* Column 3: Services */}
                             <div>
-                                <h4 className="font-bold text-white text-lg md:text-xl mb-6 md:mb-8 tracking-wide uppercase text-[10px] md:text-sm text-[#a3e635]">{t('services.title')}</h4>
+                                <h2 className="font-bold text-white text-lg md:text-xl mb-6 md:mb-8 tracking-wide uppercase text-[10px] md:text-sm text-[#a3e635]">{t('services.title')}</h2>
                                 <ul className="space-y-4 text-sm md:text-base font-semibold text-white/70">
                                     <li><Link href="/#services" onClick={(e) => handleNavClick(e, '/#services')} className="hover:text-[#a3e635] transition-colors">Desarrollo Web</Link></li>
                                     <li><Link href="/#services" onClick={(e) => handleNavClick(e, '/#services')} className="hover:text-[#a3e635] transition-colors">Apps Móviles</Link></li>
@@ -130,7 +130,7 @@ export default function Footer() {
 
                             {/* Column 4: Contact */}
                             <div>
-                                <h4 className="font-bold text-white text-lg md:text-xl mb-6 md:mb-8 tracking-wide uppercase text-[10px] md:text-sm text-[#a3e635]">{t('contact_title')}</h4>
+                                <h2 className="font-bold text-white text-lg md:text-xl mb-6 md:mb-8 tracking-wide uppercase text-[10px] md:text-sm text-[#a3e635]">{t('contact_title')}</h2>
                                 <ul className="space-y-6 text-sm md:text-base font-medium text-white/70">
                                     <li className="flex items-start gap-3">
                                         <span className="text-[#a3e635] mt-0.5">📍</span>
@@ -162,17 +162,13 @@ export default function Footer() {
                     </div>
                 </div>
 
-                {/* --- MASSIVE BACKGROUND TEXT (Bottom Edge) --- */}
-                <div className="relative w-full flex justify-center items-end select-none z-0 pointer-events-none overflow-hidden pb-4">
-                    <h1 className="text-[clamp(5rem,18vw,25rem)] leading-[0.75] font-black tracking-tighter flex items-end">
-                        <span 
-                            className="text-transparent"
-                            style={{ WebkitTextStroke: '1px rgba(255,255,255,0.15)' }}
-                        >
-                            SCRY
-                        </span>
-                        <span className="text-[#a3e635]">VED</span>
-                    </h1>
+                {/* --- MASSIVE Footer Brand --- */}
+                <div className="w-full flex justify-center pb-6 md:pb-10 pt-10 border-t border-white/5 relative z-10 overflow-hidden" aria-hidden="true">
+                    <span className="text-[clamp(5rem,18vw,25rem)] leading-[0.75] font-black tracking-tighter flex items-end">
+                        <span className="text-white/5 hover:text-white/10 transition-colors duration-700">SCRY</span>
+                        <span className="text-[#a3e635]/10 hover:text-[#a3e635]/20 transition-colors duration-700">VED</span>
+                        <span className="text-[#a3e635] text-[clamp(1rem,4vw,6rem)] leading-none mb-[2vw] ml-1 md:ml-4">.</span>
+                    </span>
                 </div>
 
             </footer>
