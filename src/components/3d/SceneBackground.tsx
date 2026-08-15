@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useMemo } from 'react';
+import { useRef, useMemo, useState, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Points, PointMaterial } from '@react-three/drei';
 import * as THREE from 'three';
@@ -63,6 +63,30 @@ function ParticleCloud() {
 }
 
 export default function SceneBackground() {
+    const [isMobile, setIsMobile] = useState(true); // Assume mobile initially to prevent hydration mismatch/heavy load
+
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+        
+        // Initial check
+        checkMobile();
+
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
+    if (isMobile) {
+        return (
+            <div className="absolute inset-0 z-0 h-full w-full opacity-30 pointer-events-none" style={{
+                background: 'radial-gradient(circle at center, rgba(163, 230, 53, 0.05) 0%, transparent 70%)'
+            }}>
+                {/* Fallback ligero en CSS para móviles en lugar del Canvas 3D */}
+            </div>
+        );
+    }
+
     return (
         <div className="absolute inset-0 z-0 h-full w-full opacity-60 pointer-events-none">
             <Canvas camera={{ position: [0, 0, 15], fov: 60 }}>

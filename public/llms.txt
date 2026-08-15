@@ -1,0 +1,18 @@
+# Scryved - Premium Software Solutions
+
+Scryved is a software development and digital transformation studio based in Pitalito, Huila, Colombia. We specialize in custom software, mobile applications, electronic security, and UI/UX design.
+
+## Core Services
+- **Custom Software:** Scalable platforms built for enterprise needs.
+- **Mobile Apps:** Native and cross-platform applications for iOS and Android.
+- **Electronic Security:** CCTV, biometric access, and advanced infrastructure security.
+- **UI/UX Design:** User-centric design for digital products.
+
+## Contact Information
+- Email: hello@scryved.com
+- Phone: +57 322 245 5334
+- Location: Pitalito, Huila, Colombia
+- Website: https://scryved.com
+
+## Technology Stack
+We build with modern technologies including Next.js, React, TailwindCSS, Node.js, and TypeScript.
