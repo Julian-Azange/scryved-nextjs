@@ -559,5 +559,96 @@
     "stat2_label": "REDUCCIÓN EN TIEMPOS DE DESARROLLO",
     "stat3_value": "+50",
     "stat3_label": "SISTEMAS DESPLEGADOS CON ÉXITO"
+  },
+  "Pricing": {
+    "tag": "Planes y Precios",
+    "title": "Inversión",
+    "title_highlight": "Transparente.",
+    "subtitle": "Soluciones tecnológicas adaptadas a cada etapa de tu negocio. Todos los planes incluyen dominio, alojamiento y soporte por 1 año.",
+    "cta_label": "Cotización personalizada por WhatsApp",
+    "note": "Todos los precios son sin IVA. Cotizaciones personalizadas disponibles según el alcance del proyecto.",
+    "featured_badge": "Más Popular",
+    "from": "Desde",
+    "currency": "COP",
+    "per_project": "/ proyecto",
+    "includes": "Incluye:",
+    "ask_price": "Cotizar ahora",
+    "plans": [
+      {
+        "id": "landing",
+        "name": "Landing Page",
+        "tagline": "Tu presencia digital profesional",
+        "price": "1.000.000",
+        "featured": false,
+        "features": [
+          "Diseño a medida y responsive",
+          "Dominio personalizado por 1 año",
+          "Alojamiento web por 1 año",
+          "Sección de contacto / WhatsApp",
+          "Optimización SEO básica",
+          "Certificado SSL (HTTPS)"
+        ]
+      },
+      {
+        "id": "ecommerce",
+        "name": "Tienda en Línea",
+        "tagline": "Vende 24/7 sin intermediarios",
+        "price": "4.000.000",
+        "featured": true,
+        "features": [
+          "Dominio y alojamiento por 1 año",
+          "Gestión de productos y categorías",
+          "Galería multimedia personalizada",
+          "Pasarela de pago integrada",
+          "Panel de administración",
+          "SEO avanzado para e-commerce"
+        ]
+      },
+      {
+        "id": "management",
+        "name": "Sistema de Gestión",
+        "tagline": "Automatiza y escala tu negocio",
+        "price": "4.000.000",
+        "featured": false,
+        "features": [
+          "Dominio y alojamiento por 1 año",
+          "Módulos a la medida de tu negocio",
+          "Usuarios y roles personalizados",
+          "Reportes y estadísticas",
+          "Base de datos escalable",
+          "Soporte técnico incluido"
+        ]
+      },
+      {
+        "id": "saas",
+        "name": "Sistema SaaS",
+        "tagline": "Software como servicio empresarial",
+        "price": "5.000.000",
+        "featured": false,
+        "features": [
+          "Dominio y alojamiento por 1 año",
+          "Multi-tenant (múltiples clientes)",
+          "Autenticación y seguridad avanzada",
+          "API REST / Integraciones",
+          "Dashboard de métricas en tiempo real",
+          "Escalabilidad en la nube"
+        ]
+      },
+      {
+        "id": "maintenance",
+        "name": "Mantenimiento PC",
+        "tagline": "Tu equipo como nuevo",
+        "price": "50.000",
+        "featured": false,
+        "features": [
+          "Limpieza interna y externa",
+          "Actualización de sistema operativo",
+          "Office 365 licenciado por 1 año",
+          "Eliminación de virus y malware",
+          "Optimización de rendimiento",
+          "Diagnóstico completo"
+        ]
+      }
+    ]
   }
 }

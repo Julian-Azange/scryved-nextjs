@@ -559,5 +559,96 @@
         "stat2_label": "REDUCTION IN DEVELOPMENT TIMES",
         "stat3_value": "+50",
         "stat3_label": "SUCCESSFULLY DEPLOYED SYSTEMS"
+    },
+    "Pricing": {
+        "tag": "Plans & Pricing",
+        "title": "Transparent",
+        "title_highlight": "Investment.",
+        "subtitle": "Technology solutions tailored to every stage of your business. All plans include domain, hosting and support for 1 year.",
+        "cta_label": "Custom quote via WhatsApp",
+        "note": "All prices exclude VAT. Custom quotes available based on project scope.",
+        "featured_badge": "Most Popular",
+        "from": "From",
+        "currency": "COP",
+        "per_project": "/ project",
+        "includes": "Includes:",
+        "ask_price": "Get a quote",
+        "plans": [
+            {
+                "id": "landing",
+                "name": "Landing Page",
+                "tagline": "Your professional digital presence",
+                "price": "1.000.000",
+                "featured": false,
+                "features": [
+                    "Custom responsive design",
+                    "Custom domain for 1 year",
+                    "Web hosting for 1 year",
+                    "Contact section / WhatsApp",
+                    "Basic SEO optimization",
+                    "SSL Certificate (HTTPS)"
+                ]
+            },
+            {
+                "id": "ecommerce",
+                "name": "Online Store",
+                "tagline": "Sell 24/7 with no middlemen",
+                "price": "4.000.000",
+                "featured": true,
+                "features": [
+                    "Domain and hosting for 1 year",
+                    "Product and category management",
+                    "Custom multimedia gallery",
+                    "Integrated payment gateway",
+                    "Admin panel included",
+                    "Advanced e-commerce SEO"
+                ]
+            },
+            {
+                "id": "management",
+                "name": "Management System",
+                "tagline": "Automate and scale your business",
+                "price": "4.000.000",
+                "featured": false,
+                "features": [
+                    "Domain and hosting for 1 year",
+                    "Custom business modules",
+                    "Users and custom roles",
+                    "Reports and analytics",
+                    "Scalable database",
+                    "Technical support included"
+                ]
+            },
+            {
+                "id": "saas",
+                "name": "SaaS System",
+                "tagline": "Enterprise software as a service",
+                "price": "5.000.000",
+                "featured": false,
+                "features": [
+                    "Domain and hosting for 1 year",
+                    "Multi-tenant (multiple clients)",
+                    "Advanced auth & security",
+                    "REST API / Integrations",
+                    "Real-time metrics dashboard",
+                    "Cloud scalability"
+                ]
+            },
+            {
+                "id": "maintenance",
+                "name": "PC Maintenance",
+                "tagline": "Your machine as good as new",
+                "price": "50.000",
+                "featured": false,
+                "features": [
+                    "Full internal and external cleaning",
+                    "Operating system update",
+                    "Office 365 licensed for 1 year",
+                    "Virus & malware removal",
+                    "Performance optimization",
+                    "Complete diagnostics"
+                ]
+            }
+        ]
     }
 }
