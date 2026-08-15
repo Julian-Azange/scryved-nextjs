@@ -9,52 +9,64 @@
   "Navbar": {
     "home": "Inicio",
     "about": "Nosotros",
+    "portfolio": "Proyectos",
     "smartpay": "SmartPay",
     "deployed": "En Vivo",
     "services": "Servicios",
     "security": "Seguridad",
     "team": "Equipo",
-    "contact": "Contacto"
+    "contact": "Contacto",
+    "discuss_project": "Discutir Proyecto"
   },
   "Hero": {
-    "badge": "Innovación y Tecnología",
-    "tagline": "Software a Medida",
-    "title_line1": "Soluciones de Software",
-    "title_line2": "Para Tu Negocio",
-    "subtitle": "Construimos soluciones de software innovadoras, escalables y de alto rendimiento adaptadas a tus necesidades específicas. Desde Pitalito para el mundo.",
-    "description": "Fundada en 2023, Scryved ha estado a la vanguardia del desarrollo de software.",
-    "cta_primary": "Comenzar",
-    "cta_secondary": "Saber Más",
+    "title_line1": "DESARROLLO",
+    "title_line2": "DE SOFTWARE",
+    "based_in": "Con sede en Colombia",
+    "rating_text": "Basado en",
+    "projects_text": "proyectos",
     "stat1_value": "+50",
-    "stat1_label": "Proyectos Completados",
-    "stat2_value": "99%",
-    "stat2_label": "Clientes Satisfechos",
-    "stat3_value": "+3",
-    "stat3_label": "Años de Experiencia"
+    "slider_texts": [
+      "TODO PRODUCTO COMIENZA COMO UNA IDEA.",
+      "TODA IDEA COMIENZA CON UNA DECISION.",
+      "TODO CAMINO NECESITA UN PRIMER PASO."
+    ],
+    "description_part1": "Construimos, ",
+    "description_part2": "optimizamos",
+    "description_part3": ", y escalamos sistemas digitales que impulsan el crecimiento y mejoran el ROI.",
+    "services": [
+        "Software a Medida",
+        "Aplicaciones Móviles",
+        "Plataformas SaaS",
+        "Diseño UI/UX"
+    ]
   },
   "About": {
     "tag": "Sobre Scryved",
-    "title_part1": "Sobre",
-    "title_part2": "Scryved",
-    "subtitle": "Transformamos tus ideas en aplicaciones de software potentes y escalables.",
-    "description_main": "Fundada en 2023, Scryved ha estado a la vanguardia del desarrollo de software a medida. Nos enorgullecemos de nuestra experiencia técnica y resolución creativa de problemas.",
-    "mission": "Nuestra misión es ofrecer soluciones innovadoras a empresas de diversas industrias.",
-    "vision": "Ser el aliado tecnológico preferido para empresas que buscan excelencia.",
-    "strengths": [
-      {
-        "title": "Innovación y Tecnología",
-        "description": "Utilizamos las últimas tecnologías para crear soluciones robustas y futuristas."
-      },
-      {
-        "title": "Código de Calidad",
-        "description": "Escribimos código limpio, mantenible y escalable pensado para crecer junto a tu negocio."
-      },
-      {
-        "title": "Enfoque en el Cliente",
-        "description": "Trabajamos en estrecha colaboración contigo, asegurando que el producto final supere tus expectativas."
-      }
-    ]
-  },
+    "title_part1": "Nuestra",
+    "title_part2": "Filosofía",
+    "philosophy": [
+      "Toda innovación comienza antes del código.",
+      "Comienza con la capacidad de comprender un problema, descubrir oportunidades y visualizar aquello que todavía no existe.",
+      "No creemos en soluciones genéricas.",
+      "Creemos en construir el camino que cada proyecto necesita.",
+      "Porque cada idea tiene un contexto diferente.",
+      "Cada empresa enfrenta desafíos distintos.",
+      "Y cada solución merece ser diseñada con intención."
+    ],
+    "what_we_are_title": "Lo que somos",
+    "what_we_are": [
+      "Somos un estudio de tecnología dedicado a diseñar, desarrollar y construir soluciones digitales con propósito.",
+      "Combinamos estrategia, diseño e ingeniería para transformar ideas en productos que generan valor real.",
+      "Trabajamos junto a empresas, emprendedores y organizaciones que buscan crecer a través de la tecnología, creando experiencias digitales escalables, intuitivas y sostenibles.",
+      "No solo desarrollamos software.",
+      "Construimos herramientas que impulsan negocios, conectan personas y hacen posible nuevas oportunidades."
+    ],
+        "vision_title": "Nuestra visión",
+        "vision": "Ser una marca tecnológica reconocida por convertir la complejidad en claridad y las ideas en soluciones que generan impacto. Queremos construir productos que perduren, marcas que inspiren confianza y tecnología capaz de mejorar la forma en que las personas trabajan, crean y crecen.",
+        "mission_title": "Nuestra misión",
+        "mission": "Descubrir oportunidades, diseñar soluciones y desarrollar tecnología que ayude a personas y empresas a avanzar con confianza hacia el futuro.",
+        "quote": "\"Construimos herramientas que impulsan negocios, conectan personas y hacen posible nuevas oportunidades.\""
+    },
   "Services": {
     "tag": "Nuestros Servicios",
     "title_part1": "Nuestros",
@@ -129,7 +141,8 @@
         "cta": "Consultar QA"
       }
     ],
-    "cta_button": "Descargar PDF de Servicios"
+    "cta_button": "Descargar PDF de Servicios",
+    "learn_more": "Saber Más"
   },
   "Security": {
     "tag": "Seguridad Electrónica",
@@ -190,172 +203,115 @@
     ]
   },
   "Portfolio": {
-    "tag": "Nuestro Trabajo",
-    "title_part1": "Proyectos",
-    "title_part2": "Destacados",
-    "subtitle": "Explora nuestras plataformas SaaS de alto rendimiento y sitios web corporativos.",
-    "tabs": {
-      "saas": "Plataformas SaaS",
-      "web": "Sitios Web & Landings"
-    },
-    "projects": [
+        "tag": "Nuestro Trabajo",
+        "title_part1": "Proyectos",
+        "title_part2": "Destacados",
+        "subtitle": "Explora nuestras plataformas SaaS, sistemas administrativos y sitios web.",
+        "view_project": "Ver Proyecto",
+        "global": "Global",
+        "loading": "Cargando Interfaz...",
+        "key_features": "Características Principales",
+        "tabs": {
+            "saas": "Plataformas SaaS",
+            "admin": "Administrativos",
+            "web": "Sitios Web & Landings"
+        },
+        "projects": [
       {
-        "id": "finanlock",
+        "id": "fonosalud",
         "category": "saas",
-        "title": "FinanLock",
-        "tagline": "Gestión y Financiamiento Móvil Integral",
-        "location": "Perú",
-        "description": "El software administrativo más completo para financiamiento de dispositivos. Diseñado para ofrecer control total operativo y comercial en múltiples sucursales.",
-        "features": [
-          "Gestión avanzada de inventario",
-          "Control de vendedores en ruta y en tienda",
-          "Asignación y monitoreo de dispositivos móviles",
-          "Simulador de crédito integrado",
-          "Gestión de personal"
-        ],
-        "technologies": [
-          "Next.js",
-          "NestJS",
-          "TypeScript",
-          "PostgreSQL",
-          "Tailwind",
-          "Shadcn UI"
-        ]
-      },
-      {
-        "id": "smartpay",
-        "category": "saas",
-        "title": "SmartPay",
-        "tagline": "Financiamiento con Geolocalización",
-        "location": "Perú",
-        "description": "Plataforma de financiamiento premium con capacidades avanzadas de rastreo en tiempo real y métricas detalladas para el control de activos.",
-        "features": [
-          "Ubicación y rastreo en tiempo real",
-          "Bloqueo remoto de dispositivos",
-          "Dashboard de métricas financieras",
-          "Gestión completa de cartera",
-          "Soporte multi-sucursal"
-        ],
-        "technologies": [
-          "Next.js",
-          "NestJS",
-          "TypeScript",
-          "PostgreSQL",
-          "Tailwind",
-          "Shadcn UI"
-        ]
+        "title": "FonoSalud",
+        "tagline": "Salud Ocupacional",
+        "location": "Colombia",
+        "description": "Plataforma SaaS para la gestión de la salud y recursos.",
+        "features": ["Gestión integral", "Historial clínico", "Facturación"]
       },
       {
         "id": "osmarpay",
         "category": "saas",
         "title": "OsmarPay",
-        "tagline": "Crédito para Móviles y Smart TVs",
-        "location": "Colombia",
-        "description": "Sistema especializado en el financiamiento de dispositivos móviles y televisores Android, optimizando el proceso de venta y recaudo.",
-        "features": [
-          "Simulador de crédito dinámico",
-          "Financiamiento de Android TVs",
-          "Gestión de personal y comisiones",
-          "Módulo de recaudo y alertas",
-          "Reportes de rendimiento"
-        ],
-        "technologies": [
-          "Next.js",
-          "NestJS",
-          "TypeScript",
-          "PostgreSQL",
-          "Tailwind",
-          "Shadcn UI"
-        ]
+        "tagline": "Fintech SaaS",
+        "location": "Perú",
+        "description": "Software administrativo para financiamiento de dispositivos móviles.",
+        "features": ["Control de ventas", "Créditos", "Métricas financieras"]
       },
       {
-        "id": "fonosalud",
+        "id": "finanlock",
         "category": "saas",
-        "title": "FonoSalud",
-        "tagline": "Software Clínico Especializado",
+        "title": "FinanLock",
+        "tagline": "Gestión de Financiamiento",
         "location": "Colombia",
-        "description": "Sistema de gestión clínica diseñado específicamente para fonoaudiólogos, cumpliendo con todas las normativas del Ministerio de Salud.",
-        "features": [
-          "Gestión de agenda y citas",
-          "Historias clínicas electrónicas",
-          "Registro de evoluciones médicas",
-          "Módulo de facturación",
-          "Generación de formato JSON (MinSalud)"
-        ],
-        "technologies": [
-          "Next.js",
-          "NestJS",
-          "TypeScript",
-          "PostgreSQL",
-          "Tailwind",
-          "Shadcn UI"
-        ]
+        "description": "Sistema de gestión y financiamiento móvil.",
+        "features": ["Control de inventario", "Bloqueo remoto", "Dashboard"]
       },
       {
-        "id": "olimpo",
+        "id": "smartpay",
+        "category": "saas",
+        "title": "SmartPay",
+        "tagline": "Financiamiento Premium",
+        "location": "Perú",
+        "description": "Plataforma de financiamiento con rastreo en tiempo real.",
+        "features": ["Geolocalización", "Métricas", "Sucursales"]
+      },
+      {
+        "id": "gestor-studio",
+        "category": "admin",
+        "title": "Gestor Studio Osmarpay",
+        "tagline": "Sistema Administrativo",
+        "location": "Colombia",
+        "description": "Panel de control administrativo centralizado.",
+        "features": ["Gestión de usuarios", "Reportes", "Métricas"]
+      },
+      {
+        "id": "iestap",
+        "category": "admin",
+        "title": "IESTAP Biodiverso",
+        "tagline": "Gestión Académica",
+        "location": "Colombia",
+        "description": "Sistema de administración y gestión.",
+        "features": ["Control de datos", "Reportes", "Accesos"]
+      },
+      {
+        "id": "medusa",
         "category": "web",
-        "title": "Olimpo Empresa",
-        "description": "Plataforma corporativa para gestión y presencia empresarial digital.",
-        "technologies": [
-          "React",
-          "Vite",
-          "Tailwind"
-        ]
+        "title": "Medusa",
+        "description": "Landing page de tecnología"
+      },
+      {
+        "id": "freedom",
+        "category": "web",
+        "title": "Freedom",
+        "description": "Sitio web corporativo"
       },
       {
         "id": "hotel",
         "category": "web",
         "title": "Hotel Condado Pisco",
-        "description": "Sitio web de reservas y presentación para el sector hotelero.",
-        "technologies": [
-          "Angular",
-          "Vite",
-          "Tailwind"
-        ]
+        "description": "Sitio web para reservas y hospitalidad"
       },
       {
         "id": "urbano",
         "category": "web",
         "title": "Urbano Frutas Exóticas",
-        "description": "E-commerce para comercialización y envío de frutas exóticas.",
-        "technologies": [
-          "React",
-          "Bootstrap",
-          "Payments API"
-        ]
+        "description": "Landing page para productos exóticos"
       },
       {
         "id": "aion",
         "category": "web",
         "title": "Aion Ingeniería",
-        "description": "Portal interactivo de servicios de ingeniería y consultoría.",
-        "technologies": [
-          "React",
-          "Tailwind",
-          "TypeScript"
-        ]
-      },
-      {
-        "id": "iestap",
-        "category": "web",
-        "title": "IESTAP Biodiverso",
-        "description": "Plataforma educativa e institucional con gestor de contenidos.",
-        "technologies": [
-          "PHP",
-          "Laravel",
-          "Angular"
-        ]
+        "description": "Sitio web corporativo para firma de ingeniería"
       }
     ]
   },
   "Team": {
-    "tag": "Nuestro Equipo",
-    "title_part1": "Nuestro",
-    "title_part2": "Equipo",
-    "subtitle": "Conoce a las mentes apasionadas detrás de Scryved. Somos un equipo de desarrolladores, diseñadores y estrategas dedicados a construir experiencias digitales excepcionales.",
-    "join_title": "¿Quieres ser parte de nuestro equipo?",
-    "join_button": "Contáctanos",
-    "members": [
+        "tag": "Nuestro Equipo",
+        "title_part1": "Nuestro",
+        "title_part2": "Equipo",
+        "subtitle": "Conoce a las mentes apasionadas detrás de Scryved. Somos un equipo de desarrolladores, diseñadores y estrategas dedicados a construir experiencias digitales excepcionales.",
+        "join_title": "¿Quieres ser parte de nuestro equipo?",
+        "join_subtitle": "¿Te apasiona la tecnología y la innovación?",
+        "join_button": "Contáctanos",
+        "members": [
       {
         "id": "julian",
         "name": "Julian Palomares",
@@ -365,8 +321,14 @@
       {
         "id": "fabian",
         "name": "Fabian Ramos",
-        "role": "CTO & Co-Fundador",
-        "profession": "Ing. de Software"
+        "role": "CO-CEO",
+        "profession": "Ing. de Sistemas"
+      },
+      {
+        "id": "tobias",
+        "name": "Tobias Lozano",
+        "role": "CTO",
+        "profession": "Ing. Electrónico"
       },
       {
         "id": "luis",
@@ -468,10 +430,38 @@
       }
     ]
   },
+  "Founder": {
+    "tag": "Sobre el Fundador",
+    "ceo": "// CEO",
+    "photo_name": "Julian Palomares",
+    "photo_role": "CEO & Fundador · Scryved",
+    "years_num": "4+",
+    "years_text": "años exp.",
+    "name_part1": "JULIAN",
+    "name_part2": "PALOMARES",
+    "profession": "Ingeniero de Sistemas",
+    "quote_part1": "Decidí crear ",
+    "quote_brand": "Scryved",
+    "quote_part2": " para ayudar a personas, empresas y organizaciones a subir de nivel. No solo en tecnología, sino en la forma en que usan la tecnología para crecer, diferenciarse y perdurar en el tiempo.",
+    "exp_tag": "Experiencia Certificada",
+    "cta": "Hablemos de tu proyecto",
+    "certBadges": [
+        "Certificado en Desarrollo Full Stack",
+        "Scrum Master Certified",
+        "Google Cloud Fundamentals",
+        "UI/UX Design Principles"
+    ],
+    "credentials": [
+        { "id": "software", "label": "Desarrollo de Software", "years": "4+ años" },
+        { "id": "support", "label": "Soporte de Sistemas Tecnológicos", "years": "4+ años" },
+        { "id": "data", "label": "Digitalización de Información", "years": "3+ años" },
+        { "id": "cloud", "label": "Arquitectura Web & Cloud", "years": "3+ años" },
+        { "id": "mobile", "label": "Aplicaciones Móviles", "years": "2+ años" }
+    ]
+  },
   "Contact": {
     "tag": "Contacto",
-    "title_part1": "Ponte en",
-    "title_part2": "Contacto",
+    "title": "CONTACTO.",
     "subtitle": "¿Tienes un proyecto en mente?",
     "description": "¿Quieres saber más sobre nuestros servicios? ¡Nos encantaría escucharte!",
     "form": {
@@ -549,10 +539,25 @@
       "description": "Lleva tu marca de ropa al siguiente nivel con un e-commerce ultrarrápido. Creado para maximizar conversiones con pasarelas de pago integradas y una experiencia de usuario que enamora desde el primer clic.",
       "features": [
         "Catálogo dinámico y filtros avanzados",
-        "Checkout optimizado y pasarela de pagos",
-        "Experiencia móvil (Mobile-First)"
+        "Checkout optimizado & pasarelas de pago",
+        "Experiencia Mobile-first"
       ],
       "cta": "Explorar Tienda"
     }
+  },
+  "Stats": {
+    "marquee": "DESARROLLO DE SOFTWARE • APLICACIONES MÓVILES • ARQUITECTURA CLOUD • DISEÑO UI/UX • ",
+    "section_id": "[01]",
+    "section_title": "// EXCELENCIA DIGITAL",
+    "year": "© 2026",
+    "score": "9.8",
+    "score_max": "/10.0",
+    "statement": "MÁS DE 3 AÑOS CONSTRUYENDO PRODUCTOS DIGITALES DE ALTO RENDIMIENTO, SISTEMAS ESCALABLES Y EXPERIENCIAS ENFOCADAS EN LA CONVERSIÓN.",
+    "stat1_value": "320%",
+    "stat1_label": "INCREMENTO PROMEDIO EN RENDIMIENTO",
+    "stat2_value": "42%",
+    "stat2_label": "REDUCCIÓN EN TIEMPOS DE DESARROLLO",
+    "stat3_value": "+50",
+    "stat3_label": "SISTEMAS DESPLEGADOS CON ÉXITO"
   }
 }

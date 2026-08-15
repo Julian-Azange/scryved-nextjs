@@ -38,15 +38,15 @@ export default function LanguageToggle() {
             {/* Renderizado condicional de la bandera */}
             <div className="relative w-6 h-4 overflow-hidden rounded-sm shadow-sm opacity-90 group-hover:opacity-100 transition-opacity">
                 {isEnglish ? (
-                    <UsaFlag className="w-full h-full object-cover" />
-                ) : (
                     <ColombiaFlag className="w-full h-full object-cover" />
+                ) : (
+                    <UsaFlag className="w-full h-full object-cover" />
                 )}
             </div>
 
             {/* Texto del idioma */}
             <span className="font-bold uppercase text-xs text-gray-300 group-hover:text-white tracking-wider">
-                {isEnglish ? 'EN' : 'ES'}
+                {isEnglish ? 'ES' : 'EN'}
             </span>
         </motion.button>
     );

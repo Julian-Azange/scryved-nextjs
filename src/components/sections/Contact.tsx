@@ -1,313 +1,295 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useRef } from 'react';
 import { useTranslations } from 'next-intl';
 import { motion, useInView, Variants } from 'framer-motion';
-import { Phone, Mail, MapPin, Send, MessageSquare, Zap, Navigation, ExternalLink } from 'lucide-react';
-import { cn } from '@/src/lib/utils';
-import Image from 'next/image';
-import { Button } from "@/src/components/ui/button";
 
-// Importamos componentes de Mapa
-import {
-    Map,
-    MapMarker,
-    MarkerContent,
-    MarkerLabel,
-    MarkerPopup,
-} from "@/src/components/ui/map";
+/* ─── Animation Variants ─── */
+const fadeUp: Variants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+        opacity: 1,
+        y: 0,
+        transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
+    }
+};
+
+const staggerContainer: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: { staggerChildren: 0.1, delayChildren: 0.2 }
+    }
+};
+
+/* ─── CSS Keyframes ─── */
+const contactStyles = `
+@keyframes contact-orb {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(-30px, 50px) scale(1.1); }
+    66% { transform: translate(40px, -20px) scale(0.9); }
+}
+.social-btn {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 20px;
+    border-radius: 16px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+    transition: all 0.3s cubic-bezier(0.16,1,0.3,1);
+    text-decoration: none;
+}
+.social-btn:hover {
+    border-color: rgba(163,230,53,0.25);
+    background: rgba(163,230,53,0.05);
+    transform: translateX(6px);
+}
+.social-btn:hover .social-icon {
+    background: rgba(163,230,53,0.15);
+    border-color: rgba(163,230,53,0.3);
+}
+.social-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    transition: all 0.3s ease;
+}
+`;
+
+/* ─── Social SVG Icons ─── */
+const FacebookIcon = () => (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+        <path d="M18 2H15C13.6739 2 12.4021 2.52678 11.4645 3.46447C10.5268 4.40215 10 5.67392 10 7V10H7V14H10V22H14V14H17L18 10H14V7C14 6.73478 14.1054 6.48043 14.2929 6.29289C14.4804 6.10536 14.7348 6 15 6H18V2Z" fill="#a3e635"/>
+    </svg>
+);
+
+const InstagramIcon = () => (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="#a3e635" strokeWidth="2" fill="none"/>
+        <circle cx="12" cy="12" r="4" stroke="#a3e635" strokeWidth="2" fill="none"/>
+        <circle cx="17.5" cy="6.5" r="1" fill="#a3e635"/>
+    </svg>
+);
+
+const WhatsAppIcon = () => (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" fill="#a3e635"/>
+        <path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.938-1.418A9.956 9.956 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a7.956 7.956 0 01-4.066-1.115l-.292-.173-3.036.872.853-3.099-.19-.317A7.96 7.96 0 014 12c0-4.418 3.582-8 8-8s8 3.582 8 8-3.582 8-8 8z" fill="#a3e635"/>
+    </svg>
+);
 
 export default function Contact() {
     const t = useTranslations('Contact');
-
-    // Estados del formulario
-    const [formData, setFormData] = useState({ name: '', email: '', phone: '', subject: '', message: '' });
-    const [formStatus, setFormStatus] = useState({ submitted: false, success: false, message: '' });
-    const [isSubmitting, setIsSubmitting] = useState(false);
-
     const sectionRef = useRef(null);
-    const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
-
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        const { name, value } = e.target;
-        setFormData(prev => ({ ...prev, [name]: value }));
-    };
-
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        setIsSubmitting(true);
-
-        setTimeout(() => {
-            setFormStatus({
-                submitted: true,
-                success: true,
-                message: t('form.success')
-            });
-            setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
-            setIsSubmitting(false);
-        }, 1500);
-    };
-
-    const containerVariants: Variants = {
-        hidden: { opacity: 0 },
-        visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
-    };
-
-    const itemVariants: Variants = {
-        hidden: { opacity: 0, y: 20 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
-    };
-
-    // Coordenadas de Scryved (Pitalito)
-    const scryvedLocation = {
-        lng: -76.03554485164081,
-        lat: 1.8505444338360428
-    };
+    const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
 
     return (
-        <section id="contact" ref={sectionRef} className="relative py-24 bg-black text-white overflow-hidden min-h-screen">
+        <>
+            <style dangerouslySetInnerHTML={{ __html: contactStyles }} />
+            <section
+                id="contact"
+                ref={sectionRef}
+                className="relative min-h-[100dvh] flex flex-col justify-center overflow-hidden"
+                style={{ background: '#050505' }}
+            >
+                {/* ═══ Animated Background ═══ */}
+                <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+                    <div className="absolute" style={{
+                        top: '30%', right: '-10%',
+                        width: '45vw', height: '45vw', maxWidth: '600px', maxHeight: '600px',
+                        borderRadius: '50%',
+                        background: 'radial-gradient(circle, rgba(163, 230, 53, 0.06) 0%, transparent 60%)',
+                        filter: 'blur(80px)',
+                        animation: 'contact-orb 20s ease-in-out infinite alternate',
+                    }} />
+                    <div className="absolute" style={{
+                        bottom: '-10%', left: '10%',
+                        width: '40vw', height: '40vw', maxWidth: '500px', maxHeight: '500px',
+                        borderRadius: '50%',
+                        background: 'radial-gradient(circle, rgba(34, 197, 94, 0.04) 0%, transparent 60%)',
+                        filter: 'blur(90px)',
+                        animation: 'contact-orb 25s ease-in-out infinite alternate-reverse',
+                    }} />
+                    <div className="absolute inset-0" style={{
+                        backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E")`,
+                        opacity: 0.4,
+                    }} />
+                    <div className="absolute top-0 left-0 right-0 h-px" style={{
+                        background: 'linear-gradient(90deg, transparent, rgba(163, 230, 53, 0.15), transparent)',
+                    }} />
+                </div>
 
-            {/* --- 1. FONDO ANIMADO --- */}
-            <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <motion.div
-                    animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
-                    transition={{ duration: 8, repeat: Infinity }}
-                    className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[120px]"
-                />
-                <motion.div
-                    animate={{ x: [-50, 50, -50], opacity: [0.2, 0.4, 0.2] }}
-                    transition={{ duration: 10, repeat: Infinity }}
-                    className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-green-500/10 rounded-full blur-[100px]"
-                />
-                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 mix-blend-overlay"></div>
-            </div>
+                {/* ═══ Content ═══ */}
+                <div className="container relative z-10 w-full px-6 md:px-12 lg:px-16 xl:px-20 2xl:px-28 mx-auto max-w-[1920px] py-16 md:py-20 flex flex-col h-full justify-between">
 
-            <div className="container relative z-10 px-4 md:px-6">
-
-                {/* Header */}
-                <motion.div
-                    className="text-center mb-16"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                    transition={{ duration: 0.7 }}
-                >
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
-                        <MessageSquare className="w-4 h-4 text-primary" />
-                        <span className="text-primary text-sm font-bold uppercase tracking-wider">
-                            {t('tag')}
-                        </span>
-                    </div>
-
-                    <h2 className="text-4xl md:text-5xl font-black text-white mb-6 mt-4 tracking-tight">
-                        {t('title_part1')} <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-green-400">{t('title_part2')}</span>
-                    </h2>
-                    <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-                        {t('description')}
-                    </p>
-                </motion.div>
-
-                <motion.div
-                    variants={containerVariants}
-                    initial="hidden"
-                    animate={isInView ? "visible" : "hidden"}
-                    className="grid grid-cols-1 lg:grid-cols-12 gap-8"
-                >
-
-                    {/* --- IZQUIERDA: FORMULARIO --- */}
-                    <motion.div variants={itemVariants} className="lg:col-span-7">
-                        <div className="h-full bg-zinc-900/30 border border-white/10 backdrop-blur-xl rounded-3xl p-8 md:p-10 shadow-2xl relative overflow-hidden group">
-                            <div className="absolute inset-0 border-2 border-white/0 rounded-3xl group-hover:border-primary/20 transition-all duration-500 pointer-events-none"></div>
-
-                            <h3 className="text-2xl font-bold text-white mb-8 flex items-center gap-3">
-                                <span className="w-1.5 h-8 bg-primary rounded-full"></span>
-                                {t('form.title')}
-                            </h3>
-
-                            {formStatus.submitted && (
-                                <motion.div
-                                    initial={{ opacity: 0, height: 0 }}
-                                    animate={{ opacity: 1, height: 'auto' }}
-                                    className={cn(
-                                        "p-4 mb-6 rounded-xl border",
-                                        formStatus.success ? "bg-green-500/10 border-green-500/30 text-green-400" : "bg-red-500/10 border-red-500/30 text-red-400"
-                                    )}
+                    <motion.div
+                        variants={staggerContainer}
+                        initial="hidden"
+                        animate={isInView ? "visible" : "hidden"}
+                        className="flex flex-col h-full justify-between"
+                    >
+                        {/* ─── Header ─── */}
+                        <div className="flex flex-col w-full mb-8 lg:mb-12">
+                            <div className="flex justify-between items-start w-full mb-4 md:mb-8">
+                                <motion.div variants={fadeUp}
+                                    className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full text-[11px] font-semibold tracking-[0.2em] uppercase"
+                                    style={{ border: '1px solid rgba(163, 230, 53, 0.2)', background: 'rgba(163, 230, 53, 0.05)', color: '#a3e635' }}
                                 >
-                                    {formStatus.message}
+                                    <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: '#a3e635' }} />
+                                    {t('tag')}
                                 </motion.div>
-                            )}
 
-                            <form onSubmit={handleSubmit} className="space-y-6">
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    <InputGroup id="name" label={t('form.fields.name')} value={formData.name} onChange={handleChange} type="text" />
-                                    <InputGroup id="email" label={t('form.fields.email')} value={formData.email} onChange={handleChange} type="email" />
-                                </div>
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    <InputGroup id="phone" label={t('form.fields.phone')} value={formData.phone} onChange={handleChange} type="tel" />
-                                    <InputGroup id="subject" label={t('form.fields.subject')} value={formData.subject} onChange={handleChange} type="text" />
-                                </div>
+                                <motion.div variants={fadeUp} className="hidden md:flex flex-col items-end gap-1">
+                                    <span className="text-[11px] font-mono tracking-widest uppercase" style={{ color: 'rgba(255,255,255,0.25)' }}>[06]</span>
+                                    <span className="text-[11px] font-mono tracking-widest" style={{ color: '#a3e635' }}>// CONTACTO</span>
+                                </motion.div>
+                            </div>
 
-                                <div className="space-y-2">
-                                    <label htmlFor="message" className="block text-sm font-medium text-gray-400 ml-1">{t('form.fields.message')}</label>
-                                    <textarea
-                                        id="message"
-                                        name="message"
-                                        value={formData.message}
-                                        onChange={handleChange}
-                                        rows={4}
-                                        className="w-full px-5 py-4 rounded-xl border border-white/10 bg-black/40 text-white placeholder-gray-600 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all resize-none"
-                                        required
-                                    ></textarea>
-                                </div>
+                            {/* Massive Title */}
+                            <motion.div variants={fadeUp} className="w-full overflow-hidden">
+                                <h2 className="text-[clamp(3.5rem,11vw,14rem)] font-bold tracking-tighter leading-[0.85] uppercase text-white">
+                                    {t('title').replace('.', '')}
+                                    <span className="text-[#a3e635] italic">.</span>
+                                </h2>
+                            </motion.div>
+                        </div>
 
-                                <motion.button
-                                    type="submit"
-                                    disabled={isSubmitting}
-                                    whileHover={{ scale: 1.02 }}
-                                    whileTap={{ scale: 0.98 }}
-                                    className={cn(
-                                        "w-full py-4 rounded-xl font-bold text-black transition-all duration-300 shadow-[0_0_20px_rgba(34,197,94,0.3)] flex items-center justify-center gap-2",
-                                        isSubmitting ? "bg-zinc-600 cursor-not-allowed" : "bg-primary hover:bg-green-400 hover:shadow-[0_0_30px_rgba(34,197,94,0.5)]"
-                                    )}
+                        {/* ─── Main Grid ─── */}
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 xl:gap-24 items-start">
+
+                            {/* Left: Description + Social Links */}
+                            <motion.div variants={fadeUp} className="flex flex-col gap-8 md:gap-10">
+                                <p
+                                    className="text-[clamp(1rem,1.8vw,1.5rem)] font-medium max-w-lg tracking-tight leading-relaxed"
+                                    style={{ color: 'rgba(255,255,255,0.7)' }}
                                 >
-                                    {isSubmitting ? 'Enviando...' : t('form.button')}
-                                    {!isSubmitting && <Send size={18} />}
-                                </motion.button>
-                            </form>
-                        </div>
-                    </motion.div>
+                                    {t('description')}
+                                </p>
 
-                    {/* --- DERECHA: INFO Y MAPA NUEVO --- */}
-                    <motion.div variants={itemVariants} className="lg:col-span-5 flex flex-col gap-6">
+                                {/* ─── Social Links Block ─── */}
+                                <div className="flex flex-col gap-3">
+                                    <p className="text-[11px] font-mono tracking-[0.2em] uppercase mb-2" style={{ color: '#a3e635' }}>
+                                        Síguenos
+                                    </p>
 
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4">
-                            <ContactInfoCard
-                                icon={<Phone className="w-5 h-5" />}
-                                title="Llámanos"
-                                content={t('info.phone')}
-                                link={`tel:${t('info.phone').replace(/\s+/g, '')}`}
-                            />
-                            <ContactInfoCard
-                                icon={<Mail className="w-5 h-5" />}
-                                title="Escríbenos"
-                                content={t('info.email')}
-                                link={`mailto:${t('info.email')}`}
-                            />
-                        </div>
-
-                        {/* --- MAPA INTERACTIVO SHADCN --- */}
-                        <div className="flex-grow min-h-[350px] bg-zinc-900/30 border border-white/10 backdrop-blur-xl rounded-3xl p-2 shadow-2xl relative overflow-hidden group">
-                            <div className="absolute inset-0 bg-zinc-900 animate-pulse z-0"></div>
-
-                            {/* Contenedor del Mapa */}
-                            <div className="w-full h-full rounded-2xl relative z-10 overflow-hidden">
-                                <div className="w-full h-full grayscale invert-[0.9] contrast-[0.85]">
-                                    <Map
-                                        center={[scryvedLocation.lng, scryvedLocation.lat]}
-                                        zoom={16}
+                                    <a
+                                        href="https://facebook.com/scryved"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="social-btn"
                                     >
-                                        <MapMarker
-                                            longitude={scryvedLocation.lng}
-                                            latitude={scryvedLocation.lat}
-                                        >
-                                            <MarkerContent>
-                                                <div className="relative flex items-center justify-center">
-                                                    {/* 1. Efecto Radar (Ping) detrás del logo */}
-                                                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-500 opacity-50 duration-1000" />
+                                        <div className="social-icon">
+                                            <FacebookIcon />
+                                        </div>
+                                        <div className="flex flex-col">
+                                            <span className="text-white font-semibold text-sm leading-none mb-0.5">Facebook</span>
+                                            <span className="text-white/40 text-xs font-mono">@scryved</span>
+                                        </div>
+                                        <span className="ml-auto text-white/20 text-lg">→</span>
+                                    </a>
 
-                                                    {/* 2. Contenedor del Logo (Círculo con borde verde) */}
-                                                    <div className="relative h-14 w-14 rounded-full border-2 border-green-500 bg-black shadow-[0_0_20px_rgba(34,197,94,0.8)] cursor-pointer hover:scale-110 transition-transform z-20 overflow-hidden p-0.5">
-                                                        <Image
-                                                            src="/assets/logos/avatar-green.png"
-                                                            alt="Scryved Logo"
-                                                            fill
-                                                            className="object-cover rounded-full"
-                                                        />
-                                                    </div>
+                                    <a
+                                        href="https://instagram.com/scryved"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="social-btn"
+                                    >
+                                        <div className="social-icon">
+                                            <InstagramIcon />
+                                        </div>
+                                        <div className="flex flex-col">
+                                            <span className="text-white font-semibold text-sm leading-none mb-0.5">Instagram</span>
+                                            <span className="text-white/40 text-xs font-mono">@scryved</span>
+                                        </div>
+                                        <span className="ml-auto text-white/20 text-lg">→</span>
+                                    </a>
 
-                                                    {/* 3. Triangulito inferior (Punta del pin) */}
-                                                    <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[8px] border-t-green-500"></div>
-                                                </div>
-                                            </MarkerContent>
-
-                                            <MarkerPopup className="p-0 w-[280px] border-white/10 bg-zinc-950/95 text-white shadow-2xl backdrop-blur-xl">
-                                                {/* ... (El resto del popup sigue igual) ... */}
-                                                <div className="relative h-32 w-full overflow-hidden rounded-t-md bg-zinc-900">
-                                                    <Image
-                                                        src="/assets/team/julian.jpg"
-                                                        alt="Scryved Office"
-                                                        fill
-                                                        className="object-cover opacity-80 hover:opacity-100 transition-opacity"
-                                                    />
-                                                    <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent" />
-                                                </div>
-                                                <div className="p-4 space-y-3">
-                                                    <div>
-                                                        <h3 className="text-lg font-bold text-white flex items-center gap-2">
-                                                            Scryved
-                                                            <span className="flex h-2 w-2 rounded-full bg-green-500 shadow-[0_0_10px_#22c55e]" />
-                                                        </h3>
-                                                        <p className="text-xs text-gray-400 flex items-center gap-1 mt-1">
-                                                            <MapPin className="w-3 h-3 text-green-500" />
-                                                            Pitalito, Huila
-                                                        </p>
-                                                    </div>
-                                                    <div className="flex gap-2 pt-1">
-                                                        <Button size="sm" className="flex-1 h-8 bg-green-500 text-black hover:bg-green-400 font-bold">
-                                                            <Navigation className="size-3.5 mr-1.5" />
-                                                            Ir
-                                                        </Button>
-                                                    </div>
-                                                </div>
-                                            </MarkerPopup>
-                                        </MapMarker>
-                                    </Map>
-
+                                    <a
+                                        href={`https://wa.me/${t('info.phone').replace(/\s+/g, '').replace('+', '')}`}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="social-btn"
+                                    >
+                                        <div className="social-icon">
+                                            <WhatsAppIcon />
+                                        </div>
+                                        <div className="flex flex-col">
+                                            <span className="text-white font-semibold text-sm leading-none mb-0.5">WhatsApp</span>
+                                            <span className="text-white/40 text-xs font-mono">{t('info.phone')}</span>
+                                        </div>
+                                        <span className="ml-auto text-white/20 text-lg">→</span>
+                                    </a>
                                 </div>
-                            </div>
+                            </motion.div>
 
-                            {/* Overlay de ubicación (Mantenido por estética fuera del mapa interactivo) */}
-                            <div className="absolute bottom-4 left-4 right-4 bg-black/80 backdrop-blur-md border border-white/10 p-4 rounded-xl z-20 flex items-center gap-3 pointer-events-none">
-                                <div className="p-2 bg-primary/20 rounded-full text-primary">
-                                    <MapPin className="w-5 h-5" />
+                            {/* Right: Form + Contact Details */}
+                            <motion.div variants={fadeUp} className="flex flex-col lg:pl-10">
+                                {/* Form */}
+                                <form
+                                    className="space-y-6 md:space-y-8 w-full max-w-xl mb-10 md:mb-12"
+                                    onSubmit={(e) => e.preventDefault()}
+                                >
+                                    <div className="group">
+                                        <label className="block text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] mb-2 text-[#a3e635]/80">{t('form.fields.name')}</label>
+                                        <input
+                                            type="text"
+                                            placeholder="John Doe"
+                                            className="w-full bg-transparent border-b border-white/10 pb-3 md:pb-4 text-white placeholder:text-white/20 focus:outline-none focus:border-[#a3e635] transition-colors text-base md:text-xl"
+                                        />
+                                    </div>
+
+                                    <div className="group">
+                                        <label className="block text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] mb-2 text-[#a3e635]/80">{t('form.fields.email')}</label>
+                                        <input
+                                            type="email"
+                                            placeholder="john@empresa.com"
+                                            className="w-full bg-transparent border-b border-white/10 pb-3 md:pb-4 text-white placeholder:text-white/20 focus:outline-none focus:border-[#a3e635] transition-colors text-base md:text-xl"
+                                        />
+                                    </div>
+
+                                    <div className="group">
+                                        <label className="block text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] mb-2 text-[#a3e635]/80">{t('form.fields.message')}</label>
+                                        <textarea
+                                            placeholder={t('subtitle')}
+                                            rows={1}
+                                            className="w-full bg-transparent border-b border-white/10 pb-3 md:pb-4 text-white placeholder:text-white/20 focus:outline-none focus:border-[#a3e635] transition-colors text-base md:text-xl resize-none"
+                                        />
+                                    </div>
+
+                                    <button
+                                        type="submit"
+                                        className="w-full bg-[#a3e635] text-[#050505] font-bold tracking-wide text-sm md:text-base py-4 md:py-5 rounded-full hover:bg-white hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(163,230,53,0.4)] transition-all duration-300"
+                                    >
+                                        {t('form.button')}
+                                    </button>
+                                </form>
+
+                                {/* Contact Details */}
+                                <div className="flex flex-col sm:flex-row gap-6 sm:gap-12 w-full max-w-xl">
+                                    <div className="border-l-2 border-[#a3e635]/30 pl-4">
+                                        <h4 className="text-white/50 text-xs font-mono tracking-widest uppercase mb-1">Email</h4>
+                                        <a href={`mailto:${t('info.email')}`} className="text-white font-medium hover:text-[#a3e635] transition-colors text-sm md:text-base">
+                                            {t('info.email')}
+                                        </a>
+                                    </div>
+                                    <div className="border-l-2 border-[#a3e635]/30 pl-4">
+                                        <h4 className="text-white/50 text-xs font-mono tracking-widest uppercase mb-1">Ubicación</h4>
+                                        <p className="text-white font-medium text-sm md:text-base">{t('info.address')}</p>
+                                    </div>
                                 </div>
-                                <div>
-                                    <p className="text-white font-bold text-sm">Nuestra Oficina</p>
-                                    <p className="text-gray-400 text-xs">{t('info.address')}</p>
-                                </div>
-                            </div>
+                            </motion.div>
+
                         </div>
-
                     </motion.div>
-                </motion.div>
-            </div>
-        </section>
+                </div>
+            </section>
+        </>
     );
 }
-
-// --- COMPONENTES AUXILIARES ---
-const InputGroup = ({ id, label, value, onChange, type }: any) => (
-    <div className="space-y-2">
-        <label htmlFor={id} className="block text-sm font-medium text-gray-400 ml-1">{label}</label>
-        <input
-            type={type}
-            id={id}
-            name={id}
-            value={value}
-            onChange={onChange}
-            className="w-full px-5 py-3 rounded-xl border border-white/10 bg-black/40 text-white placeholder-gray-600 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
-            required
-        />
-    </div>
-);
-
-const ContactInfoCard = ({ icon, title, content, link }: any) => (
-    <a href={link} className="flex items-center gap-4 p-5 bg-white/5 border border-white/10 hover:border-primary/50 hover:bg-white/10 rounded-2xl transition-all duration-300 group">
-        <div className="w-12 h-12 rounded-full bg-black/50 flex items-center justify-center text-gray-400 group-hover:text-primary group-hover:scale-110 transition-all border border-white/5">
-            {icon}
-        </div>
-        <div>
-            <h4 className="text-gray-400 text-xs uppercase tracking-wider font-semibold">{title}</h4>
-            <p className="text-white font-medium text-lg group-hover:text-primary transition-colors">{content}</p>
-        </div>
-    </a>
-);

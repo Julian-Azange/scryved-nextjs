@@ -1,140 +1,525 @@
 'use client';
 
-import { motion, Variants } from 'framer-motion';
+import { useState, useEffect, useRef } from 'react';
+import { motion, Variants, AnimatePresence } from 'framer-motion';
 import { useTranslations } from 'next-intl';
-import { ArrowRight, Sparkles } from 'lucide-react';
-import LogoMarquee from '../ui/LogoMarquee';
+import Image from 'next/image';
 
-// Variantes para el efecto cascada (stagger)
+/* ─── Text Slider ─── */
+const TextSlider = () => {
+    const t = useTranslations('Hero');
+    const texts = t.raw('slider_texts') as string[];
+    const [index, setIndex] = useState(0);
+
+    useEffect(() => {
+        const timer = setInterval(() => setIndex((i) => (i + 1) % texts.length), 3500);
+        return () => clearInterval(timer);
+    }, [texts.length]);
+
+    return (
+        <div className="relative h-8 md:h-10 overflow-hidden w-full md:w-[650px] flex justify-end items-center">
+            <AnimatePresence mode="popLayout">
+                <motion.h3
+                    key={index}
+                    initial={{ y: 40, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    exit={{ y: -40, opacity: 0 }}
+                    transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                    className="absolute text-lg md:text-[1.35rem] lg:text-[1.5rem] font-bold tracking-tight uppercase whitespace-nowrap text-right"
+                    style={{ color: 'rgba(255,255,255,0.7)' }}
+                >
+                    {texts[index]}
+                </motion.h3>
+            </AnimatePresence>
+        </div>
+    );
+};
+
+/* ─── Animation Variants ─── */
 const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
         opacity: 1,
-        transition: {
-            staggerChildren: 0.2, // Tiempo entre cada elemento
-            delayChildren: 0.1,
-        },
+        transition: { staggerChildren: 0.15, delayChildren: 0.2 },
     },
 };
 
-const itemVariants: Variants = {
-    hidden: { opacity: 0, y: 30 },
+const titleVariants: Variants = {
+    hidden: { y: "120%", opacity: 0 },
     visible: {
-        opacity: 1,
-        y: 0,
-        transition: { duration: 0.8, ease: [0.25, 0.1, 0.25, 1] } // Easing tipo "Spring" suave
-    },
+        y: 0, opacity: 1,
+        transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] }
+    }
 };
+
+const fadeVariants: Variants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+        opacity: 1, y: 0,
+        transition: { duration: 1, ease: [0.16, 1, 0.3, 1] }
+    }
+};
+
+const glowPulse: Variants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: {
+        opacity: 1, scale: 1,
+        transition: { duration: 2, ease: "easeOut" }
+    }
+};
+
+/* ─── Floating Particles Component ─── */
+const FloatingParticles = () => {
+    const particles = Array.from({ length: 40 }, (_, i) => ({
+        id: i,
+        x: Math.random() * 100,
+        y: Math.random() * 100,
+        size: Math.random() * 3 + 1,
+        duration: Math.random() * 20 + 15,
+        delay: Math.random() * 10,
+        opacity: Math.random() * 0.5 + 0.1,
+    }));
+
+    return (
+        <div className="absolute inset-0 z-[1] pointer-events-none overflow-hidden">
+            {particles.map((p) => (
+                <motion.div
+                    key={p.id}
+                    className="absolute rounded-full"
+                    style={{
+                        width: p.size,
+                        height: p.size,
+                        left: `${p.x}%`,
+                        top: `${p.y}%`,
+                        background: p.id % 3 === 0 ? '#a3e635' : 'rgba(255,255,255,0.4)',
+                    }}
+                    animate={{
+                        y: [0, -30, 0, 20, 0],
+                        x: [0, 15, -10, 5, 0],
+                        opacity: [p.opacity, p.opacity * 1.5, p.opacity, p.opacity * 0.5, p.opacity],
+                    }}
+                    transition={{
+                        duration: p.duration,
+                        repeat: Infinity,
+                        delay: p.delay,
+                        ease: "easeInOut",
+                    }}
+                />
+            ))}
+        </div>
+    );
+};
+
+/* ─── Scroll Down Indicator ─── */
+const ScrollIndicator = () => (
+    <motion.div
+        variants={fadeVariants}
+        className="flex flex-col items-center gap-3"
+    >
+        <div className="relative flex items-center justify-center">
+            <motion.div
+                className="w-2 h-2 rounded-full"
+                style={{ background: '#a3e635' }}
+                animate={{
+                    boxShadow: [
+                        '0 0 4px rgba(163, 230, 53, 0.4)',
+                        '0 0 20px rgba(163, 230, 53, 0.8)',
+                        '0 0 4px rgba(163, 230, 53, 0.4)',
+                    ],
+                }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            />
+        </div>
+        <motion.div
+            className="w-px h-12"
+            style={{ background: 'linear-gradient(to bottom, #a3e635, transparent)' }}
+            animate={{ opacity: [0.3, 1, 0.3] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <span
+            className="text-[10px] font-mono tracking-[0.3em] uppercase"
+            style={{ color: '#a3e635' }}
+        >
+            Scroll Down
+        </span>
+    </motion.div>
+);
+
+/* ─── CSS Keyframes (injected via style tag) ─── */
+const heroStyles = `
+@keyframes hero-orb-float-1 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    25% { transform: translate(50px, -80px) scale(1.1); }
+    50% { transform: translate(-30px, -120px) scale(0.95); }
+    75% { transform: translate(80px, -40px) scale(1.05); }
+}
+@keyframes hero-orb-float-2 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    25% { transform: translate(-60px, 60px) scale(1.15); }
+    50% { transform: translate(40px, 100px) scale(0.9); }
+    75% { transform: translate(-80px, 30px) scale(1.08); }
+}
+@keyframes hero-orb-float-3 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(70px, -50px) scale(1.12); }
+    66% { transform: translate(-40px, 70px) scale(0.92); }
+}
+@keyframes hero-grid-move {
+    0% { transform: perspective(400px) rotateX(60deg) translateY(0); }
+    100% { transform: perspective(400px) rotateX(60deg) translateY(50px); }
+}
+@keyframes hero-shine-sweep {
+    0% { transform: translateX(-200%) rotate(25deg); }
+    100% { transform: translateX(200%) rotate(25deg); }
+}
+@keyframes hero-ring-rotate {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+`;
 
 export default function Hero() {
     const t = useTranslations('Hero');
+    const services = t.raw('services') as string[];
+    const heroRef = useRef<HTMLElement>(null);
 
     return (
-        <section id="home" className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-black pt-32 pb-20">
+        <>
+            <style dangerouslySetInnerHTML={{ __html: heroStyles }} />
+            <section
+                ref={heroRef}
+                id="home"
+                className="relative flex min-h-[100dvh] w-full flex-col justify-center overflow-hidden pt-28 pb-10"
+                style={{ background: '#050505' }}
+            >
+                {/* ═══ ANIMATED BACKGROUND LAYER ═══ */}
+                <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
 
-            {/* --- 1. FONDO DE CUADRÍCULA ANIMADO --- */}
-            <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 2 }}
-                className="absolute inset-0 z-0 h-full w-full bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none"
-            />
+                    {/* Radial vignette overlay */}
+                    <div
+                        className="absolute inset-0"
+                        style={{
+                            background: 'radial-gradient(ellipse 70% 60% at 50% 50%, transparent 0%, #050505 100%)',
+                        }}
+                    />
 
-            {/* --- 2. AURORAS CON RESPIRACIÓN ORGANICA --- */}
-            {/* Capa 1 */}
-            <motion.div
-                animate={{
-                    scale: [1, 1.05, 1],
-                    opacity: [0.5, 0.7, 0.5]
-                }}
-                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute top-[-15%] left-1/2 -translate-x-1/2 h-[600px] w-[1000px] rounded-[100%] bg-primary/30 blur-[120px] pointer-events-none mix-blend-screen z-0"
-            />
+                    {/* Glowing Orb 1 — Large green, top-right */}
+                    <motion.div
+                        variants={glowPulse}
+                        initial="hidden"
+                        animate="visible"
+                        className="absolute"
+                        style={{
+                            top: '-10%',
+                            right: '-5%',
+                            width: '55vw',
+                            height: '55vw',
+                            maxWidth: '800px',
+                            maxHeight: '800px',
+                            borderRadius: '50%',
+                            background: 'radial-gradient(circle, rgba(163, 230, 53, 0.15) 0%, rgba(163, 230, 53, 0.05) 40%, transparent 70%)',
+                            filter: 'blur(80px)',
+                            animation: 'hero-orb-float-1 25s ease-in-out infinite',
+                        }}
+                    />
 
-            {/* Capa 2 */}
-            <motion.div
-                animate={{
-                    scale: [1, 1.1, 1],
-                    opacity: [0.4, 0.6, 0.4]
-                }}
-                transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                className="absolute top-[10%] left-1/2 -translate-x-1/2 h-[400px] w-[700px] rounded-[100%] bg-green-600/20 blur-[100px] pointer-events-none z-0"
-            />
+                    {/* Glowing Orb 2 — Teal/cyan, bottom-left */}
+                    <motion.div
+                        variants={glowPulse}
+                        initial="hidden"
+                        animate="visible"
+                        className="absolute"
+                        style={{
+                            bottom: '-15%',
+                            left: '-10%',
+                            width: '50vw',
+                            height: '50vw',
+                            maxWidth: '700px',
+                            maxHeight: '700px',
+                            borderRadius: '50%',
+                            background: 'radial-gradient(circle, rgba(34, 197, 94, 0.12) 0%, rgba(34, 197, 94, 0.04) 40%, transparent 70%)',
+                            filter: 'blur(100px)',
+                            animation: 'hero-orb-float-2 30s ease-in-out infinite',
+                        }}
+                    />
 
-            {/* --- CONTENIDO PRINCIPAL --- */}
-            <div className="container relative z-10 px-4 md:px-6">
+                    {/* Glowing Orb 3 — Subtle warm green, center */}
+                    <div
+                        className="absolute"
+                        style={{
+                            top: '30%',
+                            left: '40%',
+                            width: '30vw',
+                            height: '30vw',
+                            maxWidth: '500px',
+                            maxHeight: '500px',
+                            borderRadius: '50%',
+                            background: 'radial-gradient(circle, rgba(132, 204, 22, 0.08) 0%, transparent 60%)',
+                            filter: 'blur(60px)',
+                            animation: 'hero-orb-float-3 20s ease-in-out infinite',
+                        }}
+                    />
+
+                    {/* Perspective grid at the bottom */}
+                    <div
+                        className="absolute bottom-0 left-0 right-0 h-[40vh] overflow-hidden"
+                        style={{ opacity: 0.06 }}
+                    >
+                        <div
+                            style={{
+                                width: '200%',
+                                height: '200%',
+                                marginLeft: '-50%',
+                                backgroundImage: `
+                                    linear-gradient(rgba(163, 230, 53, 0.6) 1px, transparent 1px),
+                                    linear-gradient(90deg, rgba(163, 230, 53, 0.6) 1px, transparent 1px)
+                                `,
+                                backgroundSize: '60px 60px',
+                                animation: 'hero-grid-move 8s linear infinite',
+                                transformOrigin: 'center top',
+                            }}
+                        />
+                    </div>
+
+                    {/* Circular ring accent — decorative */}
+                    <div
+                        className="absolute"
+                        style={{
+                            top: '20%',
+                            right: '10%',
+                            width: '400px',
+                            height: '400px',
+                            borderRadius: '50%',
+                            border: '1px solid rgba(163, 230, 53, 0.06)',
+                            animation: 'hero-ring-rotate 60s linear infinite',
+                        }}
+                    />
+                    <div
+                        className="absolute"
+                        style={{
+                            top: '18%',
+                            right: '8%',
+                            width: '450px',
+                            height: '450px',
+                            borderRadius: '50%',
+                            border: '1px solid rgba(163, 230, 53, 0.03)',
+                            animation: 'hero-ring-rotate 80s linear infinite reverse',
+                        }}
+                    />
+
+                    {/* Noise texture overlay */}
+                    <div
+                        className="absolute inset-0"
+                        style={{
+                            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E")`,
+                            opacity: 0.5,
+                        }}
+                    />
+
+                    {/* Floating particles */}
+                    <FloatingParticles />
+                </div>
+
+                {/* ═══ CONTENT ═══ */}
                 <motion.div
                     variants={containerVariants}
                     initial="hidden"
                     animate="visible"
-                    className="mx-auto flex max-w-5xl flex-col items-center text-center"
+                    className="w-full relative z-10 px-6 md:px-12 lg:px-16 xl:px-20 2xl:px-28 mx-auto max-w-[1920px] flex flex-col justify-between h-full min-h-[75vh]"
                 >
-                    {/* BADGE TIPO CÁPSULA */}
-                    <motion.div variants={itemVariants} className="mb-8">
-                        <div className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-5 py-2 backdrop-blur-md shadow-2xl transition-colors hover:bg-white/10">
-                            <span className="relative flex h-2.5 w-2.5 mr-3">
-                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary shadow-[0_0_12px_#a3e635]"></span>
-                            </span>
-                            <span className="text-sm font-medium text-gray-200 tracking-wide flex items-center gap-2">
-                                {t('badge')} <Sparkles size={14} className="text-primary" />
-                            </span>
+                    {/* TOP METADATA */}
+                    <motion.div
+                        variants={fadeVariants}
+                        className="flex justify-between items-start w-full font-medium text-[11px] md:text-xs tracking-tight mb-6 md:mb-8"
+                        style={{ color: 'rgba(255,255,255,0.35)' }}
+                    >
+                        <div className="flex items-center gap-2">
+                            <span
+                                className="inline-block w-1.5 h-1.5 rounded-full"
+                                style={{ background: '#a3e635' }}
+                            />
+                            <span>(©2018 — ©2026)</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                            <span>{t('based_in')}</span>
                         </div>
                     </motion.div>
 
-                    {/* TÍTULO PRINCIPAL */}
-                    <motion.div variants={itemVariants} className="mb-6">
-                        <h1 className="text-5xl font-extrabold tracking-tight text-white sm:text-7xl xl:text-8xl leading-[1.1] drop-shadow-2xl">
-                            <span className="block">{t('title_line1')}</span>
-                            <span className="block text-transparent bg-clip-text bg-gradient-to-br from-white via-gray-200 to-gray-500 pb-4">
-                                {t('title_line2')}
+                    {/* CENTER BLOCK */}
+                    <div className="flex flex-col justify-center flex-grow w-full py-4 md:py-8">
+
+                        {/* TAG LINE */}
+                        <motion.div
+                            variants={fadeVariants}
+                            className="flex items-center gap-3 mb-6 md:mb-8"
+                        >
+                            <span
+                                className="inline-block w-2 h-2 rounded-sm"
+                                style={{ background: '#a3e635' }}
+                            />
+                            <span
+                                className="text-[11px] md:text-xs font-mono tracking-[0.25em] uppercase"
+                                style={{ color: '#a3e635' }}
+                            >
+                                Software Studio
                             </span>
-                        </h1>
-                    </motion.div>
+                        </motion.div>
 
-                    {/* SUBTÍTULO */}
-                    <motion.div variants={itemVariants}>
-                        <p className="mb-10 max-w-2xl text-lg text-gray-400 md:text-xl leading-relaxed font-light">
-                            {t('subtitle')}
-                        </p>
-                    </motion.div>
-
-                    {/* BOTONES (Añadí un botón secundario para dar balance visual) */}
-                    <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4">
-                        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                            <a
-                                href="#contact"
-                                className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-white px-8 py-4 text-base font-bold text-black transition-all hover:bg-gray-200 shadow-[0_0_40px_-10px_rgba(255,255,255,0.4)]"
-                            >
-                                <span>{t('cta_primary')}</span>
-                                <div className="flex h-7 w-7 items-center justify-center rounded-full bg-black text-white transition-transform duration-300 group-hover:translate-x-1">
-                                    <ArrowRight size={16} />
+                        {/* HUGE TITLE — Split style like the reference */}
+                        <div className="w-full mb-6 md:mb-10 overflow-hidden">
+                            <motion.div variants={titleVariants} className="flex flex-col">
+                                {/* Line 1 */}
+                                <div className="flex items-baseline gap-3 md:gap-6">
+                                    <h1
+                                        className="text-[clamp(3rem,10vw,15rem)] leading-[0.85] font-bold tracking-[-0.04em] uppercase"
+                                        style={{ color: '#ffffff' }}
+                                    >
+                                        {t('title_line1')}
+                                    </h1>
+                                    {/* Year badge — like reference */}
+                                    <motion.span
+                                        variants={fadeVariants}
+                                        className="hidden md:inline-block text-[11px] font-mono tracking-wide self-start mt-4"
+                                        style={{ color: '#a3e635' }}
+                                    >
+                                        © 2026
+                                    </motion.span>
                                 </div>
-                            </a>
-                        </motion.div>
+                                {/* Line 2 — Italic accent */}
+                                <div className="flex items-start gap-2 md:gap-4 flex-wrap">
+                                    <span
+                                        className="text-[clamp(3rem,10vw,15rem)] leading-[0.85] font-bold tracking-[-0.04em] italic"
+                                        style={{ color: '#a3e635' }}
+                                    >
+                                        {t('title_line2')}
+                                    </span>
+                                    <span
+                                        className="text-xl md:text-3xl lg:text-5xl ml-1 md:ml-2 mt-1 md:mt-3 font-bold"
+                                        style={{ color: '#a3e635' }}
+                                    >
+                                        ®
+                                    </span>
+                                </div>
+                            </motion.div>
+                        </div>
 
-                        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                            <a
-                                href="#portfolio"
-                                className="group inline-flex items-center gap-2 rounded-full border border-white/20 bg-transparent px-8 py-4 text-base font-medium text-white transition-all hover:bg-white/5"
-                            >
-                                <span>Ver Portafolio</span>
-                            </a>
+                        {/* MIDDLE SECTION: Info + Slider — like the reference's subtitle area */}
+                        <motion.div
+                            variants={fadeVariants}
+                            className="flex flex-col md:flex-row justify-between items-start md:items-center w-full gap-8"
+                        >
+                            {/* Left: Avatars & Stats */}
+                            <div className="flex items-center gap-3">
+                                <div className="flex -space-x-2 md:-space-x-3">
+                                    <div
+                                        className="w-7 h-7 md:w-9 md:h-9 rounded-full overflow-hidden relative z-40"
+                                        style={{ border: '2px solid rgba(163, 230, 53, 0.4)' }}
+                                    >
+                                        <Image src="/assets/team/julian.jpg" alt="Julian CEO" fill className="object-cover" />
+                                    </div>
+                                    <div
+                                        className="w-7 h-7 md:w-9 md:h-9 rounded-full overflow-hidden relative z-30"
+                                        style={{ border: '2px solid rgba(163, 230, 53, 0.3)' }}
+                                    >
+                                        <Image src="/assets/team/fabian.jpeg" alt="Fabian CO-CEO" fill className="object-cover" />
+                                    </div>
+                                    <div
+                                        className="w-7 h-7 md:w-9 md:h-9 rounded-full overflow-hidden relative z-20"
+                                        style={{ border: '2px solid rgba(163, 230, 53, 0.2)' }}
+                                    >
+                                        <Image src="/assets/team/tobias.jpg" alt="Tobias CTO" fill className="object-cover" />
+                                    </div>
+                                    <div
+                                        className="w-7 h-7 md:w-9 md:h-9 rounded-full overflow-hidden relative z-10"
+                                        style={{ border: '2px solid rgba(163, 230, 53, 0.15)' }}
+                                    >
+                                        <Image src="/assets/team/extra.jpg" alt="Team Member" fill className="object-cover" />
+                                    </div>
+                                </div>
+                                <div className="flex flex-col justify-center gap-[1px]">
+                                    <span className="font-bold text-[10px] md:text-[11px] leading-none" style={{ color: '#ffffff' }}>
+                                        4.9/5
+                                    </span>
+                                    <span
+                                        className="text-[8px] md:text-[9px] font-mono tracking-widest uppercase leading-none"
+                                        style={{ color: 'rgba(255,255,255,0.35)' }}
+                                    >
+                                        BASED ON 230 REVIEWS
+                                    </span>
+                                </div>
+                            </div>
+
+                            {/* Right: Vertical Text Slider */}
+                            <div className="flex justify-start md:justify-end w-full md:w-auto">
+                                <TextSlider />
+                            </div>
                         </motion.div>
+                    </div>
+
+                    {/* BOTTOM SECTION */}
+                    <motion.div
+                        variants={fadeVariants}
+                        className="flex flex-col md:flex-row justify-between items-start w-full mb-8 md:mb-10 gap-10 md:gap-4"
+                    >
+                        {/* Left: Description */}
+                        <div className="max-w-[280px] md:max-w-[320px] w-full">
+                            <p className="text-[14px] md:text-[15px] font-medium tracking-tight leading-[1.4]" style={{ color: 'rgba(255,255,255,0.7)' }}>
+                                {t('description_part1')}
+                                <span style={{ color: 'rgba(255,255,255,0.35)' }}>{t('description_part2')}</span>
+                                {' '}{t('description_part3')}
+                            </p>
+                        </div>
+
+                        {/* Center: Scroll indicator */}
+                        <div className="hidden md:flex justify-center">
+                            <ScrollIndicator />
+                        </div>
+
+                        {/* Right: Services List */}
+                        <div className="flex flex-col gap-2 min-w-[220px] w-full md:w-auto md:items-start text-left">
+                            {services.map((service, i) => (
+                                <div
+                                    key={i}
+                                    className="flex items-center gap-2.5 transition-colors cursor-default group"
+                                >
+                                    <span
+                                        className="text-[9px] md:text-[10px] font-mono uppercase"
+                                        style={{ color: 'rgba(163, 230, 53, 0.5)' }}
+                                    >
+                                        0{i + 1})
+                                    </span>
+                                    <span
+                                        className="text-[13px] md:text-[14px] font-medium tracking-tight group-hover:text-white/50 transition-colors"
+                                        style={{ color: 'rgba(255,255,255,0.7)' }}
+                                    >
+                                        {service}
+                                    </span>
+                                </div>
+                            ))}
+                        </div>
+                    </motion.div>
+
+                    {/* BRANDS LOGOS */}
+                    <motion.div
+                        variants={fadeVariants}
+                        className="w-full flex justify-between items-center gap-6 overflow-hidden pt-4 md:pt-6"
+                        style={{ borderTop: '1px solid rgba(163, 230, 53, 0.08)' }}
+                    >
+                        <div className="relative w-24 md:w-36 lg:w-48 h-8 md:h-10 lg:h-12 opacity-40 hover:opacity-80 transition-all duration-300" style={{ filter: 'brightness(0) invert(1)' }}>
+                            <Image src="/assets/brands/smartpay.png" alt="SmartPay" fill className="object-contain object-left" />
+                        </div>
+                        <div className="relative w-24 md:w-36 lg:w-48 h-8 md:h-10 lg:h-12 opacity-40 hover:opacity-80 transition-all duration-300" style={{ filter: 'brightness(0) invert(1)' }}>
+                            <Image src="/assets/brands/finanlock.png" alt="FinanLock" fill className="object-contain" />
+                        </div>
+                        <div className="relative w-24 md:w-36 lg:w-48 h-8 md:h-10 lg:h-12 opacity-40 hover:opacity-80 transition-all duration-300" style={{ filter: 'brightness(0) invert(1)' }}>
+                            <Image src="/assets/brands/osmarpay.png" alt="OsmarPay" fill className="object-contain" />
+                        </div>
+                        <div className="relative w-24 md:w-36 lg:w-48 h-8 md:h-10 lg:h-12 opacity-40 hover:opacity-80 transition-all duration-300" style={{ filter: 'brightness(0) invert(1)' }}>
+                            <Image src="/assets/brands/fono.png" alt="FonoSalud" fill className="object-contain object-right" />
+                        </div>
                     </motion.div>
                 </motion.div>
-            </div>
-
-            {/* --- SLIDER DE LOGOS --- */}
-            <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.2, duration: 1 }}
-                className="relative mt-24 w-full max-w-[1400px] mx-auto z-10"
-            >
-                <div className="absolute inset-0 -z-10 h-full w-full bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.04),transparent_60%)] pointer-events-none" />
-                <LogoMarquee />
-            </motion.div>
-        </section>
+            </section>
+        </>
     );
 }

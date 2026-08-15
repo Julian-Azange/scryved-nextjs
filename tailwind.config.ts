@@ -19,61 +19,46 @@ const config = {
         },
         extend: {
             fontFamily: {
-                sans: ["var(--font-poppins)", "Inter Placeholder", "sans-serif"],
+                sans: ["var(--font-geist-sans)", "Inter", "sans-serif"],
+                mono: ["var(--font-geist-mono)", "monospace"],
             },
             colors: {
                 border: "hsl(var(--border))",
                 input: "hsl(var(--input))",
-                ring: "#7bcb3b", // Usamos tu verde principal para el anillo de foco
+                ring: "hsl(var(--ring))",
 
-                // --- TU PALETA PERSONALIZADA APLICADA AQUI ---
+                // --- SYLVEN PALETTE ---
+                background: "#ececec",
+                foreground: "#171717",
 
-                // Fondo de la página (Tu antiguo 'primary')
-                background: "#02020A",
-                foreground: "#ffffff", // Texto blanco sobre fondo oscuro
-
-                // Color Principal - Botones y acciones (Tu antiguo 'accent')
                 primary: {
-                    DEFAULT: "#7bcb3b",
-                    foreground: "#02020A", // Texto oscuro sobre botón verde
-                    dark: "#68a932",       // Para hover
-                },
-
-                // Color Secundario - Elementos destacados (Tu antiguo 'secondary')
-                secondary: {
-                    DEFAULT: "#a3e635",
-                    foreground: "#02020A",
-                    dark: "#84cc16",       // Para hover
-                },
-
-                // Tu color personalizado Devil
-                devil: {
-                    DEFAULT: "#0c0d0c",
-                    dark: "#0c0d0c",
-                },
-
-                // Un color oscuro extra para tarjetas o menús (Tu antiguo 'primary-dark')
-                card: {
-                    DEFAULT: "#0c0d0c", // Usando tu tono devil/dark como base de tarjetas
+                    DEFAULT: "#171717",
                     foreground: "#ffffff",
+                    dark: "#000000",
+                },
+
+                secondary: {
+                    DEFAULT: "#ffffff",
+                    foreground: "#171717",
+                },
+
+                accent: {
+                    DEFAULT: "#D2FF3A", // Lime-yellow accent
+                    cyan: "#63E6FF",    // Cyan accent
+                    foreground: "#171717",
+                },
+
+                card: {
+                    DEFAULT: "#ffffff",
+                    foreground: "#171717",
                 },
                 popover: {
-                    DEFAULT: "#010105", // Tu antiguo 'primary-dark'
-                    foreground: "#ffffff",
-                },
-
-                // Colores de sistema (Mantenemos los defaults o los oscurecemos)
-                destructive: {
-                    DEFAULT: "hsl(var(--destructive))",
-                    foreground: "hsl(var(--destructive-foreground))",
+                    DEFAULT: "#ffffff",
+                    foreground: "#171717",
                 },
                 muted: {
-                    DEFAULT: "#1a1a20", // Un gris oscuro para texto secundario
-                    foreground: "#a1a1aa",
-                },
-                accent: {
-                    DEFAULT: "#1a1a20", // Para efectos hover en listas
-                    foreground: "#ffffff",
+                    DEFAULT: "#a3a3a3", // Light gray for text
+                    foreground: "#525252", // Darker gray text
                 },
             },
             borderRadius: {

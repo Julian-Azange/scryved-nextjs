@@ -97,7 +97,7 @@ export default function FinanLock() {
     ];
 
     return (
-        <section id="finanlock" ref={sectionRef} className="relative py-24 min-h-screen bg-black overflow-hidden flex items-center">
+        <section id="finanlock" ref={sectionRef} className="relative py-24 min-h-screen bg-transparent overflow-hidden flex items-center">
 
             {/* --- BACKGROUND EFFECTS --- */}
             {/* Glow de fondo (Verde y Azul sutil) */}

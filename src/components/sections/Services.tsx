@@ -1,171 +1,319 @@
 'use client';
 
+import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { motion, Variants } from 'framer-motion';
-// Actualicé algunos iconos a versiones más elegantes de Lucide
-import { Code2, Smartphone, Cpu, Cloud, PenTool, ShieldCheck, Sparkles } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { cn } from '@/src/lib/utils';
-
-// Mapeo de iconos actualizado para un look más técnico/premium
-const iconMap: Record<string, any> = {
-    'web': Code2,
-    'mobile': Smartphone,
-    'custom_software': Cpu,
-    'ui_ux': PenTool,
-    'devops': Cloud,
-    'qa': ShieldCheck,
-};
 
 interface ServiceItem {
     id: string;
     title: string;
     description: string;
     features: string[];
+    cta?: string;
 }
+
+/* ─── Animation Variants ─── */
+const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: { staggerChildren: 0.08, delayChildren: 0.15 },
+    },
+};
+
+const fadeUp: Variants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+        opacity: 1, y: 0,
+        transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] }
+    }
+};
+
+/* ─── CSS Keyframes ─── */
+const servicesStyles = `
+@keyframes services-orb-1 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    25% { transform: translate(30px, -50px) scale(1.06); }
+    50% { transform: translate(-20px, -80px) scale(0.97); }
+    75% { transform: translate(50px, -30px) scale(1.03); }
+}
+@keyframes services-orb-2 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(-40px, 50px) scale(1.08); }
+    66% { transform: translate(25px, 70px) scale(0.94); }
+}
+`;
+
+/* ─── Service Icon Map ─── */
+const serviceIcons: Record<string, string> = {
+    web: '◇',
+    mobile: '◈',
+    custom_software: '⬡',
+    ui_ux: '◎',
+    devops: '⬢',
+    qa: '△',
+};
 
 export default function Services() {
     const t = useTranslations('Services');
     const services = t.raw('items') as ServiceItem[];
-
-    // Animaciones
-    const container: Variants = {
-        hidden: { opacity: 0 },
-        show: {
-            opacity: 1,
-            transition: {
-                staggerChildren: 0.15,
-                delayChildren: 0.1
-            }
-        }
-    };
-
-    const itemVariant: Variants = {
-        hidden: { opacity: 0, y: 40 },
-        show: {
-            opacity: 1,
-            y: 0,
-            transition: { duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }
-        }
-    };
+    const [hoveredIndex, setHoveredIndex] = useState<number | null>(0);
 
     return (
-        <section id="services" className="relative py-32 overflow-hidden bg-black">
+        <>
+            <style dangerouslySetInnerHTML={{ __html: servicesStyles }} />
+            <section
+                id="services"
+                className="relative overflow-hidden"
+                style={{ background: '#050505' }}
+            >
+                {/* ═══ Animated Background ═══ */}
+                <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+                    {/* Orb 1 — top-right */}
+                    <div
+                        className="absolute"
+                        style={{
+                            top: '-10%',
+                            right: '-8%',
+                            width: '40vw',
+                            height: '40vw',
+                            maxWidth: '600px',
+                            maxHeight: '600px',
+                            borderRadius: '50%',
+                            background: 'radial-gradient(circle, rgba(163, 230, 53, 0.08) 0%, rgba(163, 230, 53, 0.02) 40%, transparent 70%)',
+                            filter: 'blur(80px)',
+                            animation: 'services-orb-1 24s ease-in-out infinite',
+                        }}
+                    />
+                    {/* Orb 2 — bottom-left */}
+                    <div
+                        className="absolute"
+                        style={{
+                            bottom: '-10%',
+                            left: '-8%',
+                            width: '35vw',
+                            height: '35vw',
+                            maxWidth: '500px',
+                            maxHeight: '500px',
+                            borderRadius: '50%',
+                            background: 'radial-gradient(circle, rgba(34, 197, 94, 0.06) 0%, transparent 60%)',
+                            filter: 'blur(90px)',
+                            animation: 'services-orb-2 30s ease-in-out infinite',
+                        }}
+                    />
+                    {/* Noise */}
+                    <div
+                        className="absolute inset-0"
+                        style={{
+                            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E")`,
+                            opacity: 0.4,
+                        }}
+                    />
+                    {/* Top line accent */}
+                    <div
+                        className="absolute top-0 left-0 right-0 h-px"
+                        style={{
+                            background: 'linear-gradient(90deg, transparent, rgba(163, 230, 53, 0.12), transparent)',
+                        }}
+                    />
+                </div>
 
-            {/* --- 1. FONDO DE CUADRÍCULA ANIMADO Y DEGRADADO (Estilo Hero) --- */}
-            <div className="absolute inset-0 z-0 h-full w-full bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none" />
-
-            {/* Auroras de fondo para dar volumen */}
-            <div className="absolute top-1/4 -left-1/4 w-[800px] h-[800px] bg-primary/10 rounded-full blur-[150px] opacity-40 pointer-events-none" />
-            <div className="absolute bottom-0 -right-1/4 w-[600px] h-[600px] bg-green-600/10 rounded-full blur-[120px] opacity-30 pointer-events-none" />
-
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-
-                {/* --- HEADER DE LA SECCIÓN --- */}
+                {/* ═══ Content ═══ */}
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-100px" }}
-                    transition={{ duration: 0.6 }}
-                    className="text-center mb-20 flex flex-col items-center"
-                >
-                    {/* Badge */}
-                    <div className="mb-6 inline-flex items-center rounded-full border border-white/10 bg-white/5 px-5 py-2 backdrop-blur-md shadow-xl">
-                        <span className="relative flex h-2.5 w-2.5 mr-3">
-                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary shadow-[0_0_12px_#a3e635]"></span>
-                        </span>
-                        <span className="text-sm font-medium text-gray-200 tracking-wide flex items-center gap-2">
-                            {t('tag')} <Sparkles size={14} className="text-primary/70" />
-                        </span>
-                    </div>
-
-                    {/* Título */}
-                    <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 leading-[1.1]">
-                        <span className="text-white">{t('title_part1')} </span>
-                        <span className="bg-gradient-to-br from-primary via-green-400 to-green-600 bg-clip-text text-transparent drop-shadow-sm">
-                            {t('title_part2')}
-                        </span>
-                    </h2>
-
-                    <p className="text-gray-400 max-w-2xl mx-auto text-lg font-light leading-relaxed">
-                        {t('subtitle')}
-                    </p>
-                </motion.div>
-
-                {/* --- GRID DE SERVICIOS --- */}
-                <motion.div
-                    variants={container}
+                    variants={containerVariants}
                     initial="hidden"
-                    whileInView="show"
-                    viewport={{ once: true, margin: "-100px" }}
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 xl:gap-8"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.15 }}
+                    className="relative z-10 w-full px-6 md:px-12 lg:px-16 xl:px-20 2xl:px-28 mx-auto max-w-[1920px] py-20 md:py-28 lg:py-32"
                 >
-                    {services.map((service) => {
-                        const Icon = iconMap[service.id] || Code2;
-
-                        return (
-                            <motion.div
-                                key={service.id}
-                                variants={itemVariant}
-                                whileHover={{ y: -8, scale: 1.01 }}
-                                className="group relative"
+                    {/* ─── Header ─── */}
+                    {/* ─── Header ─── */}
+                    <motion.div
+                        variants={fadeUp}
+                        className="flex flex-col mb-16 md:mb-24 w-full"
+                    >
+                        {/* Top row: Tag and Section Counter */}
+                        <div className="flex justify-between items-start w-full mb-8 md:mb-12">
+                            {/* Tag */}
+                            <div
+                                className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full text-[11px] font-semibold tracking-[0.2em] uppercase"
+                                style={{
+                                    border: '1px solid rgba(163, 230, 53, 0.2)',
+                                    background: 'rgba(163, 230, 53, 0.05)',
+                                    color: '#a3e635',
+                                }}
                             >
-                                <div className={cn(
-                                    'relative h-full flex flex-col p-8 rounded-[2rem]',
-                                    'bg-white/[0.02] border border-white/5',
-                                    'backdrop-blur-xl overflow-hidden',
-                                    'transition-all duration-500 ease-out',
-                                    'hover:bg-white/[0.04] hover:border-primary/30',
-                                    'hover:shadow-[0_0_40px_-15px_rgba(163,230,53,0.15)]'
-                                )}>
-                                    {/* Resplandor interior en hover */}
-                                    <div className="absolute -top-24 -right-24 w-48 h-48 bg-primary/20 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                                <span
+                                    className="w-1.5 h-1.5 rounded-full animate-pulse"
+                                    style={{ background: '#a3e635' }}
+                                />
+                                {t('tag')}
+                            </div>
 
-                                    <div className="relative z-10 flex flex-col h-full">
+                            {/* Section counter */}
+                            <div className="hidden md:flex flex-col items-end gap-1">
+                                <span
+                                    className="text-[11px] font-mono tracking-widest uppercase"
+                                    style={{ color: 'rgba(255,255,255,0.25)' }}
+                                >
+                                    [02]
+                                </span>
+                                <span
+                                    className="text-[11px] font-mono tracking-widest"
+                                    style={{ color: '#a3e635' }}
+                                >
+                                    // SERVICIOS
+                                </span>
+                            </div>
+                        </div>
 
-                                        {/* Icono Premium Refinado */}
-                                        <div className={cn(
-                                            'relative w-16 h-16 rounded-2xl flex items-center justify-center mb-8',
-                                            'bg-gradient-to-b from-white/5 to-transparent border border-white/10 shadow-inner',
-                                            'group-hover:from-primary/10 group-hover:border-primary/40',
-                                            'transition-all duration-500 overflow-hidden'
-                                        )}>
-                                            {/* Efecto de borde superior brillante (Glass reflection) */}
-                                            <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-50 group-hover:via-primary/60 transition-colors duration-500" />
+                        {/* Huge Title Container (Hero Style) */}
+                        <div className="w-full flex flex-col mb-8 overflow-hidden">
+                            <h2
+                                className="text-[clamp(3.5rem,10vw,14rem)] font-bold tracking-tighter leading-[0.85] uppercase"
+                                style={{ color: '#ffffff' }}
+                            >
+                                {t('title_part1')}
+                            </h2>
+                            <div className="flex items-start">
+                                <span
+                                    className="text-[clamp(3.5rem,10vw,14rem)] font-bold tracking-tighter leading-[0.85] italic uppercase"
+                                    style={{ color: '#a3e635' }}
+                                >
+                                    {t('title_part2')}
+                                </span>
+                            </div>
+                        </div>
 
-                                            {/* Icono con trazo fino (strokeWidth) y efecto glow en hover */}
-                                            <Icon
-                                                strokeWidth={1.5}
-                                                className="w-8 h-8 text-gray-300 group-hover:text-primary transition-all duration-500 drop-shadow-[0_0_10px_rgba(255,255,255,0.1)] group-hover:drop-shadow-[0_0_15px_rgba(163,230,53,0.6)] group-hover:scale-110"
-                                            />
+                        {/* Subtitle */}
+                        <p
+                            className="text-[clamp(0.95rem,1.5vw,1.25rem)] font-medium max-w-xl leading-relaxed"
+                            style={{ color: 'rgba(255,255,255,0.45)' }}
+                        >
+                            {t('subtitle')}
+                        </p>
+                    </motion.div>
+
+                    {/* ─── Services Accordion ─── */}
+                    <motion.div
+                        variants={fadeUp}
+                        className="w-full flex flex-col"
+                        style={{ borderTop: '1px solid rgba(163, 230, 53, 0.1)' }}
+                    >
+                        {services.map((service, index) => {
+                            const isHovered = hoveredIndex === index;
+                            const icon = serviceIcons[service.id] || '◆';
+
+                            return (
+                                <div
+                                    key={service.id}
+                                    className="group cursor-pointer transition-colors duration-500"
+                                    style={{
+                                        borderBottom: '1px solid rgba(163, 230, 53, 0.08)',
+                                    }}
+                                    onMouseEnter={() => setHoveredIndex(index)}
+                                >
+                                    <div className="flex flex-col md:flex-row py-6 md:py-8 transition-all duration-500 ease-out">
+
+                                        {/* Number & Title */}
+                                        <div className="w-full md:w-1/2 flex items-start gap-6 md:gap-10">
+                                            <span
+                                                className="text-[11px] md:text-sm font-mono mt-2 transition-colors duration-500"
+                                                style={{
+                                                    color: isHovered ? '#a3e635' : 'rgba(255,255,255,0.2)',
+                                                }}
+                                            >
+                                                {(index + 1).toString().padStart(2, '0')})
+                                            </span>
+                                            <div className="flex items-center gap-3 md:gap-4">
+                                                {/* Icon */}
+                                                <span
+                                                    className="text-lg md:text-xl transition-all duration-500"
+                                                    style={{
+                                                        color: isHovered ? '#a3e635' : 'rgba(255,255,255,0.15)',
+                                                        transform: isHovered ? 'scale(1.2)' : 'scale(1)',
+                                                    }}
+                                                >
+                                                    {icon}
+                                                </span>
+                                                <h3
+                                                    className={cn(
+                                                        "text-[clamp(1.4rem,3vw,2.8rem)] font-bold tracking-tighter transition-colors duration-500"
+                                                    )}
+                                                    style={{
+                                                        color: isHovered ? '#ffffff' : 'rgba(255,255,255,0.5)',
+                                                    }}
+                                                >
+                                                    {service.title}
+                                                </h3>
+                                            </div>
                                         </div>
 
-                                        {/* Título y Descripción */}
-                                        <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-primary transition-colors duration-300 tracking-tight">
-                                            {service.title}
-                                        </h3>
-                                        <p className="text-gray-400 text-base leading-relaxed mb-8 flex-grow font-light">
-                                            {service.description}
-                                        </p>
+                                        {/* Expandable Content */}
+                                        <div className="w-full md:w-1/2 mt-4 md:mt-0 pl-12 md:pl-0">
+                                            <motion.div
+                                                initial={false}
+                                                animate={{
+                                                    height: isHovered ? "auto" : 0,
+                                                    opacity: isHovered ? 1 : 0
+                                                }}
+                                                className="overflow-hidden"
+                                                transition={{ duration: 0.5, ease: [0.19, 1, 0.22, 1] }}
+                                            >
+                                                <div className="pb-4 md:pb-6">
+                                                    <p
+                                                        className="text-[clamp(0.9rem,1.2vw,1.1rem)] leading-relaxed mb-6"
+                                                        style={{ color: 'rgba(255,255,255,0.5)' }}
+                                                    >
+                                                        {service.description}
+                                                    </p>
 
-                                        {/* Lista de características (Sin botón debajo, esta es la última parte visual) */}
-                                        <ul className="space-y-3 mb-2">
-                                            {(service.features || []).slice(0, 3).map((feature, i) => (
-                                                <li key={i} className="flex items-center gap-3 text-sm text-gray-400 group-hover:text-gray-300 transition-colors">
-                                                    <div className="w-1.5 h-1.5 rounded-full bg-primary/80 flex-shrink-0 group-hover:bg-primary group-hover:shadow-[0_0_8px_#a3e635] transition-all" />
-                                                    <span className="font-medium tracking-wide">{feature}</span>
-                                                </li>
-                                            ))}
-                                        </ul>
+                                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
+                                                        {(service.features || []).map((feature, i) => (
+                                                            <div key={i} className="flex items-center gap-2.5">
+                                                                <div
+                                                                    className="w-1 h-1 rounded-full"
+                                                                    style={{ background: '#a3e635' }}
+                                                                />
+                                                                <span
+                                                                    className="text-sm font-medium"
+                                                                    style={{ color: 'rgba(255,255,255,0.7)' }}
+                                                                >
+                                                                    {feature}
+                                                                </span>
+                                                            </div>
+                                                        ))}
+                                                    </div>
 
+                                                    <button
+                                                        className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] transition-all duration-300 group/btn"
+                                                        style={{ color: '#a3e635' }}
+                                                    >
+                                                        <span>{service.cta || t('learn_more')}</span>
+                                                        <ArrowUpRight
+                                                            className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5"
+                                                        />
+                                                    </button>
+                                                </div>
+                                            </motion.div>
+                                        </div>
                                     </div>
                                 </div>
-                            </motion.div>
-                        );
-                    })}
+                            );
+                        })}
+                    </motion.div>
                 </motion.div>
 
-            </div>
-        </section>
+                {/* Bottom line accent */}
+                <div
+                    className="absolute bottom-0 left-0 right-0 h-px z-10"
+                    style={{
+                        background: 'linear-gradient(90deg, transparent, rgba(163, 230, 53, 0.1), transparent)',
+                    }}
+                />
+            </section>
+        </>
     );
 }
