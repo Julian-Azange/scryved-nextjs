@@ -7,102 +7,34 @@ import { MetadataRoute } from 'next';
 export default function sitemap(): MetadataRoute.Sitemap {
     const baseUrl = 'https://scryved.com';
 
-    const routes = [
-        // Rutas principales
-        {
-            url: `${baseUrl}/`,
-            lastModified: new Date(),
-            changeFrequency: 'weekly' as const,
-            priority: 1.0,
-        },
-        {
-            url: `${baseUrl}/es`,
-            lastModified: new Date(),
-            changeFrequency: 'weekly' as const,
-            priority: 0.9,
-        },
-        {
-            url: `${baseUrl}/en`,
-            lastModified: new Date(),
-            changeFrequency: 'weekly' as const,
-            priority: 0.9,
-        },
-        // Secciones principales en Español
-        {
-            url: `${baseUrl}/es/servicios`,
-            lastModified: new Date(),
-            changeFrequency: 'weekly' as const,
-            priority: 0.9,
-        },
-        {
-            url: `${baseUrl}/es/nosotros`,
-            lastModified: new Date(),
-            changeFrequency: 'monthly' as const,
-            priority: 0.8,
-        },
-        {
-            url: `${baseUrl}/es/proyectos`,
-            lastModified: new Date(),
-            changeFrequency: 'weekly' as const,
-            priority: 0.8,
-        },
-        {
-            url: `${baseUrl}/es/seguridad`,
-            lastModified: new Date(),
-            changeFrequency: 'weekly' as const,
-            priority: 0.9,
-        },
-        {
-            url: `${baseUrl}/es/contacto`,
-            lastModified: new Date(),
-            changeFrequency: 'monthly' as const,
-            priority: 0.8,
-        },
-        // Secciones principales en Inglés
-        {
-            url: `${baseUrl}/en/services`,
-            lastModified: new Date(),
-            changeFrequency: 'weekly' as const,
-            priority: 0.8,
-        },
-        {
-            url: `${baseUrl}/en/about`,
-            lastModified: new Date(),
-            changeFrequency: 'monthly' as const,
-            priority: 0.7,
-        },
-        {
-            url: `${baseUrl}/en/projects`,
-            lastModified: new Date(),
-            changeFrequency: 'weekly' as const,
-            priority: 0.7,
-        },
-        {
-            url: `${baseUrl}/en/security`,
-            lastModified: new Date(),
-            changeFrequency: 'weekly' as const,
-            priority: 0.8,
-        },
-        {
-            url: `${baseUrl}/en/contact`,
-            lastModified: new Date(),
-            changeFrequency: 'monthly' as const,
-            priority: 0.7,
-        },
-        // Páginas legales
-        {
-            url: `${baseUrl}/es/politica-privacidad`,
-            lastModified: new Date(),
-            changeFrequency: 'yearly' as const,
-            priority: 0.5,
-        },
-        {
-            url: `${baseUrl}/es/terminos-servicio`,
-            lastModified: new Date(),
-            changeFrequency: 'yearly' as const,
-            priority: 0.5,
-        },
+    // Todas las rutas reales soportadas en la aplicación
+    const paths = [
+        { path: '', priority: 1.0, changeFrequency: 'weekly' as const },
+        { path: '/about', priority: 0.9, changeFrequency: 'monthly' as const },
+        { path: '/team', priority: 0.8, changeFrequency: 'monthly' as const },
     ];
+
+    const locales = ['es', 'en'];
+
+    const routes: MetadataRoute.Sitemap = [];
+
+    // Para cada ruta, generar las versiones localizadas
+    paths.forEach(({ path, priority, changeFrequency }) => {
+        locales.forEach((locale) => {
+            routes.push({
+                url: `${baseUrl}/${locale}${path}`,
+                lastModified: new Date(),
+                changeFrequency,
+                priority,
+                alternates: {
+                    languages: {
+                        es: `${baseUrl}/es${path}`,
+                        en: `${baseUrl}/en${path}`,
+                    },
+                },
+            });
+        });
+    });
 
     return routes;
 }

@@ -20,10 +20,47 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "Scryved - Software Solutions",
-  description: "Desarrollo de software a medida y soluciones tecnológicas.",
-};
+import { getTranslations } from 'next-intl/server';
+import LocalSchema from "@/src/components/seo/LocalSchema";
+
+export async function generateMetadata({
+  params
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'Metadata' });
+
+  return {
+    title: t('title'),
+    description: t('description'),
+    keywords: t('keywords') + ", desarrollo de software Pitalito, Huila, Colombia, aplicaciones moviles, hardware, software a medida, tecnologia, scryved",
+    alternates: {
+      canonical: t('canonical'),
+    },
+    openGraph: {
+      title: t('title'),
+      description: t('description'),
+      url: t('canonical'),
+      siteName: 'Scryved',
+      images: [
+        {
+          url: t('ogImage'),
+          width: 1200,
+          height: 630,
+        },
+      ],
+      locale: locale,
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: t('title'),
+      description: t('description'),
+      images: [t('ogImage')],
+    },
+  };
+}
 
 export default async function RootLayout({
   children,
@@ -39,6 +76,7 @@ export default async function RootLayout({
     <html lang={locale}>
       <body className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased bg-background text-foreground`}>
         <NextIntlClientProvider messages={messages}>
+          <LocalSchema />
 
           {/* 1. Ponemos el Preloader aquí arriba */}
           <Preloader />

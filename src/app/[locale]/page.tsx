@@ -1,9 +1,12 @@
+import dynamic from 'next/dynamic';
 import Hero from "@/src/components/sections/Hero";
-import Stats from "@/src/components/sections/Stats";
-import Services from "@/src/components/sections/Services";
-import Portfolio from "@/src/components/sections/Portfolio";
-import Founder from "@/src/components/sections/Founder";
-import Contact from "@/src/components/sections/Contact";
+
+// Lazy load below-the-fold components
+const Stats = dynamic(() => import("@/src/components/sections/Stats"), { ssr: true });
+const Services = dynamic(() => import("@/src/components/sections/Services"), { ssr: true });
+const Portfolio = dynamic(() => import("@/src/components/sections/Portfolio"), { ssr: true });
+const Founder = dynamic(() => import("@/src/components/sections/Founder"), { ssr: true });
+const Contact = dynamic(() => import("@/src/components/sections/Contact"), { ssr: true });
 
 export default function HomePage() {
   return (
