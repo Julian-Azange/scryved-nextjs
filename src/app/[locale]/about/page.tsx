@@ -6,8 +6,17 @@ import Image from 'next/image';
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
     const { locale } = await params;
     const t = await getTranslations({ locale, namespace: 'About' });
+    const baseUrl = 'https://scryved.com';
+    const canonicalUrl = `${baseUrl}/${locale}/about`;
+
     return {
         title: `Scryved | ${t('tag')}`,
+        alternates: {
+            canonical: canonicalUrl,
+        },
+        openGraph: {
+            url: canonicalUrl,
+        },
     };
 }
 

@@ -1,10 +1,9 @@
 {
     "Metadata": {
-        "title": "Scryved | Custom Software Solutions",
-        "description": "Custom software development, mobile apps, and electronic security. We transform your ideas into scalable solutions.",
-        "keywords": "web development, mobile apps, security, software agency",
-        "ogImage": "/og-image-en.png",
-        "canonical": "https://scryved.com/en"
+        "title": "Scryved | Software Development & IT Support in Pitalito",
+        "description": "Custom software development, mobile apps, PC maintenance and tech support in Pitalito, Huila. We transform your ideas into scalable solutions.",
+        "keywords": "software development pitalito, pc maintenance pitalito, web development huila, mobile apps, security, tech support, scryved",
+        "ogImage": "/og-image-en.png"
     },
     "Navbar": {
         "home": "Home",

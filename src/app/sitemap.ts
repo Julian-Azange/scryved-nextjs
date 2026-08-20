@@ -7,10 +7,11 @@ import { MetadataRoute } from 'next';
 export default function sitemap(): MetadataRoute.Sitemap {
     const baseUrl = 'https://scryved.com';
 
-    // Todas las rutas reales soportadas en la aplicación
     const paths = [
         { path: '', priority: 1.0, changeFrequency: 'weekly' as const },
-        { path: '/about', priority: 0.9, changeFrequency: 'monthly' as const },
+        { path: '/servicios/desarrollo-software', priority: 0.9, changeFrequency: 'monthly' as const },
+        { path: '/servicios/mantenimiento-equipos', priority: 0.9, changeFrequency: 'monthly' as const },
+        { path: '/about', priority: 0.8, changeFrequency: 'monthly' as const },
         { path: '/team', priority: 0.8, changeFrequency: 'monthly' as const },
     ];
 

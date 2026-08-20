@@ -21,8 +21,8 @@ export default function LocalSchema() {
 
     const localBusinessSchema = {
         "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "Scryved - Desarrollo de Software",
+        "@type": ["LocalBusiness", "ComputerStore", "ProfessionalService"],
+        "name": "Scryved - Desarrollo de Software y Soporte Técnico",
         "image": "https://scryved.com/assets/logos/ICONO.png",
         "url": "https://scryved.com",
         "telephone": "+573222455334",
@@ -32,11 +32,38 @@ export default function LocalSchema() {
             "addressRegion": "Huila",
             "addressCountry": "CO"
         },
+        "areaServed": {
+            "@type": "City",
+            "name": "Pitalito"
+        },
         "geo": {
             "@type": "GeoCoordinates",
             "latitude": 1.8537,
             "longitude": -76.0435
         },
+        "makesOffer": [
+            {
+                "@type": "Offer",
+                "itemOffered": {
+                    "@type": "Service",
+                    "name": "Desarrollo de Software a Medida"
+                }
+            },
+            {
+                "@type": "Offer",
+                "itemOffered": {
+                    "@type": "Service",
+                    "name": "Mantenimiento y Formateo de Computadores"
+                }
+            },
+            {
+                "@type": "Offer",
+                "itemOffered": {
+                    "@type": "Service",
+                    "name": "Desarrollo de Aplicaciones Móviles"
+                }
+            }
+        ],
         "openingHoursSpecification": {
             "@type": "OpeningHoursSpecification",
             "dayOfWeek": [

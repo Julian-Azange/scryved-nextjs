@@ -367,15 +367,18 @@ export default function Hero() {
 
                         {/* HUGE TITLE — Split style like the reference */}
                         <div className="w-full mb-6 md:mb-10 overflow-hidden">
-                            <motion.div variants={titleVariants} className="flex flex-col">
+                            <motion.h1 variants={titleVariants} className="flex flex-col">
+                                {/* Semantic SEO text, visually hidden */}
+                                <span className="sr-only">Desarrollo de Software a Medida en Pitalito y Soluciones Digitales</span>
+                                
                                 {/* Line 1 */}
-                                <div className="flex items-baseline gap-3 md:gap-6">
-                                    <h1
+                                <div className="flex items-baseline gap-3 md:gap-6" aria-hidden="true">
+                                    <span
                                         className="text-[clamp(3rem,10vw,15rem)] leading-[0.85] font-bold tracking-[-0.04em] uppercase"
                                         style={{ color: '#ffffff' }}
                                     >
                                         {t('title_line1')}
-                                    </h1>
+                                    </span>
                                     {/* Year badge — like reference */}
                                     <motion.span
                                         variants={fadeVariants}
@@ -386,7 +389,7 @@ export default function Hero() {
                                     </motion.span>
                                 </div>
                                 {/* Line 2 — Italic accent */}
-                                <div className="flex items-start gap-2 md:gap-4 flex-wrap">
+                                <div className="flex items-start gap-2 md:gap-4 flex-wrap" aria-hidden="true">
                                     <span
                                         className="text-[clamp(3rem,10vw,15rem)] leading-[0.85] font-bold tracking-[-0.04em] italic"
                                         style={{ color: '#a3e635' }}
@@ -400,7 +403,7 @@ export default function Hero() {
                                         ®
                                     </span>
                                 </div>
-                            </motion.div>
+                            </motion.h1>
                         </div>
 
                         {/* MIDDLE SECTION: Info + Slider — like the reference's subtitle area */}

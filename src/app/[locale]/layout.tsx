@@ -32,16 +32,13 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: 'Metadata' });
 
   return {
+    metadataBase: new URL('https://scryved.com'),
     title: t('title'),
     description: t('description'),
     keywords: t('keywords') + ", desarrollo de software Pitalito, Huila, Colombia, aplicaciones moviles, hardware, software a medida, tecnologia, scryved",
-    alternates: {
-      canonical: t('canonical'),
-    },
     openGraph: {
       title: t('title'),
       description: t('description'),
-      url: t('canonical'),
       siteName: 'Scryved',
       images: [
         {

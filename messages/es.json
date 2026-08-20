@@ -1,10 +1,9 @@
 {
   "Metadata": {
-    "title": "Scryved | Soluciones de Software a Medida",
-    "description": "Desarrollo de software a medida, aplicaciones móviles y seguridad electrónica. Transformamos tus ideas en soluciones escalables.",
-    "keywords": "desarrollo web, apps moviles, seguridad electronica, pitalito, huila, software a medida",
-    "ogImage": "/og-image.png",
-    "canonical": "https://scryved.com"
+    "title": "Scryved | Desarrollo de Software y Soporte Técnico Pitalito",
+    "description": "Desarrollo de software a medida, aplicaciones móviles, formateo y mantenimiento de computadores en Pitalito, Huila. Soluciones tecnológicas empresariales.",
+    "keywords": "desarrollo de software pitalito, mantenimiento de computadores pitalito, formateo de pc pitalito, aplicaciones moviles huila, seguridad electronica, scryved",
+    "ogImage": "/og-image.png"
   },
   "Navbar": {
     "home": "Inicio",
