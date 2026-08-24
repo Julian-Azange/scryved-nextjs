@@ -34,10 +34,10 @@
     "description_part2": "optimizamos",
     "description_part3": ", y escalamos sistemas digitales que impulsan el crecimiento y mejoran el ROI.",
     "services": [
-        "Software a Medida",
-        "Aplicaciones Móviles",
-        "Plataformas SaaS",
-        "Diseño UI/UX"
+      "Software a Medida",
+      "Aplicaciones Móviles",
+      "Plataformas SaaS",
+      "Diseño UI/UX"
     ]
   },
   "About": {
@@ -61,12 +61,12 @@
       "No solo desarrollamos software.",
       "Construimos herramientas que impulsan negocios, conectan personas y hacen posible nuevas oportunidades."
     ],
-        "vision_title": "Nuestra visión",
-        "vision": "Ser una marca tecnológica reconocida por convertir la complejidad en claridad y las ideas en soluciones que generan impacto. Queremos construir productos que perduren, marcas que inspiren confianza y tecnología capaz de mejorar la forma en que las personas trabajan, crean y crecen.",
-        "mission_title": "Nuestra misión",
-        "mission": "Descubrir oportunidades, diseñar soluciones y desarrollar tecnología que ayude a personas y empresas a avanzar con confianza hacia el futuro.",
-        "quote": "\"Construimos herramientas que impulsan negocios, conectan personas y hacen posible nuevas oportunidades.\""
-    },
+    "vision_title": "Nuestra visión",
+    "vision": "Ser una marca tecnológica reconocida por convertir la complejidad en claridad y las ideas en soluciones que generan impacto. Queremos construir productos que perduren, marcas que inspiren confianza y tecnología capaz de mejorar la forma en que las personas trabajan, crean y crecen.",
+    "mission_title": "Nuestra misión",
+    "mission": "Descubrir oportunidades, diseñar soluciones y desarrollar tecnología que ayude a personas y empresas a avanzar con confianza hacia el futuro.",
+    "quote": "\"Construimos herramientas que impulsan negocios, conectan personas y hacen posible nuevas oportunidades.\""
+  },
   "Services": {
     "tag": "Nuestros Servicios",
     "title_part1": "Nuestros",
@@ -203,46 +203,61 @@
     ]
   },
   "Portfolio": {
-        "tag": "Nuestro Trabajo",
-        "title_part1": "Proyectos",
-        "title_part2": "Destacados",
-        "subtitle": "Explora nuestras plataformas SaaS, sistemas administrativos y sitios web.",
-        "view_project": "Ver Proyecto",
-        "global": "Global",
-        "loading": "Cargando Interfaz...",
-        "key_features": "Características Principales",
-        "tabs": {
-            "saas": "Plataformas SaaS",
-            "admin": "Administrativos",
-            "web": "Sitios Web & Landings"
-        },
-        "projects": [
+    "tag": "Nuestro Trabajo",
+    "title_part1": "Proyectos",
+    "title_part2": "Destacados",
+    "subtitle": "Explora nuestras plataformas SaaS, sistemas administrativos y sitios web.",
+    "view_project": "Ver Proyecto",
+    "global": "Global",
+    "loading": "Cargando Interfaz...",
+    "key_features": "Características Principales",
+    "tabs": {
+      "saas": "Plataformas SaaS",
+      "admin": "Administrativos",
+      "web": "Sitios Web & Landings"
+    },
+    "projects": [
       {
         "id": "fonosalud",
         "category": "saas",
         "title": "FonoSalud",
         "tagline": "Salud Ocupacional",
         "location": "Colombia",
+        "flag": "co",
         "description": "Plataforma SaaS para la gestión de la salud y recursos.",
-        "features": ["Gestión integral", "Historial clínico", "Facturación"]
+        "features": [
+          "Gestión integral",
+          "Historial clínico",
+          "Facturación"
+        ]
       },
       {
         "id": "osmarpay",
         "category": "saas",
         "title": "OsmarPay",
         "tagline": "Fintech SaaS",
-        "location": "Perú",
+        "location": "Colombia",
+        "flag": "co",
         "description": "Software administrativo para financiamiento de dispositivos móviles.",
-        "features": ["Control de ventas", "Créditos", "Métricas financieras"]
+        "features": [
+          "Control de ventas",
+          "Créditos",
+          "Métricas financieras"
+        ]
       },
       {
         "id": "finanlock",
         "category": "saas",
         "title": "FinanLock",
         "tagline": "Gestión de Financiamiento",
-        "location": "Colombia",
+        "location": "Perú",
+        "flag": "pe",
         "description": "Sistema de gestión y financiamiento móvil.",
-        "features": ["Control de inventario", "Bloqueo remoto", "Dashboard"]
+        "features": [
+          "Control de inventario",
+          "Bloqueo remoto",
+          "Dashboard"
+        ]
       },
       {
         "id": "smartpay",
@@ -250,8 +265,13 @@
         "title": "SmartPay",
         "tagline": "Financiamiento Premium",
         "location": "Perú",
+        "flag": "pe",
         "description": "Plataforma de financiamiento con rastreo en tiempo real.",
-        "features": ["Geolocalización", "Métricas", "Sucursales"]
+        "features": [
+          "Geolocalización",
+          "Métricas",
+          "Sucursales"
+        ]
       },
       {
         "id": "gestor-studio",
@@ -259,8 +279,19 @@
         "title": "Gestor Studio Osmarpay",
         "tagline": "Sistema Administrativo",
         "location": "Colombia",
+        "flag": "co",
         "description": "Panel de control administrativo centralizado.",
-        "features": ["Gestión de usuarios", "Reportes", "Métricas"]
+        "features": [
+          "Gestión de usuarios",
+          "Reportes",
+          "Métricas"
+        ]
+      },
+      {
+        "id": "freedom",
+        "category": "admin",
+        "title": "Freedom",
+        "description": "Sitio web corporativo"
       },
       {
         "id": "iestap",
@@ -268,20 +299,19 @@
         "title": "IESTAP Biodiverso",
         "tagline": "Gestión Académica",
         "location": "Colombia",
+        "flag": "co",
         "description": "Sistema de administración y gestión.",
-        "features": ["Control de datos", "Reportes", "Accesos"]
+        "features": [
+          "Control de datos",
+          "Reportes",
+          "Accesos"
+        ]
       },
       {
         "id": "medusa",
         "category": "web",
         "title": "Medusa",
         "description": "Landing page de tecnología"
-      },
-      {
-        "id": "freedom",
-        "category": "web",
-        "title": "Freedom",
-        "description": "Sitio web corporativo"
       },
       {
         "id": "hotel",
@@ -304,14 +334,14 @@
     ]
   },
   "Team": {
-        "tag": "Nuestro Equipo",
-        "title_part1": "Nuestro",
-        "title_part2": "Equipo",
-        "subtitle": "Conoce a las mentes apasionadas detrás de Scryved. Somos un equipo de desarrolladores, diseñadores y estrategas dedicados a construir experiencias digitales excepcionales.",
-        "join_title": "¿Quieres ser parte de nuestro equipo?",
-        "join_subtitle": "¿Te apasiona la tecnología y la innovación?",
-        "join_button": "Contáctanos",
-        "members": [
+    "tag": "Nuestro Equipo",
+    "title_part1": "Nuestro",
+    "title_part2": "Equipo",
+    "subtitle": "Conoce a las mentes apasionadas detrás de Scryved. Somos un equipo de desarrolladores, diseñadores y estrategas dedicados a construir experiencias digitales excepcionales.",
+    "join_title": "¿Quieres ser parte de nuestro equipo?",
+    "join_subtitle": "¿Te apasiona la tecnología y la innovación?",
+    "join_button": "Contáctanos",
+    "members": [
       {
         "id": "julian",
         "name": "Julian Palomares",
@@ -446,17 +476,37 @@
     "exp_tag": "Experiencia Certificada",
     "cta": "Hablemos de tu proyecto",
     "certBadges": [
-        "Certificado en Desarrollo Full Stack",
-        "Scrum Master Certified",
-        "Google Cloud Fundamentals",
-        "UI/UX Design Principles"
+      "Certificado en Desarrollo Full Stack",
+      "Scrum Master Certified",
+      "Google Cloud Fundamentals",
+      "UI/UX Design Principles"
     ],
     "credentials": [
-        { "id": "software", "label": "Desarrollo de Software", "years": "4+ años" },
-        { "id": "support", "label": "Soporte de Sistemas Tecnológicos", "years": "4+ años" },
-        { "id": "data", "label": "Digitalización de Información", "years": "3+ años" },
-        { "id": "cloud", "label": "Arquitectura Web & Cloud", "years": "3+ años" },
-        { "id": "mobile", "label": "Aplicaciones Móviles", "years": "2+ años" }
+      {
+        "id": "software",
+        "label": "Desarrollo de Software",
+        "years": "4+ años"
+      },
+      {
+        "id": "support",
+        "label": "Soporte de Sistemas Tecnológicos",
+        "years": "4+ años"
+      },
+      {
+        "id": "data",
+        "label": "Digitalización de Información",
+        "years": "3+ años"
+      },
+      {
+        "id": "cloud",
+        "label": "Arquitectura Web & Cloud",
+        "years": "3+ años"
+      },
+      {
+        "id": "mobile",
+        "label": "Aplicaciones Móviles",
+        "years": "2+ años"
+      }
     ]
   },
   "Contact": {

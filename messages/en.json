@@ -223,6 +223,7 @@
                 "title": "FonoSalud",
                 "tagline": "Occupational Health",
                 "location": "Colombia",
+                "flag": "co",
                 "description": "SaaS platform for health and resource management.",
                 "features": ["Comprehensive management", "Medical records", "Billing"]
             },
@@ -231,7 +232,8 @@
                 "category": "saas",
                 "title": "OsmarPay",
                 "tagline": "Fintech SaaS",
-                "location": "Peru",
+                "location": "Colombia",
+                "flag": "co",
                 "description": "Administrative software for mobile device financing.",
                 "features": ["Sales control", "Credits", "Financial metrics"]
             },
@@ -240,7 +242,8 @@
                 "category": "saas",
                 "title": "FinanLock",
                 "tagline": "Financing Management",
-                "location": "Colombia",
+                "location": "Peru",
+                "flag": "pe",
                 "description": "Mobile management and financing system.",
                 "features": ["Inventory control", "Remote locking", "Dashboard"]
             },
@@ -250,6 +253,7 @@
                 "title": "SmartPay",
                 "tagline": "Premium Financing",
                 "location": "Peru",
+                "flag": "pe",
                 "description": "Financing platform with real-time tracking.",
                 "features": ["Geolocation", "Metrics", "Branches"]
             },
@@ -259,6 +263,7 @@
                 "title": "Gestor Studio Osmarpay",
                 "tagline": "Administrative System",
                 "location": "Colombia",
+                "flag": "co",
                 "description": "Centralized administrative control panel.",
                 "features": ["User management", "Reports", "Metrics"]
             },
@@ -268,6 +273,7 @@
                 "title": "IESTAP Biodiverso",
                 "tagline": "Academic Management",
                 "location": "Colombia",
+                "flag": "co",
                 "description": "Administration and management system.",
                 "features": ["Data control", "Reports", "Accesses"]
             },
