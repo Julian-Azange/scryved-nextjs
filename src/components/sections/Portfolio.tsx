@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useTranslations } from 'next-intl';
 import { motion, AnimatePresence, Variants } from "framer-motion";
 import { ExternalLink, X, ChevronRight } from 'lucide-react';
@@ -53,6 +53,28 @@ export default function Portfolio() {
     const [selectedProject, setSelectedProject] = useState<any>(null);
     const [activeGalleryImage, setActiveGalleryImage] = useState<number>(0);
     const [isLoadingIframe, setIsLoadingIframe] = useState(true);
+    const galleryThumbsRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        if (galleryThumbsRef.current && selectedProject?.gallery) {
+            const activeThumb = galleryThumbsRef.current.children[activeGalleryImage] as HTMLElement;
+            if (activeThumb) {
+                activeThumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            }
+        }
+    }, [activeGalleryImage, selectedProject]);
+
+    // Bloquear el scroll del fondo cuando el modal está abierto
+    useEffect(() => {
+        if (selectedProject) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+        return () => {
+            document.body.style.overflow = '';
+        };
+    }, [selectedProject]);
 
     const rawProjects = t.raw('projects') as any[];
     const projects = rawProjects.map(p => ({ ...p, ...projectsConfig[p.id] }));
@@ -559,8 +581,8 @@ export default function Portfolio() {
                     >
                         <motion.div
                             className={cn(
-                                "bg-[#0a0a0a] shadow-2xl flex flex-col relative rounded-[2rem] overflow-hidden w-full max-h-[95vh] border border-white/10",
-                                selectedProject.category === 'saas' ? "max-w-7xl" : "max-w-[1400px] aspect-video"
+                                "bg-[#0a0a0a] shadow-2xl flex flex-col relative rounded-[2rem] overflow-hidden w-full border border-white/10",
+                                selectedProject.category === 'web' ? "max-w-[1400px] h-[85vh] md:h-[90vh]" : "max-w-7xl max-h-[85vh] md:max-h-[95vh]"
                             )}
                             initial={{ scale: 0.98, opacity: 0, y: 20 }}
                             animate={{ scale: 1, opacity: 1, y: 0 }}
@@ -569,46 +591,59 @@ export default function Portfolio() {
                             onClick={(e) => e.stopPropagation()}
                         >
                             {/* Modal Header */}
-                            <div className="h-16 bg-[#111] border-b border-white/5 flex items-center justify-between px-6 shrink-0">
-                                <div className="flex gap-2.5">
-                                    <button onClick={() => setSelectedProject(null)} className="w-3.5 h-3.5 rounded-full bg-red-500 hover:bg-red-400 transition-colors flex items-center justify-center group">
-                                        <X className="w-2.5 h-2.5 opacity-0 group-hover:opacity-100 text-black" />
-                                    </button>
-                                    <div className="w-3.5 h-3.5 rounded-full bg-yellow-500" />
-                                    <div className="w-3.5 h-3.5 rounded-full bg-green-500" />
-                                </div>
-                                <div className="px-4 py-1.5 rounded-lg bg-white/5 border border-white/5 flex items-center gap-2">
-                                    <div className="w-1.5 h-1.5 rounded-full bg-[#a3e635] animate-pulse" />
-                                    <span className="text-xs font-mono text-white/50">
-                                        {selectedProject.url?.replace(/^https?:\/\//, '')}
-                                    </span>
-                                </div>
-                                <a href={selectedProject.url} target="_blank" rel="noopener noreferrer" aria-label="Visitar proyecto" className="p-2 text-white/50 hover:text-white transition-colors">
-                                    <ExternalLink className="w-5 h-5" />
-                                </a>
+                            <div className="h-14 sm:h-16 border-b border-white/5 flex items-center justify-between px-4 sm:px-6 shrink-0 bg-[#0a0a0a]">
+                                <h4 className="text-white/50 font-mono text-xs tracking-widest uppercase">{selectedProject.category}</h4>
+                                <button onClick={() => setSelectedProject(null)} className="p-2 text-white/50 hover:text-white hover:bg-white/5 transition-colors rounded-full">
+                                    <X className="w-5 h-5" />
+                                </button>
                             </div>
 
                             {/* Modal Content */}
                             {selectedProject.category === 'saas' || selectedProject.category === 'admin' ? (
-                                <div className="flex flex-col lg:flex-row flex-grow overflow-y-auto custom-scrollbar">
+                                <div className="flex flex-col lg:flex-row flex-grow overflow-y-auto custom-scrollbar min-h-0">
                                     {/* Left: Gallery */}
                                     <div className="w-full lg:w-3/5 bg-black/40 p-6 md:p-10 flex flex-col gap-6 border-r border-white/5">
-                                        <div className="relative aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-[0_0_40px_rgba(0,0,0,0.5)]">
-                                            <Image
-                                                src={selectedProject.gallery?.[activeGalleryImage] || selectedProject.thumbnail}
-                                                alt="Gallery Main"
-                                                fill
-                                                className="object-cover md:object-contain"
-                                            />
+                                        <div className="relative aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-[0_0_40px_rgba(0,0,0,0.5)] touch-pan-y">
+                                            <AnimatePresence mode="wait">
+                                                <motion.div
+                                                    key={activeGalleryImage}
+                                                    initial={{ opacity: 0, x: 20 }}
+                                                    animate={{ opacity: 1, x: 0 }}
+                                                    exit={{ opacity: 0, x: -20 }}
+                                                    transition={{ duration: 0.2 }}
+                                                    drag="x"
+                                                    dragConstraints={{ left: 0, right: 0 }}
+                                                    dragElastic={0.2}
+                                                    onDragEnd={(e, { offset }) => {
+                                                        const swipe = offset.x;
+                                                        if (swipe < -40 && activeGalleryImage < (selectedProject.gallery?.length || 1) - 1) {
+                                                            setActiveGalleryImage(prev => prev + 1);
+                                                        } else if (swipe > 40 && activeGalleryImage > 0) {
+                                                            setActiveGalleryImage(prev => prev - 1);
+                                                        }
+                                                    }}
+                                                    className="absolute inset-0 cursor-grab active:cursor-grabbing"
+                                                >
+                                                    <Image
+                                                        src={selectedProject.gallery?.[activeGalleryImage] || selectedProject.thumbnail}
+                                                        alt="Gallery Main"
+                                                        fill
+                                                        className="object-cover md:object-contain pointer-events-none"
+                                                    />
+                                                </motion.div>
+                                            </AnimatePresence>
                                         </div>
                                         {selectedProject.gallery?.length > 1 && (
-                                            <div className="flex gap-4 overflow-x-auto pb-4 custom-scrollbar-horizontal">
+                                            <div 
+                                                ref={galleryThumbsRef}
+                                                className="flex gap-4 overflow-x-auto pb-4 custom-scrollbar-horizontal snap-x snap-mandatory"
+                                            >
                                                 {selectedProject.gallery.map((img: string, idx: number) => (
                                                     <button
                                                         key={idx}
                                                         onClick={() => setActiveGalleryImage(idx)}
                                                         className={cn(
-                                                            "relative w-32 h-20 rounded-xl overflow-hidden border-2 flex-shrink-0 transition-all duration-300",
+                                                            "relative w-32 h-20 rounded-xl overflow-hidden border-2 flex-shrink-0 transition-all duration-300 snap-center",
                                                             activeGalleryImage === idx ? "border-[#a3e635] shadow-[0_0_15px_rgba(163,230,53,0.3)]" : "border-transparent opacity-50 hover:opacity-100"
                                                         )}
                                                     >
@@ -651,21 +686,36 @@ export default function Portfolio() {
                                                 ))}
                                             </ul>
                                         </div>
+
+                                        <div className="mt-auto pt-4 sm:pt-8">
+                                            <a href={selectedProject.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-4 bg-[#a3e635] hover:bg-[#b0f242] text-black font-bold rounded-full transition-colors uppercase tracking-widest text-sm shadow-[0_0_20px_rgba(163,230,53,0.3)]">
+                                                {t('view_project')}
+                                                <ExternalLink className="w-4 h-4" />
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             ) : (
-                                <div className="relative flex-1 bg-[#0a0a0a]">
-                                    {isLoadingIframe && (
-                                        <div className="absolute inset-0 flex flex-col items-center justify-center bg-[#0a0a0a] text-white z-10">
-                                            <div className="w-8 h-8 border-4 border-white/10 border-t-[#a3e635] rounded-full animate-spin mb-4" />
-                                            <p className="text-sm font-bold tracking-widest uppercase text-white/50 animate-pulse">{t('loading')}</p>
-                                        </div>
-                                    )}
-                                    <iframe
-                                        src={selectedProject.url}
-                                        className="w-full h-full border-0"
-                                        onLoad={() => setIsLoadingIframe(false)}
-                                    />
+                                <div className="relative flex-1 bg-[#0a0a0a] flex flex-col">
+                                    <div className="relative flex-1">
+                                        {isLoadingIframe && (
+                                            <div className="absolute inset-0 flex flex-col items-center justify-center bg-[#0a0a0a] text-white z-10">
+                                                <div className="w-8 h-8 border-4 border-white/10 border-t-[#a3e635] rounded-full animate-spin mb-4" />
+                                                <p className="text-sm font-bold tracking-widest uppercase text-white/50 animate-pulse">{t('loading')}</p>
+                                            </div>
+                                        )}
+                                        <iframe
+                                            src={selectedProject.url}
+                                            className="w-full h-full border-0 absolute inset-0"
+                                            onLoad={() => setIsLoadingIframe(false)}
+                                        />
+                                    </div>
+                                    <div className="p-4 sm:p-6 border-t border-white/5 flex justify-end shrink-0 bg-[#0a0a0a]">
+                                        <a href={selectedProject.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-3.5 bg-[#a3e635] hover:bg-[#b0f242] text-black font-bold rounded-full transition-colors uppercase tracking-widest text-sm shadow-[0_0_20px_rgba(163,230,53,0.3)]">
+                                            {t('view_project')}
+                                            <ExternalLink className="w-4 h-4" />
+                                        </a>
+                                    </div>
                                 </div>
                             )}
                         </motion.div>

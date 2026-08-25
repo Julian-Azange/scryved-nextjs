@@ -235,10 +235,10 @@ export default function AboutPage() {
                                     style={{ border: '1px solid rgba(255,255,255,0.06)' }}
                                 >
                                     <Image
-                                        src="/assets/gallery/image2.jpeg"
+                                        src="/assets/about.jpeg"
                                         alt="Scryved Office"
                                         fill
-                                        className="object-cover grayscale hover:grayscale-0 transition-all duration-[1.5s] hover:scale-105"
+                                        className="object-cover transition-all duration-[1.5s] hover:scale-105"
                                     />
                                     {/* Green tint overlay */}
                                     <div

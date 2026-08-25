@@ -7,7 +7,6 @@ import Image from 'next/image';
 import { Link, usePathname, useRouter } from '@/src/i18n/routing';
 import LanguageToggle from '../ui/LanguageToggle';
 import { cn } from '@/src/lib/utils';
-import { ArrowRight } from 'lucide-react';
 
 const RollingText = ({ text }: { text: string }) => {
     return (
@@ -25,7 +24,7 @@ const RollingText = ({ text }: { text: string }) => {
                 className="flex flex-col"
             >
                 <span>{text}</span>
-                <span className="text-primary font-bold">{text}</span>
+                <span className="text-[#a3e635] font-bold">{text}</span>
             </motion.div>
         </motion.div>
     );
@@ -35,9 +34,7 @@ const Navbar = () => {
     const t = useTranslations('Navbar');
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
-    const [inHero, setInHero] = useState(true);
     const pathname = usePathname();
-    const router = useRouter();
 
     const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
         if (href.startsWith('/#') && pathname === '/') {
@@ -57,13 +54,8 @@ const Navbar = () => {
     useEffect(() => {
         const handleScroll = () => {
             setScrolled(window.scrollY > 20);
-            // Check if we're still within the hero section
-            const heroEl = document.getElementById('home');
-            if (heroEl) {
-                const heroBottom = heroEl.offsetTop + heroEl.offsetHeight;
-                setInHero(window.scrollY < heroBottom - 100);
-            }
         };
+        handleScroll(); // Ejecutar en el montaje inicial para prevenir el bug de transparencia
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
@@ -92,14 +84,13 @@ const Navbar = () => {
                 animate={{ y: 0 }}
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                 className={cn(
-                    "fixed w-full z-50 transition-all duration-500",
-                    scrolled
-                        ? 'bg-white/60 backdrop-blur-md py-4 shadow-sm border-b border-black/5'
-                        : 'bg-transparent py-6 md:py-8'
+                    "fixed w-full z-50 transition-all duration-500 text-white",
+                    isOpen 
+                        ? 'bg-transparent py-6 md:py-8'
+                        : scrolled
+                            ? 'bg-[#050505]/40 backdrop-blur-xl py-4 shadow-2xl border-b border-white/5'
+                            : 'bg-transparent py-6 md:py-8'
                 )}
-                style={{
-                    color: (!scrolled && inHero) ? '#ffffff' : undefined,
-                }}
             >
                 {/* Mismos paddings y max-width que el Hero */}
                 <div className="w-full relative flex justify-between items-center px-6 md:px-12 lg:px-16 xl:px-20 2xl:px-28 mx-auto max-w-[1920px]">
@@ -110,9 +101,7 @@ const Navbar = () => {
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                             className="relative w-32 h-8 md:w-36 md:h-10 hidden md:block transition-all duration-500"
-                            style={{
-                                filter: (!scrolled && inHero) ? 'brightness(0) invert(1)' : 'none',
-                            }}
+                            style={{ filter: 'brightness(0) invert(1)' }}
                         >
                             <Image 
                                 src="/assets/logos/LOGO.png"
@@ -125,9 +114,7 @@ const Navbar = () => {
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                             className="relative w-8 h-8 md:hidden transition-all duration-500"
-                            style={{
-                                filter: (!scrolled && inHero) ? 'brightness(0) invert(1)' : 'none',
-                            }}
+                            style={{ filter: 'brightness(0) invert(1)' }}
                         >
                             <Image 
                                 src="/assets/logos/ICONO.png"
@@ -146,15 +133,10 @@ const Navbar = () => {
                                     <Link
                                         href={item.href}
                                         onClick={(e) => handleNavClick(e, item.href)}
-                                        className={cn(
-                                            "relative flex items-start gap-1 text-[13px] md:text-sm font-medium transition-colors tracking-tight",
-                                            (!scrolled && inHero)
-                                                ? 'text-white/80 hover:text-white'
-                                                : 'text-foreground hover:text-primary'
-                                        )}
+                                        className="relative flex items-start gap-1 text-[13px] md:text-sm font-medium transition-colors tracking-tight text-white/80 hover:text-white"
                                     >
                                         <RollingText text={item.name} />
-                                        <span className={cn("text-[9px] font-mono mt-0.5", (!scrolled && inHero) ? 'text-white/40' : 'text-muted-foreground')}>{item.number}</span>
+                                        <span className="text-[9px] font-mono mt-0.5 text-white/40">{item.number}</span>
                                     </Link>
                                 </li>
                             ))}
@@ -168,23 +150,13 @@ const Navbar = () => {
                         <Link 
                             href="/#contact"
                             onClick={(e) => handleNavClick(e, '/#contact')}
-                            className={cn(
-                                "flex items-center gap-3 pl-1.5 pr-5 py-1.5 rounded-full font-medium text-[13px] hover:scale-105 transition-all duration-500 shadow-md group",
-                                (!scrolled && inHero)
-                                    ? 'bg-[#a3e635] text-[#050505]'
-                                    : 'bg-foreground text-background'
-                            )}
+                            className="flex items-center gap-3 pl-1.5 pr-5 py-1.5 rounded-full font-medium text-[13px] hover:scale-105 transition-all duration-500 shadow-[0_0_20px_rgba(163,230,53,0.15)] group bg-[#a3e635] text-[#050505]"
                         >
                             <div className="relative flex items-center">
-                                <div className="relative w-7 h-7 rounded-full overflow-hidden bg-muted">
+                                <div className="relative w-7 h-7 rounded-full overflow-hidden bg-[#050505]">
                                     <Image src="/assets/team/julian.jpg" alt="Contact" fill className="object-cover" />
                                 </div>
-                                <div className={cn(
-                                    "absolute -right-2 w-4 h-4 rounded-full flex items-center justify-center shadow-sm border",
-                                    (!scrolled && inHero)
-                                        ? 'bg-[#050505] text-[#a3e635] border-[#a3e635]/20'
-                                        : 'bg-background text-foreground border-black/5'
-                                )}>
+                                <div className="absolute -right-2 w-4 h-4 rounded-full flex items-center justify-center shadow-sm border bg-[#050505] text-[#a3e635] border-[#a3e635]/20">
                                     <span className="text-[10px] font-bold leading-none">+</span>
                                 </div>
                             </div>
@@ -203,9 +175,9 @@ const Navbar = () => {
                             className="relative w-10 h-10 flex flex-col justify-center items-center group focus:outline-none"
                             aria-label="Toggle Menu"
                         >
-                            <span className={`block h-0.5 w-6 rounded-full transition-all duration-300 ease-out ${isOpen ? 'rotate-45 translate-y-1 bg-foreground' : `-translate-y-1 ${(!scrolled && inHero) ? 'bg-white' : 'bg-foreground'}`}`} />
-                            <span className={`block h-0.5 w-6 rounded-full transition-all duration-300 ease-out my-0.5 ${isOpen ? 'opacity-0 bg-foreground' : `opacity-100 ${(!scrolled && inHero) ? 'bg-white' : 'bg-foreground'}`}`} />
-                            <span className={`block h-0.5 w-6 rounded-full transition-all duration-300 ease-out ${isOpen ? '-rotate-45 -translate-y-1.5 bg-foreground' : `translate-y-1 ${(!scrolled && inHero) ? 'bg-white' : 'bg-foreground'}`}`} />
+                            <span className={`block h-0.5 w-6 rounded-full transition-all duration-300 ease-out bg-white ${isOpen ? 'rotate-45 translate-y-1' : '-translate-y-1'}`} />
+                            <span className={`block h-0.5 w-6 rounded-full transition-all duration-300 ease-out my-0.5 bg-white ${isOpen ? 'opacity-0' : 'opacity-100'}`} />
+                            <span className={`block h-0.5 w-6 rounded-full transition-all duration-300 ease-out bg-white ${isOpen ? '-rotate-45 -translate-y-1.5' : 'translate-y-1'}`} />
                         </button>
                     </div>
                 </div>
@@ -215,11 +187,11 @@ const Navbar = () => {
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
-                        initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
-                        animate={{ opacity: 1, backdropFilter: "blur(20px)" }}
-                        exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
+                        initial={{ opacity: 0, backdropFilter: "blur(0px) brightness(1)" }}
+                        animate={{ opacity: 1, backdropFilter: "blur(32px) brightness(0.3)" }}
+                        exit={{ opacity: 0, backdropFilter: "blur(0px) brightness(1)" }}
                         transition={{ duration: 0.4 }}
-                        className="fixed inset-0 z-40 bg-background/95 lg:hidden flex flex-col justify-center items-center"
+                        className="fixed inset-0 z-40 bg-black/60 lg:hidden flex flex-col justify-center items-center"
                     >
                         <motion.ul
                             className="flex flex-col items-center space-y-8 text-center relative z-10 w-full px-8"
@@ -242,12 +214,12 @@ const Navbar = () => {
                                 >
                                     <Link
                                         href={item.href}
-                                        className="text-4xl font-semibold text-foreground hover:text-primary transition-colors tracking-tight"
+                                        className="text-4xl font-semibold text-white hover:text-[#a3e635] transition-colors tracking-tight"
                                         onClick={(e) => handleNavClick(e, item.href)}
                                     >
                                         {item.name}
                                     </Link>
-                                    <span className="text-sm text-muted-foreground font-mono">{item.number}</span>
+                                    <span className="text-sm text-[#a3e635] font-mono">{item.number}</span>
                                 </motion.li>
                             ))}
 
@@ -258,13 +230,13 @@ const Navbar = () => {
                                 <Link 
                                     href="/#contact"
                                     onClick={(e) => handleNavClick(e, '/#contact')}
-                                    className="flex items-center gap-3 bg-foreground text-background pl-2 pr-8 py-2 rounded-full font-medium text-lg hover:scale-105 transition-all duration-300 shadow-xl"
+                                    className="flex items-center gap-3 bg-[#a3e635] text-[#050505] pl-2 pr-8 py-2 rounded-full font-medium text-lg hover:scale-105 transition-all duration-300 shadow-[0_0_30px_rgba(163,230,53,0.15)]"
                                 >
                                     <div className="relative flex items-center">
                                         <div className="relative w-10 h-10 rounded-full overflow-hidden bg-muted">
                                             <Image src="/assets/team/julian.jpg" alt="Contact" fill className="object-cover" />
                                         </div>
-                                        <div className="absolute -right-2.5 w-5 h-5 rounded-full bg-background flex items-center justify-center text-foreground shadow-sm border border-black/5">
+                                        <div className="absolute -right-2.5 w-5 h-5 rounded-full bg-[#050505] flex items-center justify-center text-[#a3e635] shadow-sm border border-[#a3e635]/20">
                                             <span className="text-xs font-bold leading-none">+</span>
                                         </div>
                                     </div>
