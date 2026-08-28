@@ -156,8 +156,8 @@ export default function Footer() {
                     <div className="bg-[#0a0a0a]/80 backdrop-blur-xl border border-white/5 rounded-full px-6 py-4 flex flex-col md:flex-row justify-between items-center text-xs md:text-sm text-white/50 shadow-sm">
                         <p className="font-medium">© {currentYear} Scryved. {t('copyright')}</p>
                         <div className="flex gap-6 mt-4 md:mt-0 font-semibold uppercase tracking-widest text-[10px] md:text-xs">
-                            <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
-                            <Link href="/terms" className="hover:text-white transition-colors">Terms & Conditions</Link>
+                            <Link href="/privacy" className="hover:text-white transition-colors">{t('privacy')}</Link>
+                            <Link href="/terms" className="hover:text-white transition-colors">{t('terms')}</Link>
                         </div>
                     </div>
                 </div>

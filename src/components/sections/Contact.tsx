@@ -3,6 +3,7 @@
 import { useRef } from 'react';
 import { useTranslations } from 'next-intl';
 import { motion, useInView, Variants } from 'framer-motion';
+import { useRouter } from '@/src/i18n/routing';
 
 /* ─── Animation Variants ─── */
 const fadeUp: Variants = {
@@ -89,6 +90,13 @@ export default function Contact() {
     const t = useTranslations('Contact');
     const sectionRef = useRef(null);
     const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
+    const router = useRouter();
+
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        // Aquí normalmente iría la lógica para enviar el formulario a un backend
+        router.push('/gracias');
+    };
 
     return (
         <>
@@ -237,7 +245,7 @@ export default function Contact() {
                                 {/* Form */}
                                 <form
                                     className="space-y-6 md:space-y-8 w-full max-w-xl mb-10 md:mb-12"
-                                    onSubmit={(e) => e.preventDefault()}
+                                    onSubmit={handleSubmit}
                                 >
                                     <div className="group">
                                         <label className="block text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] mb-2 text-[#a3e635]/80">{t('form.fields.name')}</label>

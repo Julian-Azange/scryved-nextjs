@@ -9,6 +9,8 @@ import CustomCursor from "@/src/components/ui/CustomCursor";
 import SceneBackground from "@/src/components/3d/SceneBackground";
 import Navbar from "@/src/components/layout/Navbar";
 import Footer from "@/src/components/sections/Footer";
+import Analytics from "@/src/components/seo/Analytics";
+import CookieBanner from "@/src/components/ui/CookieBanner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -92,6 +94,12 @@ export default async function RootLayout({
 
           {/* 3. Cursor interactivo */}
           <CustomCursor />
+          
+          {/* 4. Banner de Cookies */}
+          <CookieBanner />
+          
+          {/* 5. Analíticas */}
+          <Analytics />
 
         </NextIntlClientProvider>
       </body>

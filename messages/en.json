@@ -503,7 +503,9 @@
         "address": "Pitalito, Huila, Colombia",
         "phone": "+57 322 245 5334",
         "email": "scryved@gmail.com",
-        "copyright": "All rights reserved."
+        "copyright": "All rights reserved.",
+        "privacy": "Privacy Policy",
+        "terms": "Terms & Conditions"
     },
     "FinanLock": {
         "section_tag": "Our Flagship Product",
@@ -656,5 +658,84 @@
                 ]
             }
         ]
+    },
+    "CookieBanner": {
+        "title": "We Use Cookies",
+        "description": "We use cookies to improve your experience, analyze our traffic, and personalize content.",
+        "privacy_link": "Privacy Policy",
+        "accept": "Accept"
+    },
+    "Privacy": {
+        "title": "Privacy",
+        "title_highlight": "Policy",
+        "updated": "Last updated: ",
+        "sections": [
+            {
+                "title": "1. Information We Collect",
+                "content": "At Scryved, we collect information that you provide directly when you use our services, such as when you fill out a contact form, request a quote, or contact us for support. This information may include your name, email address, phone number, and project details."
+            },
+            {
+                "title": "2. Use of Information",
+                "content": "We use the information we collect to:",
+                "list": [
+                    "Provide, operate, and maintain our services.",
+                    "Improve, personalize, and expand our services.",
+                    "Understand and analyze how you use our services.",
+                    "Develop new products, services, features, and functionality.",
+                    "Communicate with you for customer service."
+                ]
+            },
+            {
+                "title": "3. Log Files",
+                "content": "Scryved follows a standard procedure of using log files. These files log visitors when they visit websites. The information collected includes IP addresses, browser type, Internet Service Provider (ISP), date and time stamp, and referring/exit pages."
+            },
+            {
+                "title": "4. Cookies",
+                "content": "Like any other website, Scryved uses 'cookies'. These cookies are used to store information including visitors' preferences, and the pages on the website that the visitor accessed. The information is used to optimize the users' experience by customizing content."
+            },
+            {
+                "title": "5. Contact",
+                "content": "If you have any questions about this Privacy Policy, you can contact us at: scryved@gmail.com"
+            }
+        ]
+    },
+    "Terms": {
+        "title": "Terms and",
+        "title_highlight": "Conditions",
+        "updated": "Last updated: ",
+        "sections": [
+            {
+                "title": "1. Introduction",
+                "content": "These terms and conditions outline the rules and regulations for the use of Scryved's website and services. By accessing this website we assume you accept these terms."
+            },
+            {
+                "title": "2. License and Use",
+                "content": "Unless otherwise stated, Scryved owns the intellectual property rights for all material on the website and developed projects, according to specific client contractual agreements. You must not:",
+                "list": [
+                    "Republish material without authorization.",
+                    "Sell, rent or sub-license material from Scryved.",
+                    "Reproduce, duplicate or copy material for commercial purposes."
+                ]
+            },
+            {
+                "title": "3. Services and Quotes",
+                "content": "All quotes, time estimates, and deliverables discussed on this site are subject to review and final approval through a separate software development contract."
+            },
+            {
+                "title": "4. Disclaimer",
+                "content": "To the maximum extent permitted by applicable law, we exclude all representations, warranties and conditions relating to our website and the use of this website."
+            },
+            {
+                "title": "5. Modifications",
+                "content": "Scryved reserves the right to revise these Terms at any time. By using this website you are expected to review these Terms on a regular basis."
+            }
+        ]
+    },
+    "Gracias": {
+        "title": "Message",
+        "title_highlight": "Sent!",
+        "description": "We have successfully received your request. Our team will contact you in the next few hours to discuss your project details.",
+        "back_home": "Back to Home",
+        "view_portfolio": "View our Portfolio"
     }
 }
