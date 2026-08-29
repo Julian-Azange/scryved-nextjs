@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import { motion, Variants, AnimatePresence } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
+import { MapPin } from 'lucide-react';
 
 /* ─── Text Slider ─── */
 const TextSlider = () => {
@@ -374,7 +375,7 @@ export default function Hero() {
                                 {/* Line 1 */}
                                 <div className="flex items-baseline gap-3 md:gap-6" aria-hidden="true">
                                     <span
-                                        className="text-[clamp(3rem,10vw,15rem)] leading-[0.85] font-bold tracking-[-0.04em] uppercase"
+                                        className="text-[clamp(2.5rem,8vw,11.5rem)] leading-[0.85] font-bold tracking-[-0.04em] uppercase"
                                         style={{ color: '#ffffff' }}
                                     >
                                         {t('title_line1')}
@@ -389,19 +390,35 @@ export default function Hero() {
                                     </motion.span>
                                 </div>
                                 {/* Line 2 — Italic accent */}
-                                <div className="flex items-start gap-2 md:gap-4 flex-wrap" aria-hidden="true">
-                                    <span
-                                        className="text-[clamp(3rem,10vw,15rem)] leading-[0.85] font-bold tracking-[-0.04em] italic"
-                                        style={{ color: '#a3e635' }}
+                                <div className="flex flex-col md:flex-row md:items-start md:justify-between w-full flex-wrap gap-4 md:gap-8" aria-hidden="true">
+                                    <div className="flex items-start gap-2 md:gap-4 flex-wrap">
+                                        <span
+                                            className="text-[clamp(2.5rem,8vw,11.5rem)] leading-[0.85] font-bold tracking-[-0.04em] italic"
+                                            style={{ color: '#a3e635' }}
+                                        >
+                                            {t('title_line2')}
+                                        </span>
+                                        <span
+                                            className="text-xl md:text-3xl lg:text-5xl ml-1 md:ml-2 mt-1 md:mt-3 font-bold"
+                                            style={{ color: '#a3e635' }}
+                                        >
+                                            ®
+                                        </span>
+                                    </div>
+                                    
+                                    {/* Location Text Block on the right */}
+                                    <motion.div 
+                                        variants={fadeVariants}
+                                        className="hidden lg:flex flex-col items-end text-right self-end pb-2 md:pb-6 max-w-[320px]"
                                     >
-                                        {t('title_line2')}
-                                    </span>
-                                    <span
-                                        className="text-xl md:text-3xl lg:text-5xl ml-1 md:ml-2 mt-1 md:mt-3 font-bold"
-                                        style={{ color: '#a3e635' }}
-                                    >
-                                        ®
-                                    </span>
+                                        <div className="flex items-center gap-2 mb-3">
+                                            <span className="text-[#a3e635] text-sm md:text-base font-bold uppercase tracking-[0.15em]">{t('hero_location_title')}</span>
+                                            <MapPin className="w-5 h-5 text-[#a3e635]" />
+                                        </div>
+                                        <p className="text-white/70 text-[14px] leading-[1.6] font-medium" style={{ margin: 0 }}>
+                                            {t('hero_location_text')}
+                                        </p>
+                                    </motion.div>
                                 </div>
                             </motion.h1>
                         </div>
