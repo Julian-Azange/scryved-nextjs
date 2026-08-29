@@ -13,6 +13,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
         { path: '/servicios/mantenimiento-equipos', priority: 0.9, changeFrequency: 'monthly' as const },
         { path: '/about', priority: 0.8, changeFrequency: 'monthly' as const },
         { path: '/team', priority: 0.8, changeFrequency: 'monthly' as const },
+        { path: '/privacy', priority: 0.3, changeFrequency: 'yearly' as const },
+        { path: '/terms', priority: 0.3, changeFrequency: 'yearly' as const },
+        { path: '/gracias', priority: 0.1, changeFrequency: 'yearly' as const },
     ];
 
     const locales = ['es', 'en'];
