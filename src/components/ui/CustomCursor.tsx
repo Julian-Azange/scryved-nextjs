@@ -1,100 +1,105 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import { useEffect, useRef } from 'react';
 
+/**
+ * CustomCursor — versión ultra-optimizada
+ * 
+ * Principios:
+ * - CERO re-renders de React: todo se maneja con refs y mutación directa del DOM.
+ * - requestAnimationFrame para mover el cursor (1 RAF, no N setState por frame).
+ * - Event listeners pasivos cuando es posible.
+ * - Se desactiva completamente en móviles y touch devices.
+ * - Sin Framer Motion — transiciones CSS nativas son mucho más livianas.
+ */
 export default function CustomCursor() {
-    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-    const [isHovered, setIsHovered] = useState(false);
-    const [hoverText, setHoverText] = useState("");
-    const [isMobile, setIsMobile] = useState(false);
+    const dotRef = useRef<HTMLDivElement>(null);
+    const mouseRef = useRef({ x: -100, y: -100 });
+    const hoveredRef = useRef(false);
+    const rafRef = useRef<number>(0);
 
     useEffect(() => {
-        const checkMobile = () => {
-            setIsMobile(window.innerWidth < 768 || 'ontouchstart' in window);
-        };
-        checkMobile();
-        window.addEventListener('resize', checkMobile);
+        // Verificar si es dispositivo táctil o móvil
+        const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+        const isSmallScreen = window.innerWidth < 768;
+        if (isTouchDevice || isSmallScreen) return;
 
-        const updateMousePosition = (e: MouseEvent) => {
-            setMousePosition({ x: e.clientX, y: e.clientY });
+        const dot = dotRef.current;
+        if (!dot) return;
+
+        // Inyectar estilo para ocultar cursor por defecto (una sola vez)
+        const style = document.createElement('style');
+        style.textContent = `@media(min-width:768px){*{cursor:none!important}}`;
+        document.head.appendChild(style);
+
+        // Listener de movimiento — solo guarda coords, no toca el DOM
+        const onMouseMove = (e: MouseEvent) => {
+            mouseRef.current.x = e.clientX;
+            mouseRef.current.y = e.clientY;
         };
 
-        const handleMouseOver = (e: MouseEvent) => {
+        // Listener de hover — event delegation
+        const onMouseOver = (e: MouseEvent) => {
             const target = e.target as HTMLElement;
-            const interactiveEl = target.closest('a, button, [data-cursor]');
-            
-            if (interactiveEl) {
-                setIsHovered(true);
-                const text = interactiveEl.getAttribute('data-cursor-text');
-                setHoverText(text || "");
-            } else {
-                setIsHovered(false);
-                setHoverText("");
+            const isInteractive = target.closest('a, button, [data-cursor], input, textarea, select, label');
+            const wasHovered = hoveredRef.current;
+            hoveredRef.current = !!isInteractive;
+
+            // Solo tocar el DOM si cambió el estado
+            if (wasHovered !== hoveredRef.current) {
+                if (hoveredRef.current) {
+                    dot.style.width = '40px';
+                    dot.style.height = '40px';
+                    dot.style.backgroundColor = 'rgba(163, 230, 53, 0.15)';
+                    dot.style.border = '1.5px solid rgba(163, 230, 53, 0.6)';
+                    dot.style.mixBlendMode = 'screen';
+                } else {
+                    dot.style.width = '14px';
+                    dot.style.height = '14px';
+                    dot.style.backgroundColor = 'rgba(255, 255, 255, 1)';
+                    dot.style.border = 'none';
+                    dot.style.mixBlendMode = 'difference';
+                }
             }
         };
 
-        window.addEventListener('mousemove', updateMousePosition);
-        window.addEventListener('mouseover', handleMouseOver);
+        // RAF loop — actualiza posición con transform (GPU-accelerated, no layout reflow)
+        const tick = () => {
+            const { x, y } = mouseRef.current;
+            dot.style.transform = `translate3d(${x}px, ${y}px, 0) translate(-50%, -50%)`;
+            rafRef.current = requestAnimationFrame(tick);
+        };
+
+        window.addEventListener('mousemove', onMouseMove, { passive: true });
+        window.addEventListener('mouseover', onMouseOver, { passive: true });
+        rafRef.current = requestAnimationFrame(tick);
 
         return () => {
-            window.removeEventListener('resize', checkMobile);
-            window.removeEventListener('mousemove', updateMousePosition);
-            window.removeEventListener('mouseover', handleMouseOver);
+            window.removeEventListener('mousemove', onMouseMove);
+            window.removeEventListener('mouseover', onMouseOver);
+            cancelAnimationFrame(rafRef.current);
+            style.remove();
         };
     }, []);
 
-    if (isMobile) return null;
-
-    const size = isHovered ? (hoverText ? 80 : 40) : 16;
-    const offset = size / 2;
-
-    const variants = {
-        default: {
-            x: mousePosition.x - offset,
-            y: mousePosition.y - offset,
-            width: size,
-            height: size,
-            backgroundColor: "rgba(255, 255, 255, 1)",
-            mixBlendMode: "difference" as any,
-            border: "0px solid transparent",
-        },
-        hover: {
-            x: mousePosition.x - offset,
-            y: mousePosition.y - offset,
-            width: size,
-            height: size,
-            backgroundColor: hoverText ? "rgba(163, 230, 53, 0.9)" : "rgba(163, 230, 53, 0.2)",
-            mixBlendMode: hoverText ? "normal" as any : "screen" as any,
-            border: hoverText ? "0px solid transparent" : "1px solid rgba(163, 230, 53, 0.8)",
-        }
-    };
-
     return (
-        <>
-            {/* Global style to hide the default cursor on non-mobile devices */}
-            <style dangerouslySetInnerHTML={{__html: `
-                @media (min-width: 768px) {
-                    * { cursor: none !important; }
-                }
-            `}} />
-            
-            <motion.div
-                className="fixed top-0 left-0 rounded-full pointer-events-none z-[9999] flex items-center justify-center text-black text-xs font-bold overflow-hidden"
-                variants={variants}
-                animate={isHovered ? "hover" : "default"}
-                transition={{ type: "tween", ease: "circOut", duration: 0.15 }}
-            >
-                {hoverText && (
-                    <motion.span 
-                        initial={{ opacity: 0, scale: 0.8 }} 
-                        animate={{ opacity: 1, scale: 1 }} 
-                        className="text-center tracking-tight leading-tight px-2"
-                    >
-                        {hoverText}
-                    </motion.span>
-                )}
-            </motion.div>
-        </>
+        <div
+            ref={dotRef}
+            style={{
+                position: 'fixed',
+                top: 0,
+                left: 0,
+                width: 14,
+                height: 14,
+                borderRadius: '50%',
+                backgroundColor: 'rgba(255, 255, 255, 1)',
+                mixBlendMode: 'difference',
+                pointerEvents: 'none',
+                zIndex: 9999,
+                willChange: 'transform',
+                transition: 'width 0.2s ease, height 0.2s ease, background-color 0.2s ease, border 0.2s ease',
+                transform: 'translate3d(-100px, -100px, 0)',
+            }}
+        />
     );
 }

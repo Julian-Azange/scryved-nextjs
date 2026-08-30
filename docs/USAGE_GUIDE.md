@@ -192,7 +192,7 @@ export function SecurityKitCard({ kitId }) {
       </ul>
 
       <a
-        href={`https://wa.me/573222455334?text=${encodeURIComponent(kit.whatsapp_message)}`}
+        href={`https://wa.me/573143035929?text=${encodeURIComponent(kit.whatsapp_message)}`}
         target="_blank"
         className="mt-8 w-full btn-primary block text-center"
       >

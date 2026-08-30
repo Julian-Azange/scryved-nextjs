@@ -382,7 +382,7 @@
             },
             {
                 "id": "nicolas",
-                "name": "Nicolas Peñafiel",
+                "name": "Nicolas PeÃ±afiel",
                 "role": "Semi Sr. Full Stack Developer",
                 "profession": "Technologist"
             },
@@ -442,7 +442,7 @@
         "tag": "About the Founder",
         "ceo": "// CEO",
         "photo_name": "Julian Palomares",
-        "photo_role": "CEO & Founder · Scryved",
+        "photo_role": "CEO & Founder Â· Scryved",
         "years_num": "4+",
         "years_text": "years exp.",
         "name_part1": "JULIAN",
@@ -488,7 +488,7 @@
         },
         "info": {
             "title": "Information",
-            "phone": "+57 322 245 5334",
+            "phone": "+57 314 302 5929",
             "email": "scryved@gmail.com",
             "address": "Pitalito, Huila, Colombia"
         }
@@ -503,7 +503,7 @@
         },
         "contact_title": "Contact",
         "address": "Pitalito, Huila, Colombia",
-        "phone": "+57 322 245 5334",
+        "phone": "+57 314 302 5929",
         "email": "scryved@gmail.com",
         "copyright": "All rights reserved.",
         "privacy": "Privacy Policy",
@@ -559,7 +559,7 @@
         "marquee": "SOFTWARE DEVELOPMENT   MOBILE APPLICATIONS   CLOUD ARCHITECTURE   UI/UX DESIGN   ",
         "section_id": "[01]",
         "section_title": "// DIGITAL EXCELLENCE",
-        "year": "© 2026",
+        "year": "Â© 2026",
         "score": "9.8",
         "score_max": "/10.0",
         "statement": "OVER 3 YEARS BUILDING HIGH-PERFORMANCE DIGITAL PRODUCTS, SCALABLE SYSTEMS, AND CONVERSION-FOCUSED EXPERIENCES.",
@@ -583,91 +583,123 @@
         "per_project": "/ project",
         "includes": "Includes:",
         "ask_price": "Get a quote",
-        "plans": [
-            {
-                "id": "landing",
-                "name": "Landing Page",
-                "tagline": "Your professional digital presence",
-                "price": "1.000.000",
-                "featured": false,
-                "features": [
-                    "Custom responsive design",
-                    "Custom domain for 1 year",
-                    "Web hosting for 1 year",
-                    "Contact section / WhatsApp",
-                    "Basic SEO optimization",
-                    "SSL Certificate (HTTPS)"
-                ]
-            },
-            {
-                "id": "ecommerce",
-                "name": "Online Store",
-                "tagline": "Sell 24/7 with no middlemen",
-                "price": "4.000.000",
-                "featured": true,
-                "features": [
-                    "Domain and hosting for 1 year",
-                    "Product and category management",
-                    "Custom multimedia gallery",
-                    "Integrated payment gateway",
-                    "Admin panel included",
-                    "Advanced e-commerce SEO"
-                ]
-            },
-            {
-                "id": "management",
-                "name": "Management System",
-                "tagline": "Automate and scale your business",
-                "price": "4.000.000",
-                "featured": false,
-                "features": [
-                    "Domain and hosting for 1 year",
-                    "Custom business modules",
-                    "Users and custom roles",
-                    "Reports and analytics",
-                    "Scalable database",
-                    "Technical support included"
-                ]
-            },
-            {
-                "id": "saas",
-                "name": "SaaS System",
-                "tagline": "Enterprise software as a service",
-                "price": "5.000.000",
-                "featured": false,
-                "features": [
-                    "Domain and hosting for 1 year",
-                    "Multi-tenant (multiple clients)",
-                    "Advanced auth & security",
-                    "REST API / Integrations",
-                    "Real-time metrics dashboard",
-                    "Cloud scalability"
-                ]
-            },
-            {
-                "id": "maintenance",
-                "name": "PC Maintenance",
-                "tagline": "Your machine as good as new",
-                "price": "50.000",
-                "featured": false,
-                "features": [
-                    "Full internal and external cleaning",
-                    "Operating system update",
-                    "Office 365 licensed for 1 year",
-                    "Virus & malware removal",
-                    "Performance optimization",
-                    "Complete diagnostics"
-                ]
-            }
+            "categories": [
+      { "id": "web", "label": "Web Development" },
+      { "id": "it", "label": "IT Consulting" },
+      { "id": "cloud", "label": "Cloud Infrastructure" },
+      { "id": "support", "label": "Tech Support" }
+    ],
+    "plans": [
+      {
+        "id": "landing",
+        "category": "web",
+        "name": "Websites",
+        "tagline": "Your professional digital presence",
+        "price": "300.000",
+        "promo_message": "Take it at your pace: Pay in comfortable installments while your site starts generating clients.",
+        "featured": false,
+        "features": [
+          "Custom and responsive design",
+          "Custom domain for 1 year",
+          "Web hosting for 1 year",
+          "Contact / WhatsApp section",
+          "Basic SEO optimization",
+          "SSL Certificate (HTTPS)"
         ]
-    },
-    "CookieBanner": {
-        "title": "We Use Cookies",
-        "description": "We use cookies to improve your experience, analyze our traffic, and personalize content.",
-        "privacy_link": "Privacy Policy",
-        "accept": "Accept"
-    },
-    "Privacy": {
+      },
+      {
+        "id": "ecommerce",
+        "category": "web",
+        "name": "Online Stores",
+        "tagline": "Sell 24/7 without intermediaries",
+        "price": "1.000.000",
+        "promo_message": "Your business open 24/7. Pay in installments and recover your investment with your first sales.",
+        "featured": true,
+        "features": [
+          "Domain and hosting for 1 year",
+          "Product and category management",
+          "Custom multimedia gallery",
+          "Integrated payment gateway",
+          "Admin dashboard",
+          "Advanced SEO for e-commerce"
+        ]
+      },
+      {
+        "id": "management",
+        "category": "web",
+        "name": "Management Systems",
+        "tagline": "Automate and scale your business",
+        "price": "1.000.000",
+        "promo_message": "Pay in installments. The software adapts to you, not the other way around. Save hundreds of hours automating processes.",
+        "featured": false,
+        "features": [
+          "Custom tailored software",
+          "Users and custom roles",
+          "Reports and statistics",
+          "Scalable database",
+          "Technical support included"
+        ]
+      },
+      {
+        "id": "it",
+        "category": "it",
+        "name": "IT Consulting",
+        "tagline": "Make the best technology decisions",
+        "price": "Get Quote",
+        "promo_message": "Totally FREE if you decide to develop your project with us! We refund the consulting fee.",
+        "featured": true,
+        "features": [
+          "Technology problem diagnosis",
+          "Equipment and software purchasing advice",
+          "Digital transformation planning",
+          "Information security audit",
+          "IT resource optimization",
+          "Project guidance"
+        ]
+      },
+      {
+        "id": "cloud",
+        "category": "cloud",
+        "name": "Cloud Infrastructure",
+        "tagline": "Secure servers and databases",
+        "price": "Get Quote",
+        "promo_message": "Pay only for what you use. Infinite scalability without buying expensive physical servers.",
+        "featured": false,
+        "features": [
+          "System migration to the cloud",
+          "Server setup (AWS, Google Cloud)",
+          "Automated backups and recovery",
+          "High availability and speed",
+          "24/7 system monitoring",
+          "Protection against web attacks"
+        ]
+      },
+      {
+        "id": "support",
+        "category": "support",
+        "name": "PC Maintenance",
+        "tagline": "Your equipment like new",
+        "price": "50.000",
+        "promo_message": "Don't lose time to breakdowns. Priority support in Pitalito to get your equipment running instantly.",
+        "featured": false,
+        "features": [
+          "Internal and external cleaning",
+          "Operating system updates",
+          "Licensed Office 365 for 1 year",
+          "Virus and malware removal",
+          "Performance optimization",
+          "Complete diagnostic"
+        ]
+      }
+    ]
+  },
+  "CookieBanner": {
+      "title": "We Use Cookies",
+      "description": "We use cookies to improve your experience, analyze our traffic, and personalize content.",
+      "privacy_link": "Privacy Policy",
+      "accept": "Accept"
+  },
+  "Privacy": {
         "title": "Privacy",
         "title_highlight": "Policy",
         "updated": "Last updated: ",

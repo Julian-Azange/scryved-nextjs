@@ -1,9 +1,11 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { motion, useInView, Variants } from 'framer-motion';
 import { useRouter } from '@/src/i18n/routing';
+import maplibregl from 'maplibre-gl';
+import 'maplibre-gl/dist/maplibre-gl.css';
 
 /* ─── Animation Variants ─── */
 const fadeUp: Variants = {
@@ -29,6 +31,25 @@ const contactStyles = `
     0%, 100% { transform: translate(0, 0) scale(1); }
     33% { transform: translate(-30px, 50px) scale(1.1); }
     66% { transform: translate(40px, -20px) scale(0.9); }
+}
+@keyframes scryved-pulse {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(163, 230, 53, 0.7); }
+    70% { transform: scale(1.05); box-shadow: 0 0 0 14px rgba(163, 230, 53, 0); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(163, 230, 53, 0); }
+}
+@keyframes scryved-ring {
+    0% { opacity: 0.9; transform: scale(1); }
+    100% { opacity: 0; transform: scale(2.5); }
+}
+.scryved-marker-ring {
+    position: absolute;
+    inset: 0;
+    border-radius: 14px;
+    border: 2px solid #a3e635;
+    animation: scryved-ring 1.8s ease-out infinite;
+}
+.scryved-marker-ring-delay {
+    animation-delay: 0.9s;
 }
 .social-btn {
     display: flex;
@@ -91,6 +112,77 @@ export default function Contact() {
     const sectionRef = useRef(null);
     const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
     const router = useRouter();
+
+    const mapContainer = useRef<HTMLDivElement>(null);
+    const mapInstance = useRef<maplibregl.Map | null>(null);
+
+    useEffect(() => {
+        if (!mapContainer.current || mapInstance.current) return;
+
+        const lngLat: [number, number] = [-76.035523, 1.850530];
+
+        mapInstance.current = new maplibregl.Map({
+            container: mapContainer.current,
+            // Mapa colorido y vibrante — OpenFreeMap Bright (gratuito, sin API key)
+            style: 'https://tiles.openfreemap.org/styles/bright',
+            center: lngLat,
+            zoom: 15.5,
+            interactive: true,
+            pitch: 40
+        });
+
+        // Wrapper externo con efecto destello/pulso
+        const wrapper = document.createElement('div');
+        wrapper.style.position = 'relative';
+        wrapper.style.width = '52px';
+        wrapper.style.height = '52px';
+        wrapper.style.display = 'flex';
+        wrapper.style.alignItems = 'center';
+        wrapper.style.justifyContent = 'center';
+        wrapper.style.cursor = 'pointer';
+
+        // Anillo pulsante 1
+        const ring1 = document.createElement('div');
+        ring1.className = 'scryved-marker-ring';
+        wrapper.appendChild(ring1);
+
+        // Anillo pulsante 2 (con delay)
+        const ring2 = document.createElement('div');
+        ring2.className = 'scryved-marker-ring scryved-marker-ring-delay';
+        wrapper.appendChild(ring2);
+
+        // Icono de Scryved (imagen)
+        const iconEl = document.createElement('div');
+        iconEl.style.width = '48px';
+        iconEl.style.height = '48px';
+        iconEl.style.borderRadius = '14px';
+        iconEl.style.backgroundImage = 'url(/icon.png)';
+        iconEl.style.backgroundSize = 'cover';
+        iconEl.style.backgroundPosition = 'center';
+        iconEl.style.boxShadow = '0 8px 20px rgba(0,0,0,0.35), 0 0 0 3px #a3e635';
+        iconEl.style.animation = 'scryved-pulse 2.2s ease-out infinite';
+        iconEl.style.flexShrink = '0';
+        wrapper.appendChild(iconEl);
+
+        // Add Marker
+        const marker = new maplibregl.Marker({ element: wrapper, anchor: 'center' })
+            .setLngLat(lngLat)
+            .setPopup(
+                new maplibregl.Popup({ offset: 35, closeButton: false })
+                    .setHTML(`
+                        <div style="text-align:center; font-weight:700; font-family:monospace; font-size:13px; color:#1a1a1a; padding: 4px 8px;">
+                            📍 SCRYVED HQ
+                        </div>
+                    `)
+            )
+            .addTo(mapInstance.current);
+            
+        // Clean up on unmount
+        return () => {
+            mapInstance.current?.remove();
+            mapInstance.current = null;
+        };
+    }, []);
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
@@ -183,59 +275,57 @@ export default function Contact() {
 
                                 {/* ─── Social Links Block ─── */}
                                 <div className="flex flex-col gap-3">
-                                    <p className="text-[11px] font-mono tracking-[0.2em] uppercase mb-2" style={{ color: '#a3e635' }}>
+                                    <p className="text-[11px] font-mono tracking-[0.2em] uppercase mb-1" style={{ color: '#a3e635' }}>
                                         Síguenos
                                     </p>
-
-                                    <a
-                                        href="https://facebook.com/scryved"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        aria-label="Facebook"
-                                        className="social-btn"
-                                    >
-                                        <div className="social-icon">
+                                    
+                                    <div className="flex flex-row gap-2 w-full">
+                                        <a href="https://facebook.com/scryved" target="_blank" rel="noopener noreferrer"
+                                           className="flex flex-1 items-center justify-center gap-2 py-2.5 rounded-xl bg-white/5 hover:bg-[#a3e635]/10 transition-all duration-300 text-white group">
                                             <FacebookIcon />
-                                        </div>
-                                        <div className="flex flex-col">
-                                            <span className="text-white font-semibold text-sm leading-none mb-0.5">Facebook</span>
-                                            <span className="text-white/40 text-xs font-mono">@scryved</span>
-                                        </div>
-                                        <span className="ml-auto text-white/20 text-lg">→</span>
-                                    </a>
-
-                                    <a
-                                        href="https://instagram.com/scryved"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        aria-label="Instagram"
-                                        className="social-btn"
-                                    >
-                                        <div className="social-icon">
+                                            <span className="text-xs font-medium text-white/50 group-hover:text-white transition-colors">Facebook</span>
+                                        </a>
+                                        
+                                        <a href="https://instagram.com/scryved" target="_blank" rel="noopener noreferrer"
+                                           className="flex flex-1 items-center justify-center gap-2 py-2.5 rounded-xl bg-white/5 hover:bg-[#a3e635]/10 transition-all duration-300 text-white group">
                                             <InstagramIcon />
-                                        </div>
-                                        <div className="flex flex-col">
-                                            <span className="text-white font-semibold text-sm leading-none mb-0.5">Instagram</span>
-                                            <span className="text-white/40 text-xs font-mono">@scryved</span>
-                                        </div>
-                                        <span className="ml-auto text-white/20 text-lg">→</span>
-                                    </a>
-
-                                    <a
-                                        href={`https://wa.me/${t('info.phone').replace(/\s+/g, '').replace('+', '')}`}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        aria-label="WhatsApp"
-                                        className="social-btn"
-                                    >
-                                        <div className="social-icon">
+                                            <span className="text-xs font-medium text-white/50 group-hover:text-white transition-colors">Instagram</span>
+                                        </a>
+                                        
+                                        <a href={`https://wa.me/${t('info.phone').replace(/\s+/g, '').replace('+', '')}`} target="_blank" rel="noopener noreferrer"
+                                           className="flex flex-1 items-center justify-center gap-2 py-2.5 rounded-xl bg-white/5 hover:bg-[#a3e635]/10 transition-all duration-300 text-white group">
                                             <WhatsAppIcon />
+                                            <span className="text-xs font-medium text-white/50 group-hover:text-white transition-colors">WhatsApp</span>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                {/* ─── Map Container ─── */}
+                                <div className="w-full mt-2 rounded-3xl overflow-hidden border border-white/10 relative" style={{ height: '300px' }}>
+                                    <div ref={mapContainer} className="w-full h-full" />
+                                    <div className="absolute inset-0 pointer-events-none rounded-3xl shadow-[inset_0_0_30px_rgba(5,5,5,0.15)]" />
+                                    
+                                    {/* Scryved-branded Open in Maps Button */}
+                                    <a 
+                                        href="https://maps.app.goo.gl/9M1MGjUNMUoxy2ab9" 
+                                        target="_blank" 
+                                        rel="noopener noreferrer"
+                                        className="absolute top-3 right-3 z-10 flex items-center gap-2 hover:scale-105 active:scale-95 transition-all duration-200 group"
+                                        style={{
+                                            background: 'rgba(5,5,5,0.85)',
+                                            backdropFilter: 'blur(12px)',
+                                            border: '1px solid rgba(163,230,53,0.3)',
+                                            borderRadius: '14px',
+                                            padding: '8px 14px',
+                                            boxShadow: '0 4px 20px rgba(0,0,0,0.4), 0 0 0 0 rgba(163,230,53,0)',
+                                        }}
+                                    >
+                                        {/* Scryved mini logo */}
+                                        <img src="/icon.png" alt="S" style={{ width: 22, height: 22, borderRadius: 6, flexShrink: 0 }} />
+                                        <div className="flex flex-col leading-none">
+                                            <span style={{ fontSize: 10, fontWeight: 800, color: '#a3e635', letterSpacing: '0.18em', fontFamily: 'monospace', textTransform: 'uppercase' }}>Scryved</span>
+                                            <span style={{ fontSize: 9, color: 'rgba(255,255,255,0.5)', fontFamily: 'monospace', letterSpacing: '0.1em' }}>Ver en Maps →</span>
                                         </div>
-                                        <div className="flex flex-col">
-                                            <span className="text-white font-semibold text-sm leading-none mb-0.5">WhatsApp</span>
-                                            <span className="text-white/40 text-xs font-mono">{t('info.phone')}</span>
-                                        </div>
-                                        <span className="ml-auto text-white/20 text-lg">→</span>
                                     </a>
                                 </div>
                             </motion.div>
@@ -276,7 +366,27 @@ export default function Contact() {
 
                                     <button
                                         type="submit"
-                                        className="w-full bg-[#a3e635] text-[#050505] font-bold tracking-wide text-sm md:text-base py-4 md:py-5 rounded-full hover:bg-white hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(163,230,53,0.4)] transition-all duration-300"
+                                        className="group relative w-full overflow-hidden py-4 md:py-5 rounded-2xl font-bold tracking-wide text-sm md:text-base transition-all duration-300"
+                                        style={{
+                                            background: 'rgba(163,230,53,0.12)',
+                                            backdropFilter: 'blur(16px)',
+                                            WebkitBackdropFilter: 'blur(16px)',
+                                            border: '1px solid rgba(163,230,53,0.25)',
+                                            color: '#a3e635',
+                                            boxShadow: '0 0 0 0 rgba(163,230,53,0)',
+                                        }}
+                                        onMouseEnter={e => {
+                                            (e.currentTarget as HTMLElement).style.background = '#a3e635';
+                                            (e.currentTarget as HTMLElement).style.color = '#050505';
+                                            (e.currentTarget as HTMLElement).style.boxShadow = '0 0 40px rgba(163,230,53,0.3)';
+                                            (e.currentTarget as HTMLElement).style.borderColor = '#a3e635';
+                                        }}
+                                        onMouseLeave={e => {
+                                            (e.currentTarget as HTMLElement).style.background = 'rgba(163,230,53,0.12)';
+                                            (e.currentTarget as HTMLElement).style.color = '#a3e635';
+                                            (e.currentTarget as HTMLElement).style.boxShadow = '0 0 0 0 rgba(163,230,53,0)';
+                                            (e.currentTarget as HTMLElement).style.borderColor = 'rgba(163,230,53,0.25)';
+                                        }}
                                     >
                                         {t('form.button')}
                                     </button>

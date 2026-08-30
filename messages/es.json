@@ -532,7 +532,7 @@
     },
     "info": {
       "title": "Información",
-      "phone": "+57 322 245 5334",
+      "phone": "+57 314 302 5929",
       "email": "scryved@gmail.com",
       "address": "Pitalito, Huila, Colombia"
     }
@@ -547,7 +547,7 @@
     },
     "contact_title": "Contacto",
     "address": "Pitalito, Huila, Colombia",
-    "phone": "+57 322 245 5334",
+    "phone": "+57 314 302 5929",
     "email": "scryved@gmail.com",
     "copyright": "Todos los derechos reservados.",
     "privacy": "Política de Privacidad",
@@ -626,81 +626,114 @@
     "currency": "COP",
     "per_project": "/ proyecto",
     "includes": "Incluye:",
+    "categories": [
+      { "id": "web", "label": "Desarrollo Web" },
+      { "id": "consulting", "label": "Asesoría IT" },
+      { "id": "cloud", "label": "Infraestructura" },
+      { "id": "support", "label": "Soporte Técnico" }
+    ],
     "ask_price": "Cotizar ahora",
     "plans": [
       {
-        "id": "landing",
-        "name": "Landing Page",
-        "tagline": "Tu presencia digital profesional",
-        "price": "1.000.000",
+        "id": "consulting",
+        "category": "consulting",
+        "name": "Asesoría Informática",
+        "tagline": "Toma las mejores decisiones tecnológicas",
+        "price": "Cotizar",
+        "promo_message": "¡Totalmente GRATIS si decides desarrollar tu proyecto con nosotros! Te devolvemos el valor de la asesoría.",
         "featured": false,
         "features": [
-          "Diseño a medida y responsive",
-          "Dominio personalizado por 1 año",
-          "Alojamiento web por 1 año",
-          "Sección de contacto / WhatsApp",
-          "Optimización SEO básica",
-          "Certificado SSL (HTTPS)"
+          "Diagnóstico de problemas tecnológicos",
+          "Asesoría en compra de equipos o software",
+          "Planificación de transformación digital",
+          "Auditoría de seguridad de la información",
+          "Optimización de recursos IT",
+          "Acompañamiento en proyectos"
+        ]
+      },
+      {
+        "id": "cloud",
+        "category": "cloud",
+        "name": "Infraestructura en la Nube",
+        "tagline": "Servidores y bases de datos seguras",
+        "price": "Cotizar",
+        "promo_message": "Paga solo por lo que usas. Escalabilidad infinita sin comprar costosos servidores físicos.",
+        "featured": false,
+        "features": [
+          "Migración de sistemas a la nube",
+          "Configuración de servidores (AWS, Google)",
+          "Copias de seguridad automáticas (Backups)",
+          "Alta disponibilidad y rapidez",
+          "Monitoreo 24/7 del sistema",
+          "Protección contra ataques web"
+        ]
+      },
+      {
+        "id": "web",
+        "category": "web",
+        "name": "Páginas Web",
+        "tagline": "Tu presencia digital profesional",
+        "price": "300.000",
+        "promo_message": "Llévalo a tu ritmo: Paga en cómodas cuotas mientras tu página empieza a generar clientes.",
+        "featured": false,
+        "features": [
+          "Diseño personalizado y moderno",
+          "Adaptable a celulares y tablets",
+          "Dominio y alojamiento (1 año)",
+          "Botón de contacto directo a WhatsApp",
+          "Posicionamiento básico en Google (SEO)",
+          "Certificado de seguridad (Candado verde)"
         ]
       },
       {
         "id": "ecommerce",
-        "name": "Tienda en Línea",
+        "category": "web",
+        "name": "Tiendas en Línea",
         "tagline": "Vende 24/7 sin intermediarios",
-        "price": "4.000.000",
+        "price": "1.000.000",
+        "promo_message": "Tu negocio abierto 24/7. Págalo a cuotas y recupera tu inversión con tus primeras ventas.",
         "featured": true,
         "features": [
-          "Dominio y alojamiento por 1 año",
-          "Gestión de productos y categorías",
-          "Galería multimedia personalizada",
-          "Pasarela de pago integrada",
-          "Panel de administración",
-          "SEO avanzado para e-commerce"
+          "Catálogo autogestionable de productos",
+          "Carrito de compras integrado",
+          "Pagos con tarjeta y transferencias",
+          "Dominio y alojamiento (1 año)",
+          "Panel fácil para administrar ventas",
+          "Optimización para vender más"
         ]
       },
       {
         "id": "management",
-        "name": "Sistema de Gestión",
-        "tagline": "Automatiza y escala tu negocio",
-        "price": "4.000.000",
+        "category": "web",
+        "name": "Sistemas de Gestión",
+        "tagline": "Automatiza y controla tu negocio",
+        "price": "1.000.000",
+        "promo_message": "Págalo en cuotas. El software se adapta a ti, no tú al software. Ahorra cientos de horas automatizando procesos.",
         "featured": false,
         "features": [
-          "Dominio y alojamiento por 1 año",
-          "Módulos a la medida de tu negocio",
-          "Usuarios y roles personalizados",
-          "Reportes y estadísticas",
-          "Base de datos escalable",
-          "Soporte técnico incluido"
+          "Software hecho a la medida de tu empresa",
+          "Control de inventarios y facturación",
+          "Usuarios con diferentes permisos",
+          "Reportes y métricas automáticas",
+          "Base de datos segura y en la nube",
+          "Capacitación y soporte incluido"
         ]
       },
       {
-        "id": "saas",
-        "name": "Sistema SaaS",
-        "tagline": "Software como servicio empresarial",
-        "price": "5.000.000",
-        "featured": false,
-        "features": [
-          "Dominio y alojamiento por 1 año",
-          "Multi-tenant (múltiples clientes)",
-          "Autenticación y seguridad avanzada",
-          "API REST / Integraciones",
-          "Dashboard de métricas en tiempo real",
-          "Escalabilidad en la nube"
-        ]
-      },
-      {
-        "id": "maintenance",
-        "name": "Mantenimiento PC",
-        "tagline": "Tu equipo como nuevo",
+        "id": "support",
+        "category": "support",
+        "name": "Servicio Técnico Especializado",
+        "tagline": "Reparación y mantenimiento de equipos",
         "price": "50.000",
+        "promo_message": "No dejes morir tu equipo. Diagnóstico rápido, honesto y con garantía de satisfacción.",
         "featured": false,
         "features": [
-          "Limpieza interna y externa",
-          "Actualización de sistema operativo",
-          "Office 365 licenciado por 1 año",
-          "Eliminación de virus y malware",
-          "Optimización de rendimiento",
-          "Diagnóstico completo"
+          "Limpieza interna y externa de equipos",
+          "Instalación de programas y antivirus",
+          "Recuperación de información perdida",
+          "Reparación de hardware (Discos, Memorias)",
+          "Formateo y actualización de Windows",
+          "Soporte remoto o presencial"
         ]
       }
     ]

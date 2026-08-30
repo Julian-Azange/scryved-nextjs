@@ -1,8 +1,8 @@
 'use client';
 
-import { useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
-import { motion, useInView, Variants } from 'framer-motion';
+import { motion, useInView, Variants, AnimatePresence } from 'framer-motion';
 
 /* ─── Animation Variants ─── */
 const fadeUp: Variants = {
@@ -32,19 +32,26 @@ const WhatsAppIcon = () => (
 
 /* ─── Format price to abbreviated string ─── */
 function abbreviatePrice(price: string): string {
-    // price comes as "1.000.000", "50.000", etc.
     const clean = price.replace(/\./g, '');
     const num = parseInt(clean, 10);
+    if (isNaN(num)) return price;
     if (num >= 1_000_000) return `${num / 1_000_000}M`;
     if (num >= 1_000) return `${num / 1_000}K`;
     return price;
 }
 
+type Category = {
+    id: string;
+    label: string;
+};
+
 type Plan = {
     id: string;
+    category: string;
     name: string;
     tagline: string;
     price: string;
+    promo_message?: string;
     featured: boolean;
     features: string[];
 };
@@ -54,15 +61,28 @@ export default function Pricing() {
     const sectionRef = useRef(null);
     const isInView = useInView(sectionRef, { once: true, amount: 0.05 });
 
+    const categories = t.raw('categories') as Category[];
     const plans = t.raw('plans') as Plan[];
-    const whatsappNumber = '573222455334';
+    
+    // Set default active tab securely
+    const [activeTab, setActiveTab] = useState<string>('web');
+    
+    useEffect(() => {
+        if (categories && categories.length > 0) {
+            setActiveTab(categories[0].id);
+        }
+    }, [categories]);
+
+    const whatsappNumber = '573143025929';
 
     const buildWhatsAppLink = (planName: string) => {
         const msg = encodeURIComponent(
-            `Hola Scryved! 👋 Me interesa el plan *${planName}* y quisiera más información sobre precios y detalles.`
+            `Hola Scryved! 👋 Me interesa el servicio de *${planName}* y quisiera más información sobre detalles y costos.`
         );
         return `https://wa.me/${whatsappNumber}?text=${msg}`;
     };
+
+    const filteredPlans = plans.filter(p => p.category === activeTab);
 
     return (
         <section
@@ -91,7 +111,7 @@ export default function Pricing() {
                     variants={stagger}
                     initial="hidden"
                     animate={isInView ? 'visible' : 'hidden'}
-                    className="mb-16 md:mb-20"
+                    className="mb-12 md:mb-16"
                 >
                     <motion.div variants={fadeUp} className="flex justify-between items-start mb-6">
                         <span
@@ -114,74 +134,123 @@ export default function Pricing() {
                     </motion.p>
                 </motion.div>
 
-                {/* ─── Cards Grid: 2 cols on md, 3 on xl, last row centered ─── */}
-                <motion.div
-                    variants={stagger}
+                {/* ─── Tabs Navigation ─── */}
+                <motion.div 
+                    variants={fadeUp}
                     initial="hidden"
                     animate={isInView ? 'visible' : 'hidden'}
-                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6"
+                    className="flex flex-wrap gap-2 md:gap-4 justify-start md:justify-center mb-12"
                 >
-                    {plans.map((plan, index) => {
-                        /* Center the last row if odd item count */
-                        const isLast = index === plans.length - 1;
-                        const totalOdd = plans.length % 3 !== 0 && isLast;
+                    {categories.map((cat) => (
+                        <button
+                            key={cat.id}
+                            onClick={() => setActiveTab(cat.id)}
+                            className="relative px-5 py-2.5 rounded-full text-xs md:text-sm font-semibold tracking-wide transition-colors duration-300"
+                            style={{
+                                color: activeTab === cat.id ? '#050505' : 'rgba(255,255,255,0.6)',
+                            }}
+                        >
+                            {activeTab === cat.id && (
+                                <motion.div
+                                    layoutId="activeTabIndicator"
+                                    className="absolute inset-0 rounded-full z-0"
+                                    style={{ background: '#a3e635' }}
+                                    transition={{ type: "spring", stiffness: 300, damping: 25 }}
+                                />
+                            )}
+                            <span className="relative z-10">{cat.label}</span>
+                        </button>
+                    ))}
+                </motion.div>
 
-                        return (
+                {/* ─── Huge Background Text for Glassmorphism Effect ─── */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center pointer-events-none select-none z-0 mt-32 md:mt-20">
+                    <h1 className="text-[18vw] md:text-[14vw] font-black uppercase text-white/5 tracking-tighter whitespace-nowrap">
+                        {t('title')}
+                    </h1>
+                </div>
+
+                {/* ─── Cards Container: Grid (Alargaditas / Vertical Glass) ─── */}
+                <motion.div
+                    className="flex flex-wrap justify-center items-stretch gap-6 md:gap-8 w-full max-w-7xl mx-auto relative z-10"
+                >
+                    <AnimatePresence mode="popLayout">
+                        {filteredPlans.map((plan) => (
                             <motion.div
                                 key={plan.id}
-                                variants={fadeUp}
-                                className={`relative flex flex-col rounded-2xl overflow-hidden ${totalOdd ? 'lg:col-start-2' : ''}`}
+                                layout
+                                initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                                animate={{ opacity: 1, scale: 1, y: 0 }}
+                                exit={{ opacity: 0, scale: 0.95, y: -20 }}
+                                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                                className={`relative flex flex-col rounded-[2rem] overflow-hidden w-full sm:max-w-[360px] md:max-w-[380px] backdrop-blur-2xl`}
                                 style={{
                                     background: plan.featured
-                                        ? 'linear-gradient(145deg, rgba(163,230,53,0.09) 0%, rgba(163,230,53,0.03) 100%)'
-                                        : 'rgba(255,255,255,0.025)',
+                                        ? 'rgba(163, 230, 53, 0.04)'
+                                        : 'rgba(255, 255, 255, 0.02)',
                                     border: plan.featured
-                                        ? '1px solid rgba(163,230,53,0.35)'
-                                        : '1px solid rgba(255,255,255,0.07)',
+                                        ? '1px solid rgba(163, 230, 53, 0.25)'
+                                        : '1px solid rgba(255, 255, 255, 0.08)',
                                     boxShadow: plan.featured
-                                        ? '0 0 50px rgba(163,230,53,0.07), inset 0 1px 0 rgba(163,230,53,0.15)'
-                                        : 'none',
+                                        ? '0 0 60px rgba(163,230,53,0.06), inset 0 1px 0 rgba(163,230,53,0.15)'
+                                        : 'inset 0 1px 0 rgba(255,255,255,0.05)',
                                 }}
                             >
                                 {/* Featured Badge */}
                                 {plan.featured && (
                                     <div className="absolute top-0 left-0 right-0 flex justify-center z-10">
-                                        <span className="text-[10px] font-bold tracking-[0.18em] uppercase px-5 py-1 rounded-b-lg"
+                                        <span className="text-[10px] font-bold tracking-[0.18em] uppercase px-5 py-1.5 rounded-b-xl"
                                             style={{ background: '#a3e635', color: '#050505' }}>
                                             {t('featured_badge')}
                                         </span>
                                     </div>
                                 )}
 
-                                <div className={`flex flex-col flex-1 p-7 md:p-8 gap-6 ${plan.featured ? 'pt-10' : ''}`}>
+                                <div className={`flex flex-col flex-1 p-6 md:p-8 gap-5 ${plan.featured ? 'pt-10' : ''}`}>
 
-                                    {/* ── Top row: Name + Abbreviated Price ── */}
-                                    <div className="flex items-start justify-between gap-4">
-                                        <div>
-                                            <h3 className="text-base md:text-lg font-bold text-white tracking-tight leading-tight">
+                                    {/* ── Top section: Title -> Tagline -> Price ── */}
+                                    <div className="flex flex-col gap-4 text-left">
+                                        
+                                        <div className="flex flex-col gap-1">
+                                            <h3 className="text-2xl md:text-3xl font-bold text-white tracking-tight leading-tight">
                                                 {plan.name}
                                             </h3>
-                                            <p className="text-[11px] text-white/35 font-mono mt-0.5">{plan.tagline}</p>
+                                            <p className="text-xs md:text-[13px] text-white/50 font-mono leading-snug">{plan.tagline}</p>
                                         </div>
-                                        <div className="text-right shrink-0">
-                                            <p className="text-[9px] font-mono tracking-widest uppercase text-white/25 mb-0.5">{t('from')}</p>
-                                            <p className={`font-black tracking-tight leading-none text-2xl md:text-3xl ${plan.featured ? 'text-[#a3e635]' : 'text-white'}`}>
-                                                ${abbreviatePrice(plan.price)}
-                                            </p>
-                                            <p className="text-[9px] text-white/20 font-mono mt-0.5">{t('currency')}</p>
+
+                                        <div className="flex flex-col mt-2">
+                                            {plan.price !== 'Cotizar' && plan.price !== 'Get Quote' && (
+                                                <p className="text-[10px] font-mono tracking-widest uppercase text-white/40 mb-1">{t('from')}</p>
+                                            )}
+                                            <div className="flex items-end gap-1">
+                                                <p className={`font-black tracking-tighter leading-none text-3xl md:text-4xl ${plan.featured ? 'text-[#a3e635]' : 'text-white'}`}>
+                                                    {plan.price === 'Cotizar' || plan.price === 'Get Quote' ? plan.price : `$${plan.price}`}
+                                                </p>
+                                            </div>
+                                            {plan.price !== 'Cotizar' && plan.price !== 'Get Quote' && (
+                                                <p className="text-[10px] text-white/30 font-mono mt-2">{t('currency')}</p>
+                                            )}
                                         </div>
                                     </div>
 
-                                    {/* ── Divider ── */}
-                                    <div style={{ height: 1, background: 'rgba(255,255,255,0.06)' }} />
+                                    {/* ── Promo Message ── */}
+                                    {plan.promo_message && (
+                                        <div className="bg-[#a3e635]/10 border border-[#a3e635]/20 rounded-xl p-3 mt-1">
+                                            <p className="text-[#a3e635] text-[12px] font-medium leading-relaxed">
+                                                {plan.promo_message}
+                                            </p>
+                                        </div>
+                                    )}
 
-                                    {/* ── Features ── */}
-                                    <div className="flex flex-col gap-2.5 flex-1">
-                                        <p className="text-[9px] font-bold uppercase tracking-[0.15em] text-white/25 mb-1">{t('includes')}</p>
+                                    {/* ── Divider ── */}
+                                    <div className="w-full" style={{ height: 1, background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent)' }} />
+
+                                    {/* ── Features List (Single Column for Vertical Elongation) ── */}
+                                    <div className="flex flex-col gap-4 flex-1 mt-2">
                                         {plan.features.map((feature, i) => (
-                                            <div key={i} className="flex items-start gap-2">
+                                            <div key={i} className="flex items-start gap-3">
                                                 <CheckIcon />
-                                                <span className="text-[12px] md:text-[13px] text-white/55 leading-snug">{feature}</span>
+                                                <span className="text-[14px] text-white/70 leading-relaxed">{feature}</span>
                                             </div>
                                         ))}
                                     </div>
@@ -192,31 +261,38 @@ export default function Pricing() {
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         aria-label={`Cotizar ${plan.name} por WhatsApp`}
-                                        className="flex items-center justify-center gap-2 w-full py-3 rounded-xl font-bold text-[13px] tracking-wide transition-all duration-300 mt-auto"
+                                        className="flex items-center justify-center gap-2 w-full py-3.5 rounded-xl font-bold text-[13px] tracking-wide transition-all duration-300 mt-6"
                                         style={plan.featured ? {
                                             background: '#a3e635',
                                             color: '#050505',
+                                            boxShadow: '0 0 30px rgba(163,230,53,0.25)',
                                         } : {
-                                            background: 'rgba(255,255,255,0.04)',
-                                            color: 'rgba(255,255,255,0.7)',
-                                            border: '1px solid rgba(255,255,255,0.08)',
+                                            background: 'rgba(255,255,255,0.06)',
+                                            backdropFilter: 'blur(12px)',
+                                            WebkitBackdropFilter: 'blur(12px)',
+                                            color: 'rgba(255,255,255,0.85)',
+                                            border: '1px solid rgba(255,255,255,0.1)',
                                         }}
                                         onMouseEnter={(e) => {
                                             if (!plan.featured) {
-                                                e.currentTarget.style.borderColor = 'rgba(163,230,53,0.3)';
-                                                e.currentTarget.style.color = 'white';
-                                                e.currentTarget.style.background = 'rgba(163,230,53,0.06)';
+                                                e.currentTarget.style.borderColor = 'rgba(163,230,53,0.4)';
+                                                e.currentTarget.style.color = '#a3e635';
+                                                e.currentTarget.style.background = 'rgba(163,230,53,0.08)';
+                                                e.currentTarget.style.boxShadow = '0 0 20px rgba(163,230,53,0.1)';
                                             } else {
                                                 e.currentTarget.style.background = 'white';
+                                                e.currentTarget.style.boxShadow = '0 0 40px rgba(163,230,53,0.4)';
                                             }
                                         }}
                                         onMouseLeave={(e) => {
                                             if (!plan.featured) {
-                                                e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)';
-                                                e.currentTarget.style.color = 'rgba(255,255,255,0.7)';
-                                                e.currentTarget.style.background = 'rgba(255,255,255,0.04)';
+                                                e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)';
+                                                e.currentTarget.style.color = 'rgba(255,255,255,0.85)';
+                                                e.currentTarget.style.background = 'rgba(255,255,255,0.06)';
+                                                e.currentTarget.style.boxShadow = 'none';
                                             } else {
                                                 e.currentTarget.style.background = '#a3e635';
+                                                e.currentTarget.style.boxShadow = '0 0 30px rgba(163,230,53,0.25)';
                                             }
                                         }}
                                     >
@@ -225,8 +301,8 @@ export default function Pricing() {
                                     </a>
                                 </div>
                             </motion.div>
-                        );
-                    })}
+                        ))}
+                    </AnimatePresence>
                 </motion.div>
 
                 {/* ─── Bottom Note ─── */}
