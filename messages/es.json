@@ -279,13 +279,13 @@
       {
         "id": "gestor-studio",
         "category": "admin",
-        "title": "Gestor Studio Osmarpay",
-        "tagline": "Sistema Administrativo",
+        "title": "Gestor Studio",
+        "tagline": "Sistema POS",
         "location": "Colombia",
         "flag": "co",
-        "description": "Panel de control administrativo centralizado.",
+        "description": "Sistema de Punto de Venta (POS) y panel de control centralizado.",
         "features": [
-          "Gestión de usuarios",
+          "Gestión de ventas",
           "Reportes",
           "Métricas"
         ]
@@ -296,20 +296,7 @@
         "title": "Freedom",
         "description": "Sitio web corporativo"
       },
-      {
-        "id": "iestap",
-        "category": "admin",
-        "title": "IESTAP Biodiverso",
-        "tagline": "Gestión Académica",
-        "location": "Colombia",
-        "flag": "co",
-        "description": "Sistema de administración y gestión.",
-        "features": [
-          "Control de datos",
-          "Reportes",
-          "Accesos"
-        ]
-      },
+
       {
         "id": "medusa",
         "category": "web",
@@ -334,7 +321,7 @@
     "tag": "Nuestro Equipo",
     "title_part1": "Nuestro",
     "title_part2": "Equipo",
-    "subtitle": "Conoce a las mentes apasionadas detrás de Scryved. Somos un equipo de desarrolladores, diseñadores y estrategas dedicados a construir experiencias digitales excepcionales.",
+    "subtitle": "Un colectivo de mentes disruptivas impulsadas por la innovación. No solo escribimos código; diseñamos el futuro digital combinando creatividad y experiencia absoluta para transformar visiones en realidades extraordinarias.",
     "join_title": "¿Quieres ser parte de nuestro equipo?",
     "join_subtitle": "¿Te apasiona la tecnología y la innovación?",
     "join_button": "Contáctanos",
@@ -470,9 +457,9 @@
     "name_part1": "JULIAN",
     "name_part2": "PALOMARES",
     "profession": "Ingeniero de Sistemas",
-    "quote_part1": "Decidí crear ",
+    "quote_part1": "Ingeniero de sistemas con más de 6 años de experiencia creando software a medida. ",
     "quote_brand": "Scryved",
-    "quote_part2": " para ayudar a personas, empresas y organizaciones a subir de nivel. No solo en tecnología, sino en la forma en que usan la tecnología para crecer, diferenciarse y perdurar en el tiempo.",
+    "quote_part2": " nació como una idea para ayudar a las personas. Ahora somos un equipo de trabajo compacto, creado a partir de grandes sueños e ideas por nuestro equipo fundador.",
     "exp_tag": "Experiencia Certificada",
     "cta": "Hablemos de tu proyecto",
     "certBadges": [
@@ -671,7 +658,7 @@
         "category": "web",
         "name": "Páginas Web",
         "tagline": "Tu presencia digital profesional",
-        "price": "300.000",
+        "price": "250.000",
         "promo_message": "Llévalo a tu ritmo: Paga en cómodas cuotas mientras tu página empieza a generar clientes.",
         "featured": false,
         "features": [
@@ -688,7 +675,7 @@
         "category": "web",
         "name": "Tiendas en Línea",
         "tagline": "Vende 24/7 sin intermediarios",
-        "price": "1.000.000",
+        "price": "350.000",
         "promo_message": "Tu negocio abierto 24/7. Págalo a cuotas y recupera tu inversión con tus primeras ventas.",
         "featured": true,
         "features": [
@@ -705,7 +692,7 @@
         "category": "web",
         "name": "Sistemas de Gestión",
         "tagline": "Automatiza y controla tu negocio",
-        "price": "1.000.000",
+        "price": "350.000",
         "promo_message": "Págalo en cuotas. El software se adapta a ti, no tú al software. Ahorra cientos de horas automatizando procesos.",
         "featured": false,
         "features": [

@@ -21,7 +21,6 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 const Stats = dynamic(() => import("@/src/components/sections/Stats"), { ssr: true });
 const Services = dynamic(() => import("@/src/components/sections/Services"), { ssr: true });
 const Portfolio = dynamic(() => import("@/src/components/sections/Portfolio"), { ssr: true });
-const Founder = dynamic(() => import("@/src/components/sections/Founder"), { ssr: true });
 const Pricing = dynamic(() => import("@/src/components/sections/Pricing"), { ssr: true });
 const Contact = dynamic(() => import("@/src/components/sections/Contact"), { ssr: true });
 
@@ -32,7 +31,6 @@ export default function HomePage() {
       <Stats />
       <Services />
       <Portfolio />
-      <Founder />
       <Pricing />
       <Contact />
     </main>

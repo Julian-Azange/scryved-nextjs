@@ -270,32 +270,29 @@ export default function Services() {
                                                         {service.description}
                                                     </p>
 
-                                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
+                                                    <div className="flex flex-wrap gap-2.5 mb-2">
                                                         {(service.features || []).map((feature, i) => (
-                                                            <div key={i} className="flex items-center gap-2.5">
+                                                            <div
+                                                                key={i}
+                                                                className="flex items-center gap-2 px-3 py-1.5 rounded-full"
+                                                                style={{
+                                                                    background: 'rgba(163, 230, 53, 0.05)',
+                                                                    border: '1px solid rgba(163, 230, 53, 0.1)',
+                                                                }}
+                                                            >
                                                                 <div
-                                                                    className="w-1 h-1 rounded-full"
+                                                                    className="w-1.5 h-1.5 rounded-full"
                                                                     style={{ background: '#a3e635' }}
                                                                 />
                                                                 <span
-                                                                    className="text-sm font-medium"
-                                                                    style={{ color: 'rgba(255,255,255,0.7)' }}
+                                                                    className="text-xs md:text-sm font-medium tracking-wide"
+                                                                    style={{ color: 'rgba(255,255,255,0.85)' }}
                                                                 >
                                                                     {feature}
                                                                 </span>
                                                             </div>
                                                         ))}
                                                     </div>
-
-                                                    <button
-                                                        className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] transition-all duration-300 group/btn"
-                                                        style={{ color: '#a3e635' }}
-                                                    >
-                                                        <span>{service.cta || t('learn_more')}</span>
-                                                        <ArrowUpRight
-                                                            className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5"
-                                                        />
-                                                    </button>
                                                 </div>
                                             </motion.div>
                                         </div>

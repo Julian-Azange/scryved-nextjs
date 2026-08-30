@@ -72,10 +72,9 @@ const Navbar = () => {
         { id: 'nav-home', name: t('home'), number: '01', href: '/#home' },
         { id: 'nav-services', name: t('services'), number: '02', href: '/#services' },
         { id: 'nav-portfolio', name: t('portfolio') || 'Proyectos', number: '03', href: '/#portfolio' },
-        { id: 'nav-about', name: t('about'), number: '04', href: '/about' },
-        { id: 'nav-team', name: t('team') || 'Equipo', number: '05', href: '/team' },
-        { id: 'nav-pricing', name: t('pricing') || 'Planes', number: '06', href: '/#pricing' },
-        { id: 'nav-contact', name: t('contact') || 'Contacto', number: '07', href: '/#contact' },
+        { id: 'nav-pricing', name: t('pricing') || 'Planes', number: '04', href: '/#pricing' },
+        { id: 'nav-contact', name: t('contact') || 'Contacto', number: '05', href: '/#contact' },
+        { id: 'nav-about', name: t('about'), number: '06', href: '/about' },
     ];
 
     return (

@@ -3,7 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { motion, Variants } from 'framer-motion';
 import Image from 'next/image';
-import { Plus, Linkedin } from 'lucide-react';
+import { Plus, Linkedin, Quote, Compass } from 'lucide-react';
 import { cn } from '@/src/lib/utils';
 
 const teamStyles = `
@@ -64,6 +64,7 @@ const cardVariant: Variants = {
 
 export default function Team() {
     const t = useTranslations('Team');
+    const tFounder = useTranslations('Founder');
     const members = t.raw('members') as TeamMember[];
     const leadership = members.slice(0, 3);
     const restOfTeam = members.slice(3);
@@ -127,39 +128,80 @@ export default function Team() {
                 <div className="container mx-auto px-6 md:px-12 py-24 md:py-32 relative z-10">
                     
                     {/* ─── Header ─── */}
-                    <motion.div
-                        variants={fadeUp}
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true, margin: "-100px" }}
-                        className="flex flex-col mb-16 md:mb-24"
-                    >
-                        {/* Eyebrow */}
-                        <div className="flex items-center gap-3 mb-6">
-                            <div className="flex items-center justify-center w-8 h-8 rounded-full border border-white/10 bg-white/5">
-                                <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: '#a3e635' }} />
+                    <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center justify-between mb-24 md:mb-32 relative">
+                        {/* Background Glow for Header */}
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[150%] max-w-4xl bg-[#a3e635]/5 blur-[120px] rounded-full pointer-events-none z-[-1]" />
+                        
+                        {/* Left: Title & Subtitle */}
+                        <motion.div
+                            variants={fadeUp}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, margin: "-100px" }}
+                            className="flex-1 flex flex-col"
+                        >
+                            {/* Eyebrow Tag (Pill Style) */}
+                            <div className="flex items-center justify-center lg:justify-start mb-6">
+                                <div className="border border-[#a3e635]/20 bg-[#a3e635]/5 rounded-full px-4 py-1.5 flex items-center gap-2">
+                                    <Compass className="w-3.5 h-3.5 text-[#a3e635]" />
+                                    <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-[#a3e635]">
+                                        {t('tag')}
+                                    </span>
+                                </div>
                             </div>
-                            <div className="flex flex-col">
-                                <span className="text-[11px] font-mono tracking-widest uppercase" style={{ color: 'rgba(255,255,255,0.25)' }}>[05]</span>
-                                <span className="text-[11px] font-mono tracking-widest" style={{ color: '#a3e635' }}>// EQUIPO</span>
+
+                            {/* Massive Title (Styled like NUESTRA FILOSOFIA) */}
+                            <div className="w-full mb-8 text-center lg:text-left">
+                                <h2 className="text-[clamp(2.5rem,5vw,5rem)] font-black tracking-tighter leading-[1] uppercase flex flex-wrap justify-center lg:justify-start gap-x-4">
+                                    <span className="text-white">{t('title_part1')}</span>
+                                    <span className="text-[#a3e635] italic drop-shadow-[0_0_25px_rgba(163,230,53,0.35)]">
+                                        {t('title_part2')}
+                                    </span>
+                                </h2>
                             </div>
-                        </div>
 
-                        {/* Massive Title */}
-                        <div className="w-full overflow-hidden mb-8">
-                            <h2 className="text-[clamp(3.5rem,10vw,14rem)] font-bold tracking-tighter leading-[0.85] uppercase text-white">
-                                {t('title_part1')}
-                            </h2>
-                            <span className="text-[clamp(3.5rem,10vw,14rem)] font-bold tracking-tighter leading-[0.85] italic uppercase" style={{ color: '#a3e635' }}>
-                                {t('title_part2')}
-                            </span>
-                        </div>
+                            {/* Subtitle */}
+                            <p className="text-[clamp(1rem,1.5vw,1.15rem)] font-medium max-w-md mx-auto lg:mx-0 leading-relaxed text-white/70 text-center lg:text-left">
+                                {t('subtitle')}
+                            </p>
+                        </motion.div>
 
-                        {/* Subtitle */}
-                        <p className="text-[clamp(0.95rem,1.5vw,1.25rem)] font-medium max-w-xl leading-relaxed" style={{ color: 'rgba(255,255,255,0.45)' }}>
-                            {t('subtitle')}
-                        </p>
-                    </motion.div>
+                        {/* Right: Founder Highlight Card */}
+                        <motion.div
+                            variants={fadeUp}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, margin: "-100px" }}
+                            className="flex-1 w-full max-w-2xl relative"
+                        >
+                            <div className="absolute -top-4 -left-4 w-20 h-20 bg-[#a3e635]/20 blur-3xl rounded-full" />
+                            <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-[#a3e635]/10 blur-3xl rounded-full" />
+                            
+                            <div className="relative p-8 md:p-12 rounded-[2rem] overflow-hidden group" style={{ background: 'rgba(255,255,255,0.02)', backdropFilter: 'blur(20px)', border: '1px solid rgba(163,230,53,0.15)', boxShadow: '0 20px 40px rgba(0,0,0,0.4)' }}>
+                                
+                                {/* Glass reflection */}
+                                <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                                
+                                <Quote className="w-10 h-10 md:w-12 md:h-12 mb-6 text-[#a3e635] opacity-50 drop-shadow-[0_0_15px_rgba(163,230,53,0.5)]" />
+                                
+                                <p className="text-[clamp(1.05rem,1.5vw,1.35rem)] font-medium leading-relaxed relative z-10" style={{ color: 'rgba(255,255,255,0.9)' }}>
+                                    {tFounder('quote_part1')}
+                                    <span className="font-bold text-[#a3e635] drop-shadow-[0_0_8px_rgba(163,230,53,0.4)]"> {tFounder('quote_brand')} </span>
+                                    {tFounder('quote_part2')}
+                                </p>
+                                
+                                <div className="mt-8 pt-6 flex items-center gap-4 relative z-10" style={{ borderTop: '1px solid rgba(255,255,255,0.08)' }}>
+                                    <div className="w-12 h-12 rounded-full overflow-hidden border border-white/20 relative shrink-0">
+                                        <Image src="/assets/team/julian.jpg" alt="CEO" fill className="object-cover" />
+                                    </div>
+                                    <div className="flex flex-col">
+                                        <span className="text-sm font-bold text-white tracking-tight">{tFounder('photo_name')}</span>
+                                        <span className="text-[10px] font-mono uppercase tracking-widest text-[#a3e635]">{tFounder('tag')}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </motion.div>
+                    </div>
 
                     {/* ─── Leadership Grid (Top 3) ─── */}
                     <motion.div

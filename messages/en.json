@@ -263,23 +263,14 @@
             {
                 "id": "gestor-studio",
                 "category": "admin",
-                "title": "Gestor Studio Osmarpay",
-                "tagline": "Administrative System",
+                "title": "Gestor Studio",
+                "tagline": "POS System",
                 "location": "Colombia",
                 "flag": "co",
-                "description": "Centralized administrative control panel.",
-                "features": ["User management", "Reports", "Metrics"]
+                "description": "Centralized Point of Sale (POS) and administrative panel.",
+                "features": ["Sales management", "Reports", "Metrics"]
             },
-            {
-                "id": "iestap",
-                "category": "admin",
-                "title": "IESTAP Biodiverso",
-                "tagline": "Academic Management",
-                "location": "Colombia",
-                "flag": "co",
-                "description": "Administration and management system.",
-                "features": ["Data control", "Reports", "Accesses"]
-            },
+
             {
                 "id": "medusa",
                 "category": "web",
@@ -316,7 +307,7 @@
         "tag": "Our Team",
         "title_part1": "Our",
         "title_part2": "Team",
-        "subtitle": "Meet the passionate minds behind Scryved. We are a team of developers, designers, and strategists dedicated to building exceptional digital experiences.",
+        "subtitle": "A collective of disruptive minds driven by innovation. We don't just write code; we design the digital future by blending creativity and absolute expertise to transform visions into extraordinary realities.",
         "join_title": "Want to be part of our team?",
         "join_subtitle": "Are you passionate about technology and innovation?",
         "join_button": "Contact Us",
@@ -452,9 +443,9 @@
         "name_part1": "JULIAN",
         "name_part2": "PALOMARES",
         "profession": "Systems Engineer",
-        "quote_part1": "I decided to create ",
+        "quote_part1": "Systems engineer with over 6 years of experience building custom software. ",
         "quote_brand": "Scryved",
-        "quote_part2": " to help people, companies, and organizations level up. Not just in technology, but in the way they use technology to grow, stand out, and endure over time.",
+        "quote_part2": " was born as an idea to help people. Today we are a compact team, built from big dreams and ideas by our founding team.",
         "exp_tag": "Certified Experience",
         "cta": "Let's talk about your project",
         "certBadges": [
@@ -599,7 +590,7 @@
         "category": "web",
         "name": "Websites",
         "tagline": "Your professional digital presence",
-        "price": "300.000",
+        "price": "250.000",
         "promo_message": "Take it at your pace: Pay in comfortable installments while your site starts generating clients.",
         "featured": false,
         "features": [
@@ -616,7 +607,7 @@
         "category": "web",
         "name": "Online Stores",
         "tagline": "Sell 24/7 without intermediaries",
-        "price": "1.000.000",
+        "price": "350.000",
         "promo_message": "Your business open 24/7. Pay in installments and recover your investment with your first sales.",
         "featured": true,
         "features": [
@@ -633,7 +624,7 @@
         "category": "web",
         "name": "Management Systems",
         "tagline": "Automate and scale your business",
-        "price": "1.000.000",
+        "price": "350.000",
         "promo_message": "Pay in installments. The software adapts to you, not the other way around. Save hundreds of hours automating processes.",
         "featured": false,
         "features": [
