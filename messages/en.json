@@ -15,6 +15,7 @@
         "security": "Security",
         "team": "Team",
         "contact": "Contact",
+        "pricing": "Pricing",
         "discuss_project": "Discuss a Project"
     },
     "Hero": {
@@ -321,22 +322,25 @@
         "join_button": "Contact Us",
         "members": [
             {
-                "id": "julian",
-                "name": "Julian Palomares",
-                "role": "CEO & Founder",
-                "profession": "Systems Engineer"
-            },
-            {
                 "id": "fabian",
                 "name": "Fabian Ramos",
                 "role": "CO-CEO",
-                "profession": "Systems Engineer"
+                "profession": "Software Engineer",
+                "linkedin": "https://www.linkedin.com/in/fabian-ramos-dev"
+            },
+            {
+                "id": "julian",
+                "name": "Julian Palomares",
+                "role": "CEO & Founder",
+                "profession": "Systems Engineer",
+                "linkedin": "https://www.linkedin.com/in/julianazange"
             },
             {
                 "id": "tobias",
                 "name": "Tobias Lozano",
                 "role": "CTO",
-                "profession": "Electronics Engineer"
+                "profession": "Electronics Engineer",
+                "linkedin": "https://www.linkedin.com/in/tobias-lozano-florez"
             },
             {
                 "id": "luis",
@@ -345,16 +349,10 @@
                 "profession": "Systems Engineer"
             },
             {
-                "id": "daniel",
-                "name": "Daniel Murillo",
+                "id": "juan",
+                "name": "Juan Tobon",
                 "role": "Sr. Mobile Developer",
                 "profession": "Systems Engineer"
-            },
-            {
-                "id": "alex",
-                "name": "Alex Cotrino",
-                "role": "Sr. Full Stack Developer",
-                "profession": "Electronics Engineer"
             },
             {
                 "id": "orlando",
@@ -381,6 +379,24 @@
                 "profession": "Mechatronics Engineer"
             },
             {
+                "id": "andres",
+                "name": "Andres Velez",
+                "role": "Digital Marketing",
+                "profession": "Journalist"
+            },
+            {
+                "id": "daniel",
+                "name": "Daniel Murillo",
+                "role": "Sr. Mobile Developer",
+                "profession": "Systems Engineer"
+            },
+            {
+                "id": "alex",
+                "name": "Alex Cotrino",
+                "role": "Sr. Full Stack Developer",
+                "profession": "Electronics Engineer"
+            },
+            {
                 "id": "nicolas",
                 "name": "Nicolas PeÃ±afiel",
                 "role": "Semi Sr. Full Stack Developer",
@@ -390,18 +406,6 @@
                 "id": "yamson",
                 "name": "Yamson Calapzu",
                 "role": "Database Expert",
-                "profession": "Systems Engineer"
-            },
-            {
-                "id": "andres",
-                "name": "Andres Velez",
-                "role": "Digital Marketing",
-                "profession": "Journalist"
-            },
-            {
-                "id": "juan",
-                "name": "Juan Tobon",
-                "role": "Sr. Mobile Developer",
                 "profession": "Systems Engineer"
             }
         ]

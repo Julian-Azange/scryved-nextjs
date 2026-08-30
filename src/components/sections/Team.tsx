@@ -3,7 +3,8 @@
 import { useTranslations } from 'next-intl';
 import { motion, Variants } from 'framer-motion';
 import Image from 'next/image';
-import { Plus } from 'lucide-react';
+import { Plus, Linkedin } from 'lucide-react';
+import { cn } from '@/src/lib/utils';
 
 const teamStyles = `
 @keyframes team-orb-float {
@@ -34,6 +35,7 @@ interface TeamMember {
     name: string;
     role: string;
     profession: string;
+    linkedin?: string;
 }
 
 const containerVariants: Variants = {
@@ -63,6 +65,8 @@ const cardVariant: Variants = {
 export default function Team() {
     const t = useTranslations('Team');
     const members = t.raw('members') as TeamMember[];
+    const leadership = members.slice(0, 3);
+    const restOfTeam = members.slice(3);
 
     return (
         <>
@@ -99,8 +103,9 @@ export default function Team() {
                             maxWidth: '500px',
                             maxHeight: '500px',
                             borderRadius: '50%',
-                            background: 'radial-gradient(circle, rgba(34, 197, 94, 0.04) 0%, transparent 60%)',
-                            filter: 'blur(100px)',
+                            background: 'radial-gradient(circle, rgba(255, 255, 255, 0.03) 0%, transparent 50%)',
+                            filter: 'blur(80px)',
+                            animation: 'team-orb-float 28s ease-in-out infinite reverse',
                         }}
                     />
                     {/* Noise Texture */}
@@ -119,29 +124,22 @@ export default function Team() {
                 </div>
 
                 {/* ═══ Content ═══ */}
-                <motion.div
-                    variants={containerVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, amount: 0.1 }}
-                    className="relative z-10 w-full px-6 md:px-12 lg:px-16 xl:px-20 2xl:px-28 mx-auto max-w-[1920px] py-20 md:py-28 lg:py-32"
-                >
+                <div className="container mx-auto px-6 md:px-12 py-24 md:py-32 relative z-10">
+                    
                     {/* ─── Header ─── */}
-                    <motion.div variants={fadeUp} className="flex flex-col w-full mb-16 md:mb-24">
-                        {/* Top row: Tag and Counter */}
-                        <div className="flex justify-between items-start w-full mb-8 md:mb-12">
-                            <div
-                                className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full text-[11px] font-semibold tracking-[0.2em] uppercase"
-                                style={{
-                                    border: '1px solid rgba(163, 230, 53, 0.2)',
-                                    background: 'rgba(163, 230, 53, 0.05)',
-                                    color: '#a3e635',
-                                }}
-                            >
+                    <motion.div
+                        variants={fadeUp}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, margin: "-100px" }}
+                        className="flex flex-col mb-16 md:mb-24"
+                    >
+                        {/* Eyebrow */}
+                        <div className="flex items-center gap-3 mb-6">
+                            <div className="flex items-center justify-center w-8 h-8 rounded-full border border-white/10 bg-white/5">
                                 <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: '#a3e635' }} />
-                                {t('tag')}
                             </div>
-                            <div className="hidden md:flex flex-col items-end gap-1">
+                            <div className="flex flex-col">
                                 <span className="text-[11px] font-mono tracking-widest uppercase" style={{ color: 'rgba(255,255,255,0.25)' }}>[05]</span>
                                 <span className="text-[11px] font-mono tracking-widest" style={{ color: '#a3e635' }}>// EQUIPO</span>
                             </div>
@@ -163,74 +161,151 @@ export default function Team() {
                         </p>
                     </motion.div>
 
-                    {/* ─── Grid ─── */}
+                    {/* ─── Leadership Grid (Top 3) ─── */}
                     <motion.div
                         variants={containerVariants}
-                        className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6"
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, margin: "-50px" }}
+                        className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 items-center"
                     >
-                        {members.map((member) => (
+                        {leadership.map((member, index) => (
                             <motion.div
                                 key={member.id}
                                 variants={cardVariant}
                                 whileHover={{ y: -8, transition: { duration: 0.3 } }}
-                                className="group relative cursor-default"
+                                className={cn(
+                                    "group relative cursor-default overflow-hidden rounded-2xl w-full border border-white/10 transition-all duration-500",
+                                    index === 1 ? "h-[450px] md:h-[560px] lg:h-[640px] z-10 shadow-2xl shadow-[#a3e635]/5" : "h-[400px] md:h-[480px] lg:h-[540px] opacity-90 hover:opacity-100"
+                                )}
+                                style={{ background: '#111' }}
+                            >
+                                {/* Background Image */}
+                                <Image
+                                    src={imageMap[member.id] || '/assets/team/default.jpeg'}
+                                    alt={member.name}
+                                    fill
+                                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                                />
+                                
+                                {/* Gradient Overlay for text legibility */}
+                                <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/40 to-transparent pointer-events-none transition-opacity duration-500" />
+                                
+
+                                {/* Bottom Content */}
+                                <div className="absolute bottom-5 left-5 right-5 flex justify-between items-end z-10">
+                                    <div className="flex flex-col gap-1">
+                                        <h3 className={cn(
+                                            "text-2xl md:text-3xl font-bold tracking-tight leading-none transition-colors duration-300",
+                                            index === 1 ? "text-[#a3e635]" : "text-white group-hover:text-[#a3e635]"
+                                        )}>
+                                            {member.name}
+                                        </h3>
+                                        <p className="text-white/60 text-xs md:text-sm font-medium tracking-wide mb-1.5">
+                                            {member.role}
+                                        </p>
+                                        <div className="inline-block px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/10 text-white/80 text-[10px] font-semibold tracking-widest uppercase w-max">
+                                            {member.profession}
+                                        </div>
+                                    </div>
+                                    
+                                    <a
+                                        href={member.linkedin || `https://linkedin.com/search/results/all/?keywords=${encodeURIComponent(member.name + ' Scryved')}`}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="w-12 h-12 rounded-full flex items-center justify-center bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-[#0A66C2] hover:border-[#0A66C2] hover:scale-105 transition-all duration-300 shadow-lg z-20 shrink-0 group/link"
+                                        title={`LinkedIn de ${member.name}`}
+                                    >
+                                        <Linkedin className="w-5 h-5 text-white group-hover/link:text-white" fill="currentColor" />
+                                    </a>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </motion.div>
+
+                    {/* ─── Grid (Rest of Team) ─── */}
+                    <motion.div
+                        variants={containerVariants}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, margin: "-50px" }}
+                        className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6"
+                    >
+                        {restOfTeam.map((member) => (
+                            <motion.div
+                                key={member.id}
+                                variants={cardVariant}
+                                whileHover={{ y: -8, transition: { duration: 0.3 } }}
+                                className="group relative cursor-default h-full"
                             >
                                 <div
-                                    className="relative flex flex-col items-center text-center p-6 md:p-8 rounded-[1.5rem] md:rounded-[2rem] transition-all duration-500 ease-out"
+                                    className="relative flex flex-col items-center text-center p-6 md:p-8 rounded-xl md:rounded-2xl transition-all duration-500 ease-out overflow-hidden h-full"
                                     style={{
-                                        background: 'rgba(255,255,255,0.03)',
-                                        border: '1px solid rgba(255,255,255,0.06)',
+                                        background: 'rgba(255,255,255,0.02)',
+                                        backdropFilter: 'blur(16px)',
+                                        WebkitBackdropFilter: 'blur(16px)',
+                                        border: '1px solid rgba(255,255,255,0.05)',
                                     }}
                                     onMouseEnter={e => {
                                         (e.currentTarget as HTMLElement).style.background = 'rgba(163, 230, 53, 0.04)';
                                         (e.currentTarget as HTMLElement).style.border = '1px solid rgba(163, 230, 53, 0.15)';
-                                        (e.currentTarget as HTMLElement).style.boxShadow = '0 0 30px rgba(163, 230, 53, 0.05)';
+                                        (e.currentTarget as HTMLElement).style.boxShadow = '0 10px 40px -10px rgba(163, 230, 53, 0.15)';
                                     }}
                                     onMouseLeave={e => {
-                                        (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.03)';
-                                        (e.currentTarget as HTMLElement).style.border = '1px solid rgba(255,255,255,0.06)';
+                                        (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.02)';
+                                        (e.currentTarget as HTMLElement).style.border = '1px solid rgba(255,255,255,0.05)';
                                         (e.currentTarget as HTMLElement).style.boxShadow = 'none';
                                     }}
                                 >
+                                    {/* LinkedIn Icon */}
+                                    <a
+                                        href={member.linkedin || `https://linkedin.com/search/results/all/?keywords=${encodeURIComponent(member.name + ' Scryved')}`}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="absolute top-5 right-5 w-8 h-8 rounded-full flex items-center justify-center bg-white/5 border border-white/10 opacity-0 -translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 hover:bg-[#0A66C2] hover:border-[#0A66C2] text-white transition-all duration-300 z-20 group/link"
+                                        title={`LinkedIn de ${member.name}`}
+                                    >
+                                        <Linkedin className="w-3.5 h-3.5 text-white group-hover/link:text-white" fill="currentColor" />
+                                    </a>
+
+                                    {/* Glass reflection top */}
+                                    <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                                    
                                     {/* Avatar */}
-                                    <div className="relative mb-5">
+                                    <div className="relative mb-6 z-10">
                                         <div
-                                            className="absolute inset-[-4px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                                            style={{ background: 'radial-gradient(circle, rgba(163,230,53,0.2) 0%, transparent 70%)' }}
+                                            className="absolute inset-[-6px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-md"
+                                            style={{ background: 'rgba(163,230,53,0.3)' }}
                                         />
                                         <div
-                                            className="relative w-20 h-20 md:w-24 md:h-24 rounded-full overflow-hidden"
-                                            style={{ border: '2px solid rgba(255,255,255,0.08)' }}
+                                            className="relative w-24 h-24 md:w-28 md:h-28 rounded-full overflow-hidden"
+                                            style={{ border: '1px solid rgba(255,255,255,0.1)' }}
                                         >
                                             <Image
                                                 src={imageMap[member.id] || '/assets/team/default.jpeg'}
                                                 alt={member.name}
                                                 fill
-                                                className="object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500"
+                                                className="object-cover opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700"
                                             />
                                         </div>
                                     </div>
 
                                     {/* Name */}
-                                    <h3 className="text-base md:text-lg font-bold text-white mb-1 group-hover:text-[#a3e635] transition-colors duration-300 tracking-tight leading-tight">
+                                    <h3 className="relative z-10 text-lg md:text-xl font-bold text-white mb-1 group-hover:text-[#a3e635] transition-colors duration-300 tracking-tight leading-tight">
                                         {member.name}
                                     </h3>
 
                                     {/* Role */}
-                                    <p className="text-white/60 text-xs md:text-sm font-semibold mb-3 tracking-wide leading-snug">
+                                    <p className="relative z-10 text-white/50 text-xs md:text-sm font-medium mb-5 tracking-wide leading-snug">
                                         {member.role}
                                     </p>
 
-                                    {/* Divider */}
-                                    <div
-                                        className="w-8 h-[2px] mb-3 rounded-full group-hover:w-12 transition-all duration-500"
-                                        style={{ background: 'rgba(163, 230, 53, 0.3)' }}
-                                    />
-
-                                    {/* Profession */}
-                                    <p className="text-[#a3e635]/60 text-[9px] md:text-[10px] uppercase tracking-widest font-bold">
-                                        {member.profession}
-                                    </p>
+                                    {/* Profession badge */}
+                                    <div className="relative z-10 mt-auto px-4 py-1.5 rounded-full bg-white/5 border border-white/5 group-hover:bg-[#a3e635]/10 group-hover:border-[#a3e635]/20 transition-colors duration-300">
+                                        <p className="text-[#a3e635]/80 group-hover:text-[#a3e635] text-[9px] md:text-[10px] uppercase tracking-widest font-bold transition-colors duration-300">
+                                            {member.profession}
+                                        </p>
+                                    </div>
                                 </div>
                             </motion.div>
                         ))}
@@ -238,21 +313,27 @@ export default function Team() {
                         {/* ─── Join Us ─── */}
                         <motion.div variants={cardVariant} className="group relative">
                             <div
-                                className="relative flex flex-col items-center justify-center text-center p-6 md:p-8 rounded-[1.5rem] md:rounded-[2rem] cursor-pointer h-full transition-all duration-500 ease-out"
+                                className="relative flex flex-col items-center justify-center text-center p-6 md:p-8 rounded-xl md:rounded-2xl cursor-pointer h-full transition-all duration-500 ease-out overflow-hidden"
                                 style={{
-                                    background: 'rgba(163, 230, 53, 0.03)',
-                                    border: '1.5px dashed rgba(163, 230, 53, 0.2)',
+                                    background: 'rgba(163, 230, 53, 0.02)',
+                                    backdropFilter: 'blur(16px)',
+                                    WebkitBackdropFilter: 'blur(16px)',
+                                    border: '1.5px dashed rgba(163, 230, 53, 0.15)',
                                     minHeight: '200px',
                                 }}
                                 onMouseEnter={e => {
-                                    (e.currentTarget as HTMLElement).style.background = 'rgba(163, 230, 53, 0.07)';
-                                    (e.currentTarget as HTMLElement).style.border = '1.5px dashed rgba(163, 230, 53, 0.4)';
+                                    (e.currentTarget as HTMLElement).style.background = 'rgba(163, 230, 53, 0.05)';
+                                    (e.currentTarget as HTMLElement).style.border = '1.5px dashed rgba(163, 230, 53, 0.3)';
+                                    (e.currentTarget as HTMLElement).style.boxShadow = '0 10px 40px -10px rgba(163, 230, 53, 0.15)';
                                 }}
                                 onMouseLeave={e => {
-                                    (e.currentTarget as HTMLElement).style.background = 'rgba(163, 230, 53, 0.03)';
-                                    (e.currentTarget as HTMLElement).style.border = '1.5px dashed rgba(163, 230, 53, 0.2)';
+                                    (e.currentTarget as HTMLElement).style.background = 'rgba(163, 230, 53, 0.02)';
+                                    (e.currentTarget as HTMLElement).style.border = '1.5px dashed rgba(163, 230, 53, 0.15)';
+                                    (e.currentTarget as HTMLElement).style.boxShadow = 'none';
                                 }}
                             >
+                                {/* Glass reflection top */}
+                                <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#a3e635]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                                 <div
                                     className="w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center mb-5 group-hover:scale-110 transition-all duration-500"
                                     style={{ background: 'rgba(163,230,53,0.08)', border: '1px solid rgba(163,230,53,0.2)' }}
@@ -289,7 +370,7 @@ export default function Team() {
                             </div>
                         </motion.div>
                     </motion.div>
-                </motion.div>
+                </div>
             </section>
         </>
     );

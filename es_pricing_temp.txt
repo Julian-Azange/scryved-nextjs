@@ -1,0 +1,110 @@
+﻿    "categories": [
+      { "id": "web", "label": "Desarrollo Web" },
+      { "id": "it", "label": "Asesoría IT" },
+      { "id": "cloud", "label": "Infraestructura" },
+      { "id": "support", "label": "Soporte Técnico" }
+    ],
+    "plans": [
+      {
+        "id": "landing",
+        "category": "web",
+        "name": "Páginas Web",
+        "tagline": "Tu presencia digital profesional",
+        "price": "300.000",
+        "promo_message": "Llévalo a tu ritmo: Paga en cómodas cuotas mientras tu página empieza a generar clientes.",
+        "featured": false,
+        "features": [
+          "Diseño a medida y responsive",
+          "Dominio personalizado por 1 año",
+          "Alojamiento web por 1 año",
+          "Sección de contacto / WhatsApp",
+          "Optimización SEO básica",
+          "Certificado SSL (HTTPS)"
+        ]
+      },
+      {
+        "id": "ecommerce",
+        "category": "web",
+        "name": "Tienda en Línea",
+        "tagline": "Vende 24/7 sin intermediarios",
+        "price": "1.000.000",
+        "promo_message": "Tu negocio abierto 24/7. Págalo a cuotas y recupera tu inversión con tus primeras ventas.",
+        "featured": true,
+        "features": [
+          "Dominio y alojamiento por 1 año",
+          "Gestión de productos y categorías",
+          "Galería multimedia personalizada",
+          "Pasarela de pago integrada",
+          "Panel de administración",
+          "SEO avanzado para e-commerce"
+        ]
+      },
+      {
+        "id": "management",
+        "category": "web",
+        "name": "Sistemas de Gestión",
+        "tagline": "Automatiza y escala tu negocio",
+        "price": "1.000.000",
+        "promo_message": "Págalo en cuotas. El software se adapta a ti, no tú al software. Ahorra cientos de horas automatizando procesos.",
+        "featured": false,
+        "features": [
+          "Dominio y alojamiento por 1 año",
+          "Módulos a la medida de tu negocio",
+          "Usuarios y roles personalizados",
+          "Reportes y estadísticas",
+          "Base de datos escalable",
+          "Soporte técnico incluido"
+        ]
+      },
+      {
+        "id": "it",
+        "category": "it",
+        "name": "Asesoría Informática",
+        "tagline": "Toma las mejores decisiones tecnológicas",
+        "price": "Cotizar",
+        "promo_message": "¡Totalmente GRATIS si decides desarrollar tu proyecto con nosotros! Te devolvemos el valor de la asesoría.",
+        "featured": true,
+        "features": [
+          "Diagnóstico de problemas tecnológicos",
+          "Asesoría en compra de equipos o software",
+          "Planificación de transformación digital",
+          "Auditoría de seguridad de la información",
+          "Optimización de recursos IT",
+          "Acompañamiento en proyectos"
+        ]
+      },
+      {
+        "id": "cloud",
+        "category": "cloud",
+        "name": "Infraestructura en la Nube",
+        "tagline": "Servidores y bases de datos seguras",
+        "price": "Cotizar",
+        "promo_message": "Paga solo por lo que usas. Escalabilidad infinita sin comprar costosos servidores físicos.",
+        "featured": false,
+        "features": [
+          "Migración de sistemas a la nube",
+          "Configuración de servidores (AWS, Google)",
+          "Copias de seguridad automáticas (Backups)",
+          "Alta disponibilidad y rapidez",
+          "Monitoreo 24/7 del sistema",
+          "Protección contra ataques web"
+        ]
+      },
+      {
+        "id": "support",
+        "category": "support",
+        "name": "Mantenimiento PC",
+        "tagline": "Tu equipo como nuevo",
+        "price": "50.000",
+        "promo_message": "No pierdas tiempo por daños. Atención prioritaria en Pitalito para que tu equipo vuelva a funcionar al instante.",
+        "featured": false,
+        "features": [
+          "Limpieza interna y externa",
+          "Actualización de sistema operativo",
+          "Office 365 licenciado por 1 año",
+          "Eliminación de virus y malware",
+          "Optimización de rendimiento",
+          "Diagnóstico completo"
+        ]
+      }
+    ]

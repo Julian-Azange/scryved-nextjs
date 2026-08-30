@@ -15,6 +15,7 @@
     "security": "Seguridad",
     "team": "Equipo",
     "contact": "Contacto",
+    "pricing": "Planes",
     "discuss_project": "Discutir Proyecto"
   },
   "Hero": {
@@ -326,12 +327,6 @@
         "category": "web",
         "title": "Urbano Frutas Exóticas",
         "description": "Landing page para productos exóticos"
-      },
-      {
-        "id": "aion",
-        "category": "web",
-        "title": "Aion Ingeniería",
-        "description": "Sitio web corporativo para firma de ingeniería"
       }
     ]
   },
@@ -345,22 +340,25 @@
     "join_button": "Contáctanos",
     "members": [
       {
-        "id": "julian",
-        "name": "Julian Palomares",
-        "role": "CEO & Fundador",
-        "profession": "Ing. de Sistemas"
-      },
-      {
         "id": "fabian",
         "name": "Fabian Ramos",
         "role": "CO-CEO",
-        "profession": "Ing. de Sistemas"
+        "profession": "Ing. de Software",
+        "linkedin": "https://www.linkedin.com/in/fabian-ramos-dev"
+      },
+      {
+        "id": "julian",
+        "name": "Julian Palomares",
+        "role": "CEO & Fundador",
+        "profession": "Ing. de Sistemas",
+        "linkedin": "https://www.linkedin.com/in/julianazange"
       },
       {
         "id": "tobias",
         "name": "Tobias Lozano",
         "role": "CTO",
-        "profession": "Ing. Electrónico"
+        "profession": "Ing. Electrónico",
+        "linkedin": "https://www.linkedin.com/in/tobias-lozano-florez"
       },
       {
         "id": "luis",
@@ -369,16 +367,10 @@
         "profession": "Ing. de Sistemas"
       },
       {
-        "id": "daniel",
-        "name": "Daniel Murillo",
+        "id": "juan",
+        "name": "Juan Tobon",
         "role": "Desarrollador Móvil Sr.",
         "profession": "Ing. de Sistemas"
-      },
-      {
-        "id": "alex",
-        "name": "Alex Cotrino",
-        "role": "Desarrollador Full Stack Sr.",
-        "profession": "Ing. Electrónico"
       },
       {
         "id": "orlando",
@@ -405,6 +397,24 @@
         "profession": "Ing. Mecatrónico"
       },
       {
+        "id": "andres",
+        "name": "Andres Velez",
+        "role": "Marketing Digital",
+        "profession": "Periodista"
+      },
+      {
+        "id": "daniel",
+        "name": "Daniel Murillo",
+        "role": "Desarrollador Móvil Sr.",
+        "profession": "Ing. de Sistemas"
+      },
+      {
+        "id": "alex",
+        "name": "Alex Cotrino",
+        "role": "Desarrollador Full Stack Sr.",
+        "profession": "Ing. Electrónico"
+      },
+      {
         "id": "nicolas",
         "name": "Nicolas Peñafiel",
         "role": "Desarrollador Full Stack Semi Sr.",
@@ -414,18 +424,6 @@
         "id": "yamson",
         "name": "Yamson Calapzu",
         "role": "Experto Base de Datos",
-        "profession": "Ing. de Sistemas"
-      },
-      {
-        "id": "andres",
-        "name": "Andres Velez",
-        "role": "Marketing Digital",
-        "profession": "Periodista"
-      },
-      {
-        "id": "juan",
-        "name": "Juan Tobon",
-        "role": "Desarrollador Móvil Sr.",
         "profession": "Ing. de Sistemas"
       }
     ]

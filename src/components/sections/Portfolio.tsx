@@ -17,8 +17,7 @@ const projectsConfig: Record<string, any> = {
     'medusa': { thumbnail: '/assets/mockups/medusa.png', gallery: ['/assets/sites/medusa/1.png', '/assets/sites/medusa/2.png', '/assets/sites/medusa/3.png', '/assets/sites/medusa/4.png', '/assets/sites/medusa/5.png'], url: 'https://medusa.scryved.com' },
     'freedom': { thumbnail: '/assets/mockups/freedom.png', gallery: ['/assets/sites/freedom/1.png', '/assets/sites/freedom/2.png', '/assets/sites/freedom/3.png', '/assets/sites/freedom/4.png', '/assets/sites/freedom/5.png'], url: 'https://freedom.scryved.com' },
     'hotel': { thumbnail: '/assets/mockups/hotel-condado.png', gallery: ['/assets/sites/hotel/1.png', '/assets/sites/hotel/2.png', '/assets/sites/hotel/3.png', '/assets/sites/hotel/4.png', '/assets/sites/hotel/5.png'], url: 'https://hotel-condado-pisco.vercel.app' },
-    'urbano': { thumbnail: '/assets/mockups/urbano.png', gallery: ['/assets/sites/urbano/1.png', '/assets/sites/urbano/2.png', '/assets/sites/urbano/3.png', '/assets/sites/urbano/4.png', '/assets/sites/urbano/5.png'], url: 'https://urbano-frutas-exoticas.vercel.app' },
-    'aion': { thumbnail: '/assets/mockups/aion.png', gallery: ['/assets/sites/aion/1.png', '/assets/sites/aion/2.png', '/assets/sites/aion/3.png', '/assets/sites/aion/4.png', '/assets/sites/aion/5.png'], url: 'https://aion-ingenieria-st.vercel.app' }
+    'urbano': { thumbnail: '/assets/mockups/urbano.png', gallery: ['/assets/sites/urbano/1.png', '/assets/sites/urbano/2.png', '/assets/sites/urbano/3.png', '/assets/sites/urbano/4.png', '/assets/sites/urbano/5.png'], url: 'https://urbano-frutas-exoticas.vercel.app' }
 };
 
 /* ─── Animation Variants ─── */
@@ -504,31 +503,7 @@ export default function Portfolio() {
                                         </div>
                                     </div>
                                 );
-
-                                // ── AION: Índigo/Azul Oscuro – Ingeniería ──
-                                if (project.id === 'aion') return (
-                                    <div key={project.id} className="group relative cursor-pointer overflow-hidden h-[450px] md:h-[560px] lg:h-[650px] rounded-2xl border border-white/5 flex flex-col transition-all duration-500 hover:border-indigo-500/25 hover:shadow-[0_0_60px_rgba(99,102,241,0.07)]" onClick={() => handleProjectClick(project)} style={{ background: 'linear-gradient(135deg, #050614 0%, #03040d 50%, #080808 100%)' }}>
-                                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-indigo-500/5 rounded-full blur-3xl group-hover:bg-indigo-500/10 transition-all duration-700 pointer-events-none"></div>
-                                        <div className="relative z-10 p-8 md:p-10 pb-4 flex items-start justify-between">
-                                            <div>
-                                                <span className="text-[10px] font-mono text-indigo-400 uppercase tracking-[0.2em] block mb-3">Ingeniería · Corp</span>
-                                                <h3 className="text-3xl md:text-4xl font-black text-white tracking-tighter leading-none mb-1">Aion Ing.</h3>
-                                                <p className="text-white/35 text-xs leading-relaxed max-w-xs">Sitio web corporativo y profesional para firma de ingeniería y construcción.</p>
-                                            </div>
-                                            <button className="shrink-0 mt-1 bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-2 rounded-full font-bold text-xs uppercase tracking-wide transition-colors shadow-[0_0_15px_rgba(99,102,241,0.3)]">{t('view_project')}</button>
-                                        </div>
-                                        <div className="relative flex-1 w-full scale-[1.15] mt-2">
-                                            <div className="absolute inset-0 transform transition-transform duration-700 group-hover:scale-[1.20] group-hover:-translate-y-2 origin-bottom ease-out">
-                                                <Image src={project.thumbnail} alt={project.title} fill className="object-contain drop-shadow-[0_20px_50px_rgba(99,102,241,0.15)]" />
-                                            </div>
-                                        </div>
-                                        <div className="relative z-10 px-8 md:px-10 py-4 flex gap-4 border-t border-white/5">
-                                            {[{ v: '🏗️', l: 'Proyectos' }, { v: '📐', l: 'Planos' }, { v: '👷', l: 'Equipo' }, { v: '🏢', l: 'Obras' }].map(s => (
-                                                <div key={s.l} className="text-center flex-1"><div className="text-base">{s.v}</div><div className="text-[10px] text-white/30">{s.l}</div></div>
-                                            ))}
-                                        </div>
-                                    </div>
-                                );
+                                
 
                                 // ── RESTO DE PROYECTOS ──  Diseño genérico elegante
                                 return (

@@ -74,7 +74,8 @@ const Navbar = () => {
         { id: 'nav-portfolio', name: t('portfolio') || 'Proyectos', number: '03', href: '/#portfolio' },
         { id: 'nav-about', name: t('about'), number: '04', href: '/about' },
         { id: 'nav-team', name: t('team') || 'Equipo', number: '05', href: '/team' },
-        { id: 'nav-contact', name: t('contact') || 'Contacto', number: '06', href: '/#contact' },
+        { id: 'nav-pricing', name: t('pricing') || 'Planes', number: '06', href: '/#pricing' },
+        { id: 'nav-contact', name: t('contact') || 'Contacto', number: '07', href: '/#contact' },
     ];
 
     return (
