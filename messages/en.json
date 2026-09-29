@@ -1,588 +1,560 @@
 {
-    "Metadata": {
-        "title": "Scryved. Software Development | Pitalito, Huila, Colombia",
-        "description": "Scryved. Custom software development, mobile apps, PC maintenance and tech support in Pitalito, Huila, Colombia. We transform your ideas into scalable solutions.",
-        "keywords": "software development pitalito, pc maintenance pitalito, web development huila, mobile apps, security, tech support, scryved",
-        "ogImage": "/og-image-en.png"
-    },
-    "Navbar": {
-        "home": "Home",
-        "about": "About",
-        "portfolio": "Portfolio",
-        "smartpay": "SmartPay",
-        "deployed": "Live Projects",
-        "services": "Services",
-        "security": "Security",
-        "team": "Team",
-        "contact": "Contact",
-        "pricing": "Pricing",
-        "discuss_project": "Discuss a Project"
-    },
-    "Hero": {
-        "title_line1": "SOFTWARE",
-        "title_line2": "DEVELOPMENT",
-        "hero_location_title": "LOCAL TALENT",
-        "hero_location_text": "We build world-class technological solutions directly from Pitalito, Huila.",
-        "based_in": "Based in Colombia",
-        "rating_text": "Based on",
-        "projects_text": "projects",
-        "team_text": "Founding Team",
-        "stat1_value": "+50",
-        "slider_texts": [
-            "EVERY PRODUCT STARTS AS AN IDEA.",
-            "EVERY IDEA STARTS WITH A DECISION.",
-            "EVERY PATH NEEDS A FIRST STEP."
+  "Metadata": {
+    "title": "Scryved. Software Development | Pitalito, Huila, Colombia",
+    "description": "Scryved. Custom software development, mobile apps, PC maintenance and tech support in Pitalito, Huila, Colombia. We transform your ideas into scalable solutions.",
+    "keywords": "software development pitalito, pc maintenance pitalito, web development huila, mobile apps, tech support, scryved",
+    "ogImage": "/og-image-en.png"
+  },
+  "Navbar": {
+    "home": "Home",
+    "about": "About",
+    "portfolio": "Portfolio",
+    "smartpay": "SmartPay",
+    "deployed": "Live Projects",
+    "services": "Services",
+    "team": "Team",
+    "contact": "Contact",
+    "pricing": "Pricing",
+    "discuss_project": "Discuss a Project"
+  },
+  "Hero": {
+    "title_line1": "SOFTWARE",
+    "title_line2": "DEVELOPMENT",
+    "hero_location_title": "LOCAL TALENT",
+    "hero_location_text": "We build world-class technological solutions directly from Pitalito, Huila.",
+    "based_in": "Based in Colombia",
+    "rating_text": "Based on",
+    "projects_text": "projects",
+    "team_text": "Founding Team",
+    "stat1_value": "+50",
+    "slider_texts": [
+      "EVERY PRODUCT STARTS AS AN IDEA.",
+      "EVERY IDEA STARTS WITH A DECISION.",
+      "EVERY PATH NEEDS A FIRST STEP."
+    ],
+    "description_part1": "We build, ",
+    "description_part2": "optimize",
+    "description_part3": ", and scale digital systems that generate pipeline and improve ROI.",
+    "services": [
+      "Custom Software",
+      "Mobile Applications",
+      "SaaS Platforms",
+      "UI/UX Design"
+    ]
+  },
+  "About": {
+    "tag": "About Scryved",
+    "title_part1": "Our",
+    "title_part2": "Philosophy",
+    "philosophy": [
+      "All innovation begins before the code.",
+      "It begins with the ability to understand a problem, discover opportunities, and visualize what does not yet exist.",
+      "We do not believe in generic solutions.",
+      "We believe in building the path that each project needs.",
+      "Because every idea has a different context.",
+      "Every company faces different challenges.",
+      "And every solution deserves to be designed with intention."
+    ],
+    "what_we_are_title": "What we are",
+    "what_we_are": [
+      "We are a technology studio dedicated to designing, developing, and building digital solutions with purpose.",
+      "We combine strategy, design, and engineering to transform ideas into products that generate real value.",
+      "We work alongside companies, entrepreneurs, and organizations that seek to grow through technology, creating scalable, intuitive, and sustainable digital experiences.",
+      "We don't just develop software.",
+      "We build tools that drive businesses, connect people, and make new opportunities possible."
+    ],
+    "vision_title": "Our vision",
+    "vision": "To be a recognized technology brand for turning complexity into clarity and ideas into solutions that generate impact. We want to build products that endure, brands that inspire trust, and technology capable of improving the way people work, create, and grow.",
+    "mission_title": "Our mission",
+    "mission": "To discover opportunities, design solutions, and develop technology that helps people and companies move forward with confidence into the future.",
+    "quote": "\"We build tools that drive businesses, connect people, and make new opportunities possible.\""
+  },
+  "Services": {
+    "tag": "Our Services",
+    "title_part1": "Our",
+    "title_part2": "Services",
+    "subtitle": "Comprehensive range of development services to help your business thrive.",
+    "description": "We offer everything from web development to cloud consulting.",
+    "items": [
+      {
+        "id": "web",
+        "title": "Web Development",
+        "description": "We build responsive, fast, and scalable web applications using modern technologies like React, Vue, and Angular.",
+        "features": [
+          "Responsive Sites",
+          "SPA Applications",
+          "SEO Optimization"
         ],
-        "description_part1": "We build, ",
-        "description_part2": "optimize",
-        "description_part3": ", and scale digital systems that generate pipeline and improve ROI.",
-        "services": [
-            "Custom Software",
-            "Mobile Applications",
-            "SaaS Platforms",
-            "UI/UX Design"
-        ]
-    },
-    "About": {
-        "tag": "About Scryved",
-        "title_part1": "Our",
-        "title_part2": "Philosophy",
-        "philosophy": [
-            "All innovation begins before the code.",
-            "It begins with the ability to understand a problem, discover opportunities, and visualize what does not yet exist.",
-            "We do not believe in generic solutions.",
-            "We believe in building the path that each project needs.",
-            "Because every idea has a different context.",
-            "Every company faces different challenges.",
-            "And every solution deserves to be designed with intention."
+        "cta": "Consult Web"
+      },
+      {
+        "id": "mobile",
+        "title": "Mobile App Development",
+        "description": "Native and cross-platform mobile applications for iOS and Android using React Native, Flutter, and Swift.",
+        "features": [
+          "iOS & Android",
+          "Native Apps",
+          "High Performance"
         ],
-        "what_we_are_title": "What we are",
-        "what_we_are": [
-            "We are a technology studio dedicated to designing, developing, and building digital solutions with purpose.",
-            "We combine strategy, design, and engineering to transform ideas into products that generate real value.",
-            "We work alongside companies, entrepreneurs, and organizations that seek to grow through technology, creating scalable, intuitive, and sustainable digital experiences.",
-            "We don't just develop software.",
-            "We build tools that drive businesses, connect people, and make new opportunities possible."
+        "cta": "Consult App"
+      },
+      {
+        "id": "custom_software",
+        "title": "Custom Software",
+        "description": "Tailored software solutions designed to address your specific business challenges and requirements.",
+        "features": [
+          "ERP/CRM Systems",
+          "Automation",
+          "Scalability"
         ],
-        "vision_title": "Our vision",
-        "vision": "To be a recognized technology brand for turning complexity into clarity and ideas into solutions that generate impact. We want to build products that endure, brands that inspire trust, and technology capable of improving the way people work, create, and grow.",
-        "mission_title": "Our mission",
-        "mission": "To discover opportunities, design solutions, and develop technology that helps people and companies move forward with confidence into the future.",
-        "quote": "\"We build tools that drive businesses, connect people, and make new opportunities possible.\""
-    },
-    "Services": {
-        "tag": "Our Services",
-        "title_part1": "Our",
-        "title_part2": "Services",
-        "subtitle": "Comprehensive range of development services to help your business thrive.",
-        "description": "We offer everything from web development to cloud consulting.",
-        "items": [
-            {
-                "id": "web",
-                "title": "Web Development",
-                "description": "We build responsive, fast, and scalable web applications using modern technologies like React, Vue, and Angular.",
-                "features": [
-                    "Responsive Sites",
-                    "SPA Applications",
-                    "SEO Optimization"
-                ],
-                "cta": "Consult Web"
-            },
-            {
-                "id": "mobile",
-                "title": "Mobile App Development",
-                "description": "Native and cross-platform mobile applications for iOS and Android using React Native, Flutter, and Swift.",
-                "features": [
-                    "iOS & Android",
-                    "Native Apps",
-                    "High Performance"
-                ],
-                "cta": "Consult App"
-            },
-            {
-                "id": "custom_software",
-                "title": "Custom Software",
-                "description": "Tailored software solutions designed to address your specific business challenges and requirements.",
-                "features": [
-                    "ERP/CRM Systems",
-                    "Automation",
-                    "Scalability"
-                ],
-                "cta": "Consult Software"
-            },
-            {
-                "id": "ui_ux",
-                "title": "UI/UX Design",
-                "description": "User-centered design solutions that enhance user experience and drive engagement with your digital products.",
-                "features": [
-                    "Prototyping",
-                    "Interface Design",
-                    "User Experience"
-                ],
-                "cta": "View Design"
-            },
-            {
-                "id": "devops",
-                "title": "DevOps & Cloud",
-                "description": "Streamline your development and operations with our DevOps services and cloud infrastructure solutions.",
-                "features": [
-                    "AWS / Azure",
-                    "CI/CD",
-                    "Infrastructure"
-                ],
-                "cta": "Consult Cloud"
-            },
-            {
-                "id": "qa",
-                "title": "Quality Assurance",
-                "description": "Comprehensive testing and quality assurance services to ensure your software is reliable and bug-free.",
-                "features": [
-                    "Automated Testing",
-                    "Load Testing",
-                    "Security"
-                ],
-                "cta": "Consult QA"
-            }
+        "cta": "Consult Software"
+      },
+      {
+        "id": "ui_ux",
+        "title": "UI/UX Design",
+        "description": "User-centered design solutions that enhance user experience and drive engagement with your digital products.",
+        "features": [
+          "Prototyping",
+          "Interface Design",
+          "User Experience"
         ],
-        "cta_button": "Download Services PDF",
-        "learn_more": "Learn More"
+        "cta": "View Design"
+      },
+      {
+        "id": "devops",
+        "title": "DevOps & Cloud",
+        "description": "Streamline your development and operations with our DevOps services and cloud infrastructure solutions.",
+        "features": [
+          "AWS / Azure",
+          "CI/CD",
+          "Infrastructure"
+        ],
+        "cta": "Consult Cloud"
+      },
+      {
+        "id": "qa",
+        "title": "Quality Assurance",
+        "description": "Comprehensive testing and quality assurance services to ensure your software is reliable and bug-free.",
+        "features": [
+          "Automated Testing",
+          "Load Testing",
+          "Security"
+        ],
+        "cta": "Consult QA"
+      }
+    ],
+    "cta_button": "Download Services PDF",
+    "learn_more": "Learn More"
+  },
+  "Portfolio": {
+    "tag": "Our Work",
+    "title_part1": "Featured",
+    "title_part2": "Projects",
+    "subtitle": "Explore our high-performance SaaS platforms, administrative systems, and websites.",
+    "view_project": "View Project",
+    "global": "Global",
+    "loading": "Loading Interface...",
+    "key_features": "Key Features",
+    "tabs": {
+      "saas": "SaaS Platforms",
+      "admin": "Admin Systems",
+      "web": "Websites & Landings"
     },
-    "Security": {
-        "tag": "Electronic Security",
-        "title_part1": "Protect What",
-        "title_part2": "Matters Most",
-        "subtitle": "Professional video surveillance and smart alarm solutions.",
-        "description": "Turnkey installation and specialized technical support.",
-        "kits": [
-            {
-                "id": "kit_4k_pro",
-                "title": "Hikvision 4K Pro Kit",
-                "tagline": "The Ultimate Solution",
-                "price": "$3.000.000",
-                "currency": "COP",
-                "badge": "BEST SELLER",
-                "description": "Cinema quality and long-range night vision. Ideal for large homes or businesses.",
-                "features": [
-                    "2 Bullet Cameras 4K (Ext)",
-                    "2 Dome Cameras 4K (Int)",
-                    "4 Channel 4K DVR with AI",
-                    "1TB Hard Drive",
-                    "Full Installation Included"
-                ],
-                "cta": "Order Installation"
-            },
-            {
-                "id": "kit_business",
-                "title": "Business Essentials Kit",
-                "tagline": "Total Control",
-                "price": "$2.000.000",
-                "currency": "COP",
-                "description": "Ideal for retail stores and offices. Total control and effective deterrence.",
-                "features": [
-                    "4 Hikvision 1080p Cameras",
-                    "4 Channel Full HD DVR",
-                    "1TB Hard Drive",
-                    "Professional Installation",
-                    "Remote Monitoring"
-                ],
-                "cta": "Get Quote"
-            },
-            {
-                "id": "kit_alarms",
-                "title": "Alarms & Automation",
-                "tagline": "Control from your phone",
-                "price": "Quote",
-                "currency": "COP",
-                "description": "Motion sensors, door opening sensors, and smart sirens integrated into your phone.",
-                "features": [
-                    "Smart WiFi/GSM Panel",
-                    "PIR Motion Sensors",
-                    "High Power Siren",
-                    "App Control",
-                    "Alexa/Google Integration"
-                ],
-                "cta": "Design Solution"
-            }
+    "projects": [
+      {
+        "id": "fonosalud",
+        "category": "saas",
+        "title": "FonoSalud",
+        "tagline": "Occupational Health",
+        "location": "Colombia",
+        "flag": "co",
+        "description": "SaaS platform for health and resource management.",
+        "features": [
+          "Comprehensive management",
+          "Medical records",
+          "Billing"
         ]
-    },
-    "Portfolio": {
-        "tag": "Our Work",
-        "title_part1": "Featured",
-        "title_part2": "Projects",
-        "subtitle": "Explore our high-performance SaaS platforms, administrative systems, and websites.",
-        "view_project": "View Project",
-        "global": "Global",
-        "loading": "Loading Interface...",
-        "key_features": "Key Features",
-        "tabs": {
-            "saas": "SaaS Platforms",
-            "admin": "Admin Systems",
-            "web": "Websites & Landings"
-        },
-        "projects": [
-            {
-                "id": "fonosalud",
-                "category": "saas",
-                "title": "FonoSalud",
-                "tagline": "Occupational Health",
-                "location": "Colombia",
-                "flag": "co",
-                "description": "SaaS platform for health and resource management.",
-                "features": ["Comprehensive management", "Medical records", "Billing"]
-            },
-            {
-                "id": "osmarpay",
-                "category": "saas",
-                "title": "OsmarPay",
-                "tagline": "Fintech SaaS",
-                "location": "Colombia",
-                "flag": "co",
-                "description": "Administrative software for mobile device financing.",
-                "features": ["Sales control", "Credits", "Financial metrics"]
-            },
-            {
-                "id": "finanlock",
-                "category": "saas",
-                "title": "FinanLock",
-                "tagline": "Financing Management",
-                "location": "Peru",
-                "flag": "pe",
-                "description": "Mobile management and financing system.",
-                "features": ["Inventory control", "Remote locking", "Dashboard"]
-            },
-            {
-                "id": "smartpay",
-                "category": "saas",
-                "title": "SmartPay",
-                "tagline": "Premium Financing",
-                "location": "Peru",
-                "flag": "pe",
-                "description": "Financing platform with real-time tracking.",
-                "features": ["Geolocation", "Metrics", "Branches"]
-            },
-            {
-                "id": "gestor-studio",
-                "category": "admin",
-                "title": "Gestor Studio",
-                "tagline": "POS System",
-                "location": "Colombia",
-                "flag": "co",
-                "description": "Centralized Point of Sale (POS) and administrative panel.",
-                "features": ["Sales management", "Reports", "Metrics"]
-            },
-
-            {
-                "id": "medusa",
-                "category": "web",
-                "title": "Medusa",
-                "description": "Technology landing page"
-            },
-            {
-                "id": "freedom",
-                "category": "web",
-                "title": "Freedom",
-                "description": "Corporate website"
-            },
-            {
-                "id": "hotel",
-                "category": "web",
-                "title": "Hotel Condado Pisco",
-                "description": "Website for reservations and hospitality"
-            },
-            {
-                "id": "urbano",
-                "category": "web",
-                "title": "Urbano Exotic Fruits",
-                "description": "Landing page for exotic products"
-            },
-            {
-                "id": "aion",
-                "category": "web",
-                "title": "Aion Engineering",
-                "description": "Corporate website for engineering firm"
-            }
+      },
+      {
+        "id": "osmarpay",
+        "category": "saas",
+        "title": "OsmarPay",
+        "tagline": "Fintech SaaS",
+        "location": "Colombia",
+        "flag": "co",
+        "description": "Administrative software for mobile device financing.",
+        "features": [
+          "Sales control",
+          "Credits",
+          "Financial metrics"
         ]
-    },
-    "Team": {
-        "tag": "Our Team",
-        "title_part1": "Our",
-        "title_part2": "Team",
-        "subtitle": "A collective of disruptive minds driven by innovation. We don't just write code; we design the digital future by blending creativity and absolute expertise to transform visions into extraordinary realities.",
-        "join_title": "Want to be part of our team?",
-        "join_subtitle": "Are you passionate about technology and innovation?",
-        "join_button": "Contact Us",
-        "members": [
-            {
-                "id": "fabian",
-                "name": "Fabian Ramos",
-                "role": "CO-CEO",
-                "profession": "Software Engineer",
-                "linkedin": "https://www.linkedin.com/in/fabian-ramos-dev"
-            },
-            {
-                "id": "julian",
-                "name": "Julian Palomares",
-                "role": "CEO & Founder",
-                "profession": "Systems Engineer",
-                "linkedin": "https://www.linkedin.com/in/julianazange"
-            },
-            {
-                "id": "tobias",
-                "name": "Tobias Lozano",
-                "role": "CTO",
-                "profession": "Electronics Engineer",
-                "linkedin": "https://www.linkedin.com/in/tobias-lozano-florez"
-            },
-            {
-                "id": "luis",
-                "name": "Luis Montoya",
-                "role": "Sr. Web Developer",
-                "profession": "Systems Engineer"
-            },
-            {
-                "id": "juan",
-                "name": "Juan Tobon",
-                "role": "Sr. Mobile Developer",
-                "profession": "Systems Engineer"
-            },
-            {
-                "id": "orlando",
-                "name": "Orlando Daza",
-                "role": "Semi Sr. Full Stack Developer",
-                "profession": "Systems Engineer"
-            },
-            {
-                "id": "cristian",
-                "name": "Cristian Aviles",
-                "role": "Semi Sr. Full Stack Developer",
-                "profession": "Systems Engineer"
-            },
-            {
-                "id": "felipe",
-                "name": "Felipe Facundo",
-                "role": "Sr. Backend Developer",
-                "profession": "Electronics Engineer"
-            },
-            {
-                "id": "hector",
-                "name": "Hector Estrada",
-                "role": "Sr. Full Stack Developer",
-                "profession": "Mechatronics Engineer"
-            },
-            {
-                "id": "andres",
-                "name": "Andres Velez",
-                "role": "Digital Marketing",
-                "profession": "Journalist"
-            },
-            {
-                "id": "daniel",
-                "name": "Daniel Murillo",
-                "role": "Sr. Mobile Developer",
-                "profession": "Systems Engineer"
-            },
-            {
-                "id": "alex",
-                "name": "Alex Cotrino",
-                "role": "Sr. Full Stack Developer",
-                "profession": "Electronics Engineer"
-            },
-            {
-                "id": "nicolas",
-                "name": "Nicolas PeÃ±afiel",
-                "role": "Semi Sr. Full Stack Developer",
-                "profession": "Technologist"
-            },
-            {
-                "id": "yamson",
-                "name": "Yamson Calapzu",
-                "role": "Database Expert",
-                "profession": "Systems Engineer"
-            }
+      },
+      {
+        "id": "finanlock",
+        "category": "saas",
+        "title": "FinanLock",
+        "tagline": "Financing Management",
+        "location": "Peru",
+        "flag": "pe",
+        "description": "Mobile management and financing system.",
+        "features": [
+          "Inventory control",
+          "Remote locking",
+          "Dashboard"
         ]
-    },
-    "Gallery": {
-        "tag": "Project Gallery",
-        "title_part1": "Our",
-        "title_part2": "Installations",
-        "subtitle": "The quality of our work is seen in the details. From impeccable structured cabling to high-tech monitoring centers.",
-        "items": [
-            {
-                "title": "CCTV Monitoring Center",
-                "description": "Video Wall installation and server configuration for 24/7 security."
-            },
-            {
-                "title": "Cat6 Structured Cabling",
-                "description": "Server rack organization and certified cable management."
-            },
-            {
-                "title": "Home Automation",
-                "description": "Lighting automation and smart access control."
-            },
-            {
-                "title": "PTZ Camera Installation",
-                "description": "High-altitude mounting of rotating cameras for perimeter surveillance."
-            },
-            {
-                "title": "Corporate Networks",
-                "description": "Wi-Fi 6 access point deployment and firewall configuration."
-            },
-            {
-                "title": "Biometric Access Control",
-                "description": "Fingerprint and facial recognition entry systems for offices."
-            }
+      },
+      {
+        "id": "smartpay",
+        "category": "saas",
+        "title": "SmartPay",
+        "tagline": "Premium Financing",
+        "location": "Peru",
+        "flag": "pe",
+        "description": "Financing platform with real-time tracking.",
+        "features": [
+          "Geolocation",
+          "Metrics",
+          "Branches"
         ]
-    },
-    "Founder": {
-        "tag": "About the Founder",
-        "ceo": "// CEO",
-        "photo_name": "Julian Palomares",
-        "photo_role": "CEO & Founder Â· Scryved",
-        "years_num": "4+",
-        "years_text": "years exp.",
-        "name_part1": "JULIAN",
-        "name_part2": "PALOMARES",
+      },
+      {
+        "id": "gestor-studio",
+        "category": "admin",
+        "title": "Gestor Studio",
+        "tagline": "POS System",
+        "location": "Colombia",
+        "flag": "co",
+        "description": "Centralized Point of Sale (POS) and administrative panel.",
+        "features": [
+          "Sales management",
+          "Reports",
+          "Metrics"
+        ]
+      },
+      {
+        "id": "medusa",
+        "category": "web",
+        "title": "Medusa",
+        "description": "Technology landing page"
+      },
+      {
+        "id": "freedom",
+        "category": "web",
+        "title": "Freedom",
+        "description": "Corporate website"
+      },
+      {
+        "id": "hotel",
+        "category": "web",
+        "title": "Hotel Condado Pisco",
+        "description": "Website for reservations and hospitality"
+      },
+      {
+        "id": "urbano",
+        "category": "web",
+        "title": "Urbano Exotic Fruits",
+        "description": "Landing page for exotic products"
+      },
+      {
+        "id": "aion",
+        "category": "web",
+        "title": "Aion Engineering",
+        "description": "Corporate website for engineering firm"
+      }
+    ]
+  },
+  "Team": {
+    "tag": "Our Team",
+    "title_part1": "Our",
+    "title_part2": "Team",
+    "subtitle": "A collective of disruptive minds driven by innovation. We don't just write code; we design the digital future by blending creativity and absolute expertise to transform visions into extraordinary realities.",
+    "join_title": "Want to be part of our team?",
+    "join_subtitle": "Are you passionate about technology and innovation?",
+    "join_button": "Contact Us",
+    "members": [
+      {
+        "id": "fabian",
+        "name": "Fabian Ramos",
+        "role": "CO-CEO",
+        "profession": "Software Engineer",
+        "linkedin": "https://www.linkedin.com/in/fabian-ramos-dev"
+      },
+      {
+        "id": "julian",
+        "name": "Julian Palomares",
+        "role": "CEO & Founder",
         "profession": "Systems Engineer",
-        "quote_part1": "Systems engineer with over 6 years of experience building custom software. ",
-        "quote_brand": "Scryved",
-        "quote_part2": " was born as an idea to help people. Today we are a compact team, built from big dreams and ideas by our founding team.",
-        "exp_tag": "Certified Experience",
-        "cta": "Let's talk about your project",
-        "certBadges": [
-            "Full Stack Development Certified",
-            "Scrum Master Certified",
-            "Google Cloud Fundamentals",
-            "UI/UX Design Principles"
-        ],
-        "credentials": [
-            { "id": "software", "label": "Software Development", "years": "4+ years" },
-            { "id": "support", "label": "Technology Systems Support", "years": "4+ years" },
-            { "id": "data", "label": "Data Digitization", "years": "3+ years" },
-            { "id": "cloud", "label": "Web & Cloud Architecture", "years": "3+ years" },
-            { "id": "mobile", "label": "Mobile Applications", "years": "2+ years" }
-        ]
+        "linkedin": "https://www.linkedin.com/in/julianazange"
+      },
+      {
+        "id": "tobias",
+        "name": "Tobias Lozano",
+        "role": "CTO",
+        "profession": "Electronics Engineer",
+        "linkedin": "https://www.linkedin.com/in/tobias-lozano-florez"
+      },
+      {
+        "id": "luis",
+        "name": "Luis Montoya",
+        "role": "Sr. Web Developer",
+        "profession": "Systems Engineer"
+      },
+      {
+        "id": "juan",
+        "name": "Juan Tobon",
+        "role": "Sr. Mobile Developer",
+        "profession": "Systems Engineer"
+      },
+      {
+        "id": "orlando",
+        "name": "Orlando Daza",
+        "role": "Semi Sr. Full Stack Developer",
+        "profession": "Systems Engineer"
+      },
+      {
+        "id": "cristian",
+        "name": "Cristian Aviles",
+        "role": "Semi Sr. Full Stack Developer",
+        "profession": "Systems Engineer"
+      },
+      {
+        "id": "felipe",
+        "name": "Felipe Facundo",
+        "role": "Sr. Backend Developer",
+        "profession": "Electronics Engineer"
+      },
+      {
+        "id": "hector",
+        "name": "Hector Estrada",
+        "role": "Sr. Full Stack Developer",
+        "profession": "Mechatronics Engineer"
+      },
+      {
+        "id": "andres",
+        "name": "Andres Velez",
+        "role": "Digital Marketing",
+        "profession": "Journalist"
+      },
+      {
+        "id": "daniel",
+        "name": "Daniel Murillo",
+        "role": "Sr. Mobile Developer",
+        "profession": "Systems Engineer"
+      },
+      {
+        "id": "alex",
+        "name": "Alex Cotrino",
+        "role": "Sr. Full Stack Developer",
+        "profession": "Electronics Engineer"
+      },
+      {
+        "id": "nicolas",
+        "name": "Nicolas PeÃ±afiel",
+        "role": "Semi Sr. Full Stack Developer",
+        "profession": "Technologist"
+      },
+      {
+        "id": "yamson",
+        "name": "Yamson Calapzu",
+        "role": "Database Expert",
+        "profession": "Systems Engineer"
+      }
+    ]
+  },
+  "Gallery": {
+    "tag": "Project Gallery",
+    "title_part1": "Our",
+    "title_part2": "Installations",
+    "subtitle": "The quality of our work is seen in the details. From impeccable structured cabling to high-tech monitoring centers.",
+    "items": [
+      {
+        "title": "Corporate Networks",
+        "description": "Wi-Fi 6 access point deployment and firewall configuration."
+      }
+    ]
+  },
+  "Founder": {
+    "tag": "About the Founder",
+    "ceo": "// CEO",
+    "photo_name": "Julian Palomares",
+    "photo_role": "CEO & Founder Â· Scryved",
+    "years_num": "4+",
+    "years_text": "years exp.",
+    "name_part1": "JULIAN",
+    "name_part2": "PALOMARES",
+    "profession": "Systems Engineer",
+    "quote_part1": "Systems engineer with over 6 years of experience building custom software. ",
+    "quote_brand": "Scryved",
+    "quote_part2": " was born as an idea to help people. Today we are a compact team, built from big dreams and ideas by our founding team.",
+    "exp_tag": "Certified Experience",
+    "cta": "Let's talk about your project",
+    "certBadges": [
+      "Full Stack Development Certified",
+      "Scrum Master Certified",
+      "Google Cloud Fundamentals",
+      "UI/UX Design Principles"
+    ],
+    "credentials": [
+      {
+        "id": "software",
+        "label": "Software Development",
+        "years": "4+ years"
+      },
+      {
+        "id": "support",
+        "label": "Technology Systems Support",
+        "years": "4+ years"
+      },
+      {
+        "id": "data",
+        "label": "Data Digitization",
+        "years": "3+ years"
+      },
+      {
+        "id": "cloud",
+        "label": "Web & Cloud Architecture",
+        "years": "3+ years"
+      },
+      {
+        "id": "mobile",
+        "label": "Mobile Applications",
+        "years": "2+ years"
+      }
+    ]
+  },
+  "Contact": {
+    "tag": "Contact",
+    "title": "CONTACT US.",
+    "subtitle": "Have a project in mind?",
+    "description": "Want to learn more about our services? We'd love to hear from you!",
+    "form": {
+      "title": "Send us a Message",
+      "fields": {
+        "name": "Your Name",
+        "email": "Your Email",
+        "phone": "Phone",
+        "subject": "Subject",
+        "message": "Your Message",
+        "budget": "Budget"
+      },
+      "button": "Send Message",
+      "success": "Thank you! We will get back to you.",
+      "error": "There was an error sending."
     },
-    "Contact": {
-        "tag": "Contact",
-        "title": "CONTACT US.",
-        "subtitle": "Have a project in mind?",
-        "description": "Want to learn more about our services? We'd love to hear from you!",
-        "form": {
-            "title": "Send us a Message",
-            "fields": {
-                "name": "Your Name",
-                "email": "Your Email",
-                "phone": "Phone",
-                "subject": "Subject",
-                "message": "Your Message",
-                "budget": "Budget"
-            },
-            "button": "Send Message",
-            "success": "Thank you! We will get back to you.",
-            "error": "There was an error sending."
-        },
-        "info": {
-            "title": "Information",
-            "phone": "+57 314 302 5929",
-            "email": "scryved@gmail.com",
-            "address": "Pitalito, Huila, Colombia"
-        }
+    "info": {
+      "title": "Information",
+      "phone": "+57 314 302 5929",
+      "email": "scryved@gmail.com",
+      "address": "Pitalito, Huila, Colombia"
+    }
+  },
+  "Footer": {
+    "brand_description": "Custom software development solutions for businesses of all sizes. We turn ideas into reality.",
+    "services": {
+      "title": "Services"
     },
-    "Footer": {
-        "brand_description": "Custom software development solutions for businesses of all sizes. We turn ideas into reality.",
-        "services": {
-            "title": "Services"
-        },
-        "company": {
-            "title": "Company"
-        },
-        "contact_title": "Contact",
-        "address": "Pitalito, Huila, Colombia",
-        "phone": "+57 314 302 5929",
-        "email": "scryved@gmail.com",
-        "copyright": "All rights reserved.",
-        "privacy": "Privacy Policy",
-        "terms": "Terms & Conditions"
+    "company": {
+      "title": "Company"
     },
-    "FinanLock": {
-        "section_tag": "Our Flagship Product",
-        "title_part1": "Revolutionize Your",
-        "title_part2": "Finances",
-        "description_main": "A comprehensive platform designed to simplify, secure, and boost your business financial management in Latin America.",
-        "subtitle": "FinanLock: Total Control",
-        "description_detail": "Formerly known as SmartPay, FinanLock evolves to offer banking-grade security, real-time analytics, and an unprecedented user experience for modern merchants.",
-        "availability": "Available In",
-        "features": {
-            "feature1": "Secure Payment Gateway",
-            "feature2": "AI Analytics Dashboard",
-            "feature3": "Multi-currency Management",
-            "feature4": "Premium 24/7 Support"
-        },
-        "cta_button": "View Live Demo"
+    "contact_title": "Contact",
+    "address": "Pitalito, Huila, Colombia",
+    "phone": "+57 314 302 5929",
+    "email": "scryved@gmail.com",
+    "copyright": "All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms & Conditions"
+  },
+  "FinanLock": {
+    "section_tag": "Our Flagship Product",
+    "title_part1": "Revolutionize Your",
+    "title_part2": "Finances",
+    "description_main": "A comprehensive platform designed to simplify, secure, and boost your business financial management in Latin America.",
+    "subtitle": "FinanLock: Total Control",
+    "description_detail": "Formerly known as SmartPay, FinanLock evolves to offer banking-grade security, real-time analytics, and an unprecedented user experience for modern merchants.",
+    "availability": "Available In",
+    "features": {
+      "feature1": "Secure Payment Gateway",
+      "feature2": "AI Analytics Dashboard",
+      "feature3": "Multi-currency Management",
+      "feature4": "Premium 24/7 Support"
     },
-    "Showcase": {
-        "tag": "Success Stories",
-        "title_part1": "Specialized",
-        "title_part2": "Solutions",
-        "subtitle": "We don't just write code; we create digital experiences that transform businesses. Discover our flagship products.",
-        "menu": {
-            "badge": "Restaurants & Bars",
-            "title": "Smart Digital Menus",
-            "subtitle": "Featured case: Medusa Gastro Bar",
-            "description": "Revolutionize your diners' experience with dynamic QR menus. We designed a digital infrastructure that combines signature cocktails and haute cuisine with an immersive, fast, and real-time manageable design.",
-            "features": [
-                "Fast QR scanning with no downloads",
-                "Instant price updates",
-                "High-end sensory design"
-            ],
-            "cta": "View Live Menu"
-        },
-        "store": {
-            "badge": "E-Commerce",
-            "title": "Premium Online Stores",
-            "subtitle": "Featured case: Freedom Store",
-            "description": "Take your clothing brand to the next level with a lightning-fast e-commerce. Built to maximize conversions with integrated payment gateways and a user experience that captivates from the first click.",
-            "features": [
-                "Dynamic catalog and advanced filters",
-                "Optimized checkout & payment gateways",
-                "Mobile-first experience"
-            ],
-            "cta": "Explore Store"
-        }
+    "cta_button": "View Live Demo"
+  },
+  "Showcase": {
+    "tag": "Success Stories",
+    "title_part1": "Specialized",
+    "title_part2": "Solutions",
+    "subtitle": "We don't just write code; we create digital experiences that transform businesses. Discover our flagship products.",
+    "menu": {
+      "badge": "Restaurants & Bars",
+      "title": "Smart Digital Menus",
+      "subtitle": "Featured case: Medusa Gastro Bar",
+      "description": "Revolutionize your diners' experience with dynamic QR menus. We designed a digital infrastructure that combines signature cocktails and haute cuisine with an immersive, fast, and real-time manageable design.",
+      "features": [
+        "Fast QR scanning with no downloads",
+        "Instant price updates",
+        "High-end sensory design"
+      ],
+      "cta": "View Live Menu"
     },
-    "Stats": {
-        "marquee": "SOFTWARE DEVELOPMENT   MOBILE APPLICATIONS   CLOUD ARCHITECTURE   UI/UX DESIGN   ",
-        "section_id": "[01]",
-        "section_title": "// DIGITAL EXCELLENCE",
-        "year": "Â© 2026",
-        "score": "9.8",
-        "score_max": "/10.0",
-        "statement": "OVER 3 YEARS BUILDING HIGH-PERFORMANCE DIGITAL PRODUCTS, SCALABLE SYSTEMS, AND CONVERSION-FOCUSED EXPERIENCES.",
-        "stat1_value": "320%",
-        "stat1_label": "AVERAGE PERFORMANCE INCREASE",
-        "stat2_value": "42%",
-        "stat2_label": "REDUCTION IN DEVELOPMENT TIMES",
-        "stat3_value": "+50",
-        "stat3_label": "SUCCESSFULLY DEPLOYED SYSTEMS"
-    },
-    "Pricing": {
-        "tag": "Plans & Pricing",
-        "title": "Transparent",
-        "title_highlight": "Investment.",
-        "subtitle": "Technology solutions tailored to every stage of your business. All plans include domain, hosting and support for 1 year.",
-        "cta_label": "Custom quote via WhatsApp",
-        "note": "All prices exclude VAT. Custom quotes available based on project scope.",
-        "featured_badge": "Most Popular",
-        "from": "From",
-        "currency": "COP",
-        "per_project": "/ project",
-        "includes": "Includes:",
-        "ask_price": "Get a quote",
-            "categories": [
-      { "id": "web", "label": "Web Development" },
-      { "id": "it", "label": "IT Consulting" },
-      { "id": "cloud", "label": "Cloud Infrastructure" },
-      { "id": "support", "label": "Tech Support" }
+    "store": {
+      "badge": "E-Commerce",
+      "title": "Premium Online Stores",
+      "subtitle": "Featured case: Freedom Store",
+      "description": "Take your clothing brand to the next level with a lightning-fast e-commerce. Built to maximize conversions with integrated payment gateways and a user experience that captivates from the first click.",
+      "features": [
+        "Dynamic catalog and advanced filters",
+        "Optimized checkout & payment gateways",
+        "Mobile-first experience"
+      ],
+      "cta": "Explore Store"
+    }
+  },
+  "Stats": {
+    "marquee": "SOFTWARE DEVELOPMENT   MOBILE APPLICATIONS   CLOUD ARCHITECTURE   UI/UX DESIGN   ",
+    "section_id": "[01]",
+    "section_title": "// DIGITAL EXCELLENCE",
+    "year": "Â© 2026",
+    "score": "9.8",
+    "score_max": "/10.0",
+    "statement": "OVER 3 YEARS BUILDING HIGH-PERFORMANCE DIGITAL PRODUCTS, SCALABLE SYSTEMS, AND CONVERSION-FOCUSED EXPERIENCES.",
+    "stat1_value": "320%",
+    "stat1_label": "AVERAGE PERFORMANCE INCREASE",
+    "stat2_value": "42%",
+    "stat2_label": "REDUCTION IN DEVELOPMENT TIMES",
+    "stat3_value": "+50",
+    "stat3_label": "SUCCESSFULLY DEPLOYED SYSTEMS"
+  },
+  "Pricing": {
+    "tag": "Plans & Pricing",
+    "title": "Transparent",
+    "title_highlight": "Investment.",
+    "subtitle": "Technology solutions tailored to every stage of your business. All plans include domain, hosting and support for 1 year.",
+    "cta_label": "Custom quote via WhatsApp",
+    "note": "All prices exclude VAT. Custom quotes available based on project scope.",
+    "featured_badge": "Most Popular",
+    "from": "From",
+    "currency": "COP",
+    "per_project": "/ project",
+    "includes": "Includes:",
+    "ask_price": "Get a quote",
+    "categories": [
+      {
+        "id": "web",
+        "label": "Web Development"
+      },
+      {
+        "id": "it",
+        "label": "IT Consulting"
+      },
+      {
+        "id": "cloud",
+        "label": "Cloud Infrastructure"
+      },
+      {
+        "id": "support",
+        "label": "Tech Support"
+      }
     ],
     "plans": [
       {
@@ -689,82 +661,82 @@
     ]
   },
   "CookieBanner": {
-      "title": "We Use Cookies",
-      "description": "We use cookies to improve your experience, analyze our traffic, and personalize content.",
-      "privacy_link": "Privacy Policy",
-      "accept": "Accept"
+    "title": "We Use Cookies",
+    "description": "We use cookies to improve your experience, analyze our traffic, and personalize content.",
+    "privacy_link": "Privacy Policy",
+    "accept": "Accept"
   },
   "Privacy": {
-        "title": "Privacy",
-        "title_highlight": "Policy",
-        "updated": "Last updated: ",
-        "sections": [
-            {
-                "title": "1. Information We Collect",
-                "content": "At Scryved, we collect information that you provide directly when you use our services, such as when you fill out a contact form, request a quote, or contact us for support. This information may include your name, email address, phone number, and project details."
-            },
-            {
-                "title": "2. Use of Information",
-                "content": "We use the information we collect to:",
-                "list": [
-                    "Provide, operate, and maintain our services.",
-                    "Improve, personalize, and expand our services.",
-                    "Understand and analyze how you use our services.",
-                    "Develop new products, services, features, and functionality.",
-                    "Communicate with you for customer service."
-                ]
-            },
-            {
-                "title": "3. Log Files",
-                "content": "Scryved follows a standard procedure of using log files. These files log visitors when they visit websites. The information collected includes IP addresses, browser type, Internet Service Provider (ISP), date and time stamp, and referring/exit pages."
-            },
-            {
-                "title": "4. Cookies",
-                "content": "Like any other website, Scryved uses 'cookies'. These cookies are used to store information including visitors' preferences, and the pages on the website that the visitor accessed. The information is used to optimize the users' experience by customizing content."
-            },
-            {
-                "title": "5. Contact",
-                "content": "If you have any questions about this Privacy Policy, you can contact us at: scryved@gmail.com"
-            }
+    "title": "Privacy",
+    "title_highlight": "Policy",
+    "updated": "Last updated: ",
+    "sections": [
+      {
+        "title": "1. Information We Collect",
+        "content": "At Scryved, we collect information that you provide directly when you use our services, such as when you fill out a contact form, request a quote, or contact us for support. This information may include your name, email address, phone number, and project details."
+      },
+      {
+        "title": "2. Use of Information",
+        "content": "We use the information we collect to:",
+        "list": [
+          "Provide, operate, and maintain our services.",
+          "Improve, personalize, and expand our services.",
+          "Understand and analyze how you use our services.",
+          "Develop new products, services, features, and functionality.",
+          "Communicate with you for customer service."
         ]
-    },
-    "Terms": {
-        "title": "Terms and",
-        "title_highlight": "Conditions",
-        "updated": "Last updated: ",
-        "sections": [
-            {
-                "title": "1. Introduction",
-                "content": "These terms and conditions outline the rules and regulations for the use of Scryved's website and services. By accessing this website we assume you accept these terms."
-            },
-            {
-                "title": "2. License and Use",
-                "content": "Unless otherwise stated, Scryved owns the intellectual property rights for all material on the website and developed projects, according to specific client contractual agreements. You must not:",
-                "list": [
-                    "Republish material without authorization.",
-                    "Sell, rent or sub-license material from Scryved.",
-                    "Reproduce, duplicate or copy material for commercial purposes."
-                ]
-            },
-            {
-                "title": "3. Services and Quotes",
-                "content": "All quotes, time estimates, and deliverables discussed on this site are subject to review and final approval through a separate software development contract."
-            },
-            {
-                "title": "4. Disclaimer",
-                "content": "To the maximum extent permitted by applicable law, we exclude all representations, warranties and conditions relating to our website and the use of this website."
-            },
-            {
-                "title": "5. Modifications",
-                "content": "Scryved reserves the right to revise these Terms at any time. By using this website you are expected to review these Terms on a regular basis."
-            }
+      },
+      {
+        "title": "3. Log Files",
+        "content": "Scryved follows a standard procedure of using log files. These files log visitors when they visit websites. The information collected includes IP addresses, browser type, Internet Service Provider (ISP), date and time stamp, and referring/exit pages."
+      },
+      {
+        "title": "4. Cookies",
+        "content": "Like any other website, Scryved uses 'cookies'. These cookies are used to store information including visitors' preferences, and the pages on the website that the visitor accessed. The information is used to optimize the users' experience by customizing content."
+      },
+      {
+        "title": "5. Contact",
+        "content": "If you have any questions about this Privacy Policy, you can contact us at: scryved@gmail.com"
+      }
+    ]
+  },
+  "Terms": {
+    "title": "Terms and",
+    "title_highlight": "Conditions",
+    "updated": "Last updated: ",
+    "sections": [
+      {
+        "title": "1. Introduction",
+        "content": "These terms and conditions outline the rules and regulations for the use of Scryved's website and services. By accessing this website we assume you accept these terms."
+      },
+      {
+        "title": "2. License and Use",
+        "content": "Unless otherwise stated, Scryved owns the intellectual property rights for all material on the website and developed projects, according to specific client contractual agreements. You must not:",
+        "list": [
+          "Republish material without authorization.",
+          "Sell, rent or sub-license material from Scryved.",
+          "Reproduce, duplicate or copy material for commercial purposes."
         ]
-    },
-    "Gracias": {
-        "title": "Message",
-        "title_highlight": "Sent!",
-        "description": "We have successfully received your request. Our team will contact you in the next few hours to discuss your project details.",
-        "back_home": "Back to Home",
-        "view_portfolio": "View our Portfolio"
-    }
+      },
+      {
+        "title": "3. Services and Quotes",
+        "content": "All quotes, time estimates, and deliverables discussed on this site are subject to review and final approval through a separate software development contract."
+      },
+      {
+        "title": "4. Disclaimer",
+        "content": "To the maximum extent permitted by applicable law, we exclude all representations, warranties and conditions relating to our website and the use of this website."
+      },
+      {
+        "title": "5. Modifications",
+        "content": "Scryved reserves the right to revise these Terms at any time. By using this website you are expected to review these Terms on a regular basis."
+      }
+    ]
+  },
+  "Gracias": {
+    "title": "Message",
+    "title_highlight": "Sent!",
+    "description": "We have successfully received your request. Our team will contact you in the next few hours to discuss your project details.",
+    "back_home": "Back to Home",
+    "view_portfolio": "View our Portfolio"
+  }
 }

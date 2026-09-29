@@ -5,7 +5,8 @@ import { Metadata } from 'next';
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const baseUrl = 'https://scryved.com';
-  const canonicalUrl = `${baseUrl}/${locale}`;
+  const localePath = locale === 'es' ? '' : `/${locale}`;
+  const canonicalUrl = `${baseUrl}${localePath}`;
 
   return {
     alternates: {

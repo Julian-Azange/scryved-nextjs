@@ -140,7 +140,7 @@ export const generateScryvedMetadata = (
         alternates: {
             canonical: params.canonical || baseUrl,
             languages: {
-                'es-CO': `${baseUrl}/es`,
+                'es-CO': baseUrl,
                 'en-US': `${baseUrl}/en`,
                 'x-default': baseUrl,
             },
@@ -203,7 +203,8 @@ export const formatPriceForSchema = (price: string): string => {
  */
 export const buildCanonicalUrl = (path: string, locale: 'es' | 'en' = 'es'): string => {
     const baseUrl = 'https://scryved.com';
-    return `${baseUrl}/${locale}${path}`;
+    const localePath = locale === 'es' ? '' : `/${locale}`;
+    return `${baseUrl}${localePath}${path === '/' ? '' : path}`;
 };
 
 /**

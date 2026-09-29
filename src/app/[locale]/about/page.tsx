@@ -8,7 +8,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     const { locale } = await params;
     const t = await getTranslations({ locale, namespace: 'About' });
     const baseUrl = 'https://scryved.com';
-    const canonicalUrl = `${baseUrl}/${locale}/about`;
+    const localePath = locale === 'es' ? '' : `/${locale}`;
+    const canonicalUrl = `${baseUrl}${localePath}/about`;
 
     return {
         title: `Scryved | ${t('tag')}`,

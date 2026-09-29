@@ -5,7 +5,8 @@ import Link from 'next/link';
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
     const baseUrl = 'https://scryved.com';
-    const canonicalUrl = `${baseUrl}/${locale}/servicios/desarrollo-software`;
+    const localePath = locale === 'es' ? '' : `/${locale}`;
+    const canonicalUrl = `${baseUrl}${localePath}/servicios/desarrollo-software`;
 
     return {
         title: locale === 'es' ? 'Desarrollo de Software a Medida en Pitalito | Scryved' : 'Custom Software Development in Pitalito | Scryved',

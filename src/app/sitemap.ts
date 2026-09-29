@@ -25,15 +25,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Para cada ruta, generar las versiones localizadas
     paths.forEach(({ path, priority, changeFrequency }) => {
         locales.forEach((locale) => {
+            const localePath = locale === 'es' ? '' : `/${locale}`;
+            const urlPath = path === '/' ? '' : path;
             routes.push({
-                url: `${baseUrl}/${locale}${path}`,
+                url: `${baseUrl}${localePath}${urlPath}`,
                 lastModified: new Date(),
                 changeFrequency,
                 priority,
                 alternates: {
                     languages: {
-                        es: `${baseUrl}/es${path}`,
-                        en: `${baseUrl}/en${path}`,
+                        es: `${baseUrl}${urlPath}`,
+                        en: `${baseUrl}/en${urlPath}`,
                     },
                 },
             });

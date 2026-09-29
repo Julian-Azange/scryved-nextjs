@@ -50,16 +50,6 @@ export const SECTIONS = {
             'Control de Calidad (QA)',
         ],
     },
-    SECURITY: {
-        title: '3 Kits de seguridad con precios',
-        file: 'messages/es.json > Security',
-        count: 3,
-        kits: [
-            { name: 'Kit Hikvision 4K Pro', price: '$3.000.000' },
-            { name: 'Kit Negocio Esencial', price: '$1.800.000' },
-            { name: 'Alarmas & Domótica', price: 'Cotizar' },
-        ],
-    },
     PORTFOLIO: {
         title: '11 Proyectos destacados',
         file: 'messages/es.json > Portfolio',
@@ -103,14 +93,6 @@ export const KEYWORDS = {
         'software a medida',
         'agencia digital',
         'consultoría IT',
-    ],
-    SECURITY: [
-        'camaras 4k',
-        'cctv pitalito',
-        'alarmas inteligentes',
-        'videovigilancia profesional',
-        'domótica segura',
-        'hikvision pitalito',
     ],
 };
 
@@ -166,7 +148,6 @@ export const URL_STRUCTURE = {
             home: '/es',
             services: '/es/servicios',
             about: '/es/nosotros',
-            security: '/es/seguridad',
             contact: '/es/contacto',
             portfolio: '/es/proyectos',
         },
@@ -174,7 +155,6 @@ export const URL_STRUCTURE = {
             home: '/en',
             services: '/en/services',
             about: '/en/about',
-            security: '/en/security',
             contact: '/en/contact',
             portfolio: '/en/projects',
         },
@@ -195,42 +175,6 @@ export const STATS = {
 // ============================================
 // 💰 PRICING (Kits)
 // ============================================
-
-export const PRICING = {
-    hikvision_4k_pro: {
-        price: 3000000,
-        currency: 'COP',
-        features: [
-            '2 Cámaras Bala 4K Exterior',
-            '2 Cámaras Domo 4K Interior',
-            'DVR 4 Canales 4K con IA',
-            'Disco Duro 1TB',
-            'Instalación + Configuración',
-        ],
-    },
-    business_essential: {
-        price: 1800000,
-        currency: 'COP',
-        features: [
-            '4 Cámaras 1080p Full HD',
-            'DVR 4 Canales',
-            'Disco Duro 1TB',
-            'Instalación profesional',
-        ],
-    },
-    alarms_automation: {
-        price: 'QUOTE',
-        currency: 'COP',
-        features: [
-            'Panel WiFi/GSM',
-            'Sensores PIR',
-            'Sensores magnéticos',
-            'Sirena de potencia',
-            'App Control + Alexa/Google',
-        ],
-    },
-};
-
 // ============================================
 // 🏢 INFORMACIÓN DE EMPRESA
 // ============================================
@@ -330,7 +274,7 @@ export const NEXT_STEPS = [
             'Navbar (glassmorphism)',
             'Hero Section',
             'Services Grid',
-            'Security Kits',
+            
             'Portfolio',
             'Contact Form',
             'Footer',
@@ -376,7 +320,7 @@ export default {
     HELPERS,
     URL_STRUCTURE,
     STATS,
-    PRICING,
+    
     COMPANY_INFO,
     DOCUMENTATION,
     VISUAL_CONFIG,

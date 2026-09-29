@@ -9,7 +9,7 @@ export const organizationSchema = {
     name: "Scryved",
     url: "https://scryved.com",
     logo: "https://scryved.com/logo.png",
-    description: "Agencia de desarrollo de software en Pitalito, Huila, Colombia. Soluciones web, móviles y de seguridad inteligente.",
+    description: "Agencia de desarrollo de software en Pitalito, Huila, Colombia. Soluciones web y móviles.",
     sameAs: [
         "https://www.linkedin.com/company/scryved",
         "https://www.instagram.com/scryved",
@@ -51,7 +51,7 @@ export const localBusinessSchema = {
     "@type": "LocalBusiness",
     name: "Scryved - Agencia de Software",
     image: "https://scryved.com/images/scryved-office.jpg",
-    description: "Desarrollo de software profesional, aplicaciones web y móviles, y soluciones de seguridad inteligente en Pitalito.",
+    description: "Desarrollo de software profesional, aplicaciones web y móviles en Pitalito.",
     address: {
         "@type": "PostalAddress",
         streetAddress: "Pitalito",
@@ -164,7 +164,7 @@ export const productSchema = (productName: string, price: string, description: s
     },
     offers: {
         "@type": "Offer",
-        url: "https://scryved.com/seguridad",
+        url: "https://scryved.com/servicios",
         priceCurrency: "COP",
         price: price.replace("$", "").replace(/\./g, ""), // Regex para reemplazar todos los puntos, no solo el primero
         availability: "https://schema.org/InStock",
@@ -187,7 +187,7 @@ export const breadcrumbSchema = (items: Array<{ name: string; url: string }>) =>
 });
 
 // SEO Meta Tags Helper
-export const generateMetaTags = (page: "home" | "services" | "about" | "portfolio" | "contact" | "security") => {
+export const generateMetaTags = (page: "home" | "services" | "about" | "portfolio" | "contact" ) => {
     const defaults = {
         charset: "utf-8",
         viewport: "width=device-width, initial-scale=1",
@@ -196,14 +196,14 @@ export const generateMetaTags = (page: "home" | "services" | "about" | "portfoli
 
     const pageData: Record<string, { title: string; description: string; keywords: string; ogImage: string }> = {
         home: {
-            title: "Scryved | Desarrollo Web, Software y Seguridad en Pitalito, Huila",
-            description: "Agencia de software en Pitalito, Huila. Desarrollo web, apps móviles, software a medida y soluciones de seguridad CCTV. Expertos en tecnología.",
-            keywords: "desarrollo web pitalito, software pitalito, apps móviles, camaras seguridad, alarmas inteligentes",
+            title: "Scryved | Desarrollo Web y Software en Pitalito, Huila",
+            description: "Agencia de software en Pitalito, Huila. Desarrollo web, apps móviles y software a medida. Expertos en tecnología.",
+            keywords: "desarrollo web pitalito, software pitalito, apps móviles",
             ogImage: "https://scryved.com/og-home.png"
         },
         services: {
             title: "Servicios de Desarrollo Software | Scryved Pitalito",
-            description: "Desarrollo web, apps móviles, software personalizado, diseño UI/UX, DevOps, QA y seguridad. Soluciones completas para tu negocio.",
+            description: "Desarrollo web, apps móviles, software personalizado, diseño UI/UX, DevOps, y QA. Soluciones completas para tu negocio.",
             keywords: "servicios desarrollo, consultoría IT, desarrollo web profesional",
             ogImage: "https://scryved.com/og-services.png"
         },
@@ -224,12 +224,6 @@ export const generateMetaTags = (page: "home" | "services" | "about" | "portfoli
             description: "Contáctanos en Pitalito. Presupuestos sin costo, consultas técnicas, y soporte profesional. Teléfono +57 322 245 5334.",
             keywords: "contacto scryved, presupuesto software, consulta gratis",
             ogImage: "https://scryved.com/og-contact.png"
-        },
-        security: {
-            title: "Seguridad CCTV | Cámaras 4K y Alarmas Inteligentes | Scryved",
-            description: "Kits de videovigilancia 4K, alarmas inteligentes y domótica. Instalación profesional en Pitalito. Monitoreo desde app 24/7.",
-            keywords: "camaras seguridad pitalito, cctv 4k, alarmas inteligentes, hikvision",
-            ogImage: "https://scryved.com/og-security.png"
         }
     };
 

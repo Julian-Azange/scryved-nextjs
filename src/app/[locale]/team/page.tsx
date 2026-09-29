@@ -5,7 +5,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     const { locale } = await params;
     const t = await getTranslations({ locale, namespace: 'Team' });
     const baseUrl = 'https://scryved.com';
-    const canonicalUrl = `${baseUrl}/${locale}/team`;
+    const localePath = locale === 'es' ? '' : `/${locale}`;
+    const canonicalUrl = `${baseUrl}${localePath}/team`;
 
     return {
         title: `Scryved | ${t('tag')}`,

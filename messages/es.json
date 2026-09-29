@@ -2,7 +2,7 @@
   "Metadata": {
     "title": "Scryved. Desarrollo de software | Pitalito, Huila, Colombia",
     "description": "Scryved. Desarrollo de software a medida, aplicaciones móviles, formateo y mantenimiento de computadores en Pitalito, Huila, Colombia. Soluciones tecnológicas empresariales.",
-    "keywords": "desarrollo de software pitalito, mantenimiento de computadores pitalito, formateo de pc pitalito, aplicaciones moviles huila, seguridad electronica, scryved",
+    "keywords": "desarrollo de software pitalito, mantenimiento de computadores pitalito, formateo de pc pitalito, aplicaciones moviles huila, scryved",
     "ogImage": "/og-image.png"
   },
   "Navbar": {
@@ -12,7 +12,6 @@
     "smartpay": "SmartPay",
     "deployed": "En Vivo",
     "services": "Servicios",
-    "security": "Seguridad",
     "team": "Equipo",
     "contact": "Contacto",
     "pricing": "Planes",
@@ -147,64 +146,6 @@
     "cta_button": "Descargar PDF de Servicios",
     "learn_more": "Saber Más"
   },
-  "Security": {
-    "tag": "Seguridad Electrónica",
-    "title_part1": "Protege lo que",
-    "title_part2": "Más Importa",
-    "subtitle": "Soluciones de videovigilancia profesional y alarmas inteligentes.",
-    "description": "Instalación llave en mano y soporte técnico especializado.",
-    "kits": [
-      {
-        "id": "kit_4k_pro",
-        "title": "Kit Hikvision 4K Pro",
-        "tagline": "La solución definitiva",
-        "price": "$3.000.000",
-        "currency": "COP",
-        "badge": "MÁS VENDIDO",
-        "description": "Calidad de cine y visión nocturna de largo alcance. Ideal para hogares grandes o negocios.",
-        "features": [
-          "2 Cámaras Bala 4K (Ext)",
-          "2 Cámaras Domo 4K (Int)",
-          "DVR 4 Canales con IA",
-          "Disco Duro 1TB",
-          "Instalación completa incluida"
-        ],
-        "cta": "Ordenar Instalación"
-      },
-      {
-        "id": "kit_business",
-        "title": "Kit Negocio Esencial",
-        "tagline": "Control total para negocios",
-        "price": "$2.000.000",
-        "currency": "COP",
-        "description": "Ideal para locales comerciales y oficinas. Control total y disuasión efectiva.",
-        "features": [
-          "4 Cámaras Hikvision 1080p Full HD",
-          "DVR 4 Canales Full HD",
-          "Disco Duro 1TB",
-          "Instalación profesional",
-          "Monitoreo remoto celular/PC"
-        ],
-        "cta": "Cotizar Ahora"
-      },
-      {
-        "id": "kit_alarms",
-        "title": "Alarmas & Domótica",
-        "tagline": "Control desde tu celular",
-        "price": "Cotizar",
-        "currency": "COP",
-        "description": "Sensores de movimiento, apertura de puertas y sirenas inteligentes integradas a tu celular.",
-        "features": [
-          "Panel Inteligente WiFi/GSM",
-          "Sensores de movimiento PIR",
-          "Sirena de alta potencia",
-          "Control desde App",
-          "Integración Alexa/Google"
-        ],
-        "cta": "Diseñar Solución"
-      }
-    ]
-  },
   "Portfolio": {
     "tag": "Nuestro Trabajo",
     "title_part1": "Proyectos",
@@ -296,7 +237,6 @@
         "title": "Freedom",
         "description": "Sitio web corporativo"
       },
-
       {
         "id": "medusa",
         "category": "web",
@@ -422,28 +362,8 @@
     "subtitle": "La calidad de nuestro trabajo se ve en los detalles. Desde cableado estructurado impecable hasta centros de monitoreo de alta tecnología.",
     "items": [
       {
-        "title": "Centro de Monitoreo CCTV",
-        "description": "Instalación de Video Wall y configuración de servidores para seguridad 24/7."
-      },
-      {
-        "title": "Cableado Estructurado Cat6",
-        "description": "Organización de rack de servidores y gestión de cableado certificado."
-      },
-      {
-        "title": "Domótica Residencial",
-        "description": "Automatización de iluminación y control de acceso inteligente."
-      },
-      {
-        "title": "Instalación de Cámaras PTZ",
-        "description": "Montaje en altura de cámaras rotativas para vigilancia perimetral."
-      },
-      {
         "title": "Redes Corporativas",
         "description": "Despliegue de puntos de acceso Wi-Fi 6 y configuración de firewall."
-      },
-      {
-        "title": "Control de Acceso Biométrico",
-        "description": "Sistemas de entrada por huella y reconocimiento facial para oficinas."
       }
     ]
   },
@@ -612,10 +532,22 @@
     "per_project": "/ proyecto",
     "includes": "Incluye:",
     "categories": [
-      { "id": "web", "label": "Desarrollo Web" },
-      { "id": "consulting", "label": "Asesoría IT" },
-      { "id": "cloud", "label": "Infraestructura" },
-      { "id": "support", "label": "Soporte Técnico" }
+      {
+        "id": "web",
+        "label": "Desarrollo Web"
+      },
+      {
+        "id": "consulting",
+        "label": "Asesoría IT"
+      },
+      {
+        "id": "cloud",
+        "label": "Infraestructura"
+      },
+      {
+        "id": "support",
+        "label": "Soporte Técnico"
+      }
     ],
     "ask_price": "Cotizar ahora",
     "plans": [

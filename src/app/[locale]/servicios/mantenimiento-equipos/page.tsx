@@ -5,11 +5,12 @@ import Link from 'next/link';
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
     const baseUrl = 'https://scryved.com';
-    const canonicalUrl = `${baseUrl}/${locale}/servicios/mantenimiento-equipos`;
+    const localePath = locale === 'es' ? '' : `/${locale}`;
+    const canonicalUrl = `${baseUrl}${localePath}/servicios/mantenimiento-equipos`;
 
     return {
         title: locale === 'es' ? 'Formateo y Mantenimiento de Computadores en Pitalito | Scryved' : 'PC Maintenance & Tech Support in Pitalito | Scryved',
-        description: locale === 'es' ? 'Servicio técnico especializado en Pitalito: Formateo de computadores, instalación de redes, cámaras de seguridad y limpieza de PCs.' : 'Specialized tech support in Pitalito: PC formatting, network installation, security cameras and PC cleaning.',
+        description: locale === 'es' ? 'Servicio técnico especializado en Pitalito: Formateo de computadores, instalación de redes y limpieza de PCs.' : 'Specialized tech support in Pitalito: PC formatting, network installation and PC cleaning.',
         alternates: {
             canonical: canonicalUrl,
         },
@@ -58,8 +59,8 @@ export default async function MantenimientoPage({ params }: { params: Promise<{ 
                     },
                     {
                         icon: <ShieldCheck className="w-8 h-8" style={{ color: '#a3e635' }} />,
-                        title: isEs ? 'Redes y Cámaras' : 'Networks & Cameras',
-                        desc: isEs ? 'Instalación de cableado estructurado, configuración de redes Wi-Fi empresariales y sistemas de cámaras de seguridad (CCTV).' : 'Structured cabling, business Wi-Fi setup and CCTV security systems.'
+                        title: isEs ? 'Redes Empresariales' : 'Business Networks',
+                        desc: isEs ? 'Instalación de cableado estructurado y configuración de redes Wi-Fi empresariales.' : 'Structured cabling and business Wi-Fi setup.'
                     }
                 ].map((item, i) => (
                     <div key={i} className="p-8 rounded-[2rem] border transition-all hover:scale-[1.02]" style={{ background: 'rgba(163,230,53,0.02)', borderColor: 'rgba(255,255,255,0.05)' }}>
